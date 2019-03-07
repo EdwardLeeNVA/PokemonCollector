@@ -117,6 +117,13 @@
 	</build>
 	<!-- These are the standard dependencies we use for our projects for OJDBC, 
 		Jackson for JSON objects, Log4j, and JUnit. Change them as you need them -->
+	<repositories>
+        <repository>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 	<dependencies>
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -164,5 +171,16 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+	   	<dependency>
+      		<groupId>org.ehcache</groupId>
+      		<artifactId>ehcache</artifactId>
+      		<version>3.7.0</version>
+    	</dependency>
+        <dependency>
+            <groupId>me.sargunvohra.lib</groupId>
+            <artifactId>pokekotlin</artifactId>
+            <version>2.3.0</version>
+            <type>jar</type>
+        </dependency>   
 	</dependencies>
 </project>
