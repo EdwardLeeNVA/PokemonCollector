@@ -4,4 +4,5 @@ export class User {
   last_name: string;
   score: number;
   password: string;
+  credits: number;
 }

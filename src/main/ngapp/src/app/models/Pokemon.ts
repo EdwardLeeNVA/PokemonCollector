@@ -4,4 +4,5 @@ export class Pokemon {
   image: string;
   types: string[];
   stats: any[];
+  count: number;
 }
