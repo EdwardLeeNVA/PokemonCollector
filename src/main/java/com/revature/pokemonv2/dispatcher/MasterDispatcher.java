@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.revature.pokemonv2.service.PlayerService;
+
 public class MasterDispatcher {
 	private MasterDispatcher() { }
 	private static final Logger log = Logger.getLogger(MasterDispatcher.class);
@@ -19,6 +21,7 @@ public class MasterDispatcher {
 		
 		switch(uri) {
 		case "register":
+			PlayerService.RegisterPlayer(request, response);
 			break;
 		default:
 			log.error("URI not recognized");
