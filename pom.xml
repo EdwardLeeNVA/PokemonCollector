@@ -69,7 +69,7 @@
 							<executable>ng</executable>
 							<arguments>
 								<argument>build</argument>
-								<argument>--baseHref=/TexasCheatum/ng/</argument>
+								<argument>--baseHref=/PokemonCollector/ng/</argument>
 							</arguments>
 						</configuration>
 						<goals>
