@@ -11,7 +11,6 @@ import org.ehcache.spi.loaderwriter.CacheWritingException;
 import org.ehcache.xml.XmlConfiguration;
 
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 
 public class CachingUtility {
  	
@@ -31,11 +30,29 @@ public class CachingUtility {
 		 return cachingUtility;
 	 }
 	 
-	 public void addToCache(String username, Collection c) {
-		 this.pokedexCache.put(username, c);
-	 }
+//	 public void addToCache(String username, Collection c) {
+//		 this.pokedexCache.put(username, c);
+//	 }
 	 
 	 public Collection checkCache(String username) {
+		 return this.pokedexCache.get(username);
+	 }
+	 
+	 public Collection addToCache(String username, int id) {
+		 List<Pokemon> pokeList = (List)this.pokedexCache.get(username);
+		 for(int i = 0; i<pokeList.size(); i++) {
+			 if(pokeList.get(i).getId()==id) {
+				 pokeList.get(i).setCount(pokeList.get(i).getCount()+1);
+				 this.pokedexCache.remove(username);
+				 this.pokedexCache.put(username, pokeList);
+				 return this.pokedexCache.get(username);
+			 }
+		 }
+		 Pokemon pokemon= this.getPokemonFromCache(id);
+		 pokemon.setCount(1);
+		 pokeList.add(pokemon);
+		 this.pokedexCache.remove(username);
+		 this.pokedexCache.put(username, pokeList);
 		 return this.pokedexCache.get(username);
 	 }
 	 
@@ -63,6 +80,7 @@ public class CachingUtility {
 			 allPokemonCache.put(p.getId(), p);
 		 }
 	 }
+	 
 	
  	CacheManager getCacheManager() {
  		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));

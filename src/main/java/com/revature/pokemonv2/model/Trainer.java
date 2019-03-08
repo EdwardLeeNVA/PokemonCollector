@@ -7,6 +7,7 @@ public class Trainer {
 	private String password;
 	private int score;
 	private int credits;
+	private int userID;
 	
 	public Trainer() { /*Empty constructor*/ }
 	
@@ -45,5 +46,12 @@ public class Trainer {
 	}
 	public void setCredits(int credits) {
 		this.credits = credits;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 }
