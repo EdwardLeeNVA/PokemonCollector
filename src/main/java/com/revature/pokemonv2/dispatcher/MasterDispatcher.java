@@ -6,10 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.pokemonv2.service.PlayerService;
+import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
+import com.revature.pokemonv2.service.PlayerService;
 
 public class MasterDispatcher {
 	private MasterDispatcher() { }
