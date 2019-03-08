@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,6 +12,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { RedeemComponent } from './components/redeem/redeem.component';
 import {AppRoutes} from "./util/routes";
+import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
 
 
 @NgModule({
@@ -22,10 +24,12 @@ import {AppRoutes} from "./util/routes";
     HomeComponent,
     ShopComponent,
     CollectionComponent,
-    RedeemComponent
+    RedeemComponent,
+    GeneratePokemonComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
