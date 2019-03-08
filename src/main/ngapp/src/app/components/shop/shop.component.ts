@@ -8,14 +8,13 @@ import { Pokemon } from 'src/app/models/Pokemon';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-
-  private numPoke: number = 15;
+  private TOTALPOKEMON: number = 151;
+  
+  private numPoke: number;
   private currentPage: number = 0;
-  private pokemonName: string;
-  private pokemonType: string;
-  private pokemonSprite: string;
+  private numPages: number;
   private allPoke: [Pokemon];
-  private pokePages:[Pokemon];
+  private pokePages: [Pokemon];
 
   constructor(
     private pokedexService: PokedexService
@@ -28,12 +27,7 @@ export class ShopComponent implements OnInit {
     this.pokedexService.getAllPokemon().subscribe(
       data => {
         for (let i = 0; i < data.length(); i++){
-          // id: number;
-          // name: string;
-          // image: string;
-          // types: string[];
-          // stats: any[];
-          // count: number;
+          //going to need to change this when endpoint is finished
           this.allPoke[i].id = data.id;
           this.allPoke[i].name = data.name.charAt(0).toUpperCase();
           this.allPoke[i].image = data.sprites.front_default;
@@ -51,7 +45,6 @@ export class ShopComponent implements OnInit {
       this.pokePages[count] = this.allPoke[i];
       count++;
     }
+    this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
-
-
 }
