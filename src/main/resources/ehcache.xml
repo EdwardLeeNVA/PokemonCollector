@@ -18,7 +18,7 @@
     defined on your system. On a standard Linux system this will be /tmp" -->
     
     
-    < <cache alias="pokedexCache" >
+     <cache alias="pokedexCache" >
 		<heap>500</heap>
 		<key-type>java.lang.String</key-type>
 		<value-type>java.util.Collection</value-type>
