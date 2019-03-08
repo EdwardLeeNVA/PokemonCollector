@@ -9,12 +9,23 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
 public class ConnectionUtility {
-
-	private static DataSource dataSource;
+	//Creates a singleton of Connection utility
+	private static ConnectionUtility instance;
+	private DataSource dataSource;
 	private static final String ENVIRONMENT_CONTEXT = "java:/comp/env";
 	private static final String FILE_DATA = "jdbc/myoracle";
 	private static final Logger log = Logger.getLogger(ConnectionUtility.class);
 
+	
+	public static ConnectionUtility getInstance() {
+		if (instance == null) {
+			instance = new ConnectionUtility();
+		}
+		return instance;
+	}
+	
+	private ConnectionUtility() {}
+	
 	public Connection getConnection() {
 		try {
 			DataSource ds = getDataSource();
@@ -25,7 +36,7 @@ public class ConnectionUtility {
 		}
 	}
 
-	private static DataSource getDataSource() throws NamingException {
+	private DataSource getDataSource() throws NamingException {
 		if (dataSource == null) {
 			Context context = new InitialContext();
 			Context lookup = (Context) context.lookup(ENVIRONMENT_CONTEXT);
