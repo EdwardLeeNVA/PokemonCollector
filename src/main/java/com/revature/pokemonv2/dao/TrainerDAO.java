@@ -10,4 +10,6 @@ public interface TrainerDAO {
 			String f_name, String l_name, int credit, int score);
 	
 	public ArrayList<Pokemon> get_duplicates( int trainer_id);
+	public void redeemSpecific(int trainer_id, int poke_id);
+	public void redeemAll(int trainer_id);
 }

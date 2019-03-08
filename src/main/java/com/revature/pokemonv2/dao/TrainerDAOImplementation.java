@@ -59,4 +59,27 @@ public class TrainerDAOImplementation implements TrainerDAO{
 		return null;
 	}
 
+	
+	
+	@Override
+	/* Purpose: Redeem a specific pokemon from a trainer's collection.
+	 * trainer_id: ID of the current trainer.
+	 * poke_id: ID of the pokemon being redeemed.
+	 */
+	
+	public void redeemSpecific(int trainer_id, int poke_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	/*
+	 * Purpose: Redeem a all pokemon for a specific trainer.
+	 * trainer_id: ID of the current trainer.
+	 */
+	public void redeemAll(int trainer_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
