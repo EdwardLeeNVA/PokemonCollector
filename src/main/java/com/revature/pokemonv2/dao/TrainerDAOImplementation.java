@@ -4,7 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UserDaoImplementation implements UserDao{
+public class TrainerDAOImplementation implements TrainerDAO{
 
 	@Override
 	//By CameronT
