@@ -8,9 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.revature.pokemonv2.service.CollectionService;
+import com.revature.pokemonv2.service.CollectionServiceImpl;
+
 public class MasterDispatcher {
 	private MasterDispatcher() { }
 	private static final Logger log = Logger.getLogger(MasterDispatcher.class);
+	private static final CollectionService collectionService = new CollectionServiceImpl();
 	
 	public static void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -19,6 +23,9 @@ public class MasterDispatcher {
 		
 		switch(uri) {
 		case "register":
+			break;
+		case "collection":
+			//collectionService.getAllPokemon();
 			break;
 		default:
 			log.error("URI not recognized");
