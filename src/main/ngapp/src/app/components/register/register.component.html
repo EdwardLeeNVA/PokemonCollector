@@ -2,7 +2,7 @@
   <form class="form-group isValidated" (ngSubmit)="registerTrainer()" method="POST">
     <label>Username: </label>
     <input id="username" name="username" class="form-control" required [(ngModel)]="trainer.username"
-      placeholder="username" #username="ngModel">
+      placeholder="username">
     <div *ngIf="trainer.username.invalid && (trainer.username.dirty || trainer.username.touched)" class="alert alert-danger">
 
       <div *ngIf="trainer.username.errors.required">

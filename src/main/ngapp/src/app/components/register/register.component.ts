@@ -24,6 +24,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registerTrainer() {
-    // this.trainerService.createTrainer(this.trainer).subscribe();
+   this.trainerService.createTrainer(this.trainer).subscribe();
   }
 }
