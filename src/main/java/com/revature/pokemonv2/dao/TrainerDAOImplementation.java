@@ -3,7 +3,9 @@ package com.revature.pokemonv2.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class TrainerDAOImplementation implements TrainerDAO{
@@ -43,6 +45,18 @@ public class TrainerDAOImplementation implements TrainerDAO{
 	//		pool.freeConnection(conn);
 		}
 	return false;
+	}
+
+	
+	@Override
+	/* 
+	 * Method for fetching all duplicate pokemon of a specfiic trainer.
+	 * Takes an int trainer_id
+	 * Returns an ArrayList of pokemon objects
+	 */
+	public ArrayList<Pokemon> get_duplicates(int trainer_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

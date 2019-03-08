@@ -1,13 +1,14 @@
 package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pokemonv2.service.PlayerService;
-
+import com.revature.pokemonv2.service.RedeemService;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 
@@ -31,6 +32,7 @@ public class MasterDispatcher {
 			break;
 		case "duplicate":
 			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
+			RedeemService.getDuplicates(request, response);
 			break;
 		case "redeem":
 			//Endpoint for redeem call. Redeems a specific pokemon
