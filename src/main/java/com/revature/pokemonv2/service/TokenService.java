@@ -37,7 +37,7 @@ public class TokenService {
 			Key key = keyStore.getKey("jwt", "Password123!".toCharArray());
 			if (key instanceof PrivateKey) {
 				// Get the certificate
-				Certificate cert = keyStore.getCertificate("demo_jwt");
+				Certificate cert = keyStore.getCertificate("jwt");
 				
 				// Get Public Key
 				PublicKey pubKey = cert.getPublicKey();
@@ -91,7 +91,7 @@ public class TokenService {
 		return false;
 	}
 
-	// Gets the Trainer username and score from token
+	// Gets the Trainer user name and score from token
 	public Trainer getUserDetailsFromToken(String token) {
 		if (token != null && token.startsWith("Bearer ")) {
 			Claims claims = Jwts.parser().setSigningKey(keyPair.getPublic())
