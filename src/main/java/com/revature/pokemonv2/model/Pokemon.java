@@ -28,6 +28,7 @@ public class Pokemon {
 		this.imageUrl = imageUrl;
 		this.type = type;
 		this.stats = stats;
+		this.count = 1;
 	}
 
 

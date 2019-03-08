@@ -3,14 +3,10 @@ package com.revature.pokemonv2.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.CachingUtility;
 
 public class CollectionServiceImpl implements CollectionService {
