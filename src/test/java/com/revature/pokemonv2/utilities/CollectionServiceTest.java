@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CollectionServiceTest {
+//public class CollectionServiceTest {
 /*
  * @Test
 	public void test() {
@@ -13,4 +13,4 @@ public class CollectionServiceTest {
 
  */
 	
-}
+//}
