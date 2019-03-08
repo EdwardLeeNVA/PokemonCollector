@@ -14,7 +14,6 @@ export const AppRoutes: Route[] = [
     component: LandingComponent
   },
   {
-<<<<<<< HEAD
     path: 'landing',
     component: LandingComponent
   },
@@ -40,33 +39,6 @@ export const AppRoutes: Route[] = [
   },
   {
     path: 'redeem',
-=======
-    path: '/landing',
-    component: LandingComponent
-  },
-  {
-    path: '/login',
-    component: LoginComponent
-  },
-  {
-    path: '/register',
-    component: RegisterComponent
-  },
-  {
-    path: '/home',
-    component: HomeComponent
-  },
-  {
-    path: '/collection',
-    component: CollectionComponent
-  },
-  {
-    path: '/shop',
-    component: ShopComponent
-  },
-  {
-    path: '/redeem',
->>>>>>> staging
     component: RedeemComponent
   }
 ];
