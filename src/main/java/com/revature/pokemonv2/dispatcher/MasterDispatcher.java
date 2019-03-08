@@ -32,7 +32,10 @@ public class MasterDispatcher {
 			//collectionService.getAllPokemon();
 			break;
 		case "generatePokemon":
-			//call whatever service 
+			//enter the jwt token which needs to be decrypted
+			String username = null;
+			int trainerId = 0;
+			PlayerService.generatePokemon(trainerId, username);
 			break;
 		default:
 			System.out.println("URI not recognized");

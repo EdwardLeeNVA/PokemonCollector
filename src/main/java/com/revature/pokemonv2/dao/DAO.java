@@ -5,10 +5,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class DAO {
@@ -37,7 +39,7 @@ public class DAO {
 		return null;
 	}
 
-	public static int generatePokemon(int trainerId) {
+	public static int generatePokemon(int trainerId, String username) {
 		Connection conn = null;
 		
 		//until we merge with the connection pool
@@ -48,7 +50,10 @@ public class DAO {
 			
 			//change new Random().nextInt(150) for 1 based index to
 			//new Random().nextInt(151-1)+1
-			int pokemonId = new Random().nextInt(150);
+			int pokemonId = new Random().nextInt(150)+1;
+			
+			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
+			
 			cs.setInt(2, pokemonId);
 
 			cs.execute();

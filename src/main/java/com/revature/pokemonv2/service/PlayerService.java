@@ -29,10 +29,10 @@ public class PlayerService {
 	}
 	
 	//temporary until merged with project with pokemon service
-	public static void generatePokemon(int trainerId)
+	public static void generatePokemon(int trainerId, String username)
 			throws ServletException, IOException {
 		
-			DAO.generatePokemon(trainerId);
+			DAO.generatePokemon(trainerId, username);
 	}
 	
 }
