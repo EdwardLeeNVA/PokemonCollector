@@ -24,7 +24,7 @@ public class TrainerDAOImplementation implements TrainerDAO{
 		//For the connection pool that we will add later
 	//	conn = pool.getConnection();
 		System.out.println(2);
-		try (CallableStatement cs = conn.prepareCall("{call insert_user(?,?,?,?,?,?,?)}");) {
+		try (CallableStatement cs = conn.prepareCall("{call create_trainer(?,?,?,?,?,?,?)}");) {
 			cs.setString(1, username);
 			cs.setString(2, password);
 			cs.setString(3, email);
