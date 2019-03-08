@@ -29,6 +29,18 @@ public class MasterDispatcher {
 		case "collection":
 			//collectionService.getAllPokemon();
 			break;
+		case "duplicate":
+			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
+			break;
+		case "redeem":
+			//Endpoint for redeem call. Redeems a specific pokemon
+			//POST: Takes trainerID and PokemonID
+			break;
+		case "redeemAll":
+			//Endpoint for redeem all call. Redeems all pokemon.
+			//POST Takes trainerID.
+			
+			break;
 		default:
 			System.out.println("URI not recognized");
 		}
