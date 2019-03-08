@@ -7,9 +7,30 @@ public class Pokemon {
 	private String imageUrl;
 	private String [] type;
 	private Map <String,Integer> stats;
+	private int count;
 	
 	public Pokemon() { /*Empty Constructor */}
 	
+	
+	
+	public Pokemon(int id, int count) {
+		super();
+		this.id = id;
+		this.count = count;
+	}
+
+
+
+	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.type = type;
+		this.stats = stats;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -39,6 +60,12 @@ public class Pokemon {
 	}
 	public void setStats(Map<String, Integer> stats) {
 		this.stats = stats;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	} 
 	
 	
