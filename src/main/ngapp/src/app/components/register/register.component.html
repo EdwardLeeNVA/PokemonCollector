@@ -1,24 +1,38 @@
 <div>
-  <form class="form-group isValidated" (ngSubmit)="registerTrainer()" method="POST">
-    <label>Username: </label>
-    <input id="username" name="username" class="form-control" required [(ngModel)]="trainer.username"
-      placeholder="username" #username="ngModel">
-    <div *ngIf="trainer.username.invalid && (trainer.username.dirty || trainer.username.touched)" class="alert alert-danger">
+  <form id="registerForm" class="form-group" #registerForm="ngForm" (ngSubmit)="registerTrainer()" method="POST">
+    <div class="form-group">
+      <label for="username">Username: </label>
+      <input id="username" name="username" class="form-control" required [(ngModel)]="trainer.username"
+        placeholder="username" #spy="ngModel">
 
-      <div *ngIf="trainer.username.errors.required">
-        Username is required.
+      <div *ngIf="spy.invalid && (spy.dirty || spy.touched)" class="alert alert-danger">
+        <div *ngIf="spy.errors.required">
+          Username is required.
+        </div>
       </div>
     </div>
 
-    <label>Password: </label>
-    <input name="password" class="form-control" required type="password" [(ngModel)]="trainer.password"
-      placeholder="password">
-    <label>First Name: </label>
-    <input name="firstname" class="form-control" required [(ngModel)]="trainer.f_name" placeholder="f_name">
-    <label>Last Name: </label>
-    <input name="lastname" class="form-control" required [(ngModel)]="trainer.l_name" placeholder="l_name">
-    <label>Email: </label>
-    <input name="email" class="form-control" required type="email" [(ngModel)]="trainer.email" placeholder="email">
-    <input name="submit" type="submit" class="btn btn-outline-light">
+    <div class="form-group">
+      <label for="password">Password: </label>
+      <input name="password" class="form-control" required type="password" [(ngModel)]="trainer.password"
+        placeholder="password">
+    </div>
+    
+    <div class="form-group">
+      <label for="firstname">First Name: </label>
+      <input name="firstname" class="form-control" required [(ngModel)]="trainer.f_name" placeholder="f_name">
+    </div>
+    
+    <div class="form-group">
+      <label for="lastname">Last Name: </label>
+      <input name="lastname" class="form-control" required [(ngModel)]="trainer.l_name" placeholder="l_name">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <input name="email" class="form-control" required type="email" [(ngModel)]="trainer.email" placeholder="email">
+    </div>
+
+    <input name="submit" type="submit" class="btn btn-outline-light" [disabled]="!registerForm.form.valid">
   </form>
 </div>

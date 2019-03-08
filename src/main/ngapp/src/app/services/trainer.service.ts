@@ -12,6 +12,6 @@ export class TrainerService {
    //Method call fo POST request for registering a new trainer.
    createTrainer(newTrainer: Trainer) {
     console.log(newTrainer);
-    return this._http.post<any>("localhost:8080/PokemonCollector/servlet/register", newTrainer);
+    return this._http.post<any>("/PokemonCollector/servlet/register", newTrainer);
   }
 }

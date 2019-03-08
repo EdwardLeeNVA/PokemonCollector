@@ -3,13 +3,14 @@ package com.revature.pokemonv2.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.servlets.DefaultServlet;
+
 import com.revature.pokemonv2.dispatcher.MasterDispatcher;
 
-public class FrontController extends HttpServlet{
+public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 4826138980180601133L;
 	
 	@Override
@@ -19,7 +20,7 @@ public class FrontController extends HttpServlet{
 		if (uri.contains("/servlet/"))
 			MasterDispatcher.process(request, response);
 		else if (uri.equals("/PokemonCollector/") || uri.equals("/PokemonCollector"))
-			request.getRequestDispatcher("/ng/index.html").forward(request, response);
+			response.sendRedirect("/PokemonCollector/ng/index.html");
 		else
 			super.doGet(request, response);
 	}
