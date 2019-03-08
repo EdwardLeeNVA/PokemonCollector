@@ -1,5 +1,6 @@
 package com.revature.pokemonv2.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,14 +17,15 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	private static final TokenService token = TokenService.getInstance();
 	private static TrainerDAOImp trainer = null;
-
+	
+	//Gets the instance of the class
 	public static TrainerDAOImp getTrainerDAO() {
 		if (trainer == null) {
 			trainer = new TrainerDAOImp();
 		}
 		return trainer;
 	}
-
+	//Authentication, creates JWT for user
 	@Override
 	public Trainer loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		// Creates a new trainer and assigns the username and password to the object
@@ -38,13 +40,13 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	// Verifies via SQL whether the user login is correct
 	public Trainer verifyLogin(String username, String password) {
-		//Try with resources on the instance of ConnectionUtility
+		// Try with resources on the instance of ConnectionUtility
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			//Creates a new trainer
+			// Creates a new trainer
 			Trainer login = null;
-			//Call stored procedure
+			// Call stored procedure
 			String sql = "CALL VERIFY_CREDENTIALS(?,?)";
-			//Try with resources on the PreparedStatement
+			// Try with resources on the PreparedStatement
 			try (PreparedStatement cs = conn.prepareStatement(sql)) {
 				cs.setString(1, username);
 				cs.setString(2, password);
@@ -63,5 +65,27 @@ public class TrainerDAOImp implements TrainerDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	//Creates a trainer
+	@Override
+	public boolean create_trainer(String username, String password, String email, String f_name, String l_name,
+			int credit, int score) {
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			try (CallableStatement cs = conn.prepareCall("CALL create_trainer(?,?,?,?,?,?,?)");) {
+				cs.setString(1, username);
+				cs.setString(2, password);
+				cs.setString(3, email);
+				cs.setString(4, f_name);
+				cs.setString(5, l_name);
+				cs.setInt(6, credit);
+				cs.setInt(7, score);
+				cs.execute();
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
