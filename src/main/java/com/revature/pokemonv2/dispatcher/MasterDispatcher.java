@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.revature.pokemonv2.service.PlayerService;
 
 import com.revature.pokemonv2.service.CollectionService;
