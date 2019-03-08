@@ -1,3 +1,5 @@
-<p>
-  shop works!
-</p>
+<div class="radio-card-grid">
+  <div class="from-check radio-form-item" *ngFor="let pokemon of pokePages">
+    <input class="from-check-input customRadioBtn" type="radio" name="gridRadios"
+      value="{{allPoke.pokemon.id}}" checked/>
+  </div>
