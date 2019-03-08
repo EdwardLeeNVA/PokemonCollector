@@ -4,6 +4,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.revature.pokemonv2.utilities.ConnectionUtility;
+
 public class TrainerDAOImplementation implements TrainerDAO{
 	private static TrainerDAOImplementation singleton = new TrainerDAOImplementation();
 	private TrainerDAOImplementation() { }
@@ -17,7 +19,7 @@ public class TrainerDAOImplementation implements TrainerDAO{
 	public boolean create_trainer(String username, String password, String email, String f_name, 
 			String l_name, int credit, int score) {
 		
-		Connection conn = null;
+		Connection conn = ConnectionUtility.getConnection();
 		System.out.println(1);
 		//For the connection pool that we will add later
 	//	conn = pool.getConnection();
