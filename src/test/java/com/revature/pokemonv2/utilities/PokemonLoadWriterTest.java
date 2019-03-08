@@ -1,8 +1,8 @@
 package com.revature.pokemonv2.utilities;
 
 import static org.junit.Assert.*;
-
-import org.junit.Test;
+/*
+ * import org.junit.Test;
 
 public class PokemonLoadWriterTest {
 
@@ -12,3 +12,6 @@ public class PokemonLoadWriterTest {
 	}
 
 }
+
+ */
+
