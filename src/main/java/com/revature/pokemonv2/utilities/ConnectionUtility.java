@@ -45,4 +45,12 @@ public class ConnectionUtility {
 		}
 		return dataSource;
 	}
+	
+    public static void freeConnection(Connection c) {
+        try {
+            c.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
