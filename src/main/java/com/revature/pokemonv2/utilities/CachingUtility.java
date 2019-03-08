@@ -15,7 +15,7 @@ import com.revature.pokemonv2.model.Trainer;
 
 public class CachingUtility {
  	
-	 private final Cache<Trainer, Collection> pokedexCache;
+	 private final Cache<String, Collection> pokedexCache;
 	 private final Cache<Integer, Pokemon> allPokemonCache;
 	 private static CachingUtility cachingUtility = new CachingUtility();
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
@@ -24,9 +24,8 @@ public class CachingUtility {
 	 
 	 private CachingUtility(){
 		 
-		 pokedexCache = getCacheManager().getCache("pokedexCache", Trainer.class, Collection.class);
+		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, Collection.class);
 		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
-		 
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
@@ -34,25 +33,21 @@ public class CachingUtility {
 	 }
 	 
 	 
-	 public void addToCache(Trainer t, Collection c) {
-		 this.pokedexCache.put(t, c);
+	 public void addToCache(String username, Collection c) {
+		 this.pokedexCache.put(username, c);
 	 }
 	 
-	 public Collection checkCache(Trainer t) {
-		 return this.pokedexCache.get(t);
+	 public Collection checkCache(String username) {
+		 return this.pokedexCache.get(username);
 	 }
 	 
 	 public Pokemon getPokemonFromCache(Integer i) {
-		 Pokemon p = allPokemonCache.get(i);
-		 if (p == null) {
-			 
-		 }
 		 return this.allPokemonCache.get(i);
 	 }
 	
-	 public boolean removeCollection(Trainer t) {
+	 public boolean removeCollection(String username) {
 		 try {
-			 pokedexCache.remove(t);
+			 pokedexCache.remove(username);
 			 return true;
 		 }catch(NullPointerException e) {
 			 logger.error("NullPointerException for removeCollection");
@@ -70,13 +65,23 @@ public class CachingUtility {
 			 allPokemonCache.put(p.getId(), p);
 		 }
 	 }
-	  
+	
  	CacheManager getCacheManager() {
  		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));
  		CacheManager cacheManager = CacheManagerBuilder.newCacheManager(ehcache);
  		cacheManager.init();
 		return cacheManager;
  	}
+ 	
+ 	
+ 	/*
+ 	 * CacheManager cacheManager() {
+ 		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));
+ 		CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+ 				.withCache("allPokemonCache", newCacheConfigurationBuilder(Integer.class, Pokemon.class))
+ 	}
+ 	 */
+ 	
  	
   
  

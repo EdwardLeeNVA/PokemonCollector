@@ -20,8 +20,8 @@ public class CollectionServiceImpl implements CollectionService {
 	private final ObjectMapper mapper = new ObjectMapper();
 	
 	
-		public List<Pokemon> getAllPokemon(Trainer t) {
-			List<Pokemon> allPokemon = (ArrayList<Pokemon>) cachingUtility.checkCache(t);
+		public List<Pokemon> getAllPokemon(String username) {
+			List<Pokemon> allPokemon = (ArrayList<Pokemon>) cachingUtility.checkCache(username);
 			
 			logger.error(allPokemon);
 			if(allPokemon != null) {

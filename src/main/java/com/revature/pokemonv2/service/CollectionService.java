@@ -7,7 +7,7 @@ import com.revature.pokemonv2.model.Trainer;
 
 public interface CollectionService {
 	
-	public List<Pokemon> getAllPokemon(Trainer t);
+	public List<Pokemon> getAllPokemon(String username);
 	//public boolean removeCollection(Trainer t);
 
 }
