@@ -19,7 +19,6 @@ public class CachingUtility {
 	 private final Cache<Integer, Pokemon> allPokemonCache;
 	 private static CachingUtility cachingUtility = new CachingUtility();
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
-	 public static PokeAPI pokeAPI = PokeAPI.getPokeAPI();
 	 
 	 
 	 private CachingUtility(){
@@ -31,7 +30,6 @@ public class CachingUtility {
 	 public static CachingUtility getCachingUtility() {
 		 return cachingUtility;
 	 }
-	 
 	 
 	 public void addToCache(String username, Collection c) {
 		 this.pokedexCache.put(username, c);
@@ -54,7 +52,7 @@ public class CachingUtility {
 			 e.printStackTrace();
 			 return false;
 		 }catch(CacheWritingException c) {
-			 logger.error("cache writing excpetion for removeCollection");
+			 logger.error("cache writing exception for removeCollection");
 			 c.printStackTrace();
 			 return false;
 		 }

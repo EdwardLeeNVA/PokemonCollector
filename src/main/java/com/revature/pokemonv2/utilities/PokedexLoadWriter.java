@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.utilities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
@@ -14,7 +15,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 
 	@Override
-	public Object load(Object key) throws Exception {
+	public List<Pokemon> load(Object key) throws Exception {
 		ArrayList<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
 		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
 		

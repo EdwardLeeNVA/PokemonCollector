@@ -35,7 +35,6 @@ public class AllPokemonLoadWriter implements CacheLoaderWriter {
 			statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
 		}
 		
-		
 		return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])temp.toArray(), statTemp);
 		
 	}
