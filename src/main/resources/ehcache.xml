@@ -19,7 +19,6 @@
     
     
      <cache alias="pokedexCache" >
-		<heap>500</heap>
 		<key-type>java.lang.String</key-type>
 		<value-type>java.util.Collection</value-type>
 		<integration>com.revature.pokemonv2.utilities.PokedexLoadWriter</integration>
