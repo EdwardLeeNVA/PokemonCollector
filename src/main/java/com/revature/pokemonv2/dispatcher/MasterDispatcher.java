@@ -20,6 +20,9 @@ public class MasterDispatcher {
 		switch(uri) {
 		case "register":
 			break;
+		case "generatePokemon":
+			//call whatever service 
+			break;
 		default:
 			log.error("URI not recognized");
 		}
