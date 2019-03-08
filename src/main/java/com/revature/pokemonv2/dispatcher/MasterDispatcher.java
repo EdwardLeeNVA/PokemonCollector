@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.revature.pokemonv2.service.PlayerService;
+
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
-import com.revature.pokemonv2.service.PlayerService;
 
 public class MasterDispatcher {
 	private MasterDispatcher() { }
