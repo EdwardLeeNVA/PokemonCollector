@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class TrainerDAOImplementation implements TrainerDAO{
@@ -40,9 +41,14 @@ public class TrainerDAOImplementation implements TrainerDAO{
 			
 		//	log.error(e.getMessage());
 		}finally {
-	//		pool.freeConnection(conn);
+			ConnectionUtility.freeConnection(conn);
 		}
 	return false;
 	}
 
+	@Override
+	public Trainer read_trainer(String username, String password) {
+		
+		return null;
+	}
 }
