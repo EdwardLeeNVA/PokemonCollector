@@ -5,11 +5,10 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 
-
-public class PokedexLoadWriterTest {
+/*
+ * public class PokedexLoadWriterTest {
 	
 	public PokedexLoadWriter plw = new PokedexLoadWriter();
-	
 
 	@Test
 	public void test() {
@@ -25,11 +24,13 @@ public class PokedexLoadWriterTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
-
 }
+
+
+ */
+
+
 
 /*
  * private static User test = new User(-1, "JUnitTest", "JUnitTest", "JUnitTest@gmail.com", "firstName", "lastName");
