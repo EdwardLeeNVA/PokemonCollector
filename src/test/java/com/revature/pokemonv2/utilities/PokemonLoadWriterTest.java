@@ -1,14 +1,13 @@
 package com.revature.pokemonv2.utilities;
 
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class PokemonLoadWriterTest {
 
-	@Test
+	/*@Test
 	public void test() {
 		fail("Not yet implemented");
-	}
+	}/*
 
 }
