@@ -11,7 +11,6 @@ import org.ehcache.spi.loaderwriter.CacheWritingException;
 import org.ehcache.xml.XmlConfiguration;
 
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 
 public class CachingUtility {
  	
