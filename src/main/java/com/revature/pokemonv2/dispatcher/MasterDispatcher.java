@@ -20,6 +20,8 @@ public class MasterDispatcher {
 		switch(uri) {
 		case "register":
 			break;
+		case "purchase":
+			break;
 		default:
 			log.error("URI not recognized");
 		}
