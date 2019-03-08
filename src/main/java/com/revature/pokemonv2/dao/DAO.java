@@ -17,15 +17,13 @@ public class DAO {
 	public ConnectionUtility connection = new ConnectionUtility();
 	private static Logger logger = Logger.getLogger(DAO.class);
 	
-	public Collection getTrainerPokedex(String username) {
+	public ArrayList<Pokemon> getTrainerPokedex(String username) {
 		
 		try (Connection conn = connection.getConnection();) {
 			
 			String sql = "call get_all_pokemon(?)";
 			CallableStatement cs = conn.prepareCall(sql);
 			cs.setString(1, username);
-			
-			
 			ResultSet rs = cs.executeQuery();
 			ArrayList<Pokemon> pokedex = new ArrayList<>();
 			while(rs.next()) {

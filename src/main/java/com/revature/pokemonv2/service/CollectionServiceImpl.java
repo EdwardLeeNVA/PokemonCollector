@@ -21,16 +21,8 @@ public class CollectionServiceImpl implements CollectionService {
 	
 	
 		public List<Pokemon> getAllPokemon(String username) {
-			List<Pokemon> allPokemon = (ArrayList<Pokemon>) cachingUtility.checkCache(username);
-			
-			logger.error(allPokemon);
-			if(allPokemon != null) {
-				return allPokemon;
-			}else
-				/*
-				 * need to call the database
-				 */
-				return null;
+			return (ArrayList<Pokemon>) cachingUtility.checkCache(username);
+		
 		}
 		
 		

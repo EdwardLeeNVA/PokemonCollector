@@ -73,20 +73,6 @@ public class CachingUtility {
 		return cacheManager;
  	}
  	
- 	
- 	/*
- 	 * CacheManager cacheManager() {
- 		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));
- 		CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
- 				.withCache("allPokemonCache", newCacheConfigurationBuilder(Integer.class, Pokemon.class))
- 	}
- 	 */
- 	
- 	
-  
- 
-	     
-	
-	
+
 
 }
