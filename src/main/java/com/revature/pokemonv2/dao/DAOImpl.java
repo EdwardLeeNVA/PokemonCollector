@@ -1,8 +1,10 @@
 package com.revature.pokemonv2.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.revature.pokemonv2.data.SampleData;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
@@ -13,27 +15,45 @@ public class DAOImpl implements DAO{
 	public Map<Trainer, Integer> getPokemonCountByTrainer() {
 		
 		Map pokemonCount = new HashMap<Trainer, Integer>();
+		List <Trainer> trainers = SampleData.getInstance().getTrainersT(); 
+		for(Trainer t: trainers) {
+			pokemonCount.put(t, (Math.floor(Math.random()*15))); 
+		}
 		
-		
-		return null;
+		return pokemonCount;
 	}
 
 	@Override
 	public Map<Trainer, Integer> getUniquePokemonCountByTrainer() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonCount = new HashMap<Trainer, Integer>();
+		List <Trainer> trainers = SampleData.getInstance().getTrainersT(); 
+		for(Trainer t: trainers) {
+			pokemonCount.put(t, (Math.floor(Math.random()*8))); 
+		}
+		
+		return pokemonCount;
 	}
 
 	@Override
 	public Map<Pokemon, Integer> getPokemonPopularity() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*10))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
 	public Map<Pokemon, Integer> getPokmeonFrequency() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*15))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
@@ -44,8 +64,13 @@ public class DAOImpl implements DAO{
 
 	@Override
 	public Map<Pokemon, Integer> getPokmeonFrequency(Trainer trainer) {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*4))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
@@ -64,6 +89,12 @@ public class DAOImpl implements DAO{
 	public Map<Trainer, Integer> getTrainerCredits() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Trainer> getLeaderboard() {
+		return SampleData.getInstance().getTrainersT(); 
+		
 	}
 
 }
