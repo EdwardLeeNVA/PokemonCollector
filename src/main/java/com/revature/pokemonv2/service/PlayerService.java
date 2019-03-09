@@ -46,6 +46,9 @@ public class PlayerService {
 	
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		//get the information form the request
+		String username = TokenService.getInstance().getUserDetailsFromToken(
+				request.getHeader("Authorization")).getUsername();
+		int id = Integer.parseInt(request.getParameter("pokemonId"));
 		CachingUtility.getCachingUtility().addToCache(username, id);
 	}
 }

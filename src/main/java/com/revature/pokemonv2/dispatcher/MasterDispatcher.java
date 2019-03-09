@@ -1,6 +1,8 @@
 package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
@@ -33,10 +35,13 @@ public class MasterDispatcher {
 					request.getHeader("Authorization")).getUsername();
 			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			break;
-		// Logins the user and generates an authentication token if successful
 		case "purchase":
 			PlayerService.getPlayerService().purchasePokemon(request, response);
 			break;
+		case "allpokemon":
+			mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
+			break;
+		// Logins the user and generates an authentication token if successful
 		case "login":
 			PlayerService.getPlayerService().login(request, response);
 			break;
