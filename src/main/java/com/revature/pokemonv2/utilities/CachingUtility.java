@@ -31,10 +31,6 @@ public class CachingUtility {
 		 return cachingUtility;
 	 }
 	 
-//	 public void addToCache(String username, Collection c) {
-//		 this.pokedexCache.put(username, c);
-//	 }
-	 
 	 public ArrayList checkCache(String username) {
 	 	// Logic for counting cache hits
 	 	/*this.pokedexCache.put(username, incrementCacheHit(this.pokedexCache.get(username)));*/
@@ -53,6 +49,31 @@ public class CachingUtility {
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
 		this.pokedexCache.put(username, pokeList);
+		return this.pokedexCache.get(username);
+	}
+
+	public ArrayList redeemSinglePokemon(String username, int poke_id){
+		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
+		Pokemon temp = newPokeList.remove(poke_id);
+		temp.setCount(1);
+		newPokeList.add(temp);
+		// Logic for counting cache hits
+		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
+		this.pokedexCache.put(username, newPokeList);
+		return null;
+	}
+
+	public ArrayList redeemAllPokemon(String username){
+		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
+		ArrayList<Pokemon> newPokeList = new ArrayList<>();
+		for(int i = 0; i < newPokeList.size(); i++){
+			Pokemon temp = origPokeList.get(i);
+			temp.setCount(1);
+			newPokeList.add(temp);
+		}
+		// Logic for counting cache hits
+		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
+		this.pokedexCache.put(username, newPokeList);
 		return this.pokedexCache.get(username);
 	}
 	 
@@ -90,7 +111,6 @@ public class CachingUtility {
 	public Cache getCache(){
 	 	return this.pokedexCache;
 	}
-
 
 	// This method will increment the counter pokemon in the Pokedex for custom eviction
 	public ArrayList incrementCacheHit(ArrayList list){
