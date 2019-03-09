@@ -28,7 +28,6 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 		}else {
 			List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
 			
-			
 			for (Pokemon p : pokeDex) {
 				Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
 				poke.setCount(p.getCount());
