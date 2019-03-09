@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  private TOTALPOKEMON: number = 150;
+  private TOTALPOKEMON: number = 151;
   
   private numPoke: number;
   private currentPage: number = 0;
@@ -27,7 +27,7 @@ export class ShopComponent implements OnInit {
   }
   
   getAllPokemon(): Observable<any[]>{
-    return this.http.get<any>("localhost:8080/PokemonCollector/servlet/allPokemon")
+    return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
   //method that calls above observable
   populatePokeArray(): void{
