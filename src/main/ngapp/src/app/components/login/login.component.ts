@@ -14,23 +14,9 @@ export class LoginComponent implements OnInit {
   LOGIN_FAILED = "<p>Wrong username and password.</p>";
   currentLoginMessage = this.NO_LOGIN_FAILED;
 
-  trainer: Trainer = {
-    id: 0,
-    username: '',
-    password: '',
-    f_name: '',
-    l_name: '',
-    email: ''
-  }
-
   constructor(private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() { }
-
-  /*logInTrainer() {
-    console.log('subscribed to logInTrainer');
-    this.trainerService.logInTrainer(this.trainer).subscribe(response => this.loginResponse(response));
-  }*/
 
   loginResponse(response: string) {
     if (response.length > 0) {
@@ -50,10 +36,13 @@ export class LoginComponent implements OnInit {
   
   loginTrainer() {
     let credentials : FormData = new FormData(document.querySelector("form"));
-    this.trainerService.readTrainer(credentials).subscribe(
+    this.trainerService.loginTrainer(credentials).subscribe(
       data => {
         console.log(data);
-        this.router.navigateByUrl("/home");
+        if (data.headers.get("Authorization")) {
+          sessionStorage.setItem("USER", data.headers.get("Authorization"));
+          this.router.navigateByUrl("/generate");
+        }
       }
     );
   }

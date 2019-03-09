@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="USERNAME">Username: </label>
       <input id="USERNAME" name="USERNAME" class="form-control" required
-        placeholder="USERNAME" #username>
+        placeholder="USERNAME" #USERNAME>
 
       <div *ngIf="USERNAME.invalid && (USERNAME.dirty || USERNAME.touched)" class="alert alert-danger">
         <div *ngIf="USERNAME.errors.required">
@@ -25,5 +25,7 @@
     </div>
 
     <input name="submit" type="submit" class="btn btn-outline-light" [disabled]="!loginForm.form.valid">
+
+    <p>{{ currentLoginMessage }}</p>
   </form>
 </div>
