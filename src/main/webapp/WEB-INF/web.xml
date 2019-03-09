@@ -27,7 +27,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/servlet</url-pattern>
 	</servlet-mapping>
 
 	<resource-ref>
