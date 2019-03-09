@@ -14,6 +14,7 @@ import org.junit.Ignore;
 		@Ignore
 		public void testLoadEmptyKey() throws Exception {
 			//test.load(null)
+			System.out.println( test.load(null).size());
 			assertEquals(test.load(null).size(), 151 );
 		}
 		
