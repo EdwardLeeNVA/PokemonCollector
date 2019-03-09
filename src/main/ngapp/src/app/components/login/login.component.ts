@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { Trainer } from 'src/app/models/Trainer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,16 +23,14 @@ export class LoginComponent implements OnInit {
     email: ''
   }
 
-  constructor(private trainerService: TrainerService) {
-  }
+  constructor(private trainerService: TrainerService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  logInTrainer() {
+  /*logInTrainer() {
     console.log('subscribed to logInTrainer');
     this.trainerService.logInTrainer(this.trainer).subscribe(response => this.loginResponse(response));
-  }
+  }*/
 
   loginResponse(response: string) {
     if (response.length > 0) {
@@ -47,5 +46,12 @@ export class LoginComponent implements OnInit {
 
   loginFailed() {
     this.currentLoginMessage = this.LOGIN_FAILED;
+  }
+  
+  loginTrainer() {
+    let credentials : FormData = new FormData(document.querySelector("form"));
+    this.trainerService.readTrainer(credentials).subscribe(
+      data => this.router.navigateByUrl("/home")
+    );
   }
 }

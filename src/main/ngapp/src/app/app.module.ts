@@ -12,7 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { RedeemComponent } from './components/redeem/redeem.component';
-import {AppRoutes} from "./util/routes";
+import { AppRoutingModule } from './app-routing.module';
+import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 
 
@@ -25,14 +26,16 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
     HomeComponent,
     ShopComponent,
     CollectionComponent,
-    RedeemComponent
+    RedeemComponent,
+    GeneratePokemonComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    RouterModule.forRoot(AppRoutes),
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule,
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -41,4 +44,4 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.pokemonv2.dao.DAO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.TrainerDAO;
@@ -42,11 +43,18 @@ public class PlayerService {
 	 * Takes in parameters and registers a new Trainer.
 	 */
 	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		JsonNode playerJson = mapper.readTree(request.getReader());
-		trainer.createTrainer(playerJson.get("username").asText(), playerJson.get("password").asText(),
-				playerJson.get("email").asText(), playerJson.get("f_name").asText(), playerJson.get("l_name").asText(),
+		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
+				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"),
 				0, 0);
 	}
+	
+	//temporary until merged with project with pokemon service
+	public static void generatePokemon(int trainerId, String username)
+			throws ServletException, IOException {
+		
+			DAO.generatePokemon(trainerId, username);
+	}
+	
 	/**
 	 * Handles Trainer login.
 	 */
