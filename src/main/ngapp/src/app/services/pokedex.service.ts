@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Trainer } from '../models/Trainer';
 import { HttpClient } from '@angular/common/http';
+import { POKEMON } from '../temp/tempPoke';
 import { Pokemon } from '../models/Pokemon';
 
 @Injectable({
@@ -14,6 +15,11 @@ export class PokedexService {
   credits: number[]; //FOR REDEEM COMPONENT
   
   constructor(private _http: HttpClient) { }
+
+  getTrainersPokemon(newTrainer: Trainer): Pokemon[]  {
+    console.log(newTrainer);
+    return POKEMON;
+  };
 
   //method that returns an array of Pokemon objects in response
   getDuplicates(): Pokemon[]{
