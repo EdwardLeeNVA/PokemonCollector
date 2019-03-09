@@ -23,16 +23,23 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.populatePokeArray();
   }
-
-  // getReccomendation(appendToURL: string): Observable<any[]>{
-  //   return this.http.get<any[]>("https://api.themoviedb.org/3/discover/movie?api_key=78e263a07ddcb03810133fc82756418f&sort_by=popularity.desc&include_adult=false&include_video=false&page=1" + appendToURL);
-  // }
-
+  
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("localhost:8080/PokemonCollector/servlet/allPokemon")
   }
 
+  populatePokeArray(): void{
+    this.getAllPokemon().subscribe(
+      data => {
+        //put all pokemon into pokemon array
+        for (let i = 0; i < data.length; i++){
+          this.allPoke[i] = data[i];
+        }
+      }
+    )
+  }
   populatePokePages(): void{
     let count = 0;
     this.currentPage = 0;
