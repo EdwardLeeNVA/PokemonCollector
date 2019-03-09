@@ -4,6 +4,7 @@ package com.revature.pokemonv2.dao;
 import java.util.ArrayList;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.Trainer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
