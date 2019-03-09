@@ -13,6 +13,9 @@ public class Pokemon {
 	private Map <String,Integer> stats;
 	private int count;
 	private int cost;
+	/**
+	 * Empty Pokemon constructor.
+	 */
 	public Pokemon() { /*Empty Constructor */}
 	
 	
@@ -25,10 +28,6 @@ public class Pokemon {
 		this.count = count;
 	}
 
-
-	/**
-	 * Pokemon constructor will all parameters
-	 */
 	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats, Integer cost) {
 		super();
 		this.id = id;
