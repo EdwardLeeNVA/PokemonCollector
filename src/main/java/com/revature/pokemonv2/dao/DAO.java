@@ -4,12 +4,15 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 import com.revature.pokemonv2.utilities.PokedexLoadWriter;
 
@@ -44,4 +47,39 @@ public class DAO {
 		
 	}
 
+	/**
+	 * 
+	 * @param trainerId the id of the trainer
+	 * @param pokemonId the pokemon's id
+	 * @return score the player's score after generating the pokemon
+	 */
+	public static Pokemon generatePokemon(int trainerId, int pokemonId) {
+		Connection conn = ConnectionUtility.getInstance().getConnection();
+		
+		//until we merge with the connection pool
+		//conn = pool.getConnection();
+		
+		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?)}");) {
+			cs.setInt(1, trainerId);
+			
+			//change new Random().nextInt(150) for 1 based index to
+			//new Random().nextInt(151-1)+1
+		
+			cs.setInt(2, pokemonId);		
+			cs.setInt(3, CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId).getCost());
+			cs.execute();			
+			return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//log.error(e.getMessage());
+		}finally {
+			
+			//until we merge with connection pool
+			ConnectionUtility.freeConnection(conn);
+			
+		}
+	return null;
+	}
+	
 }

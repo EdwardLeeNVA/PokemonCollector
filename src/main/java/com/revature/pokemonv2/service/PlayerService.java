@@ -1,19 +1,16 @@
 package com.revature.pokemonv2.service;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pokemonv2.dao.DAO;
 import com.revature.pokemonv2.dao.TrainerDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.CachingUtility;
 
 /**
@@ -25,7 +22,7 @@ public class PlayerService {
 	//Object mapper
 	private static final ObjectMapper mapper = new ObjectMapper();
 	//Trainer DAO instance
-	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
+	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
 	//Player service instance
 	private static PlayerService instance;
 
@@ -42,15 +39,19 @@ public class PlayerService {
 	 * Takes in parameters and registers a new Trainer.
 	 */
 	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("password"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("fname"));
-		System.out.println(request.getParameter("lname"));
 		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
 				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"),
 				0, 0);
 	}
+	
+	//temporary until merged with project with pokemon service
+	//returns the user's score
+	public static Pokemon generatePokemon(int trainerId, int pokemonId)
+			throws ServletException, IOException {
+		
+			return DAO.generatePokemon(trainerId, pokemonId);
+	}
+	
 	/**
 	 * Handles Trainer login.
 	 */

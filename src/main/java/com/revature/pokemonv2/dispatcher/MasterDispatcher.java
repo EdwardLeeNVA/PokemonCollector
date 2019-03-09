@@ -1,20 +1,20 @@
  package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
-
-
+import java.util.Random;
 
 import javax.servlet.ServletException;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
-import com.revature.pokemonv2.service.PlayerService;
-import com.revature.pokemonv2.service.RedeemService;
-import com.revature.pokemonv2.service.TokenService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
+import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.RedeemService;
+import com.revature.pokemonv2.service.TokenService;
 
 /**
  * The master dispatcher class relays HTTP requests to different end points.
@@ -72,6 +72,15 @@ public class MasterDispatcher {
 			//Endpoint for redeem all call. Redeems all pokemon.
 			//POST Takes trainerID.
 			RedeemService.redeemAll(request, response);
+		case "generatePokemon":
+			//enter the jwt token which needs to be decrypted
+			String username1 = TokenService.getInstance().getUserDetailsFromToken(
+					request.getHeader("Authorization")).getUsername();;
+			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
+					request.getHeader("Authorization")).getUserID();
+			//generate a random pokemon and add it to the user's collection
+			int pokemonId = new Random().nextInt(150)+1;
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
 			break;
 		default:
 			System.out.println("URI not recognized");
