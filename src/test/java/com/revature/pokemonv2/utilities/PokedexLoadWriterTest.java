@@ -14,10 +14,9 @@ import org.junit.Test;
 			assertEquals(test.load(null).size(), 151 );
 		}
 		
-//		@Test
-//		public void testLoadValidKey() throws Exception {
-//			//we are going to need to use a valid username string
-//			//and return their current pokedex details
-//		}
+		@Test
+		public void testLoadValidKey() throws Exception {
+			assertEquals(test.load("test").size(), 3);
+		}
 	}
  
