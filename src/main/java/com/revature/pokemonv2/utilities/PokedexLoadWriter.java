@@ -10,34 +10,41 @@ import com.revature.pokemonv2.model.Pokemon;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
-	public DAO dao = new DAO();
-	public CachingUtility cachingUtility = CachingUtility.getCachingUtility();
+	private static DAO dao = new DAO();
+	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
+	private final int MAX_POKEDEX_SIZE = 151;
 	
 
 	@Override
 	public List<Pokemon> load(Object key) throws Exception {
-		ArrayList<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
-		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
-		
-		for (Pokemon p : pokeDex) {
-			Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
-			poke.setCount(p.getCount());
-			returnPokeDex.add(poke);
+		List<Pokemon> returnPokeDex = new ArrayList<>();
+		if(key == null) {
+			for (int i = 1; i <= MAX_POKEDEX_SIZE; i++ ) {
+				returnPokeDex.add(cachingUtility.getPokemonFromCache(i));
+			}
+			return returnPokeDex;
+		}else {
+			List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+			
+			for (Pokemon p : pokeDex) {
+				Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
+				poke.setCount(p.getCount());
+				returnPokeDex.add(poke);
+			}
+			
+			return returnPokeDex;
 		}
 		
-		return returnPokeDex;
 	}
 
 	@Override
 	public void write(Object key, Object value) throws Exception {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 
 	@Override
 	public void delete(Object key) throws Exception {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 
 }

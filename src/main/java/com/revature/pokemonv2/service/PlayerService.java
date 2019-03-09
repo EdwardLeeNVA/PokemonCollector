@@ -9,16 +9,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.pokemonv2.dao.DAO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.pokemonv2.dao.TrainerDAOImplementation;
+import com.revature.pokemonv2.dao.TrainerDAO;
+import com.revature.pokemonv2.dao.TrainerDAOImp;
+import com.revature.pokemonv2.model.Trainer;
 
 public class PlayerService {
 	private PlayerService() { }
 	private static final ObjectMapper mapper = new ObjectMapper();
+	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
+	private static PlayerService instance;
 	
-	public static void RegisterPlayer(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	//Gets instance of PlayerService
+	public static PlayerService getPlayerService() {
+		if (instance == null) {
+			instance = new PlayerService();
+		}
+		return instance;
+	}
+	
+	public void registerPlayer(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		JsonNode playerJson = mapper.readTree(request.getReader());
-		TrainerDAOImplementation.getDAO().create_trainer(
+		trainer.create_trainer(
 				playerJson.get("username").asText(),
 				playerJson.get("password").asText(),
 				playerJson.get("email").asText(),
@@ -35,4 +47,8 @@ public class PlayerService {
 			DAO.generatePokemon(trainerId, username);
 	}
 	
+
+	public Trainer login(HttpServletRequest request, HttpServletResponse response) {
+		return trainer.loginAuthentication(request, response);
+	}
 }

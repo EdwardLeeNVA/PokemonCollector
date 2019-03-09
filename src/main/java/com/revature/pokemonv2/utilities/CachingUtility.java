@@ -81,6 +81,10 @@ public class CachingUtility {
 		 }
 	 }
 	 
+	 public Collection getAllPokemon() {
+		 return pokedexCache.get(null);
+	 }
+	 
 	
  	CacheManager getCacheManager() {
  		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));
