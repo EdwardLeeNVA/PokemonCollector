@@ -1,8 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-=======
-
->>>>>>> staging
 import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
