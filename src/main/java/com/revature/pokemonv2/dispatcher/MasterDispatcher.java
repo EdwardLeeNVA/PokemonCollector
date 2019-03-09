@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.RedeemService;
 import com.revature.pokemonv2.service.TokenService;
 
 /**
