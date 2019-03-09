@@ -10,16 +10,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Trainer;
+import com.revature.pokemonv2.utilities.CachingUtility;
 
 
 /**
- * @author Timothy Jordan
+ * @author Timothy Jordan, Anup Saha
  *
  */
 public class RedeemService {
 	//Create and instance of the ObjectMapper.
 	private static final ObjectMapper mapper = new ObjectMapper();
-	
 	
 		/**
 		 * Purpose: Get all duplicates for a specific trainer.
@@ -49,8 +49,18 @@ public class RedeemService {
 		 * @throws IOException
 		 */
 		public static void redeemSpecific(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			final String token = request.getHeader("Authorization"); //get JWT token
+			int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); //Get trainer id from token
+			String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); //get username from token
+			int pokeID = Integer.parseInt(request.getParameter("pokemonId")); //Get specific pokemonid
 			
-			// get trainer_id from request
+			int[] res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID); //Execute redeem, returns new credits and total credits
+			
+			CachingUtility.getCachingUtility().redeemSinglePokemon(username, pokeID);
+			response.setContentType("application/json");
+			response.getWriter().append(mapper.writeValueAsString(res));
+			
+			
 			
 		}
 		
@@ -62,6 +72,16 @@ public class RedeemService {
 		 * @throws IOException
 		 */
 		public static void redeemAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			final String token = request.getHeader("Authorization"); //get JWT token
+			int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); //Get trainer id from token
+			String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); //get username from token
+			int pokeID = Integer.parseInt(request.getParameter("pokemonId")); //Get specific pokemonid
+			
+			int[] res = TrainerDAOImp.getTrainerDAO().redeemAll(ID); //Execute redeem, returns new credits and total credits
+			
+			CachingUtility.getCachingUtility().redeemAllPokemon(username, pokeID);
+			response.setContentType("application/json");
+			response.getWriter().append(mapper.writeValueAsString(res));
 			
 		}
 }
