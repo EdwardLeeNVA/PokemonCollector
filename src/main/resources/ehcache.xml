@@ -27,9 +27,8 @@
      <cache alias="pokedexCache" >
 		<key-type>java.lang.String</key-type>
 		<value-type>java.util.ArrayList</value-type>
-		<!--<expiry>
-			<ttl unit = "seconds">60</ttl>
-		</expiry>-->
+		 <!-- Pokedex custom eviction advisor.  Suggests to not evict keys with high hit counts -->
+		 <!--<eviction-advisor>com.revature.pokemonv2.utilities.PokedexEvictor</eviction-advisor>-->
 		<loader-writer>
 			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
 		</loader-writer>
