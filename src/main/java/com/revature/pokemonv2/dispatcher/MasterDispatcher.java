@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 
+/**
+ * The master dispatcher class relays HTTP requests to different end points.
+ */
 public class MasterDispatcher {
 	private MasterDispatcher() {
 	}
@@ -19,6 +22,9 @@ public class MasterDispatcher {
 	private static final CollectionService collectionService = new CollectionServiceImpl();
 	private static final ObjectMapper mapper = new ObjectMapper();
 
+	/*
+	 * Relays the HTTP request to the correct endpoint.
+	 */
 	public static void process(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		String[] uriStrings = request.getRequestURI().split("/");
