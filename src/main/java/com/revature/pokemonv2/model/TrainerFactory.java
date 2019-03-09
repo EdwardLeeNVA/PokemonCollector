@@ -2,17 +2,21 @@ package com.revature.pokemonv2.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Creates Trainer JavaBeans.
+ */
 public class TrainerFactory {
-	
+
 	public static final String COL_ID = "pokemon_id";
 	public static final String COL_COUNT = "count";
 	private static final Logger LOGGER = Logger.getLogger(TrainerFactory.class);
 
+	/**
+	 * Creates a Trainer bean from ResultSet.
+	 */
 	public static Trainer createFromResult(ResultSet result, String username) {
 		try {
 			int id = result.getInt(1);
@@ -25,19 +29,9 @@ public class TrainerFactory {
 		}
 	}
 
-	/*public static List<Trainer> createListFromResultSet(ResultSet resultSet) {
-		ArrayList<Trainer> trainerList = new ArrayList<>();
-		try {
-			while (resultSet.next()) {
-				Trainer trainer = createFromResult(resultSet);
-				pokemonList.add(pokemon);
-			}
-		} catch (SQLException e) {
-			LOGGER.error(e.getMessage(), e);
-		}
-		return pokemonList;
-	}*/
-	
+	/**
+	 * Creates a Trainer bean with the specified parameters.
+	 */
 	public static Trainer create(int id, String username, int credits, int score) {
 		Trainer trainer = new Trainer();
 		trainer.setUsername(username);
@@ -47,5 +41,6 @@ public class TrainerFactory {
 		return trainer;
 	}
 
-	private TrainerFactory() { }
+	private TrainerFactory() {
+	}
 }

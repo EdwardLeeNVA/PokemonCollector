@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Creates Pokemon JavaBeans.
+ */
 public class PokemonFactory {
 
 	public static final String COL_ID = "pokemon_id";
