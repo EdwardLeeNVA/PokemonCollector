@@ -41,36 +41,36 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	// Verifies via SQL whether the user login is correct
-	public Trainer verifyLogin(String username, String password) {
-		// Try with resources on the instance of ConnectionUtility
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			// Creates a new trainer
-			Trainer login = null;
-			// Call stored procedure
-			String sql = "CALL VERIFY_CREDENTIALS(?,?,?)";
-			// Try with resources on the PreparedStatement
-			try (CallableStatement cs = conn.prepareCall(sql)) {
-				cs.setString(1, username);
-				cs.setString(2, password);
-				cs.registerOutParameter(3, OracleTypes.CURSOR);
-				cs.execute();
-				//Executing out parameters
-				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
-					if (rs.next()) {
-						login = new Trainer();
-						login.setUsername(username);
-						login.setUserID(1);
-						login.setCredits(rs.getInt(2));
-						login.setScore(rs.getInt(3));
-						return login;
+		public Trainer verifyLogin(String username, String password) {
+			// Try with resources on the instance of ConnectionUtility
+			try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+				// Creates a new trainer
+				Trainer login = null;
+				// Call stored procedure
+				String sql = "CALL VERIFY_CREDENTIALS(?,?,?)";
+				// Try with resources on the PreparedStatement
+				try (CallableStatement cs = conn.prepareCall(sql)) {
+					cs.setString(1, username);
+					cs.setString(2, password);
+					cs.registerOutParameter(3, OracleTypes.CURSOR);
+					cs.execute();
+					//Executing out parameters
+					try (ResultSet rs = (ResultSet) cs.getObject(3)) {
+						if (rs.next()) {
+							login = new Trainer();
+							login.setUsername(username);
+							login.setUserID(1);
+							login.setCredits(rs.getInt(2));
+							login.setScore(rs.getInt(3));
+							return login;
+						}
 					}
 				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			return null;
 		}
-		return null;
-	}
 
 	//Creates a trainer
 	@Override
