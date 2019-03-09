@@ -39,22 +39,38 @@ public class CachingUtility {
 		 return this.pokedexCache.get(username);
 	 }
 	 
-	 public ArrayList addToCache(String username, int id) {
+	 public ArrayList addToCache(String username, int poke_id) {
 		 ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
-		 for(int i = 0; i<pokeList.size(); i++) {
-			 if(pokeList.get(i).getId()==id) {
-				 pokeList.get(i).setCount(pokeList.get(i).getCount()+1);
-				 this.pokedexCache.remove(username);
-				 this.pokedexCache.put(username, pokeList);
-				 return this.pokedexCache.get(username);
-			 }
+		 Pokemon temp = pokeList.remove(poke_id);
+		 if(temp == null){
+		 	temp = this.getPokemonFromCache(poke_id);
+		 } else {
+		 	temp.setCount(temp.getCount() + 1);
 		 }
-		 Pokemon pokemon= this.getPokemonFromCache(id);
-		 pokemon.setCount(1);
-		 pokeList.add(pokemon);
-		 this.pokedexCache.remove(username);
+		 pokeList.add(temp);
 		 this.pokedexCache.put(username, pokeList);
 		 return this.pokedexCache.get(username);
+	 }
+
+	 public ArrayList redeemSinglePokemon(String username, int poke_id){
+		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
+		Pokemon temp = newPokeList.remove(poke_id);
+		temp.setCount(1);
+		newPokeList.add(temp);
+		this.pokedexCache.put(username, newPokeList);
+	 	return null;
+	 }
+
+	 public ArrayList redeemAllPokemon(String username){
+	 	ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
+	 	ArrayList<Pokemon> newPokeList = new ArrayList<>();
+	 	for(int i = 0; i < newPokeList.size(); i++){
+			Pokemon temp = origPokeList.get(i);
+			temp.setCount(1);
+			newPokeList.add(temp);
+		}
+	 	this.pokedexCache.put(username, newPokeList);
+	 	return this.pokedexCache.get(username);
 	 }
 	 
 	 public Pokemon getPokemonFromCache(Integer i) {
