@@ -79,7 +79,7 @@ public class RedeemService {
 			
 			int[] res = TrainerDAOImp.getTrainerDAO().redeemAll(ID); //Execute redeem, returns new credits and total credits
 			
-			CachingUtility.getCachingUtility().redeemAllPokemon(username, pokeID);
+			CachingUtility.getCachingUtility().redeemAllPokemon(username);
 			response.setContentType("application/json");
 			response.getWriter().append(mapper.writeValueAsString(res));
 			
