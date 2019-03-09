@@ -30,9 +30,10 @@ public class DAO {
 			}
 		} catch (SQLException e) {
 			logger.error("getTrainerPokedex didn't work");
+			return new ArrayList<>();
 		}
 
-		return new ArrayList<>();
+		
 	}
 
 }
