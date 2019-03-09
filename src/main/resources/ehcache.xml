@@ -30,14 +30,12 @@
 		<expiry>
 			<ttl unit = "seconds">60</ttl>
 		</expiry>
-		<eviction-advisor>LFU</eviction-advisor>
 		<loader-writer>
 			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
 		</loader-writer>
 		<resources>
 			<heap unit="entries">100</heap>
 			<offheap unit="MB">20</offheap>
-			<disk unit="MB">100</disk>
 		</resources>
 	</cache>
 	<cache alias ="allPokemonCache">
