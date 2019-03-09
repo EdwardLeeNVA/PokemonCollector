@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-shop',
@@ -17,9 +20,17 @@ export class ShopComponent implements OnInit {
   private allPoke: [Pokemon];
   private pokePages: [Pokemon];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+  }
+
+  // getReccomendation(appendToURL: string): Observable<any[]>{
+  //   return this.http.get<any[]>("https://api.themoviedb.org/3/discover/movie?api_key=78e263a07ddcb03810133fc82756418f&sort_by=popularity.desc&include_adult=false&include_video=false&page=1" + appendToURL);
+  // }
+
+  getAllPokemon(): Observable<any[]>{
+    return this.http.get<any>("localhost:8080/PokemonCollector/servlet/allPokemon")
   }
 
   populatePokePages(): void{
