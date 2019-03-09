@@ -1,3 +1,32 @@
-<p>
-  shop works!
-</p>
+<div>
+  <form>
+    <!-- <input class="form-check-input" type="radio" value="15" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
+    <label>15</label>
+    <input class="form-check-input" type="radio" value="30" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
+    <label>30</label>
+    <input class="form-check-input" type="radio" value="75" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
+    <label>75</label>
+    <input class="form-check-input" type="radio" value="150" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
+    <label>150</label> -->
+    <select [(ngModel)]="numPoke" (change)="populatePokePages()">
+      <option value=0>Number of Pokemon per page</option>
+      <option value=20>20</option>
+      <option value=50>50</option>
+      <option value=100>100</option>
+    </select>
+  </form>
+</div>
+  <!--put number of pages in here-->
+  <div class="row justify-content-md-center">
+    <nav aria-label="Page navigation example">
+      <ul>
+        <li><a class="page-link" (click)="prevPage()" aria-label="Previous"></a></li>
+        <li><a class="page-link" (click)="nextPage()" aria-label="Next"></a></li>
+      </ul>
+    </nav>
+  </div>
+<div class="radio-card-grid" *ngIf="pokePages">
+  <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
+    <input class="form-check-input customRadioBtn" type="radio" name="gridRadios"
+      value="{{allPoke.pokemon.id}}" checked/>
+  </div>
