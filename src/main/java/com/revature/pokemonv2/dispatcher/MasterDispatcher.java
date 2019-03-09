@@ -71,7 +71,8 @@ public class MasterDispatcher {
 			int pokemonId = new Random().nextInt(150)+1;
 			CachingUtility.getCachingUtility().addToCache(username1, pokemonId);
 			
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, username1, pokemonId));
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
+			mapper.writeValue(response.getOutputStream(),CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId));
 			break;
 		default:
 			System.out.println("URI not recognized");
