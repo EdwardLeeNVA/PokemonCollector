@@ -14,12 +14,13 @@ public class CollectionServiceImpl implements CollectionService {
 	private final ObjectMapper mapper = new ObjectMapper();
 	
 	
-		public List<Pokemon> getAllPokemon(String username) {
-			return (ArrayList<Pokemon>) cachingUtility.checkCache(username);
-		
+		public ArrayList<Pokemon> getAllPokemon(String username) {
+			return cachingUtility.checkCache(username);
 		}
 		
-		
+		public List<Pokemon> getCompleteSet(){
+			return(ArrayList<Pokemon>) cachingUtility.getAllPokemon();
+		}
 		
 		
 		

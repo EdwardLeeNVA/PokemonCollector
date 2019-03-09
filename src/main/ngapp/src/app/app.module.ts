@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { RedeemComponent } from './components/redeem/redeem.component';
 import {AppRoutes} from "./util/routes";
-import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -27,6 +27,7 @@ import {FormsModule} from '@angular/forms';
     RedeemComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
