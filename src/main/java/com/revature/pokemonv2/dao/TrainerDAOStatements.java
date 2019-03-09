@@ -6,8 +6,14 @@ import java.sql.SQLException;
 
 import oracle.jdbc.OracleTypes;
 
+/**
+ * The trainerDAOStatements class consists of all SQL statements
+ *
+ */
 class TrainerDAOStatements {
-	
+	/**
+	 * Verifies the login statement
+	 */
 	static CallableStatement verifyLoginStatement(Connection connection, String username, String password) throws SQLException {
 		String sql = "CALL VERIFY_CREDENTIALS(?,?,?)";
 		CallableStatement statement = connection.prepareCall(sql);

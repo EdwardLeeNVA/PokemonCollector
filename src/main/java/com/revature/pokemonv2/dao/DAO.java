@@ -14,6 +14,10 @@ import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class DAO {
 
+	
+	/**
+	 * EhCache for Pokemon
+	 */
 	public List<Pokemon> getTrainerPokedex(String username) {
 		Logger logger = Logger.getLogger(DAO.class);
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {

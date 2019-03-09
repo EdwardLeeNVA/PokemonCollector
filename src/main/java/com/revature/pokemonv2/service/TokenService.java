@@ -18,6 +18,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * The TokenService class handles the way Java Web Tokens are generated.
+ */
 public class TokenService {
 
 	// How long the token generated is going to last
@@ -52,12 +55,17 @@ public class TokenService {
 		}
 	}
 
-	// Returns instance of the class
+	/**
+	 * Returns an instance of the TokenService class
+	 */
 	public static final TokenService getInstance() {
 		return instance;
 	}
 
-	// When a user logins it generates a token
+	/**
+	 * Generates a Token for a user that logged in with the parameters of: 
+	 * User name, ID, score, and credits.
+	 */
 	public String generateToken(Trainer details) {
 		// No details given
 		if (details == null)
@@ -82,7 +90,9 @@ public class TokenService {
 				.setId(jti).compact();
 	}
 
-	// Validates the token
+	/**
+	 * Ensures that the token is valid.
+	 */
 	public boolean validateToken(String token) {
 		try {
 			Jwts.parser().setSigningKey(keyPair.getPublic()).parseClaimsJws(token);
@@ -93,7 +103,9 @@ public class TokenService {
 		return false;
 	}
 
-	// Gets the Trainer user name, credit, userID, and score from token
+	/**
+	 * Gets the Trainer user name, credit, userID, and score from token.
+	*/
 	public Trainer getUserDetailsFromToken(String token) {
 		if (token != null && token.startsWith("Bearer ")) {
 			Claims claims = Jwts.parser().setSigningKey(keyPair.getPublic())
@@ -108,7 +120,9 @@ public class TokenService {
 		return null;
 	}
 
-	// Returns the token ID
+	/**
+	 * Returns the token ID.
+	 */
 	public String getTokenId(String token) {
 		if (token != null && token.startsWith("Bearer ")) {
 			Claims claims = Jwts.parser().setSigningKey(keyPair.getPublic())

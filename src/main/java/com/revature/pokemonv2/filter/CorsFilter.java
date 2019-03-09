@@ -14,16 +14,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Handles CORS filters
+ */
 public class CorsFilter implements Filter {
 	
 	private static final Logger LOGGER = Logger.getLogger(CorsFilter.class);
 	
+	/**
+	 * CORS Filter constructor
+	 */
     public CorsFilter() {
     }
-
+    /**
+     * Destroy method occurs on shutdown
+     */
 	public void destroy() {
 	}
-
+	
+	/**
+	 * Adds headers to the request to get around CORS.
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -52,7 +63,10 @@ public class CorsFilter implements Filter {
 		// pass the request along the filter chain
 		chain.doFilter(httpRequest, httpResponse);
 	}
-
+	
+	/**
+	 * Initialize method.
+	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 }

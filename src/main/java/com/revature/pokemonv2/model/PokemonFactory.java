@@ -15,7 +15,10 @@ public class PokemonFactory {
 	public static final String COL_ID = "pokemon_id";
 	public static final String COL_COUNT = "count";
 	private static final Logger LOGGER = Logger.getLogger(PokemonFactory.class);
-
+	
+	/**
+	 * Creates a Pokemon from ResultSet.
+	 */
 	public static Pokemon createFromResult(ResultSet result) {
 		try {
 			int id = result.getInt(COL_ID);
@@ -26,7 +29,9 @@ public class PokemonFactory {
 			return null;
 		}
 	}
-
+	/**
+	 * Creates a Pokemon bean with the specified parameters.
+	 */
 	public static List<Pokemon> createListFromResultSet(ResultSet resultSet) {
 		ArrayList<Pokemon> pokemonList = new ArrayList<>();
 		try {
