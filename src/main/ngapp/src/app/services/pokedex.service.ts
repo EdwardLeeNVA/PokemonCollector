@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Trainer } from '../models/Trainer';
 import { HttpClient } from '@angular/common/http';
 import { POKEMON } from '../temp/tempPoke';
@@ -62,3 +63,4 @@ export class PokedexService {
 
 
 }
+
