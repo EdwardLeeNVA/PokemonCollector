@@ -14,31 +14,31 @@ export const AppRoutes: Route[] = [
     component: LandingComponent
   },
   {
-    path: '/landing',
+    path: 'landing',
     component: LandingComponent
   },
   {
-    path: '/login',
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: '/register',
+    path: 'register',
     component: RegisterComponent
   },
   {
-    path: '/home',
+    path: 'home',
     component: HomeComponent
   },
   {
-    path: '/collection',
+    path: 'collection',
     component: CollectionComponent
   },
   {
-    path: '/shop',
+    path: 'shop',
     component: ShopComponent
   },
   {
-    path: '/redeem',
+    path: 'redeem',
     component: RedeemComponent
   }
 ];
