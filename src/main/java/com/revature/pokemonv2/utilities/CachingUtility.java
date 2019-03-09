@@ -36,7 +36,9 @@ public class CachingUtility {
 //	 }
 	 
 	 public ArrayList checkCache(String username) {
-		 return this.pokedexCache.get(username);
+	 	// Logic for counting cache hits
+	 	/*this.pokedexCache.put(username, incrementCacheHit(this.pokedexCache.get(username)));*/
+		return this.pokedexCache.get(username);
 	 }
 	 
 	 public ArrayList addToCache(String username, int id) {
@@ -76,12 +78,6 @@ public class CachingUtility {
 		 }
 	 }
 	 
-	 public void setAllPokemonCache(List<Pokemon> allPokemon) {
-		 for (Pokemon p : allPokemon) {
-			 allPokemonCache.put(p.getId(), p);
-		 }
-	 }
-	 
 	 public ArrayList getAllPokemon() {
 		 return pokedexCache.get(null);
 	 }
@@ -94,6 +90,16 @@ public class CachingUtility {
 		return cacheManager;
  	}
  	
+	public Cache getCache(){
+	 	return this.pokedexCache;
+	}
 
 
+	// This method will increment the counter pokemon in the Pokedex for custom eviction
+	public ArrayList incrementCacheHit(ArrayList list){
+		Pokemon counter = (Pokemon)list.remove(0);
+		counter.setCount(counter.getCount() + 1);
+		list.add(counter);
+		return list;
+	}
 }
