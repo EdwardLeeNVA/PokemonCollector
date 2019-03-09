@@ -3,6 +3,7 @@ package com.revature.pokemonv2.filter;
 import java.io.IOException;
 import java.util.Collections;
 
+import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * an authorization token, this filter will check if there is a token, if not
  * throws an unauthorized error.
  */
-public class AuthenticationFilter {
+public class AuthenticationFilter implements Filter {
 
 	private ObjectMapper mapper;
 

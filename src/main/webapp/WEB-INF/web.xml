@@ -4,7 +4,7 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	<filter>
+	<!--<filter>
 		<filter-name>JwtAuthenticationFilter</filter-name>
 		<display-name>JwtAuthenticationFilter</display-name>
 		<description></description>
@@ -24,7 +24,7 @@
 		<filter-name>JwtAuthenticationFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+	-->
 	<servlet>
 		<servlet-name>FrontController</servlet-name>
 		<servlet-class>com.revature.pokemonv2.servlet.FrontController</servlet-class>
