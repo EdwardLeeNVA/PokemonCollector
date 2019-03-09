@@ -2,9 +2,7 @@ package com.revature.pokemonv2.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.utilities.CachingUtility;
