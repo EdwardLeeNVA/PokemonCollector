@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
@@ -41,26 +42,23 @@ public class DAO {
 		return new ArrayList<>();
 	}
 
-	public static Pokemon generatePokemon(int trainerId, String username) {
+	public static int generatePokemon(int trainerId, String username, int pokemonId) {
 		Connection conn = null;
 		
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?)}");) {
+		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?)}");) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
 			//new Random().nextInt(151-1)+1
-			int pokemonId = new Random().nextInt(150)+1;
+		
+			cs.setInt(2, pokemonId);			
+			cs.registerOutParameter(3, Types.INTEGER);
+			cs.execute();			
 			
-			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
-			
-			cs.setInt(2, pokemonId);
-
-			cs.execute();
-			
-			return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			return cs.getInt(3);;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

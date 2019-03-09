@@ -1,6 +1,8 @@
 package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +11,9 @@ import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.TokenService;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 
@@ -51,7 +55,11 @@ public class MasterDispatcher {
 					request.getHeader("Authorization")).getUsername();;
 			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
 					request.getHeader("Authorization")).getUserID();
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, username1));
+			//generate a random pokemon and add it to the user's collection
+			int pokemonId = new Random().nextInt(150)+1;
+			CachingUtility.getCachingUtility().addToCache(username1, pokemonId);
+			
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, username1, pokemonId));
 			break;
 		default:
 			System.out.println("URI not recognized");
