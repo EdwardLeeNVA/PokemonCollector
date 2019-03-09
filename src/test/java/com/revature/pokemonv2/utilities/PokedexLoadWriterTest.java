@@ -7,16 +7,19 @@ import org.junit.Test;
 
 	public class PokedexLoadWriterTest {
 		PokedexLoadWriter test = new PokedexLoadWriter();
-		
-		@Test
-		public void testLoadEmptyKey() throws Exception {
-			//test.load(null)
-			assertEquals(test.load(null).size(), 151 );
-		}
-		
-		@Test
+		/*
+		 * @Test
 		public void testLoadValidKey() throws Exception {
 			assertEquals(test.load("test").size(), 3);
 		}
+		 */
+		@Test
+		public void testLoadEmptyKey() throws Exception {
+			//test.load(null)
+			System.out.println( test.load(null).size());
+			assertEquals(test.load(null).size(), 151 );
+		}
+		
+		
 	}
  
