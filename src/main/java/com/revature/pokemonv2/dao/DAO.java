@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
+import com.revature.pokemonv2.utilities.PokedexLoadWriter;
 
 public class DAO {
 
@@ -18,8 +19,11 @@ public class DAO {
 	/**
 	 * EhCache for Pokemon
 	 */
+	
+	final static Logger logger = Logger.getLogger(DAO.class);
+	
+	
 	public List<Pokemon> getTrainerPokedex(String username) {
-		Logger logger = Logger.getLogger(DAO.class);
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			String sql = "call get_all_pokemon(?)";
 			try (CallableStatement cs = conn.prepareCall(sql)) {
