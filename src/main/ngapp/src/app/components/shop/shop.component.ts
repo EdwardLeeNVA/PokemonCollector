@@ -29,7 +29,7 @@ export class ShopComponent implements OnInit {
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
-
+  //method that calls above observable
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
