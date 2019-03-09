@@ -15,6 +15,7 @@ import com.revature.pokemonv2.service.CollectionServiceImpl;
 		CollectionServiceImpl test = new CollectionServiceImpl();
 		
 		@Test
+		@Ignore
 		public void testGetAllPokemon() {
 			String username = "doesntexist";
 			
