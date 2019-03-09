@@ -87,7 +87,7 @@ public class CachingUtility {
 	 
 	
  	CacheManager getCacheManager() {
- 		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("/resources/ehcache.xml"));
+ 		XmlConfiguration ehcache = new XmlConfiguration(getClass().getResource("../resources/ehcache.xml"));
  		CacheManager cacheManager = CacheManagerBuilder.newCacheManager(ehcache);
  		cacheManager.init();
 		return cacheManager;
