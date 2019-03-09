@@ -1,5 +1,6 @@
 package com.revature.pokemonv2.model;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Models a Pokemon.
@@ -11,10 +12,14 @@ public class Pokemon {
 	private String [] type;
 	private Map <String,Integer> stats;
 	private int count;
+<<<<<<< HEAD
+	private int cost;
+=======
 	
 	/**
 	 * Empty Pokemon constructor.
 	 */
+>>>>>>> 0edfb1f8a872bbbbd88e8119f0471a0a95f1e60b
 	public Pokemon() { /*Empty Constructor */}
 	
 	
@@ -28,10 +33,15 @@ public class Pokemon {
 	}
 
 
+<<<<<<< HEAD
+
+	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats, Integer cost) {
+=======
 	/**
 	 * Pokemon constructor will all parameters
 	 */
 	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats) {
+>>>>>>> 0edfb1f8a872bbbbd88e8119f0471a0a95f1e60b
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,6 +49,7 @@ public class Pokemon {
 		this.type = type;
 		this.stats = stats;
 		this.count = 1;
+		this.cost = cost;
 	}
 
 	/**
@@ -113,6 +124,8 @@ public class Pokemon {
 	public void setCount(int count) {
 		this.count = count;
 	} 
-	
+	public Integer getCost() {
+		return this.cost;
+	}
 	
 }
