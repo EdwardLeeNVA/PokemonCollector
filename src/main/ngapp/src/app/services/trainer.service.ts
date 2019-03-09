@@ -8,19 +8,15 @@ export class TrainerService {
 
   constructor(private _http: HttpClient) { }
 
-   //Method call fo POST request for registering a new trainer.
-   readTrainer(credentials : FormData) {
+   //Method call for POST request for logging in a trainer.
+   loginTrainer(credentials : FormData) {
     console.log(credentials);
     return this._http.post<any>("/PokemonCollector/servlet/unfiltered/login", credentials);
   }
 
-   //Method call fo POST request for registering a new trainer.
+   //Method call for POST request for registering a new trainer.
    createTrainer(credentials : FormData) {
     console.log(credentials);
     return this._http.post<any>("/PokemonCollector/servlet/unfiltered/register", credentials);
-  }
-
-  logInTrainer(trainer: Trainer) {
-    return this._http.post<string>("/PokemonCollector/servlet/login", trainer);
   }
 }
