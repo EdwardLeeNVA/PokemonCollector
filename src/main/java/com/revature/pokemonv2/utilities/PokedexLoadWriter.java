@@ -3,6 +3,7 @@ package com.revature.pokemonv2.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
 import com.revature.pokemonv2.dao.DAO;
@@ -12,19 +13,30 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 	private static DAO dao = new DAO();
 	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
+	private final int MAX_POKEDEX_SIZE = 151;
+	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
 	@Override
-	public List<Pokemon> load(Object key) throws Exception {
-		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
-		List<Pokemon> returnPokeDex = new ArrayList<>();
-		for (Pokemon p : pokeDex) {
-			Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
-			poke.setCount(p.getCount());
-			returnPokeDex.add(poke);
+	public ArrayList<Pokemon> load(Object key) throws Exception {
+		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
+		if(key == null) {
+			for (int i = 1; i <= MAX_POKEDEX_SIZE; i++ ) {
+				returnPokeDex.add(cachingUtility.getPokemonFromCache(i));
+			}
+			return returnPokeDex;
+		}else {
+			List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+			
+			for (Pokemon p : pokeDex) {
+				Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
+				poke.setCount(p.getCount());
+				returnPokeDex.add(poke);
+			}
+			
+			return returnPokeDex;
 		}
 		
-		return returnPokeDex;
 	}
 
 	@Override

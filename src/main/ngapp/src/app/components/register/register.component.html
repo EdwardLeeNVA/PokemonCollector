@@ -2,11 +2,11 @@
   <form id="registerForm" class="form-group" #registerForm="ngForm" (ngSubmit)="registerTrainer()" method="POST">
     <div class="form-group">
       <label for="username">Username: </label>
-      <input id="username" name="username" class="form-control" required [(ngModel)]="trainer.username"
-        placeholder="username" #spy="ngModel">
+      <input name="username" class="form-control" required
+        placeholder="username" #username>
 
-      <div *ngIf="spy.invalid && (spy.dirty || spy.touched)" class="alert alert-danger">
-        <div *ngIf="spy.errors.required">
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+        <div *ngIf="username.errors.required">
           Username is required.
         </div>
       </div>
@@ -14,23 +14,50 @@
 
     <div class="form-group">
       <label for="password">Password: </label>
-      <input name="password" class="form-control" required type="password" [(ngModel)]="trainer.password"
-        placeholder="password">
+      <input name="password" class="form-control" required type="password"
+        placeholder="password" #password>
+
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+        </div>
     </div>
     
     <div class="form-group">
-      <label for="firstname">First Name: </label>
-      <input name="firstname" class="form-control" required [(ngModel)]="trainer.f_name" placeholder="f_name">
+      <label for="fname">First Name: </label>
+      <input name="fname" class="form-control" required
+        placeholder="fname" #fname>
+
+      <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger">
+        <div *ngIf="fname.errors.required">
+          First name is required.
+        </div>
+      </div>
     </div>
     
     <div class="form-group">
-      <label for="lastname">Last Name: </label>
-      <input name="lastname" class="form-control" required [(ngModel)]="trainer.l_name" placeholder="l_name">
+      <label for="lname">Last Name: </label>
+      <input name="lname" class="form-control" required
+        placeholder="lname" #lname>
+
+      <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert alert-danger">
+        <div *ngIf="lname.errors.required">
+          Last name is required.
+        </div>
+      </div>
     </div>
     
     <div class="form-group">
       <label for="email">Email: </label>
-      <input name="email" class="form-control" required type="email" [(ngModel)]="trainer.email" placeholder="email">
+      <input name="email" class="form-control" required type="email"
+        placeholder="email" #email>
+
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+      </div>
     </div>
 
     <input name="submit" type="submit" class="btn btn-outline-light" [disabled]="!registerForm.form.valid">
