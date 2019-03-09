@@ -1,7 +1,6 @@
  package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 import com.revature.pokemonv2.service.PlayerService;
-import com.revature.pokemonv2.service.RedeemService;
 import com.revature.pokemonv2.service.TokenService;
 
 /**

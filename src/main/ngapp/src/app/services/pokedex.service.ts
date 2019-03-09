@@ -17,6 +17,11 @@ export class PokedexService {
   
   constructor(private _http: HttpClient) { }
 
+  generatePokemon() {
+    return this._http.get<any>("/PokemonCollector/servlet/generatePokemon");
+  }
+
+
   getTrainersPokemon(newTrainer: Trainer): Pokemon[]  {
     console.log(newTrainer);
     return POKEMON;
@@ -60,7 +65,5 @@ export class PokedexService {
     //return the credits
     return this.credits;
   }
-
-
 }
 
