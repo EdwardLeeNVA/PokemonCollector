@@ -20,4 +20,29 @@ public interface DAO {
 	public Map<Trainer, Integer> getTrainerScore(); 				   // "user1 has 888 points"       | "user2 has 889 points"       | ....
 	public Map<Trainer, Integer> getTrainerCredits(); 				   // "user1 has 1 credits"        | "user2 has 100000 credits"   | ....
 	
+	/**
+	 * EhCache for Pokemon
+	 */
+	public List<Pokemon> getTrainerPokedex(String username) {
+		Logger logger = Logger.getLogger(DAO.class);
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			String sql = "call get_all_pokemon(?)";
+			try (CallableStatement cs = conn.prepareCall(sql)) {
+				cs.setString(1, username);
+				try (ResultSet rs = cs.executeQuery()) {
+					ArrayList<Pokemon> pokedex = new ArrayList<>();
+					while (rs.next()) {
+						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
+					}
+					return pokedex;
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("getTrainerPokedex didn't work");
+			return new ArrayList<Pokemon>();
+		}
+
+		
+	}
+
 }
