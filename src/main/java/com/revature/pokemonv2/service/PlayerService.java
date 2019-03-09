@@ -29,7 +29,7 @@ public class PlayerService {
 	public void registerPlayer(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		JsonNode playerJson = mapper.readTree(request.getReader());
-		trainer.create_trainer(
+		trainer.createTrainer(
 				playerJson.get("username").asText(),
 				playerJson.get("password").asText(),
 				playerJson.get("email").asText(),
