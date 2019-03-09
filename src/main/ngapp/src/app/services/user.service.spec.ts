@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+<<<<<<< HEAD
+=======
 
+>>>>>>> staging
 import { UserService } from './user.service';
 
 describe('UserService', () => {

@@ -1,8 +1,8 @@
 export class Pokemon {
-    id: number;
-    name: string;
-    image: string;
-    types: string[];
-    stats: any[];
-    count: number;
-  }
+  id: number;
+  name: string;
+  image: string;
+  types: string[];
+  stats: any[];
+  count: number;
+}

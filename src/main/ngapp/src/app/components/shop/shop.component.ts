@@ -17,26 +17,9 @@ export class ShopComponent implements OnInit {
   private allPoke: [Pokemon];
   private pokePages: [Pokemon];
 
-  constructor(
-    private pokedexService: PokedexService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.populatePokeArray();
-  }
-  populatePokeArray(): void{
-    this.pokedexService.getAllPokemon().subscribe(
-      data => {
-        for (let i = 0; i < data.length(); i++){
-          //going to need to change this when endpoint is finished
-          this.allPoke[i].id = data.id;
-          this.allPoke[i].name = data.name.charAt(0).toUpperCase();
-          this.allPoke[i].image = data.sprites.front_default;
-          this.allPoke[i].types = data.types[0].type.name;
-          this.allPoke[i].stats = data.stats.stat;
-        }
-      }
-    );
   }
 
   populatePokePages(): void{
