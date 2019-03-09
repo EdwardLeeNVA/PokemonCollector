@@ -1,6 +1,6 @@
-<form>
-  <div>Username: <input type = "text" name = "username" /></div>
-  <div>Password: <input type = "text" name = "password" /></div>
+<form (ngSubmit)="logInTrainer()">
+  <div>Username: <input required type = "text" [(ngModel)]="trainer.username" name = "username" /></div>
+  <div>Password: <input required type = "password" [(ngModel)]="trainer.password" name = "password" /></div>
   <div><input type = "submit" name = "log-in" value = "Log In" /></div>
   {{currentLoginMessage}}
 </form>

@@ -23,11 +23,14 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private trainerService: TrainerService) {
-    console.log('subscribed to logInTrainer');
-    trainerService.logInTrainer(this.trainer).subscribe(response => this.loginResponse(response));
   }
 
   ngOnInit() {
+  }
+
+  logInTrainer() {
+    console.log('subscribed to logInTrainer');
+    this.trainerService.logInTrainer(this.trainer).subscribe(response => this.loginResponse(response));
   }
 
   loginResponse(response: string) {
