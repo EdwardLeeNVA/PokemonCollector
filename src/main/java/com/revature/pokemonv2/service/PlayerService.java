@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.TrainerDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
+import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 
 /**
@@ -52,10 +53,10 @@ public class PlayerService {
 	}
 	
 	//temporary until merged with project with pokemon service
-	public static void generatePokemon(int trainerId, String username)
+	public static Pokemon generatePokemon(int trainerId, String username)
 			throws ServletException, IOException {
 		
-			DAO.generatePokemon(trainerId, username);
+			return DAO.generatePokemon(trainerId, username);
 	}
 	
 }

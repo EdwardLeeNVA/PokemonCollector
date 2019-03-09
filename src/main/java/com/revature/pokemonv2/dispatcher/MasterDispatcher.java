@@ -1,6 +1,8 @@
 package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
@@ -26,7 +28,7 @@ public class MasterDispatcher {
 	 * Relays the HTTP request to the correct endpoint.
 	 */
 	public static void process(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws IOException, ServletException {
 		String[] uriStrings = request.getRequestURI().split("/");
 		String uri = uriStrings[uriStrings.length - 1];
 
@@ -45,9 +47,11 @@ public class MasterDispatcher {
 			break;
 		case "generatePokemon":
 			//enter the jwt token which needs to be decrypted
-			String username = null;
-			int trainerId = 0;
-			PlayerService.generatePokemon(trainerId, username);
+			String username1 = TokenService.getInstance().getUserDetailsFromToken(
+					request.getHeader("Authorization")).getUsername();;
+			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
+					request.getHeader("Authorization")).getUserID();
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, username1));
 			break;
 		default:
 			System.out.println("URI not recognized");

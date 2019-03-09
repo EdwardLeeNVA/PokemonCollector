@@ -41,7 +41,7 @@ public class DAO {
 		return new ArrayList<>();
 	}
 
-	public static int generatePokemon(int trainerId, String username) {
+	public static Pokemon generatePokemon(int trainerId, String username) {
 		Connection conn = null;
 		
 		//until we merge with the connection pool
@@ -60,7 +60,7 @@ public class DAO {
 
 			cs.execute();
 			
-			return pokemonId;
+			return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,7 +71,7 @@ public class DAO {
 			
 			//pool.freeConnection(conn);
 		}
-	return -1;
+	return null;
 	}
 	
 }
