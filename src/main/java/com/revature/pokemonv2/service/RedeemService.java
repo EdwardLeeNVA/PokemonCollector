@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
-import com.revature.pokemonv2.dao.TrainerDAOImplementation;
+import com.revature.pokemonv2.model.Trainer;
+
 
 /**
  * @author Timothy Jordan
@@ -28,6 +29,9 @@ public class RedeemService {
 		 * @throws IOException
 		 */
 		public static void getDuplicates(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			
+			
 			//Read JSON from Http request.
 			JsonNode redeemJSON = mapper.readTree(request.getReader());
 			//Call get_duplicate method from TrainerDAOImplementation to retrieve trainer duplicates with ID.

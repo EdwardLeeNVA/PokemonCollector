@@ -101,8 +101,35 @@ public class TrainerDAOImp implements TrainerDAO {
 	 * Returns an ArrayList of pokemon objects
 	 */
 	public ArrayList<Pokemon> get_duplicates(int trainer_id) {
-		// TODO Auto-generated method stub
-		return null;
+		//Create a temporary list for pokemon.
+		ArrayList<Pokemon> duplicateList = null;
+		//Try with resources to connect to database.
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			
+			// Call stored procedure
+			String sql = "CALL get_all_duplicates(?)";
+			//Setup callableStatment
+			try(CallableStatement cs = conn.prepareCall(sql)){
+			//Set the trainer id in the callable statement
+				cs.setInt(1, trainer_id);
+				cs.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+				cs.execute();				//Prepare the resultset
+				try(ResultSet rs = (ResultSet) cs.getObject(2)){
+				//While the result set has another object create a pokemon objet and push it to the duplicatePokemon array.
+					while(rs.next()) {
+						Pokemon temp = new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count"));
+						duplicateList.add(temp);
+					}
+				}
+			}	
+			return duplicateList;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
 	}
 
 	
@@ -113,8 +140,10 @@ public class TrainerDAOImp implements TrainerDAO {
 	 * poke_id: ID of the pokemon being redeemed.
 	 */
 	
-	public void redeemSpecific(int trainer_id, int poke_id) {
+	public int redeemSpecific(int trainer_id, int poke_id) {
 		// TODO Auto-generated method stub
+		
+		return 0;
 		
 	}
 
@@ -123,8 +152,9 @@ public class TrainerDAOImp implements TrainerDAO {
 	 * Purpose: Redeem a all pokemon for a specific trainer.
 	 * trainer_id: ID of the current trainer.
 	 */
-	public void redeemAll(int trainer_id) {
+	public int redeemAll(int trainer_id) {
 		// TODO Auto-generated method stub
+		return 0;
 		
 	}
 }
