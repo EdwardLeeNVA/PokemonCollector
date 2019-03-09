@@ -24,7 +24,7 @@ public class FrontController extends DefaultServlet {
 
 		if (uri.contains("/servlet/"))
 			MasterDispatcher.process(request, response);
-		else if (uri.equals("/PokemonCollector/") || uri.equals("/PokemonCollector"))
+		else if (uri.equals("/PokemonCollector/ng") || uri.equals("/PokemonCollector/ng/"))
 			response.sendRedirect("/PokemonCollector/ng/index.html");
 		else
 			super.doGet(request, response);
