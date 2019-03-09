@@ -97,7 +97,7 @@ public class TrainerDAOImp implements TrainerDAO {
 		try(Connection conn = ConnectionUtility.getInstance().getConnection()){
 			try(CallableStatement cs = conn.prepareCall("CALL update_credits(?,?)");){
 				cs.setString(1,username);
-				cs.setInt(2, cost);
+				cs.setInt(2, (cost * -1));
 				cs.execute();
 			}
 			catch(Exception e){
