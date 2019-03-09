@@ -27,28 +27,28 @@
      <cache alias="pokedexCache" >
 		<key-type>java.lang.String</key-type>
 		<value-type>java.util.Collection</value-type>
-		
-		
 		<expiry>
 			<ttl unit = "seconds">60</ttl>
 		</expiry>
 		<eviction-advisor>LFU</eviction-advisor>
 		<loader-writer>
-		<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
+			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
 		</loader-writer>
-		
-	</cache> 
-	
-	
+		<resources>
+			<heap unit="entries">100</heap>
+			<offheap unit="MB">20</offheap>
+			<disk unit="MB">100</disk>
+		</resources>
+	</cache>
 	<cache alias ="allPokemonCache">
-		
 		<key-type>java.lang.Integer</key-type>
 		<value-type>com.revature.pokemonv2.model.Pokemon</value-type>
 		<loader-writer>
-		<class>com.revature.pokemonv2.utilities.AllPokemonLoadWriter</class>
+			<class>com.revature.pokemonv2.utilities.AllPokemonLoadWriter</class>
 		</loader-writer>
-		
-		<heap>151</heap>
+		<resources>
+			<heap unit="entries">151</heap>
+		</resources>
 	</cache>
 
 </config>
