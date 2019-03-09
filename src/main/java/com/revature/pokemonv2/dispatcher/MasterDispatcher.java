@@ -1,6 +1,7 @@
  package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
