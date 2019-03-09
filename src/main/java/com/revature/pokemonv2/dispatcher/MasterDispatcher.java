@@ -69,10 +69,9 @@ public class MasterDispatcher {
 					request.getHeader("Authorization")).getUserID();
 			//generate a random pokemon and add it to the user's collection
 			int pokemonId = new Random().nextInt(150)+1;
-			CachingUtility.getCachingUtility().addToCache(username1, pokemonId);
+			
 			
 			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
-			mapper.writeValue(response.getOutputStream(),CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId));
 			break;
 		default:
 			System.out.println("URI not recognized");

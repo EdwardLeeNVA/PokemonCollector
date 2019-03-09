@@ -53,13 +53,13 @@ public class DAO {
 	 * @param pokemonId the pokemon's id
 	 * @return score the player's score after generating the pokemon
 	 */
-	public static int generatePokemon(int trainerId, int pokemonId) {
+	public static Pokemon generatePokemon(int trainerId, int pokemonId) {
 		Connection conn = ConnectionUtility.getInstance().getConnection();
 		
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?,?)}");) {
+		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?,)}");) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
@@ -67,10 +67,8 @@ public class DAO {
 		
 			cs.setInt(2, pokemonId);		
 			cs.setInt(3, CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId).getCost());
-			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();			
-			
-			return cs.getInt(4);
+			return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -81,7 +79,7 @@ public class DAO {
 			ConnectionUtility.freeConnection(conn);
 			
 		}
-	return 0;
+	return null;
 	}
 	
 }
