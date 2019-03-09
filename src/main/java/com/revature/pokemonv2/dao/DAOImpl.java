@@ -1,40 +1,80 @@
 package com.revature.pokemonv2.dao;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import com.revature.pokemonv2.data.SampleData;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
+import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class DAOImpl implements DAO{
+	
+	private static DAOImpl mInstance; 
+	
+	private DAOImpl() {
+		super(); 
+	}
+	
+	public static DAOImpl getInstance() {
+		if(mInstance == null) {
+			mInstance = new DAOImpl(); 
+		}
+		return mInstance; 
+	}
 
 	@Override
 	public Map<Trainer, Integer> getPokemonCountByTrainer() {
 		
 		Map pokemonCount = new HashMap<Trainer, Integer>();
+		List <Trainer> trainers = SampleData.getInstance().getTrainersT(); 
+		for(Trainer t: trainers) {
+			pokemonCount.put(t, (Math.floor(Math.random()*15))); 
+		}
 		
-		
-		return null;
+		return pokemonCount;
 	}
 
 	@Override
 	public Map<Trainer, Integer> getUniquePokemonCountByTrainer() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonCount = new HashMap<Trainer, Integer>();
+		List <Trainer> trainers = SampleData.getInstance().getTrainersT(); 
+		for(Trainer t: trainers) {
+			pokemonCount.put(t, (Math.floor(Math.random()*8))); 
+		}
+		
+		return pokemonCount;
 	}
 
 	@Override
 	public Map<Pokemon, Integer> getPokemonPopularity() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*10))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
 	public Map<Pokemon, Integer> getPokmeonFrequency() {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*15))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
@@ -45,8 +85,13 @@ public class DAOImpl implements DAO{
 
 	@Override
 	public Map<Pokemon, Integer> getPokmeonFrequency(Trainer trainer) {
-		// TODO Auto-generated method stub
-		return null;
+		Map pokemonPop = new HashMap<Pokemon, Integer>();
+		List <Pokemon> pokemons = SampleData.getInstance().getPokemonT(); 
+		for(Pokemon p: pokemons) {
+			pokemonPop.put(p, (Math.floor(Math.random()*4))); 
+		}
+		
+		return pokemonPop;
 	}
 
 	@Override
@@ -67,10 +112,36 @@ public class DAOImpl implements DAO{
 		return null;
 	}
 
-	@Override
-	public List<Pokemon> getTrainerPokedex(String key) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public List<Trainer> getLeaderboard() {
+		return SampleData.getInstance().getTrainersT(); 
+		
 	}
 
+	@Override
+	/**
+	 * EhCache for Pokemon
+	 */
+	public List<Pokemon> getTrainerPokedex(String username) {
+		Logger logger = Logger.getLogger(DAO.class);
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			String sql = "call get_all_pokemon(?)";
+			try (CallableStatement cs = conn.prepareCall(sql)) {
+				cs.setString(1, username);
+				try (ResultSet rs = cs.executeQuery()) {
+					ArrayList<Pokemon> pokedex = new ArrayList<>();
+					while (rs.next()) {
+						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
+					}
+					return pokedex;
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("getTrainerPokedex didn't work");
+			return new ArrayList<Pokemon>();
+		}
+
+		
+	}
 }
+
