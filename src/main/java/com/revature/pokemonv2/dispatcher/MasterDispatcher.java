@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class MasterDispatcher {
 	 * Relays the HTTP request to the correct endpoint.
 	 */
 	public static void process(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws IOException, ServletException {
 		String[] uriStrings = request.getRequestURI().split("/");
 		boolean isUnfiltered = uriStrings[uriStrings.length - 2].equals("unfiltered");
 		String uri = uriStrings[uriStrings.length - 1];

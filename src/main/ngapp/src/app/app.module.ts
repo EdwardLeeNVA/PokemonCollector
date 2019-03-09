@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,6 +13,7 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { RedeemComponent } from './components/redeem/redeem.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
+import { JwtInterceptorService } from './jwt-interceptor.service';
 
 
 @NgModule({
@@ -34,7 +35,11 @@ import { GeneratePokemonComponent } from './components/generate-pokemon/generate
     RouterModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
