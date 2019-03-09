@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="username">Username: </label>
       <input name="username" class="form-control" required
-        placeholder="username" #username="ngModel">
+        placeholder="username" #username>
 
       <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
         <div *ngIf="username.errors.required">
@@ -15,34 +15,34 @@
     <div class="form-group">
       <label for="password">Password: </label>
       <input name="password" class="form-control" required type="password"
-        placeholder="password" #password="ngModel">
+        placeholder="password" #password>
 
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-          <div *ngIf="username.errors.required">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <div *ngIf="password.errors.required">
             Password is required.
           </div>
         </div>
     </div>
     
     <div class="form-group">
-      <label for="firstname">First Name: </label>
-      <input name="firstname" class="form-control" required
-        placeholder="f_name" #f_name="ngModel">
+      <label for="fname">First Name: </label>
+      <input name="fname" class="form-control" required
+        placeholder="fname" #fname>
 
-      <div *ngIf="f_name.invalid && (f_name.dirty || f_name.touched)" class="alert alert-danger">
-        <div *ngIf="f_name.errors.required">
+      <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger">
+        <div *ngIf="fname.errors.required">
           First name is required.
         </div>
       </div>
     </div>
     
     <div class="form-group">
-      <label for="lastname">Last Name: </label>
-      <input name="lastname" class="form-control" required
-        placeholder="l_name" #l_name="ngModel">
+      <label for="lname">Last Name: </label>
+      <input name="lname" class="form-control" required
+        placeholder="lname" #lname>
 
-      <div *ngIf="l_name.invalid && (l_name.dirty || l_name.touched)" class="alert alert-danger">
-        <div *ngIf="l_name.errors.required">
+      <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert alert-danger">
+        <div *ngIf="lname.errors.required">
           Last name is required.
         </div>
       </div>
@@ -51,7 +51,7 @@
     <div class="form-group">
       <label for="email">Email: </label>
       <input name="email" class="form-control" required type="email"
-        placeholder="email" #email="ngModel">
+        placeholder="email" #email>
 
       <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
         <div *ngIf="email.errors.required">
