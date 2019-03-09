@@ -46,8 +46,9 @@ public class AuthenticationFilter implements Filter {
 		//Check to see if there is a header "Authorization"
 		final String token = httpRequest.getHeader("Authorization");
 		
+		String path = httpRequest.getRequestURI();
 		//There is no token, the user is not logged in
-		if (token == null) {
+		if (token == null && !(path.contains("ng") || path.contains("unfiltered"))) {
 			response.resetBuffer();
 			response.setContentType("application/json");
 			response.getOutputStream().write(mapper
