@@ -10,6 +10,10 @@ import org.apache.catalina.servlets.DefaultServlet;
 
 import com.revature.pokemonv2.dispatcher.MasterDispatcher;
 
+/**
+ * The Front Controller class contains all the methods to handle servlet interaction.
+ * I contains RESTFul end points such as GET, POST, PUT, and DELETE
+ */
 public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 4826138980180601133L;
 
