@@ -30,16 +30,20 @@ public class MasterDispatcher {
 	public static void process(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		String[] uriStrings = request.getRequestURI().split("/");
+		boolean isUnfiltered = uriStrings[uriStrings.length - 2].equals("unfiltered");
 		String uri = uriStrings[uriStrings.length - 1];
 
 		switch (uri) {
 		case "register":
-			PlayerService.getPlayerService().registerPlayer(request, response);
+			if (isUnfiltered)
+				PlayerService.getPlayerService().registerPlayer(request, response);
 			break;
 		case "collection":
-			String username = TokenService.getInstance().getUserDetailsFromToken(
-					request.getHeader("Authorization")).getUsername();
-			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
+			if (!isUnfiltered) {
+				String username = TokenService.getInstance().getUserDetailsFromToken(
+						request.getHeader("Authorization")).getUsername();
+				mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
+			}
 			break;
 		case "purchase":
 			PlayerService.getPlayerService().purchasePokemon(request, response);
@@ -49,7 +53,8 @@ public class MasterDispatcher {
 			break;
 		// Logins the user and generates an authentication token if successful
 		case "login":
-			PlayerService.getPlayerService().login(request, response);
+			if (isUnfiltered)
+				PlayerService.getPlayerService().login(request, response);
 			break;
 		default:
 			System.out.println("URI not recognized");
