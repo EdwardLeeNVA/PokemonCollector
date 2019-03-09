@@ -12,22 +12,12 @@ export class TrainerService {
    //Method call fo POST request for registering a new trainer.
    readTrainer(credentials : FormData) {
     console.log(credentials);
-    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/login", credentials,
-    {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded'
-      })
-    });
+    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/login", credentials);
   }
 
    //Method call fo POST request for registering a new trainer.
    createTrainer(credentials : FormData) {
     console.log(credentials);
-    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/register", credentials,
-    {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded'
-      })
-    });
+    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/register", credentials);
   }
 }
