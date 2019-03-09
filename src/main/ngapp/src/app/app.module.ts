@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
-
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,7 +14,6 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { RedeemComponent } from './components/redeem/redeem.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
-import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -30,6 +29,7 @@ import {FormsModule} from '@angular/forms';
     GeneratePokemonComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

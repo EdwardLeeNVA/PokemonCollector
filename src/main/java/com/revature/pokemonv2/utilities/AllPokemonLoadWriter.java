@@ -31,11 +31,13 @@ public class AllPokemonLoadWriter implements CacheLoaderWriter {
 		
 		Map<String, Integer> statTemp = new HashMap<>();
 		int statCount = 0;
+		int cost = 0;
 		while (statCount < p.getStats().size()) {
 			statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
+			cost += p.getStats().get(statCount).getStat().component3();
 		}
 		
-		return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])temp.toArray(), statTemp);
+		return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])temp.toArray(), statTemp, cost);
 		
 	}
 

@@ -3,6 +3,7 @@ package com.revature.pokemonv2.filter;
 import java.io.IOException;
 import java.util.Collections;
 
+import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * an authorization token, this filter will check if there is a token, if not
  * throws an unauthorized error.
  */
-public class AuthenticationFilter {
+public class AuthenticationFilter implements Filter {
 
 	private ObjectMapper mapper;
 
@@ -45,8 +46,9 @@ public class AuthenticationFilter {
 		//Check to see if there is a header "Authorization"
 		final String token = httpRequest.getHeader("Authorization");
 		
+		String path = httpRequest.getRequestURI();
 		//There is no token, the user is not logged in
-		if (token == null) {
+		if (token == null && !(path.contains("ng") || path.contains("unfiltered"))) {
 			response.resetBuffer();
 			response.setContentType("application/json");
 			response.getOutputStream().write(mapper

@@ -9,7 +9,6 @@ import { Pokemon } from '../models/Pokemon';
 })
 export class PokedexService {
 
-
   constructor(
     private http: HttpClient
   ) {}
@@ -22,4 +21,6 @@ export class PokedexService {
     console.log(newTrainer);
     return POKEMON;
   };
+
 }
+
