@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
-import com.revature.pokemonv2.dao.DAO;
+import com.revature.pokemonv2.dao.*;
 import com.revature.pokemonv2.model.Pokemon;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
-	private static DAO dao = new DAO();
+	private static DAO dao = new DAOImpl();
 	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
 	private final int MAX_POKEDEX_SIZE = 151;
 	

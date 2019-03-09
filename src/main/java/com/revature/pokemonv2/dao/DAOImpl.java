@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.revature.pokemonv2.model.Pokemon;
@@ -62,6 +63,12 @@ public class DAOImpl implements DAO{
 
 	@Override
 	public Map<Trainer, Integer> getTrainerCredits() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Pokemon> getTrainerPokedex(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}

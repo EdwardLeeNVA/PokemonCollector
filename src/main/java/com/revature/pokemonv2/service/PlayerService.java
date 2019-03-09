@@ -49,4 +49,6 @@ public class PlayerService {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		return trainer.loginAuthentication(request, response);
 	}
+	
+	
 }

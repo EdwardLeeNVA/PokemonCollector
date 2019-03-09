@@ -43,6 +43,9 @@ public class MasterDispatcher {
 		case "login":
 			PlayerService.getPlayerService().login(request, response);
 			break;
+		case "leaderboard":
+			
+			break;
 		default:
 			System.out.println("URI not recognized");
 		}
