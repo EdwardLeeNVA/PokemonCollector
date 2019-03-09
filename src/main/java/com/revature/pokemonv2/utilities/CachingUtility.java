@@ -14,7 +14,7 @@ import com.revature.pokemonv2.model.Pokemon;
 
 public class CachingUtility {
  	
-	 private final Cache<String, Collection> pokedexCache;
+	 private final Cache<String, List> pokedexCache;
 	 private final Cache<Integer, Pokemon> allPokemonCache;
 	 private static CachingUtility cachingUtility = new CachingUtility();
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
@@ -22,7 +22,7 @@ public class CachingUtility {
 	 
 	 private CachingUtility(){
 		 
-		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, Collection.class);
+		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, List.class);
 		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
 	 }
 	 
@@ -34,11 +34,11 @@ public class CachingUtility {
 //		 this.pokedexCache.put(username, c);
 //	 }
 	 
-	 public Collection checkCache(String username) {
+	 public List checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
 	 
-	 public Collection addToCache(String username, int id) {
+	 public List addToCache(String username, int id) {
 		 List<Pokemon> pokeList = (List)this.pokedexCache.get(username);
 		 for(int i = 0; i<pokeList.size(); i++) {
 			 if(pokeList.get(i).getId()==id) {
@@ -81,7 +81,7 @@ public class CachingUtility {
 		 }
 	 }
 	 
-	 public Collection getAllPokemon() {
+	 public List getAllPokemon() {
 		 return pokedexCache.get(null);
 	 }
 	 
