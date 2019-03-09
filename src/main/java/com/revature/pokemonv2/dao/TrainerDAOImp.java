@@ -196,6 +196,7 @@ public class TrainerDAOImp implements TrainerDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
 
 
 	public boolean purchasePokemon(String username, int cost) {
