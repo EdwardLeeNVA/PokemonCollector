@@ -59,7 +59,7 @@ public class DAO {
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?,)}");) {
+		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?)}");) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
