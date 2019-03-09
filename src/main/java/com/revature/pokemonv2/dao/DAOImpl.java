@@ -10,6 +10,19 @@ import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
 
 public class DAOImpl implements DAO{
+	
+	private static DAOImpl mInstance; 
+	
+	private DAOImpl() {
+		super(); 
+	}
+	
+	public static DAOImpl getInstance() {
+		if(mInstance == null) {
+			mInstance = new DAOImpl(); 
+		}
+		return mInstance; 
+	}
 
 	@Override
 	public Map<Trainer, Integer> getPokemonCountByTrainer() {
