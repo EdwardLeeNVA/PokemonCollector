@@ -35,11 +35,11 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
     RouterModule,
     FormsModule
   ],
-  providers: [{
+  providers: [/*{
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptorService,
-    
-  }],
+    multi: true
+  }*/],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

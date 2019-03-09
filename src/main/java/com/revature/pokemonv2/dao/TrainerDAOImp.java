@@ -44,6 +44,7 @@ public class TrainerDAOImp implements TrainerDAO {
 		if (login != null) {
 			// Generate a token for the user
 			final String token = tokenService.generateToken(login);
+			System.out.println(token);
 			response.addHeader("Authorization", "Bearer " + token);
 		}
 		return "";
