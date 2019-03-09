@@ -12,6 +12,7 @@ import com.revature.pokemonv2.service.TokenService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
+import com.revature.pokemonv2.service.LeaderBoardService;
 
 /**
  * The master dispatcher class relays HTTP requests to different end points.
@@ -57,7 +58,7 @@ public class MasterDispatcher {
 				PlayerService.getPlayerService().login(request, response);
 			break;
 		case "leaderboard":
-			
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 			break;
 		default:
 			System.out.println("URI not recognized");

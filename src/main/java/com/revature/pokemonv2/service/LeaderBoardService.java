@@ -1,6 +1,13 @@
 package com.revature.pokemonv2.service;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pokemonv2.dao.DAOImpl;
+import com.revature.pokemonv2.model.Trainer;
 
 public class LeaderBoardService {
 	
@@ -23,5 +30,10 @@ public class LeaderBoardService {
 		return instance;
 	}
 	
+	public List<Trainer> returnLeaderBoard(HttpServletRequest request, HttpServletResponse response) {
+		
+		return DAOImpl.getInstance().getLeaderboard();
+				
+	}
 	
 }
