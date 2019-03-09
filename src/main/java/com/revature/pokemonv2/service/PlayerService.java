@@ -39,7 +39,7 @@ public class PlayerService {
 				0);
 	}
 
-	public Trainer login(HttpServletRequest request, HttpServletResponse response) {
+	public String login(HttpServletRequest request, HttpServletResponse response) {
 		return trainer.loginAuthentication(request, response);
 	}
 }

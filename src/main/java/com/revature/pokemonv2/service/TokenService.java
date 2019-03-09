@@ -70,8 +70,10 @@ public class TokenService {
 		return Jwts.builder().signWith(keyPair.getPrivate(), SignatureAlgorithm.RS256)
 				// Encrypt the trainer user name
 				.setSubject(details.getUsername())
-				// Encrypt the trainer score
+				// Encrypt the trainer score/credits
+				.claim("userID", details.getUserID())
 				.claim("score", details.getScore())
+				.claim("credit", details.getCredits())
 				// Set when token is issued
 				.setIssuedAt(now)
 				// When it expires
@@ -91,13 +93,15 @@ public class TokenService {
 		return false;
 	}
 
-	// Gets the Trainer user name and score from token
+	// Gets the Trainer user name, credit, userID, and score from token
 	public Trainer getUserDetailsFromToken(String token) {
 		if (token != null && token.startsWith("Bearer ")) {
 			Claims claims = Jwts.parser().setSigningKey(keyPair.getPublic())
 					.parseClaimsJws(token.replace("Bearer ", "")).getBody();
 			Trainer authenticated = new Trainer();
 			authenticated.setUsername(claims.getSubject());
+			authenticated.setCredits((int) claims.get("credit"));
+			authenticated.setUserID((int) claims.get("userID"));
 			authenticated.setScore((int) claims.get("score"));
 			return authenticated;
 		}

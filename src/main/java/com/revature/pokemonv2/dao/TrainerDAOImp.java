@@ -2,7 +2,6 @@ package com.revature.pokemonv2.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,9 +12,11 @@ import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.service.TokenService;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 
+import oracle.jdbc.OracleTypes;
+
 public class TrainerDAOImp implements TrainerDAO {
 
-	private static final TokenService token = TokenService.getInstance();
+	private static final TokenService tokenService = TokenService.getInstance();
 	private static TrainerDAOImp trainer = null;
 	
 	//Gets the instance of the class
@@ -27,15 +28,16 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 	//Authentication, creates JWT for user
 	@Override
-	public Trainer loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
+	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		// Creates a new trainer and assigns the username and password to the object
 		// Verifies if the user is valid
 		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
 		if (login != null) {
 			// Generate a token for the user
-			token.generateToken(login);
+			final String token = tokenService.generateToken(login);
+			return token;
 		}
-		return login;
+		return "";
 	}
 
 	// Verifies via SQL whether the user login is correct
@@ -45,12 +47,15 @@ public class TrainerDAOImp implements TrainerDAO {
 			// Creates a new trainer
 			Trainer login = null;
 			// Call stored procedure
-			String sql = "CALL VERIFY_CREDENTIALS(?,?)";
+			String sql = "CALL VERIFY_CREDENTIALS(?,?,?)";
 			// Try with resources on the PreparedStatement
-			try (PreparedStatement cs = conn.prepareStatement(sql)) {
+			try (CallableStatement cs = conn.prepareCall(sql)) {
 				cs.setString(1, username);
 				cs.setString(2, password);
-				try (ResultSet rs = cs.executeQuery()) {
+				cs.registerOutParameter(3, OracleTypes.CURSOR);
+				cs.execute();
+				//Executing out parameters
+				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
 					if (rs.next()) {
 						login = new Trainer();
 						login.setUsername(username);
