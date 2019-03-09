@@ -172,9 +172,27 @@ public class TrainerDAOImp implements TrainerDAO {
 	 * Purpose: Redeem a all pokemon for a specific trainer.
 	 * trainer_id: ID of the current trainer.
 	 */
-	public int redeemAll(int trainer_id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int[] redeemAll(int trainer_id) {
+		int [] out = new int[2]; //return array
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
+			String sql = "CALL redeem_all_duplicates(?,?,?)"; //Procedure string
+			//Setup callableStatment
+			try(CallableStatement cs = conn.prepareCall(sql)){
+				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
+				cs.registerOutParameter(2, Types.INTEGER); //Out param for added credits
+				cs.registerOutParameter(3, Types.INTEGER);//out param for new total
+				cs.execute();				//Prepare the resultset
+				
+				out[0] = cs.getInt(2); //set return value
+				out[1] = cs.getInt(3);//set return value
+			}	
+			return out; //return array of values
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 		
 	}
 }

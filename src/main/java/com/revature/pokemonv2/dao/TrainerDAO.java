@@ -19,5 +19,5 @@ public interface TrainerDAO {
 	
 	public ArrayList<Pokemon> get_duplicates( int trainer_id);
 	public int[] redeemSpecific(int trainer_id, int poke_id);
-	public int redeemAll(int trainer_id);
+	public int[] redeemAll(int trainer_id);
 }
