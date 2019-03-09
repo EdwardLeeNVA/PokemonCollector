@@ -19,6 +19,7 @@ export class ShopComponent implements OnInit {
   private numPages: number;
   private allPoke: [Pokemon];
   private pokePages: [Pokemon];
+  cardShow: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,13 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
   }
   
+  onBallClick() {
+    //Hide pokeball img and show card div
+    $("#generate-pokemon-pokeball").addClass("d-none");
+    $("#generate-pokemon-card").removeClass("d-none");
+    $("#generate-pokemon-draw-btn").removeClass("d-none");
+    this.cardShow = true;
+  }
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
