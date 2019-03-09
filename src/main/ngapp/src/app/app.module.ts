@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { RedeemComponent } from './components/redeem/redeem.component';
@@ -23,7 +22,6 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
     LoginComponent,
     LandingComponent,
     RegisterComponent,
-    HomeComponent,
     ShopComponent,
     CollectionComponent,
     RedeemComponent,
