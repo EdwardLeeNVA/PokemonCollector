@@ -14,4 +14,8 @@ export class TrainerService {
     console.log(newTrainer);
     return this._http.post<any>("/PokemonCollector/servlet/register", newTrainer);
   }
+
+  logInTrainer(trainer: Trainer) {
+    return this._http.post<string>("/PokemonCollector/servlet/login", trainer);
+  }
 }

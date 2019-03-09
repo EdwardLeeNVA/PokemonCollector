@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrainerService } from 'src/app/services/trainer.service';
+import { Trainer } from 'src/app/models/Trainer';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,19 @@ export class LoginComponent implements OnInit {
   LOGIN_FAILED = "<p>Wrong username and password.</p>";
   currentLoginMessage = this.NO_LOGIN_FAILED;
 
-  constructor() { }
+  trainer: Trainer = {
+    id: 0,
+    username: '',
+    password: '',
+    f_name: '',
+    l_name: '',
+    email: ''
+  }
+
+  constructor(private trainerService: TrainerService) {
+    console.log('subscribed to logInTrainer');
+    trainerService.logInTrainer(this.trainer).subscribe(response => this.loginResponse(response));
+  }
 
   ngOnInit() {
   }
