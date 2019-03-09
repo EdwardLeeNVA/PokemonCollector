@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
   loginTrainer() {
     let credentials : FormData = new FormData(document.querySelector("form"));
     this.trainerService.readTrainer(credentials).subscribe(
-      data => this.router.navigateByUrl("/home")
+      data => {
+        console.log(data);
+        this.router.navigateByUrl("/home");
+      }
     );
   }
 }
