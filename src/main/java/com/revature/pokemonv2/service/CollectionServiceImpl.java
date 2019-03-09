@@ -18,7 +18,9 @@ public class CollectionServiceImpl implements CollectionService {
 			return cachingUtility.checkCache(username);
 		}
 		
-		
+		public List<Pokemon> getCompleteSet(){
+			return(ArrayList<Pokemon>) cachingUtility.getAllPokemon();
+		}
 		
 		
 		
