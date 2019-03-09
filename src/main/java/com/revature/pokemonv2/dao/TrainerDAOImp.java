@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -138,12 +139,31 @@ public class TrainerDAOImp implements TrainerDAO {
 	/* Purpose: Redeem a specific pokemon from a trainer's collection.
 	 * trainer_id: ID of the current trainer.
 	 * poke_id: ID of the pokemon being redeemed.
+	 * Returns the amount of credits of credits given (index 0) and total credits (index 1)
 	 */
 	
-	public int redeemSpecific(int trainer_id, int poke_id) {
-		// TODO Auto-generated method stub
-		
-		return 0;
+	public int[] redeemSpecific(int trainer_id, int poke_id) 
+	{
+		int [] out = new int[2]; //return array
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
+			String sql = "CALL redeem_duplicate(?,?, ?, ?)"; //Procedure string
+			//Setup callableStatment
+			try(CallableStatement cs = conn.prepareCall(sql)){
+				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
+				cs.setInt(2, poke_id);//Set the pokemon id in the callable statement
+				cs.registerOutParameter(3, Types.INTEGER); //Out param for added credits
+				cs.registerOutParameter(4, Types.INTEGER);//out param for new total
+				cs.execute();				//Prepare the resultset
+				
+				out[0] = cs.getInt(3); //set return value
+				out[1] = cs.getInt(4);//set return value
+			}	
+			return out; //return array of values
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 		
 	}
 
