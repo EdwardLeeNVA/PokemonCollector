@@ -11,14 +11,10 @@ public class Pokemon {
 	private String [] type;
 	private Map <String,Integer> stats;
 	private int count;
-<<<<<<< HEAD
-	
-=======
 	private int cost;
 	/**
 	 * Empty Pokemon constructor.
 	 */
->>>>>>> staging
 	public Pokemon() { /*Empty Constructor */}
 	
 	public Pokemon(int id, int count) {
@@ -26,13 +22,7 @@ public class Pokemon {
 		this.id = id;
 		this.count = count;
 	}
-<<<<<<< HEAD
-	
-	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats) {
-=======
-
 	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats, Integer cost) {
->>>>>>> staging
 		super();
 		this.id = id;
 		this.name = name;
