@@ -50,6 +50,7 @@ public class RedeemService {
 		 */
 		public static void redeemSpecific(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+			// get trainer_id from request
 			
 		}
 		
