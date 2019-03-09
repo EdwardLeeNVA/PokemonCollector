@@ -50,19 +50,19 @@ public class SampleData {
 		trainersT.add(new Trainer("userZach5", 	"Zach", 	"ShunHero", 3000, 	1000, 		34)); 
 
 		pokemonT = new ArrayList<Pokemon>();
-		pokemonT.add(new Pokemon(1, "bulbasaur", "badURL", new String[]{Type.DRAGON.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(2, "ivysaur", "badURL", new String[]{Type.GRASS.toString(), Type.FIRE.toString()}, null, null));
-		pokemonT.add(new Pokemon(3, "venusaur", "badURL", new String[]{Type.GRASS.toString(), Type.ICE.toString()}, null, null));
-		pokemonT.add(new Pokemon(4, "charmander", "badURL", new String[]{Type.ICE.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(5, "charmelion", "badURL", new String[]{Type.FIRE.toString(), Type.ELECTRIC.toString()}, null, null));
-		pokemonT.add(new Pokemon(6, "chartsizard", "badURL", new String[]{Type.ELECTRIC.toString()}, null, null));
-		pokemonT.add(new Pokemon(7, "squirtle", "badURL", new String[]{Type.BUG.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(8, "wartortle", "badURL", new String[]{Type.BUG.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(9, "blastoise", "badURL", new String[]{Type.BUG.toString()}, null, null));
-		pokemonT.add(new Pokemon(10, "caterpie", "badURL", new String[]{Type.PSYCHIC.toString(), Type.FAIRY.toString(), Type.ICE.toString()}, null, null));
-		pokemonT.add(new Pokemon(11, "metapod", "badURL", new String[]{Type.DARK.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(12, "butterfree", "badURL", new String[]{Type.DRAGON.toString(), Type.FAIRY.toString()}, null, null));
-		pokemonT.add(new Pokemon(13, "weedle", "badURL", new String[]{Type.DARK.toString(), Type.FAIRY.toString()}, null, null)); 
+		pokemonT.add(new Pokemon(1, "bulbasaur", "badURL", new String[]{Type.DRAGON.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(2, "ivysaur", "badURL", new String[]{Type.GRASS.toString(), Type.FIRE.toString()}, null, 0));
+		pokemonT.add(new Pokemon(3, "venusaur", "badURL", new String[]{Type.GRASS.toString(), Type.ICE.toString()}, null, 0));
+		pokemonT.add(new Pokemon(4, "charmander", "badURL", new String[]{Type.ICE.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(5, "charmelion", "badURL", new String[]{Type.FIRE.toString(), Type.ELECTRIC.toString()}, null, 0));
+		pokemonT.add(new Pokemon(6, "chartsizard", "badURL", new String[]{Type.ELECTRIC.toString()}, null, 0));
+		pokemonT.add(new Pokemon(7, "squirtle", "badURL", new String[]{Type.BUG.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(8, "wartortle", "badURL", new String[]{Type.BUG.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(9, "blastoise", "badURL", new String[]{Type.BUG.toString()}, null, 0));
+		pokemonT.add(new Pokemon(10, "caterpie", "badURL", new String[]{Type.PSYCHIC.toString(), Type.FAIRY.toString(), Type.ICE.toString()}, null, 0));
+		pokemonT.add(new Pokemon(11, "metapod", "badURL", new String[]{Type.DARK.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(12, "butterfree", "badURL", new String[]{Type.DRAGON.toString(), Type.FAIRY.toString()}, null, 0));
+		pokemonT.add(new Pokemon(13, "weedle", "badURL", new String[]{Type.DARK.toString(), Type.FAIRY.toString()}, null, 0)); 
 		
 	}
 

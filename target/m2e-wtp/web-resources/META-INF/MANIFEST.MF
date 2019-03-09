@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: losan
-=======
-Built-By: Kale
->>>>>>> staging
-Build-Jdk: 1.8.0_191
+Built-By: omarg
+Build-Jdk: 1.8.0_201
 Created-By: Maven Integration for Eclipse
 
