@@ -33,7 +33,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 				poke.setCount(p.getCount());
 				returnPokeDex.add(poke);
 			}
-			
+			returnPokeDex.add(new Pokemon(0, 1));
 			return returnPokeDex;
 		}
 		
