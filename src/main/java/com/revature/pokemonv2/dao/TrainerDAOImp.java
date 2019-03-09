@@ -91,4 +91,23 @@ public class TrainerDAOImp implements TrainerDAO {
 		}
 		return false;
 	}
+	
+	public boolean purchasePokemon(String username, int cost) {
+		//because of the cache, this will just try to remove the credits from the account, and not remove the pokemon
+		try(Connection conn = ConnectionUtility.getInstance().getConnection()){
+			try(CallableStatement cs = conn.prepareCall("CALL update_credits(?,?)");){
+				cs.setString(1,username);
+				cs.setInt(2, cost);
+				cs.execute();
+			}
+			catch(Exception e){
+				return false;
+			}
+		}catch(SQLException e){
+			return false;
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
 }
