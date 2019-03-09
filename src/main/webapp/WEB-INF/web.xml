@@ -8,13 +8,13 @@
 		<filter-name>JwtAuthenticationFilter</filter-name>
 		<display-name>JwtAuthenticationFilter</display-name>
 		<description></description>
-		<filter-class>com.revature.web.JwtAuthenticationFilter</filter-class>
+		<filter-class>com.revature.pokemonv2.filter.AuthenticationFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>CorsFilter</filter-name>
 		<display-name>CorsFilter</display-name>
 		<description></description>
-		<filter-class>com.revature.web.CorsFilter</filter-class>
+		<filter-class>com.revature.pokemonv2.filter.CorsFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>CorsFilter</filter-name>
@@ -24,6 +24,7 @@
 		<filter-name>JwtAuthenticationFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 	<servlet>
 		<servlet-name>FrontController</servlet-name>
 		<servlet-class>com.revature.pokemonv2.servlet.FrontController</servlet-class>
@@ -32,6 +33,7 @@
 		<servlet-name>FrontController</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	
 	<resource-ref>
 		<description>Oracle Datasource</description>
 		<res-ref-name>jdbc/myoracle</res-ref-name>
