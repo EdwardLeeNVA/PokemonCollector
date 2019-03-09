@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  private TOTALPOKEMON: number = 150;
+  private TOTALPOKEMON: number = 151;
   
   private numPoke: number;
   private currentPage: number = 0;
