@@ -10,15 +10,16 @@ import org.junit.Test;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 
-	public class CollectionServiceTest {
-		
-		CollectionServiceImpl test = new CollectionServiceImpl();
-		
-		@Test
-		@Ignore
-		public void testGetAllPokemon() {
-			String username = "doesntexist";
-			
-			assertEquals(test.getAllPokemon(username), new ArrayList<Pokemon>());
-		}
-	}
+    public class CollectionServiceTest {
+        
+        CollectionServiceImpl test = new CollectionServiceImpl();
+
+        
+        @Test
+        public void testGetAllPokemon() {
+            String username = "doesntexist";
+            
+            assertEquals(test.getAllPokemon(username), new ArrayList<Pokemon>());
+        }
+        
+        }

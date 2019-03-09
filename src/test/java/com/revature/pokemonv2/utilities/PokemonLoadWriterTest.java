@@ -1,13 +1,18 @@
 package com.revature.pokemonv2.utilities;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class PokemonLoadWriterTest {
 
-	/*@Test
-	public void test() {
-		fail("Not yet implemented");
-	}*/
+    AllPokemonLoadWriter test = new AllPokemonLoadWriter();
+    
+    
+    @Test
+    public void TestLoad() throws Exception{
+        Integer i = new Integer(1);
+        assertEquals((test.load(i)).getName(), "bulbasaur");
+    }
 
 }
