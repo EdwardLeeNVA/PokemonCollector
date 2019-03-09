@@ -22,6 +22,7 @@ public interface DAO {
 	public Map<Trainer, Integer> getTrainerCredits(); 				   // "user1 has 1 credits"        | "user2 has 100000 credits"   | ....
 	
 	public List<Trainer> getLeaderboard(); 							   // A sorted list of high scores
+	public List<Pokemon> getTrainerPokedex(String key);
 	
 	
 }

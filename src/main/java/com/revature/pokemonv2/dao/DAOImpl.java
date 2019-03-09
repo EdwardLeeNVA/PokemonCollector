@@ -97,4 +97,10 @@ public class DAOImpl implements DAO{
 		
 	}
 
+	@Override
+	public List<Pokemon> getTrainerPokedex(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
