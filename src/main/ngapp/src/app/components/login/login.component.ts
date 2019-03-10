@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         console.log(data);
         if (data.headers.get("Authorization")) {
           sessionStorage.setItem("USER", data.headers.get("Authorization"));
+          this.trainerService.signedIn = true;
           this.router.navigateByUrl("/generate");
         }
       }
