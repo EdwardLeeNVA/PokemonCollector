@@ -97,7 +97,7 @@ public class CachingUtility {
 	 }
 	 
 	 public ArrayList getAllPokemon() {
-		 return pokedexCache.get(null);
+		 return pokedexCache.get("red");
 	 }
 	 
 	
