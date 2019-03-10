@@ -24,24 +24,16 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	@Override
 	public ArrayList<com.revature.pokemonv2.model.Pokemon> load(Object key) throws Exception {
 		ArrayList<com.revature.pokemonv2.model.Pokemon> returnPokeDex = new ArrayList<>();
-		if(key.equals("red")) {
-			for (int i = 1; i <= MAX_POKEDEX_SIZE; i++ ) {
-				returnPokeDex.add(cachingUtility.getPokemon(i));
-			}
-			return returnPokeDex;
-		} else {
-			List<com.revature.pokemonv2.model.Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+		List<com.revature.pokemonv2.model.Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
 			
-			for (com.revature.pokemonv2.model.Pokemon p : pokeDex) {
-				com.revature.pokemonv2.model.Pokemon poke = cachingUtility.getPokemon(p.getId());
-				poke.setCount(p.getCount());
-				returnPokeDex.add(poke);
-			}
+		for (com.revature.pokemonv2.model.Pokemon p : pokeDex) {
+			com.revature.pokemonv2.model.Pokemon poke = cachingUtility.getPokemon(p.getId());
+			poke.setCount(p.getCount());
+			returnPokeDex.add(poke);
+		}
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
-			return returnPokeDex;
-		}
-		
+		return returnPokeDex;
 	}
 
 	@Override
