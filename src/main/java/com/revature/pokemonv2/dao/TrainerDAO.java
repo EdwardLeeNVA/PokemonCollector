@@ -3,6 +3,8 @@ package com.revature.pokemonv2.dao;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.pokemonv2.model.Trainer;
+
 public interface TrainerDAO {
 	/**
 	 * Authentication, creates JWT for user.
@@ -14,8 +16,17 @@ public interface TrainerDAO {
 	 */
 	public boolean createTrainer(String username, String password, String email, String firstName, String lastName,
 			int credit, int score);
+
 	/**
-	* Removes the credits from a trainers wallet
-	*/	
+	 * Removes the credits from a trainers wallet.
+	 * 
+	 * Because of the cache, this will just try to remove the credits from the
+	 * account, and not remove the Pokemon.
+	 */
 	public boolean purchasePokemon(String username, int cost);
+
+	/**
+	 * Verifies via SQL whether the user login is correct
+	 */
+	public Trainer verifyLogin(String username, String password);
 }

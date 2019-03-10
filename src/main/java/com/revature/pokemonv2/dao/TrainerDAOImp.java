@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
@@ -44,28 +43,22 @@ public class TrainerDAOImp implements TrainerDAO {
 	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		// Creates a new trainer and assigns the username and password to the object
 		// Verifies if the user is valid
+		String token = "";
 		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
 		if (login != null) {
 			// Generate a token for the user
-			final String token = tokenService.generateToken(login);
+			token = tokenService.generateToken(login);
 			response.addHeader("Authorization", "Bearer " + token);
 			try {
 				response.getWriter().write(mapper.writeValueAsString(login));
-			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOGGER.error(e.getMessage(), e);
 			}
-			return token;
 		}
-		return "";
+		return token;
 	}
 
-	/**
-	 * Verifies via SQL whether the user login is correct
-	 */
+	@Override
 	public Trainer verifyLogin(String username, String password) {
 		// Try with resources on the instance of ConnectionUtility
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
@@ -86,39 +79,28 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public boolean createTrainer(String username, String password, String email, String f_name, String l_name,
+	public boolean createTrainer(String username, String password, String email, String firstName, String lastName,
 			int credit, int score) {
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			try (CallableStatement cs = conn.prepareCall("CALL create_trainer(?,?,?,?,?,?,?)");) {
-				cs.setString(1, username);
-				cs.setString(2, password);
-				cs.setString(3, email);
-				cs.setString(4, f_name);
-				cs.setString(5, l_name);
-				cs.setInt(6, credit);
-				cs.setInt(7, score);
+			try (CallableStatement cs = TrainerDAOStatements.createTrainerStatement(conn, username, password, email,
+					firstName, lastName, credit, score)) {
 				cs.execute();
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(), e);
 		}
 		return false;
 	}
 
+	@Override
 	public boolean purchasePokemon(String username, int cost) {
-		//because of the cache, this will just try to remove the credits from the account, and not remove the pokemon
-		try(Connection conn = ConnectionUtility.getInstance().getConnection()){
-			try(CallableStatement cs = conn.prepareCall("CALL update_credits(?,?)");){
-				cs.setString(1,username);
-				cs.setInt(2, (cost * -1));
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost)) {
 				cs.execute();
-			} catch (Exception e) {
-				return false;
 			}
 		} catch (SQLException e) {
-			return false;
-		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
