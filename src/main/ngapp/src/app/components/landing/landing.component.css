@@ -1,4 +1,38 @@
-html {
+#leaderboardTable {
+  border: 2px solid yellow;
+  background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#button {
+  background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+  border: 2px solid yellow;
+  color: white;
+}
+
+html,
+body {
+  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 50px 100px;
+}
+
+#tableusername {
+  border: 1px solid black;
+}
+
+#tablescore {
+  border: 1px solid black;
+}
+
+/*html {
     background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
   }
   body {
@@ -24,16 +58,14 @@ html {
     color: white;
   }
   
-  .leaderboard-cont {
-    border: 1px solid white;
-    height: 500px;
-    overflow-y: scroll;
-    margin: 30px;
-  }
-  
   .user-item {
   }
-  
+  #tableusername{
+    background: linear-gradient(to top, black,black);
+    border: 2px solid yellow;
+    text-align: center;
+    color: white; 
+  }
   #username-label {
     background: linear-gradient(to top, #990033 0%, #cc0000 65%);
     margin-left: 10px;
@@ -50,8 +82,12 @@ html {
   #button {
     background: linear-gradient(to top, #990033 0%, #cc0000 65%);
     border: 2px solid yellow;
-    color: white;
-
-    
-
+    color: white;   
   }
+
+  #leaderboardTable{
+    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+    border: 2px solid yellow;
+    text-align: center;
+    color: white;   
+  }*/

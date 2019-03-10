@@ -22,8 +22,8 @@ export class LandingComponent implements OnInit {
     let table = document.getElementById('leaderboardBody');
     for (let data of Response) {
       table.innerHTML = table.innerHTML + `
-      <td>${data.username}<td> 
-      <td>${data.score}<td>
+      <td align="left" id ="tableusername">${data.username}<td> 
+      <td align="left" id ="tablescore">${data.score}<td>
       `
     }
   });

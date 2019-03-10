@@ -1,8 +1,6 @@
 package com.revature.pokemonv2.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
@@ -67,6 +65,7 @@ public class SampleData {
 	}
 
 	public List<Trainer> getTrainersT() {
+		Collections.sort(trainersT);
 		return trainersT;
 	}
 
