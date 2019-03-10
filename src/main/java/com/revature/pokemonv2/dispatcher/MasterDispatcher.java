@@ -1,19 +1,24 @@
  package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Random;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.TokenService;
-import com.revature.pokemonv2.utilities.Driver;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 import com.revature.pokemonv2.service.LeaderBoardService;
+import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.RedeemService;
+import com.revature.pokemonv2.service.TokenService;
 
 /**
  * The master dispatcher class relays HTTP requests to different end points.
@@ -30,7 +35,7 @@ public class MasterDispatcher {
 	 * Relays the HTTP request to the correct endpoint.
 	 */
 	public static void process(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws IOException, ServletException {
 		String[] uriStrings = request.getRequestURI().split("/");
 		boolean isUnfiltered = uriStrings[uriStrings.length - 2].equals("unfiltered");
 		String uri = uriStrings[uriStrings.length - 1];
@@ -58,15 +63,24 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				PlayerService.getPlayerService().login(request, response);
 			break;
-//		case "leaderboard":
-//			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
-//			break;
-//		case "stats":
-//			mapper.writeValue(response.getOutputStream(),"words");
-//			break;
-		case "debug": 
-			Driver.tomcatDebug();
-			
+		case "leaderboard":
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
+			break;
+		case "duplicate":
+			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
+			RedeemService.getDuplicates(request, response);
+			break;
+		case "redeem":
+			//Endpoint for redeem call. Redeems a specific pokemon			
+			RedeemService.redeemSpecific(request, response);
+			break;
+		case "redeemAll":
+			//Endpoint for redeem all call. Redeems all pokemon.
+			RedeemService.redeemAll(request, response);
+		case "generatePokemon":
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
+
+			break;
 		default:
 			System.out.println("URI not recognized");
 		}

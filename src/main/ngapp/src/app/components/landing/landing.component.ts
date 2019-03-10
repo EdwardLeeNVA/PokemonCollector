@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Trainer } from "../../models/Trainer";
+import { TrainerService } from "../../services/trainer.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-landing',
@@ -8,25 +10,38 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private http : HttpClient) {
-  }
+
+  public trainer: Trainer;
+  public login_status: boolean;
+
+  constructor(private trainerService: TrainerService, private router: Router) { }
 
   configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
 
   ngOnInit() {
 
-    this.http.get<any[]>(this.configUrl)
-    .subscribe(Response => {
-    //console.log(Response);
-    console.log("Updateing rows");
-    let table = document.getElementById('leaderboardBody');
-    for (let data of Response) {
-      table.innerHTML = table.innerHTML + `
-      <td align="left" id ="tableusername">${data.username}<td> 
-      <td align="left" id ="tablescore">${data.score}<td>
+    fetch(this.configUrl)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        let table = document.getElementById('leaderboardBody');
+        for (let data of res) {
+          table.innerHTML = table.innerHTML + `
+          <tr>
+      <td style="color: white; border: 1px solid black;" align="left" id ="tableusername">${data.username}</td> 
+      <td style="color: white; border: 1px solid black;" align="left" id ="tablescore">${data.score}</td>
+      </tr>
       `
+        }
+      });
+
+    //this.trainerService.checkSessionStorage();
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    if (this.trainer != null) {
+      this.trainerService.checkSessionStorage();
+      this.router.navigateByUrl("/PokemonCollector/ng/generate");
     }
-  });
   }
 
 }
