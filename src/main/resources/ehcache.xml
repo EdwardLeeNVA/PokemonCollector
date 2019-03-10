@@ -29,23 +29,12 @@
 		<value-type>java.util.ArrayList</value-type>
 		 <!-- Pokedex custom eviction advisor.  Suggests to not evict keys with high hit counts -->
 		 <!--<eviction-advisor>com.revature.pokemonv2.utilities.PokedexEvictor</eviction-advisor>-->
-		<loader-writer>
+		<!--<loader-writer>
 			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
-		</loader-writer>
+		</loader-writer>-->
 		<resources>
-			<heap unit="entries">100</heap>
+			<heap unit="entries">10</heap>
 			<!--<offheap unit="MB">20</offheap>-->
 		</resources>
 	</cache>
-	<cache alias ="allPokemonCache">
-		<key-type>java.lang.Integer</key-type>
-		<value-type>com.revature.pokemonv2.model.Pokemon</value-type>
-		<loader-writer>
-			<class>com.revature.pokemonv2.utilities.AllPokemonLoadWriter</class>
-		</loader-writer>
-		<resources>
-			<heap unit="entries">151</heap>
-		</resources>
-	</cache>
-
 </config>
