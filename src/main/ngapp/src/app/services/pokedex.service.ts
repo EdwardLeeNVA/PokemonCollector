@@ -21,4 +21,6 @@ export class PokedexService {
     console.log(newTrainer);
     return POKEMON;
   };
+
 }
+

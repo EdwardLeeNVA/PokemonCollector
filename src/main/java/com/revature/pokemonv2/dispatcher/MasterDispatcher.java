@@ -2,6 +2,9 @@
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.ServletException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +13,9 @@ import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.TokenService;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 
@@ -57,11 +62,9 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				PlayerService.getPlayerService().login(request, response);
 			break;
-		case "generatePokemon":
-			//enter the jwt token which needs to be decrypted
-			String username = null;
-			int trainerId = 0;
-			PlayerService.generatePokemon(trainerId, username);
+		case "generatePokemon":		
+			//write the generated pokemon to the response
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
 			break;
 		default:
 			System.out.println("URI not recognized");
