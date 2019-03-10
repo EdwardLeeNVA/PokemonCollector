@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class TrainerService {
+  public signedIn: boolean = false;
 
   constructor(private _http: HttpClient) { }
 

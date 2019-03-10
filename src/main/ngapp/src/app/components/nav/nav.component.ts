@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TrainerService } from '../../services/trainer.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  private signedIn: boolean = this.trainerService.signedIn;
 
-  constructor() { }
+  constructor(
+    private trainerService: TrainerService
+  ) {}
 
   ngOnInit() {
   }
-
 }
