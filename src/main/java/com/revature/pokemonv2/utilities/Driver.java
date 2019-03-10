@@ -14,7 +14,8 @@ public class Driver {
 		System.out.println("got this far");
 		
 		System.out.println(myDao.getPokemonCountByTrainer());
-		System.out.println(myDao.getLeaderboard(10));
+		
+		System.out.println();
 		
 		
 		System.out.println("and got here without errorsssss");
