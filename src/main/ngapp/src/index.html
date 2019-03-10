@@ -20,69 +20,6 @@
     />
 </head>
 <body>
-
-  <!-- Default Navbar -->
-  <nav *ngIf="noUser" class="navbar navbar-expand-lg " id="baseNavBar">
-    <button class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <button routerLink="/login">Login</button>
-      <button routerLink="/register">Sign Up</button>
-      <button routerLink="/landing">Home</button>
-    </div>
-  </nav>
-
-  <!-- Signed-In Navbar -->
-  <nav *ngIf="signedIn" class="navbar navbar-expand-lg " id="logged-nav-bar">
-    <img src="http://i65.tinypic.com/25iyve1.png" alt="Image and video hosting by TinyPic"/>
-
-    <!-- Get info from JWT? Use behavior subject to persist this info
-    <h5 class="player-info">{{ username }}</h5>
-    <h5 class="player-info">Score {{ this.score }}</h5>
-    <h5 class="player-info">Credits {{ credit }}</h5> -->
-    
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link customLink" href="generate" routerLink="/generate">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="shop" routerLink="/shop">Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="redeem" routerLink="/redeem">Redeem</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="collection" routerLink="/collection">View Collection</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="#" (click)="onLogout()">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
   <app-root></app-root>
 
   <script

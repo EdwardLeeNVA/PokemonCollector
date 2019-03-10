@@ -14,6 +14,8 @@ import { RedeemComponent } from './components/redeem/redeem.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
 import { JwtInterceptorService } from './jwt-interceptor.service';
+import { Navbar1Component } from './components/navbar1/navbar1.component';
+import { Navbar2Component } from './components/navbar2/navbar2.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
     ShopComponent,
     CollectionComponent,
     RedeemComponent,
-    GeneratePokemonComponent
+    GeneratePokemonComponent,
+    Navbar1Component,
+    Navbar2Component
   ],
   imports: [
     FormsModule,
