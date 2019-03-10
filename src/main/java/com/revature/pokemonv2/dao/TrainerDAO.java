@@ -15,7 +15,7 @@ public interface TrainerDAO {
 
 	/**
 	 * Method for fetching all duplicate pokemon of a specfiic trainer. Takes an int
-	 * trainer_id Returns an ArrayList of pokemon objects
+	 * @return an ArrayList of pokemon objects
 	 */
 	public List<Pokemon> getDuplicates(int trainerId);
 
