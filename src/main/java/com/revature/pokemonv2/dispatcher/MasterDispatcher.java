@@ -62,7 +62,7 @@ public class MasterDispatcher {
 		// Logins the user and generates an authentication token if successful
 		case "login":
 			if (isUnfiltered)
-				mapper.writeValue(response.getOutputStream(), PlayerService.getPlayerService().login(request, response);
+				mapper.writeValue(response.getOutputStream(), PlayerService.getPlayerService().login(request, response));
 			break;
 		case "generatePokemon":		
 			//write the generated pokemon to the response
