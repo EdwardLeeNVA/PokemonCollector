@@ -56,8 +56,7 @@ public class PlayerService {
 				request.getHeader("Authorization")).getUserID();
 		//generate a random pokemon and add it to the user's collection
 		int pokemonId = new Random().nextInt(150)+1;
-		CachingUtility.getCachingUtility().addToCache(username, pokemonId);
-			return DAO.generatePokemon(trainerId, pokemonId);
+			return DAO.generatePokemon(trainerId, pokemonId, username);
 	}
 	
 	/**
