@@ -1,4 +1,5 @@
 package com.revature.pokemonv2.model;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -114,5 +115,14 @@ public class Pokemon {
 	public Integer getCost() {
 		return this.cost;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Pokemon [id=" + id + ", name=" + name + ", imageUrl=" + imageUrl + ", type=" + Arrays.toString(type)
+				+ ", stats=" + stats + ", count=" + count + ", cost=" + cost + "]";
+	}
+	
+	
 	
 }

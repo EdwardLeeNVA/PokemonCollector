@@ -12,7 +12,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.revature.pokemonv2.model.Pokemon;
 
 import org.apache.log4j.Logger;
@@ -22,6 +21,8 @@ import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.service.TokenService;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
+
+import oracle.jdbc.OracleTypes;
 
 /**
  * The TrainerDAOImp class contains methods that deal with the selection,
@@ -68,28 +69,37 @@ public class TrainerDAOImp implements TrainerDAO {
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 
 			// Call stored procedure
-			String sql = "CALL get_all_duplicates(?)";
-			//Setup callableStatment
-			try(CallableStatement cs = conn.prepareCall(sql)){
-			//Set the trainer id in the callable statement
+			String sql = "CALL get_all_duplicates(?, ?)";
+			// Setup callableStatment
+			try (CallableStatement cs = conn.prepareCall(sql)) {
+				// Set the trainer id in the callable statement
 				cs.setInt(1, trainer_id);
-				cs.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
-				cs.execute();				//Prepare the resultset
-				try(ResultSet rs = (ResultSet) cs.getObject(2)){
-				//While the result set has another object create a pokemon objet and push it to the duplicatePokemon array.
-					while(rs.next()) {
-						Pokemon temp = new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count"));
-						duplicateList.add(temp);
-					}
-				}
-			}
-			return duplicateList;
+				cs.registerOutParameter(2, OracleTypes.CURSOR);
+				cs.execute(); // Prepare the resultset
+				try (ResultSet rs = (ResultSet) cs.getObject(2)) {
+					// While the result set has another object create a pokemon objet and push it to
+					// the duplicatePokemon array.
+					// Check and see if there are any duplicates if not retunr null
 
-		} catch (SQLException e) {
+					while (rs.next()) {
+
+						Pokemon temp = new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count"));
+						// System.out.println(temp.toString());
+						duplicateList.add(temp);
+						
+					}
+
+				}
+
+				return duplicateList;
+
+			}
+		}
+
+		catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-
 
 	}
 
@@ -139,7 +149,7 @@ public class TrainerDAOImp implements TrainerDAO {
 				out[0] = cs.getInt(2); //set return value
 				out[1] = cs.getInt(3);//set return value
 			}
-			return out; //return array of values
+			return out; // return array of values
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,7 +169,7 @@ public class TrainerDAOImp implements TrainerDAO {
 				out[0] = cs.getInt(3); //set return value
 				out[1] = cs.getInt(4);//set return value
 			}
-			return out; //return array of values
+			return out; // return array of values
 
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
