@@ -3,6 +3,7 @@ package com.revature.pokemonv2.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
 import com.revature.pokemonv2.dao.*;
@@ -15,6 +16,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 
 	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
 	private final int MAX_POKEDEX_SIZE = 151;
+	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
 	@Override

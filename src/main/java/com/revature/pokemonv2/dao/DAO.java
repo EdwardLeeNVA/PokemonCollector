@@ -6,11 +6,11 @@ import java.util.Map;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
-/**
- * 
- * @author idrios
- *
- */
+
+import com.revature.pokemonv2.utilities.ConnectionUtility;
+import com.revature.pokemonv2.utilities.PokedexLoadWriter;
+
+
 public interface DAO {
 	
 	
@@ -24,7 +24,6 @@ public interface DAO {
 	public Map<Type, 	Integer> getTypeFrequency(Trainer trainer);    // "user1 has 8 flying types"   | "user2 has 31 water types"   | ....
 	public Map<Trainer, Integer> getTrainerScore(); 				   // "user1 has 888 points"       | "user2 has 889 points"       | ....
 	public Map<Trainer, Integer> getTrainerCredits(); 				   // "user1 has 1 credits"        | "user2 has 100000 credits"   | ....
-
 	List<Pokemon> getTrainerPokedex(String username);
 	List<Trainer> getLeaderboard(int topN);
 

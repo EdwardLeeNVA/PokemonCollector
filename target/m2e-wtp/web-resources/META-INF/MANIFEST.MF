@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: idrios
 Build-Jdk: 1.8.0_201
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: omarg
+Build-Jdk: 1.8.0_201
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 8cca0a3d0ef0370be7359dec6c31a4b2e7b03a59

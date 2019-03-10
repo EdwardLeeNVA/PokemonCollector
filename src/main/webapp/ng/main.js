@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -91,17 +91,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
-/* harmony import */ var _components_landing_landing_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/landing/landing.component */ "./src/app/components/landing/landing.component.ts");
-/* harmony import */ var _components_register_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/register/register.component */ "./src/app/components/register/register.component.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_shop_shop_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/shop/shop.component */ "./src/app/components/shop/shop.component.ts");
-/* harmony import */ var _components_collection_collection_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/collection/collection.component */ "./src/app/components/collection/collection.component.ts");
-/* harmony import */ var _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/redeem/redeem.component */ "./src/app/components/redeem/redeem.component.ts");
-/* harmony import */ var _util_routes__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./util/routes */ "./src/app/util/routes.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
+/* harmony import */ var _components_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/landing/landing.component */ "./src/app/components/landing/landing.component.ts");
+/* harmony import */ var _components_register_register_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/register/register.component */ "./src/app/components/register/register.component.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _components_shop_shop_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/shop/shop.component */ "./src/app/components/shop/shop.component.ts");
+/* harmony import */ var _components_collection_collection_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/collection/collection.component */ "./src/app/components/collection/collection.component.ts");
+/* harmony import */ var _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/redeem/redeem.component */ "./src/app/components/redeem/redeem.component.ts");
+/* harmony import */ var _util_routes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./util/routes */ "./src/app/util/routes.ts");
 
 
 
@@ -123,23 +123,24 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _components_login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"],
-                _components_landing_landing_component__WEBPACK_IMPORTED_MODULE_7__["LandingComponent"],
-                _components_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"],
-                _components_home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
-                _components_shop_shop_component__WEBPACK_IMPORTED_MODULE_10__["ShopComponent"],
-                _components_collection_collection_component__WEBPACK_IMPORTED_MODULE_11__["CollectionComponent"],
-                _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_12__["RedeemComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
+                _components_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__["LandingComponent"],
+                _components_register_register_component__WEBPACK_IMPORTED_MODULE_9__["RegisterComponent"],
+                _components_home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _components_shop_shop_component__WEBPACK_IMPORTED_MODULE_11__["ShopComponent"],
+                _components_collection_collection_component__WEBPACK_IMPORTED_MODULE_12__["CollectionComponent"],
+                _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_13__["RedeemComponent"]
             ],
             imports: [
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(_util_routes__WEBPACK_IMPORTED_MODULE_13__["AppRoutes"]),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(_util_routes__WEBPACK_IMPORTED_MODULE_14__["AppRoutes"]),
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -167,7 +168,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col\" id=\"collection-section-header\">\n        <img\n          class=\"animated jello\"\n          id=\"pokedex-heading\"\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\n          alt=\"pokemon-font\"\n        />\n        <div id=\"card-gallery-grid\">\n          <div\n            class=\"pokemon-card-outer text-center\"\n            *ngFor=\"let pokemon of trainersPokemon\"\n          >\n            <h4 class=\"pokemon-card-name\">{{ pokemon.pokemonName }}</h4>\n            <img [src]=\"pokemon.image\" class=\"pokemon-card-img\" />\n            <div class=\"pokemon-card-info-cont\">\n              <p>Type: {{ pokemon.types }}</p>\n              <p>HP: {{ pokemon.stats[5].base_stat }}</p>\n  \n              <p>Attack: {{ pokemon.stats[3].base_stat }}</p>\n              <p>Defense: {{ pokemon.stats[4].base_stat }}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.pokemonName }}</h4>\r\n            <img [src]=\"pokemon.image\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p>Type: {{ pokemon.types }}</p>\r\n              <p>HP: {{ pokemon.stats[5].base_stat }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats[3].base_stat }}</p>\r\n              <p>Defense: {{ pokemon.stats[4].base_stat }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -239,7 +240,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  home works!\n</p>\n"
+module.exports = "<p>\r\n  home works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -284,7 +285,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "#leaderboardTable{\r\n  border: 2px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n.item1 {\r\n  grid-column-start: 1;\r\n  grid-column-end: 3;\r\n  grid-row-start: 1;\r\n  grid-row-end: 3;\r\n}\r\n\r\n.item2 {\r\n  grid-column-start: 1;\r\n  grid-column-end: 3;\r\n  grid-row-start: 1;\r\n  grid-row-end: 3;\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;   \r\n}\r\n\r\nhtml, body {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  height: 100%;\r\n  margin: 0;\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername{\r\n  border: 1px solid black;\r\n}\r\n\r\n#tablescore{\r\n  border: 1px solid black;\r\n}\r\n\r\n/*html {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  body {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  .main-container {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  #landing-pokeball-cont {\r\n    text-align: center;\r\n    margin-top: 100px;\r\n  }\r\n  \r\n  #player-preview-section {\r\n  }\r\n  \r\n  .player-preview-heading {\r\n    text-align: center;\r\n    border: 1px solid yellow;\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    color: white;\r\n  }\r\n  \r\n  .user-item {\r\n  }\r\n  #tableusername{\r\n    background: linear-gradient(to top, black,black);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white; \r\n  }\r\n  #username-label {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    margin-left: 10px;\r\n    width: 50%;\r\n    padding: 5px;\r\n    border: 2px solid yellow;\r\n  }\r\n  \r\n  #username-container {\r\n    overflow-y: scroll;\r\n    max-height: 300px;\r\n  }\r\n\r\n  #button {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    color: white;   \r\n  }\r\n\r\n  #leaderboardTable{\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white;   \r\n  }*/\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtFQUN4Qiw0REFBNEQ7QUFDOUQ7O0FBRUE7RUFDRSxvQkFBb0I7RUFDcEIsa0JBQWtCO0VBQ2xCLGlCQUFpQjtFQUNqQixlQUFlO0FBQ2pCOztBQUVBO0VBQ0Usb0JBQW9CO0VBQ3BCLGtCQUFrQjtFQUNsQixpQkFBaUI7RUFDakIsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLDREQUE0RDtFQUM1RCx3QkFBd0I7RUFDeEIsWUFBWTtBQUNkOztBQUVBO0VBQ0UscUVBQXFFO0VBQ3JFLFlBQVk7RUFDWixTQUFTO0FBQ1g7O0FBRUE7RUFDRSxhQUFhO0VBQ2Isb0JBQW9CO0FBQ3RCOztBQUVBO0VBQ0UsdUJBQXVCO0FBQ3pCOztBQUVBO0VBQ0UsdUJBQXVCO0FBQ3pCOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBMERJIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNsZWFkZXJib2FyZFRhYmxle1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbn1cclxuXHJcbi5pdGVtMSB7XHJcbiAgZ3JpZC1jb2x1bW4tc3RhcnQ6IDE7XHJcbiAgZ3JpZC1jb2x1bW4tZW5kOiAzO1xyXG4gIGdyaWQtcm93LXN0YXJ0OiAxO1xyXG4gIGdyaWQtcm93LWVuZDogMztcclxufVxyXG5cclxuLml0ZW0yIHtcclxuICBncmlkLWNvbHVtbi1zdGFydDogMTtcclxuICBncmlkLWNvbHVtbi1lbmQ6IDM7XHJcbiAgZ3JpZC1yb3ctc3RhcnQ6IDE7XHJcbiAgZ3JpZC1yb3ctZW5kOiAzO1xyXG59XHJcblxyXG4jYnV0dG9uIHtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gIGNvbG9yOiB3aGl0ZTsgICBcclxufVxyXG5cclxuaHRtbCwgYm9keSB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbi5ncmlkLWNvbnRhaW5lciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLWdhcDogNTBweCAxMDBweDtcclxufVxyXG5cclxuI3RhYmxldXNlcm5hbWV7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XHJcbn1cclxuXHJcbiN0YWJsZXNjb3Jle1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xyXG59XHJcblxyXG4vKmh0bWwge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gIH1cclxuICBib2R5IHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxuICB9XHJcbiAgXHJcbiAgLm1haW4tY29udGFpbmVyIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxuICB9XHJcbiAgXHJcbiAgI2xhbmRpbmctcG9rZWJhbGwtY29udCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBtYXJnaW4tdG9wOiAxMDBweDtcclxuICB9XHJcbiAgXHJcbiAgI3BsYXllci1wcmV2aWV3LXNlY3Rpb24ge1xyXG4gIH1cclxuICBcclxuICAucGxheWVyLXByZXZpZXctaGVhZGluZyB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCB5ZWxsb3c7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgfVxyXG4gIFxyXG4gIC51c2VyLWl0ZW0ge1xyXG4gIH1cclxuICAjdGFibGV1c2VybmFtZXtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsIGJsYWNrLGJsYWNrKTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiB3aGl0ZTsgXHJcbiAgfVxyXG4gICN1c2VybmFtZS1sYWJlbCB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgfVxyXG4gIFxyXG4gICN1c2VybmFtZS1jb250YWluZXIge1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gICAgbWF4LWhlaWdodDogMzAwcHg7XHJcbiAgfVxyXG5cclxuICAjYnV0dG9uIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICAgIGNvbG9yOiB3aGl0ZTsgICBcclxuICB9XHJcblxyXG4gICNsZWFkZXJib2FyZFRhYmxle1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgY29sb3I6IHdoaXRlOyAgIFxyXG4gIH0qLyJdfQ== */"
 
 /***/ }),
 
@@ -295,7 +296,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button routerLink=\"/login\">Temp to Login</button>\n<br />\n<button routerLink=\"/register\">Temp to Register</button>"
+module.exports = "<!--<div class=\"container  text-light  main-container\" id=\"mainContainer\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6 justify-content-center\" id=\"player-preview-section\">\r\n      <div class=\"player-preview-heading\">\r\n        <h2>Player Preview</h2>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\" id=\"leaderboard-col\">\r\n      <div class=\"container\" id=\"leaderboard-container\">\r\n        <div class=\"row\">\r\n          <div>\r\n            <div>\r\n              <table class=\" col-md-6 justify-content-center\" id=\"leaderboardTable\">\r\n                <thead>\r\n                  <tr>\r\n                    <th scope=\"col\">Username</th>\r\n                    <th scope=\"col\">Score</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody id=\"leaderboardBody\"></tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-6\">\r\n      <form #playerForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" novalidate id=\"username-container\">\r\n        <button class=\"center\" routerLink=\"/login\" id='button'>Temp to Login</button>\r\n        <button class=\"center\" routerLink=\"/register\" id='button'>Temp to Register</button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n-->\r\n<html>\r\n<div class=\"grid-container\">\r\n  <div class=\"grid-item\">\r\n    <table class=\"grid-item\" id=\"leaderboardTable\">\r\n      <thead>\r\n        <tr>\r\n          <th id=\"tableusername\" scope=\"col\">Username</th>\r\n          <th id=\"tablescore\" scope=\"col\">Score</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <form #playerForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" novalidate id=\"username-container\">\r\n    <div class=\"grid-item\">\r\n      <button class=\"center\" routerLink=\"/login\" id='button'>Temp to Login</button>\r\n    </div>\r\n    <div class=\"grid-item\">\r\n      <button class=\"center\" routerLink=\"/register\" id='button'>Temp to Register</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n</html>\r\n"
 
 /***/ }),
 
@@ -311,12 +312,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingComponent", function() { return LandingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 var LandingComponent = /** @class */ (function () {
-    function LandingComponent() {
+    function LandingComponent(http) {
+        this.http = http;
+        this.configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
     }
     LandingComponent.prototype.ngOnInit = function () {
+        this.http.get(this.configUrl)
+            .subscribe(function (Response) {
+            //console.log(Response);
+            console.log("Updateing rows");
+            var table = document.getElementById('leaderboardBody');
+            for (var _i = 0, Response_1 = Response; _i < Response_1.length; _i++) {
+                var data = Response_1[_i];
+                table.innerHTML = table.innerHTML + ("\n      <td align=\"left\" id =\"tableusername\">" + data.username + "<td> \n      <td align=\"left\" id =\"tablescore\">" + data.score + "<td>\n      ");
+            }
+        });
     };
     LandingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -324,7 +339,7 @@ var LandingComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./landing.component.html */ "./src/app/components/landing/landing.component.html"),
             styles: [__webpack_require__(/*! ./landing.component.css */ "./src/app/components/landing/landing.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], LandingComponent);
     return LandingComponent;
 }());
@@ -351,7 +366,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\n  <div>Username: <input type = \"text\" name = \"username\" /></div>\n  <div>Last name: <input type = \"text\" name = \"password\" /></div>\n  <div><input type = \"submit\" name = \"log-in\" value = \"Log In\" /></div>\n</form>"
+module.exports = "<div>\r\n  <form id=\"loginForm\" class=\"form-group\" #loginForm=\"ngForm\" (ngSubmit)=\"loginTrainer()\" method=\"POST\">\r\n    <div class=\"form-group\">\r\n      <label for=\"username\">Username: </label>\r\n      <input id=\"username\" name=\"username\" class=\"form-control\" required\r\n        placeholder=\"username\" #username>\r\n\r\n      <div *ngIf=\"username.invalid && (username.dirty || username.touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"username.errors.required\">\r\n          Username is required.\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"password\">Password: </label>\r\n      <input id=\"password\" name=\"password\" class=\"form-control\" required type=\"password\"\r\n        placeholder=\"password\" #password>\r\n\r\n        <div *ngIf=\"password.invalid && (password.dirty || password.touched)\" class=\"alert alert-danger\">\r\n          <div *ngIf=\"password.errors.required\">\r\n            Password is required.\r\n          </div>\r\n        </div>\r\n    </div>\r\n\r\n    <input name=\"submit\" type=\"submit\" class=\"btn btn-outline-light\" [disabled]=\"!loginForm.form.valid\">\r\n  </form>\r\n</div>\r\n<form>\r\n  <div>Username: <input type = \"text\" name = \"username\" /></div>\r\n  <div>Last name: <input type = \"text\" name = \"password\" /></div>\r\n  <div><input type = \"submit\" name = \"log-in\" value = \"Log In\" /></div>\r\n</form>"
 
 /***/ }),
 
@@ -367,12 +382,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(trainerService, router) {
+        this.trainerService = trainerService;
+        this.router = router;
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.loginTrainer = function () {
+        var _this = this;
+        var credentials = new FormData(document.querySelector("form"));
+        this.trainerService.readTrainer(credentials).subscribe(function (data) { return _this.router.navigateByUrl("/home"); });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -380,7 +406,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/components/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/components/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -407,7 +433,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  redeem works!\n</p>\n"
+module.exports = "<p>\r\n  redeem works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -463,7 +489,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <form id=\"registerForm\" class=\"form-group\" #registerForm=\"ngForm\" (ngSubmit)=\"registerTrainer()\" method=\"POST\">\n    <div class=\"form-group\">\n      <label for=\"username\">Username: </label>\n      <input id=\"username\" name=\"username\" class=\"form-control\" required [(ngModel)]=\"trainer.username\"\n        placeholder=\"username\" #spy=\"ngModel\">\n\n      <div *ngIf=\"spy.invalid && (spy.dirty || spy.touched)\" class=\"alert alert-danger\">\n        <div *ngIf=\"spy.errors.required\">\n          Username is required.\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"password\">Password: </label>\n      <input name=\"password\" class=\"form-control\" required type=\"password\" [(ngModel)]=\"trainer.password\"\n        placeholder=\"password\">\n    </div>\n    \n    <div class=\"form-group\">\n      <label for=\"firstname\">First Name: </label>\n      <input name=\"firstname\" class=\"form-control\" required [(ngModel)]=\"trainer.f_name\" placeholder=\"f_name\">\n    </div>\n    \n    <div class=\"form-group\">\n      <label for=\"lastname\">Last Name: </label>\n      <input name=\"lastname\" class=\"form-control\" required [(ngModel)]=\"trainer.l_name\" placeholder=\"l_name\">\n    </div>\n    \n    <div class=\"form-group\">\n      <label for=\"email\">Email: </label>\n      <input name=\"email\" class=\"form-control\" required type=\"email\" [(ngModel)]=\"trainer.email\" placeholder=\"email\">\n    </div>\n\n    <input name=\"submit\" type=\"submit\" class=\"btn btn-outline-light\" [disabled]=\"!registerForm.form.valid\">\n  </form>\n</div>\n"
+module.exports = "<div>\r\n  <form id=\"registerForm\" class=\"form-group\" #registerForm=\"ngForm\" (ngSubmit)=\"registerTrainer()\" method=\"POST\">\r\n    <div class=\"form-group\">\r\n      <label for=\"username\">Username: </label>\r\n      <input name=\"username\" class=\"form-control\" required\r\n        placeholder=\"username\" #username>\r\n\r\n      <div *ngIf=\"username.invalid && (username.dirty || username.touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"username.errors.required\">\r\n          Username is required.\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"password\">Password: </label>\r\n      <input name=\"password\" class=\"form-control\" required type=\"password\"\r\n        placeholder=\"password\" #password>\r\n\r\n        <div *ngIf=\"password.invalid && (password.dirty || password.touched)\" class=\"alert alert-danger\">\r\n          <div *ngIf=\"password.errors.required\">\r\n            Password is required.\r\n          </div>\r\n        </div>\r\n    </div>\r\n    \r\n    <div class=\"form-group\">\r\n      <label for=\"fname\">First Name: </label>\r\n      <input name=\"fname\" class=\"form-control\" required\r\n        placeholder=\"fname\" #fname>\r\n\r\n      <div *ngIf=\"fname.invalid && (fname.dirty || fname.touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"fname.errors.required\">\r\n          First name is required.\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"form-group\">\r\n      <label for=\"lname\">Last Name: </label>\r\n      <input name=\"lname\" class=\"form-control\" required\r\n        placeholder=\"lname\" #lname>\r\n\r\n      <div *ngIf=\"lname.invalid && (lname.dirty || lname.touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"lname.errors.required\">\r\n          Last name is required.\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div class=\"form-group\">\r\n      <label for=\"email\">Email: </label>\r\n      <input name=\"email\" class=\"form-control\" required type=\"email\"\r\n        placeholder=\"email\" #email>\r\n\r\n      <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" class=\"alert alert-danger\">\r\n        <div *ngIf=\"email.errors.required\">\r\n          Email is required.\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <input name=\"submit\" type=\"submit\" class=\"btn btn-outline-light\" [disabled]=\"!registerForm.form.valid\">\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -489,20 +515,13 @@ var RegisterComponent = /** @class */ (function () {
     function RegisterComponent(trainerService, router) {
         this.trainerService = trainerService;
         this.router = router;
-        this.trainer = {
-            id: 0,
-            username: '',
-            password: '',
-            f_name: '',
-            l_name: '',
-            email: ''
-        };
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
     RegisterComponent.prototype.registerTrainer = function () {
         var _this = this;
-        this.trainerService.createTrainer(this.trainer).subscribe(function (data) { return _this.router.navigateByUrl("/landing"); });
+        var credentials = new FormData(document.querySelector("form"));
+        this.trainerService.createTrainer(credentials).subscribe(function (data) { return _this.router.navigateByUrl("/landing"); });
     };
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -537,7 +556,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  shop works!\n</p>\n"
+module.exports = "<div>\r\n  <form>\r\n    <!-- <input class=\"form-check-input\" type=\"radio\" value=\"15\" [(ngModel)]=\"numPoke\" (radioStateChange)=\"populatePages()\"/>\r\n    <label>15</label>\r\n    <input class=\"form-check-input\" type=\"radio\" value=\"30\" [(ngModel)]=\"numPoke\" (radioStateChange)=\"populatePages()\"/>\r\n    <label>30</label>\r\n    <input class=\"form-check-input\" type=\"radio\" value=\"75\" [(ngModel)]=\"numPoke\" (radioStateChange)=\"populatePages()\"/>\r\n    <label>75</label>\r\n    <input class=\"form-check-input\" type=\"radio\" value=\"150\" [(ngModel)]=\"numPoke\" (radioStateChange)=\"populatePages()\"/>\r\n    <label>150</label> -->\r\n    <select [(ngModel)]=\"numPoke\" (change)=\"populatePokePages()\">\r\n      <option value=0>Number of Pokemon per page</option>\r\n      <option value=20>20</option>\r\n      <option value=50>50</option>\r\n      <option value=100>100</option>\r\n    </select>\r\n  </form>\r\n</div>\r\n  <!--put number of pages in here-->\r\n  <div class=\"row justify-content-md-center\">\r\n    <nav aria-label=\"Page navigation example\">\r\n      <ul>\r\n        <li><a class=\"page-link\" (click)=\"prevPage()\" aria-label=\"Previous\"></a></li>\r\n        <li><a class=\"page-link\" (click)=\"nextPage()\" aria-label=\"Next\"></a></li>\r\n      </ul>\r\n    </nav>\r\n  </div>\r\n<div class=\"radio-card-grid\" *ngIf=\"pokePages\">\r\n  <div class=\"form-check radio-form-item\" *ngFor=\"let pokemon of pokePages\">\r\n    <input class=\"form-check-input customRadioBtn\" type=\"radio\" name=\"gridRadios\"\r\n      value=\"{{allPoke.pokemon.id}}\" checked/>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -553,12 +572,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopComponent", function() { return ShopComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 var ShopComponent = /** @class */ (function () {
-    function ShopComponent() {
+    function ShopComponent(http) {
+        this.http = http;
+        this.TOTALPOKEMON = 150;
+        this.currentPage = 0;
     }
     ShopComponent.prototype.ngOnInit = function () {
+        this.populatePokeArray();
+    };
+    ShopComponent.prototype.getAllPokemon = function () {
+        return this.http.get("localhost:8080/PokemonCollector/servlet/allPokemon");
+    };
+    ShopComponent.prototype.populatePokeArray = function () {
+        var _this = this;
+        this.getAllPokemon().subscribe(function (data) {
+            //put all pokemon into pokemon array
+            for (var i = 0; i < data.length; i++) {
+                _this.allPoke[i] = data[i];
+            }
+        });
+    };
+    ShopComponent.prototype.populatePokePages = function () {
+        var count = 0;
+        this.currentPage = 0;
+        //display number of pokemon on page from radio button
+        for (var i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++) {
+            this.pokePages[count] = this.allPoke[i];
+            count++;
+        }
+        this.numPages = Math.ceil(this.TOTALPOKEMON / this.numPoke);
+    };
+    //wrap around to first page if on last page
+    ShopComponent.prototype.nextPage = function () {
+        if (this.currentPage == this.numPages) {
+            this.currentPage = 0;
+        }
+        else {
+            this.currentPage++;
+        }
+    };
+    //wrap around to last page if on first page
+    ShopComponent.prototype.prevPage = function () {
+        if (this.currentPage == 0) {
+            this.currentPage = this.numPages;
+        }
+        else {
+            this.currentPage--;
+        }
     };
     ShopComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -566,7 +631,7 @@ var ShopComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shop.component.html */ "./src/app/components/shop/shop.component.html"),
             styles: [__webpack_require__(/*! ./shop.component.css */ "./src/app/components/shop/shop.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], ShopComponent);
     return ShopComponent;
 }());
@@ -628,14 +693,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var TrainerService = /** @class */ (function () {
     function TrainerService(_http) {
         this._http = _http;
     }
     //Method call fo POST request for registering a new trainer.
-    TrainerService.prototype.createTrainer = function (newTrainer) {
-        console.log(newTrainer);
-        return this._http.post("/PokemonCollector/servlet/register", newTrainer);
+    TrainerService.prototype.readTrainer = function (credentials) {
+        console.log(credentials);
+        return this._http.post("/PokemonCollector/servlet/unfiltered/login", credentials, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })
+        });
+    };
+    //Method call fo POST request for registering a new trainer.
+    TrainerService.prototype.createTrainer = function (credentials) {
+        console.log(credentials);
+        return this._http.post("/PokemonCollector/servlet/unfiltered/register", credentials, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })
+        });
     };
     TrainerService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1069,7 +1148,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/idrios/Documents/workspace-sts-3.9.7.RELEASE/PokemonCollector/src/main/ngapp/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\omarg\Documents\Workspace\PokemonCollector\src\main\ngapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

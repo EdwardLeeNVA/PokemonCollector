@@ -27,9 +27,9 @@
      <cache alias="pokedexCache" >
 		<key-type>java.lang.String</key-type>
 		<value-type>java.util.ArrayList</value-type>
-		<expiry>
+		<!--<expiry>
 			<ttl unit = "seconds">60</ttl>
-		</expiry>
+		</expiry>-->
 		<loader-writer>
 			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
 		</loader-writer>

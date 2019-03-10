@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-landing',
@@ -8,37 +8,25 @@ import { NgForOf } from '@angular/common';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() {
+  constructor(private http : HttpClient) {
   }
 
-  DummyHead = [
-    {
-      Username: 'Gey',
-      Score: 69
-    }, {
-      Username: 'Help',
-      Score: 5
-    }, {
-      Username: 'Me',
-      Score: 234
-    }, {
-      Username: `I'm`,
-      Score: 76
-    }, {
-      Username: 'Tra...',
-      Score: 98
-    }
-  ]
+  configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
 
   ngOnInit() {
+
+    this.http.get<any[]>(this.configUrl)
+    .subscribe(Response => {
+    //console.log(Response);
     console.log("Updateing rows");
     let table = document.getElementById('leaderboardBody');
-    for (let data of this.DummyHead) {
+    for (let data of Response) {
       table.innerHTML = table.innerHTML + `
-      <td>${data.Username}<td> 
-      <td>${data.Score}<td>
+      <td align="left" id ="tableusername">${data.username}<td> 
+      <td align="left" id ="tablescore">${data.score}<td>
       `
     }
+  });
   }
 
 }

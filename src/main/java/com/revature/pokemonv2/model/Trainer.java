@@ -1,6 +1,6 @@
 package com.revature.pokemonv2.model;
 
-public class Trainer {
+public class Trainer implements Comparable<Trainer>{
 	private String username;
 	private String firstName;
 	private String lastName;
@@ -59,5 +59,9 @@ public class Trainer {
 	}
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	@Override
+	public int compareTo(Trainer t2) {
+		return t2.score-this.score;
 	}
 }
