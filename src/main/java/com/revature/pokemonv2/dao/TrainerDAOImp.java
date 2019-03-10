@@ -112,6 +112,7 @@ public class TrainerDAOImp implements TrainerDAO {
 		return token;
 	}
 
+	@Override
 	public boolean purchasePokemon(String username, int cost) {
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost)) {
