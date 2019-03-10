@@ -5,6 +5,7 @@ public class Trainer {
 	private String firstName;
 	private String lastName;
 	private String password;
+	private String email;
 	private int score;
 	private int credits;
 	private int userID;
@@ -68,6 +69,20 @@ public class Trainer {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	/**
+	 * The trainer's first name.
+	 */
+	public String getEmail() {
+		return email;
+	}
+	
+	/**
+	 * Sets the trainer's first name.
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	/**
