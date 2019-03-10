@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,10 +30,10 @@ import com.revature.pokemonv2.utilities.ConnectionUtility;
  */
 public class TrainerDAOImp implements TrainerDAO {
 
-	private static final TokenService tokenService = TokenService.getInstance();
-	private static TrainerDAOImp trainer = null;
 	private static final Logger LOGGER = Logger.getLogger(TrainerDAOImp.class);
 	private static ObjectMapper mapper = new ObjectMapper();
+	private static final TokenService tokenService = TokenService.getInstance();
+	private static TrainerDAOImp trainer = null;
 
 	/**
 	 * Gets the instance of the class.
@@ -42,45 +43,6 @@ public class TrainerDAOImp implements TrainerDAO {
 			trainer = new TrainerDAOImp();
 		}
 		return trainer;
-	}
-
-	@Override
-	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
-		// Creates a new trainer and assigns the username and password to the object
-		// Verifies if the user is valid
-		String token = "";
-		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
-		if (login != null) {
-			// Generate a token for the user
-			token = tokenService.generateToken(login);
-			response.addHeader("Authorization", "Bearer " + token);
-			try {
-				response.getWriter().write(mapper.writeValueAsString(login));
-			} catch (IOException e) {
-				LOGGER.error(e.getMessage(), e);
-			}
-		}
-		return token;
-	}
-
-	@Override
-	public Trainer verifyLogin(String username, String password) {
-		// Try with resources on the instance of ConnectionUtility
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			// Try with resources on the PreparedStatement
-			try (CallableStatement cs = TrainerDAOStatements.verifyLoginStatement(conn, username, password)) {
-				cs.execute();
-				// Executing out parameters
-				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
-					if (rs.next()) {
-						return TrainerFactory.createFromResult(rs);
-					}
-				}
-			}
-		} catch (SQLException e) {
-			LOGGER.error(e.getMessage(), e);
-		}
-		return null;
 	}
 
 	@Override
@@ -99,12 +61,7 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	/*
-	 * Method for fetching all duplicate pokemon of a specfiic trainer.
-	 * Takes an int trainer_id
-	 * Returns an ArrayList of pokemon objects
-	 */
-	public ArrayList<Pokemon> get_duplicates(int trainer_id) {
+	public List<Pokemon> getDuplicates(int trainer_id) {
 		//Create a temporary list for pokemon.
 		ArrayList<Pokemon> duplicateList = null;
 		//Try with resources to connect to database.
@@ -136,15 +93,61 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	}
 
+	@Override
+	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
+		// Creates a new trainer and assigns the username and password to the object
+		// Verifies if the user is valid
+		String token = "";
+		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
+		if (login != null) {
+			// Generate a token for the user
+			token = tokenService.generateToken(login);
+			response.addHeader("Authorization", "Bearer " + token);
+			try {
+				response.getWriter().write(mapper.writeValueAsString(login));
+			} catch (IOException e) {
+				LOGGER.error(e.getMessage(), e);
+			}
+		}
+		return token;
+	}
 
+	public boolean purchasePokemon(String username, int cost) {
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost)) {
+				cs.execute();
+			}
+		} catch (SQLException e) {
+			LOGGER.error(e.getMessage(), e);
+			return false;
+		}
+		return true;
+	}
 
 	@Override
-	/* Purpose: Redeem a specific pokemon from a trainer's collection.
-	 * trainer_id: ID of the current trainer.
-	 * poke_id: ID of the pokemon being redeemed.
-	 * Returns the amount of credits of credits given (index 0) and total credits (index 1)
-	 */
+	public int[] redeemAll(int trainer_id) {
+		int [] out = new int[2]; //return array
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
+			String sql = "CALL redeem_all_duplicates(?,?,?)"; //Procedure string
+			//Setup callableStatment
+			try(CallableStatement cs = conn.prepareCall(sql)){
+				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
+				cs.registerOutParameter(2, Types.INTEGER); //Out param for added credits
+				cs.registerOutParameter(3, Types.INTEGER);//out param for new total
+				cs.execute();				//Prepare the resultset
 
+				out[0] = cs.getInt(2); //set return value
+				out[1] = cs.getInt(3);//set return value
+			}
+			return out; //return array of values
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
 	public int[] redeemSpecific(int trainer_id, int poke_id)
 	{
 		int [] out = new int[2]; //return array
@@ -170,43 +173,24 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	}
 
+
 	@Override
-	/*
-	 * Purpose: Redeem a all pokemon for a specific trainer.
-	 * trainer_id: ID of the current trainer.
-	 */
-	public int[] redeemAll(int trainer_id) {
-		int [] out = new int[2]; //return array
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
-			String sql = "CALL redeem_all_duplicates(?,?,?)"; //Procedure string
-			//Setup callableStatment
-			try(CallableStatement cs = conn.prepareCall(sql)){
-				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
-				cs.registerOutParameter(2, Types.INTEGER); //Out param for added credits
-				cs.registerOutParameter(3, Types.INTEGER);//out param for new total
-				cs.execute();				//Prepare the resultset
-
-				out[0] = cs.getInt(2); //set return value
-				out[1] = cs.getInt(3);//set return value
-			}
-			return out; //return array of values
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-
-	public boolean purchasePokemon(String username, int cost) {
+	public Trainer verifyLogin(String username, String password) {
+		// Try with resources on the instance of ConnectionUtility
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost)) {
+			// Try with resources on the PreparedStatement
+			try (CallableStatement cs = TrainerDAOStatements.verifyLoginStatement(conn, username, password)) {
 				cs.execute();
+				// Executing out parameters
+				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
+					if (rs.next()) {
+						return TrainerFactory.createFromResult(rs);
+					}
+				}
 			}
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
-			return false;
 		}
-		return true;
+		return null;
 	}
 }
