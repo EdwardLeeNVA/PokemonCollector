@@ -10,4 +10,6 @@ public interface TrainerDAO {
 	
 	public boolean create_trainer(String username, String password,String email,
 			String f_name, String l_name, int credit, int score);
+
+	public String updateTrainer(int id, String oldUsername, String newUsername, String password, String email, String f_name, String l_name);
 }

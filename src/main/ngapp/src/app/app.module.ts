@@ -13,6 +13,7 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { RedeemComponent } from './components/redeem/redeem.component';
 import {AppRoutes} from "./util/routes";
 import {FormsModule} from '@angular/forms';
+import { AccountInfoComponent } from './components/account-info/account-info.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     HomeComponent,
     ShopComponent,
     CollectionComponent,
-    RedeemComponent
+    RedeemComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,

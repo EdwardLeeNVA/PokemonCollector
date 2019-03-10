@@ -42,4 +42,19 @@ public class PlayerService {
 	public Trainer login(HttpServletRequest request, HttpServletResponse response) {
 		return trainer.loginAuthentication(request, response);
 	}
+	
+	public void updateTrainer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		JsonNode playerJson = mapper.readTree(request.getReader());
+		// attempt to update the user and send back a response
+		Trainer t = TokenService.getInstance().getUserDetailsFromToken(request.getHeader("Authorization"));
+		response.getWriter().append(mapper.writeValueAsString(trainer.updateTrainer(
+				t.getUserID(),
+				t.getUsername(),
+				playerJson.get("username").asText(),
+				playerJson.get("password").asText(),
+				playerJson.get("email").asText(),
+				playerJson.get("f_name").asText(),
+				playerJson.get("l_name").asText()
+				)));
+	}
 }

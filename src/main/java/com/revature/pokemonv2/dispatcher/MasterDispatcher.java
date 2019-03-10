@@ -31,6 +31,9 @@ public class MasterDispatcher {
 		case "login":
 			PlayerService.getPlayerService().login(request, response);
 			break;
+		case "updateTrainer":
+			PlayerService.getPlayerService().updateTrainer(request, response);
+			break;
 		default:
 			System.out.println("URI not recognized");
 		}

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.service.TokenService;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
+
+import oracle.jdbc.OracleTypes;
 
 public class TrainerDAOImp implements TrainerDAO {
 
@@ -87,5 +90,27 @@ public class TrainerDAOImp implements TrainerDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	// Update's the trainer's account information
+	@Override
+	public String updateTrainer(int id, String oldUsername, String newUsername, String password, String email, String f_name, String l_name) {
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			try (CallableStatement cs = conn.prepareCall("CALL update_trainer(?,?,?,?,?,?,?)");) {
+				cs.setInt(1, id);
+				cs.setString(2, oldUsername);
+				cs.setString(3, newUsername);
+				cs.setString(4, password);
+				cs.setString(5, email);
+				cs.setString(6, f_name);
+				cs.setString(7, l_name);
+				cs.registerOutParameter(8, Types.VARCHAR);
+				cs.executeUpdate();
+				return cs.getString(8);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

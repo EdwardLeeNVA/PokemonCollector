@@ -9,9 +9,14 @@ export class TrainerService {
 
   constructor(private _http: HttpClient) { }
 
-   //Method call fo POST request for registering a new trainer.
-   createTrainer(newTrainer: Trainer) {
+  //Method call fo POST request for registering a new trainer.
+  createTrainer(newTrainer: Trainer) {
     console.log(newTrainer);
     return this._http.post<any>("/PokemonCollector/servlet/register", newTrainer);
+  }
+
+  updateTrainer(trainer: Trainer) {
+    console.log(trainer);
+    return this._http.post<any>("/PokemonCollector/servlet/updateTrainer", trainer);
   }
 }
