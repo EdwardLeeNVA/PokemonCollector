@@ -1,11 +1,17 @@
+table {
+  width:95%;
+  height: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
 #leaderboardTable {
   border: 2px solid yellow;
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
 }
 
 #button {
@@ -24,12 +30,14 @@ body {
   grid-gap: 50px 100px;
 }
 
-#tableusername {
-  border: 1px solid black;
+.tabletext{
+  color: white
 }
 
-#tablescore {
-  border: 1px solid black;
+.button {
+  background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+  border: 2px solid yellow;
+  color: white;   
 }
 
 /*html {
