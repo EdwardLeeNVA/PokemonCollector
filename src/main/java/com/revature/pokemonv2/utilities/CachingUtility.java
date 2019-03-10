@@ -149,6 +149,10 @@ public class CachingUtility {
 			while (z < p.getTypes().size()) {
 				typeTemp.add(p.getTypes().get(z).getType().getName());
 			}*/
+			String[] brock = new String[typeTemp.size()];
+			for(int x = 0; x < typeTemp.size(); x++){
+				brock[x] = typeTemp.get(x);
+			}
 
 			Map<String, Integer> statTemp = new HashMap<>();
 			/*int statCount = 0;
@@ -157,8 +161,8 @@ public class CachingUtility {
 				statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
 				cost += p.getStats().get(statCount).getStat().component3();
 			}*/
-			
-			return new com.revature.pokemonv2.model.Pokemon(74, "Geodude", "test", (String[])typeTemp.toArray(), new HashMap<String, Integer>(), 0);
+
+			return new com.revature.pokemonv2.model.Pokemon(74, "Geodude", "test", brock, new HashMap<String, Integer>(), 0);
 			/*return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);*/
 
 	}
