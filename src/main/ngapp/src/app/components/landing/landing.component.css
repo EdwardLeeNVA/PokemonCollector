@@ -8,7 +8,7 @@ table, th, td {
 }
 
 #leaderboardTable {
-  border: 2px solid yellow;
+  border: 3px solid yellow;
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
 }
 
@@ -28,6 +28,14 @@ body {
   grid-gap: 50px 100px;
 }
 
+<<<<<<< HEAD
+#tableusername {
+  border: 3px solid yellow;
+}
+
+#tablescore {
+  border: 3px solid yellow;
+=======
 .tabletext{
   color: white
 }
@@ -36,6 +44,7 @@ body {
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
   border: 2px solid yellow;
   color: white;   
+>>>>>>> 03e8a9c282ee4f3cd0747328cf9ff3ebab8afcf1
 }
 
 /*html {

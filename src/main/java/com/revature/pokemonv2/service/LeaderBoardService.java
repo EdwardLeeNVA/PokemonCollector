@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,4 +37,8 @@ public class LeaderBoardService {
 				
 	}
 	
+	
+	public Map<Trainer, Integer> returngetPokemonCountByTrainer(HttpServletRequest request, HttpServletResponse response){
+		return DAOImpl.getInstance().getPokemonCountByTrainer();
+	}
 }
