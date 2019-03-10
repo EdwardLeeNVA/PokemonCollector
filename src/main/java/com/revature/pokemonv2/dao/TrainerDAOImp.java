@@ -25,7 +25,7 @@ public class TrainerDAOImp implements TrainerDAO {
 	private static final TokenService tokenService = TokenService.getInstance();
 	private static TrainerDAOImp trainer = null;
 	private static final Logger LOGGER = Logger.getLogger(TrainerDAOImp.class);
-	
+
 	/**
 	 * Gets the instance of the class.
 	 */
@@ -35,7 +35,7 @@ public class TrainerDAOImp implements TrainerDAO {
 		}
 		return trainer;
 	}
-	
+
 	@Override
 	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		// Creates a new trainer and assigns the username and password to the object
@@ -44,8 +44,8 @@ public class TrainerDAOImp implements TrainerDAO {
 		if (login != null) {
 			// Generate a token for the user
 			final String token = tokenService.generateToken(login);
-			System.out.println(token);
 			response.addHeader("Authorization", "Bearer " + token);
+			return token;
 		}
 		return "";
 	}
@@ -62,7 +62,7 @@ public class TrainerDAOImp implements TrainerDAO {
 				// Executing out parameters
 				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
 					if (rs.next()) {
-						return TrainerFactory.createFromResult(rs, username);
+						return TrainerFactory.createFromResult(rs);
 					}
 				}
 			}
@@ -92,21 +92,29 @@ public class TrainerDAOImp implements TrainerDAO {
 		}
 		return false;
 	}
-	
+
 	public boolean purchasePokemon(String username, int cost) {
+<<<<<<< HEAD
 		//because of the cache, this will just try to remove the credits from the account, and not remove the pokemon
 		try(Connection conn = ConnectionUtility.getInstance().getConnection()){
 			try(CallableStatement cs = conn.prepareCall("CALL update_credits(?,?)");){
 				cs.setString(1,username);
 				cs.setInt(2, (cost * -1));
+=======
+		// because of the cache, this will just try to remove the credits from the
+		// account, and not remove the pokemon
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			try (CallableStatement cs = conn.prepareCall("CALL update_credits(?,?)");) {
+				cs.setString(1, username);
+				cs.setInt(2, cost);
+>>>>>>> 484a8dce8da835235072a76c5adac2b2290fe2fb
 				cs.execute();
-			}
-			catch(Exception e){
+			} catch (Exception e) {
 				return false;
 			}
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			return false;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 		return true;

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+<<<<<<< HEAD
+<<<<<<< HEAD
+Built-By: Strategiser
+Build-Jdk: 1.8.0_192
+=======
+Built-By: joshu
+Build-Jdk: 1.8.0_191
+>>>>>>> 7e90e95568327dd4184d4e4c330c3ca9578d5b27
+=======
+Built-By: Strategiser
+Build-Jdk: 1.8.0_192
+>>>>>>> d20b5552ce59b465241ec60dab2d07d4bbaeaa13
+Created-By: Maven Integration for Eclipse
+

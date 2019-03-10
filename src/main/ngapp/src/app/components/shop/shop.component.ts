@@ -19,6 +19,7 @@ export class ShopComponent implements OnInit {
   private numPages: number;
   private allPoke: [Pokemon];
   private pokePages: [Pokemon];
+  cardShow: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -37,11 +38,17 @@ export class ShopComponent implements OnInit {
 
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
+      trainer.credits = trainer.credits-cost;
       return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
     }else{
       alert("You can't get ye Pokemon")
     }
-
+  onBallClick() {
+    //Hide pokeball img and show card div
+    $("#generate-pokemon-pokeball").addClass("d-none");
+    $("#generate-pokemon-card").removeClass("d-none");
+    $("#generate-pokemon-draw-btn").removeClass("d-none");
+    this.cardShow = true;
   }
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
@@ -51,12 +58,15 @@ export class ShopComponent implements OnInit {
     this.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
+        console.log(data);
         for (let i = 0; i < data.length; i++){
           this.allPoke[i] = data[i];
         }
+        console.log(this.allPoke);
       }
     )
   }
+
   populatePokePages(): void{
     let count = 0;
     this.currentPage = 0;
@@ -68,6 +78,20 @@ export class ShopComponent implements OnInit {
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
 
+  buyPokemon(pokemonID: number) {
+
+    // Check if user already owns specified Pokemon:
+
+    let owned: boolean = false; // fix this when we actually have access to the cache
+
+    // If the user does not own the Pokemon, add it to their collecion:
+    if (!owned) {
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+    }else{
+      alert("You already own that Pokemon")
+    }
+
+  }
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
