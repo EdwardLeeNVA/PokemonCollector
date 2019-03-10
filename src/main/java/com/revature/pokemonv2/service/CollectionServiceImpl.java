@@ -19,7 +19,7 @@ public class CollectionServiceImpl implements CollectionService {
 		}
 		
 		public List<Pokemon> getCompleteSet(){
-			return(ArrayList<Pokemon>) cachingUtility.getAllPokemon();
+			return cachingUtility.getAllPokemon();
 		}
 		
 		
