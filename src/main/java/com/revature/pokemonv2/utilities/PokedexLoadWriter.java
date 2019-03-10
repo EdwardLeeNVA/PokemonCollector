@@ -20,7 +20,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	@Override
 	public ArrayList<Pokemon> load(Object key) throws Exception {
 		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
-		if(key == null) {
+		if(key == "red") {
 			for (int i = 1; i <= MAX_POKEDEX_SIZE; i++ ) {
 				returnPokeDex.add(cachingUtility.getPokemonFromCache(i));
 			}
