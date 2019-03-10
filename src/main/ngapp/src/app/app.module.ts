@@ -1,20 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
-import { HttpClientModule }    from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { RedeemComponent } from './components/redeem/redeem.component';
-import {AppRoutes} from "./util/routes";
-import {FormsModule} from '@angular/forms';
 import { AccountInfoComponent } from './components/account-info/account-info.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
+import { NavComponent } from './components/nav/nav.component';
+import { JwtInterceptorService } from './services/jwt-interceptor.service'
 
 @NgModule({
   declarations: [
@@ -22,19 +22,26 @@ import { AccountInfoComponent } from './components/account-info/account-info.com
     LoginComponent,
     LandingComponent,
     RegisterComponent,
-    HomeComponent,
     ShopComponent,
     CollectionComponent,
     RedeemComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    GeneratePokemonComponent,
+    NavComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(AppRoutes),
     FormsModule,
-    HttpClientModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

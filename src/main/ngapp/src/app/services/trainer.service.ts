@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Trainer } from '../models/Trainer';
 import { HttpClient } from "@angular/common/http";
+import { Trainer } from 'src/app/models/Trainer';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +9,13 @@ export class TrainerService {
 
   constructor(private _http: HttpClient) { }
 
-  //Method call fo POST request for registering a new trainer.
-  createTrainer(newTrainer: Trainer) {
-    console.log(newTrainer);
-    return this._http.post<any>("/PokemonCollector/servlet/register", newTrainer);
+
+  //Method call for POST request for registering a new trainer.
+  createTrainer(credentials: FormData) {
+    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/register", credentials, { observe: 'response' });
   }
 
-  updateTrainer(trainer: Trainer) {
-    console.log(trainer);
-    return this._http.post<any>("/PokemonCollector/servlet/updateTrainer", trainer);
+  updateTrainer(update: any) {
+    return this._http.post<any>("/PokemonCollector/servlet/updateTrainer", update);
   }
 }

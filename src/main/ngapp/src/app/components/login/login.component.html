@@ -1,5 +1,74 @@
-<form>
-  <div>Username: <input type = "text" name = "username" /></div>
-  <div>Last name: <input type = "text" name = "password" /></div>
-  <div><input type = "submit" name = "log-in" value = "Log In" /></div>
-</form>
+<div class="container" id="login-form-cont">
+  <div class="row justify-content-center">
+    <img
+      class="animated wobble"
+      src="https://fontmeme.com/permalink/190223/df35ea09c6d606c33d4048e3403a3369.png"
+      alt=""
+      id="pokeFONT"
+    />
+    <div class="col-md-6">
+      <form
+        #loginForm="ngForm"
+        (ngSubmit)="loginTrainer()"
+        novalidate
+        id="login-form"
+      >
+        <div class="form-group">
+          <label for="USERNAME">Username</label>
+          <input
+            type="text"
+            required
+            #name="ngModel"
+            name="USERNAME"
+            class="form-control"
+            [class.is-valid]="name.valid"
+            [class.is-invalid]="name.invalid && name.touched"
+            [(ngModel)]="trainer.username"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="name.valid || name.untouched"
+            >Name is required.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="PASSWORD">Password</label>
+          <input
+            type="password"
+            required
+            #password="ngModel"
+            name="PASSWORD"
+            class="form-control"
+            [class.is-valid]="password.valid"
+            [class.is-invalid]="password.invalid && password.touched"
+            [(ngModel)]="trainer.password"
+          />
+          <small
+            class="text-danger"
+            [class.d-none]="password.valid || password.untouched"
+            >Password is required.</small
+          >
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="login-alert"
+          role="alert"
+        >
+          <strong>User used login...</strong> It was not very effective.
+          <button
+            id="login-alert"
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <button class="btn  btn-block " id="login-form-btn" type="submit">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
