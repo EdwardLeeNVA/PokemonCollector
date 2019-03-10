@@ -5,7 +5,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -106,24 +105,17 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public int[] redeemAll(int trainer_id) {
-		int[] out = new int[2]; // return array
+	public int[] redeemAll(int trainerId) {
+		int[] out = new int[2];
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { // create connection
-			String sql = "CALL redeem_all_duplicates(?,?,?)"; // Procedure string
-			// Setup callableStatment
-			try (CallableStatement cs = conn.prepareCall(sql)) {
-				cs.setInt(1, trainer_id);// Set the trainer id in the callable statement
-				cs.registerOutParameter(2, Types.INTEGER); // Out param for added credits
-				cs.registerOutParameter(3, Types.INTEGER);// out param for new total
-				cs.execute(); // Prepare the resultset
-
-				out[0] = cs.getInt(2); // set return value
-				out[1] = cs.getInt(3);// set return value
+			try (CallableStatement cs = TrainerDAOStatements.redeemAllStatement(conn, trainerId)) {
+				cs.execute();
+				out[0] = cs.getInt(2);
+				out[1] = cs.getInt(3);
 			}
-			return out; // return array of values
-
+			return out;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -131,16 +123,13 @@ public class TrainerDAOImp implements TrainerDAO {
 	@Override
 	public int[] redeemSpecific(int trainerId, int pokeId) {
 		int[] out = new int[2]; // return array
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { // create connection
-			String sql = "CALL redeem_duplicate(?,?, ?, ?)"; // Procedure string
-			// Setup callableStatment
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			try (CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)) {
 				cs.execute();
-				out[0] = cs.getInt(3); // set return value
-				out[1] = cs.getInt(4);// set return value
+				out[0] = cs.getInt(3);
+				out[1] = cs.getInt(4);
 			}
 			return out; // return array of values
-
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
 			return null;
