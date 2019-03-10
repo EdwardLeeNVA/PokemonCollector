@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.PokemonFactory;
 
 import org.apache.log4j.Logger;
 
@@ -62,45 +63,19 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public List<Pokemon> getDuplicates(int trainer_id) {
-		//Create a temporary list for pokemon.
-		ArrayList<Pokemon> duplicateList = null;
-		//Try with resources to connect to database.
+	public List<Pokemon> getDuplicates(int trainerId) {
+		List<Pokemon> duplicateList = null;
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-
-			// Call stored procedure
-			String sql = "CALL get_all_duplicates(?, ?)";
-			// Setup callableStatment
-			try (CallableStatement cs = conn.prepareCall(sql)) {
-				// Set the trainer id in the callable statement
-				cs.setInt(1, trainer_id);
-				cs.registerOutParameter(2, OracleTypes.CURSOR);
-				cs.execute(); // Prepare the resultset
+			try (CallableStatement cs = TrainerDAOStatements.getDuplicatesStatement(conn, trainerId)) {
+				cs.execute();
 				try (ResultSet rs = (ResultSet) cs.getObject(2)) {
-					// While the result set has another object create a pokemon objet and push it to
-					// the duplicatePokemon array.
-					// Check and see if there are any duplicates if not retunr null
-
-					while (rs.next()) {
-
-						Pokemon temp = new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count"));
-						// System.out.println(temp.toString());
-						duplicateList.add(temp);
-						
-					}
-
+					duplicateList = PokemonFactory.createListFromResultSet(rs);
 				}
-
-				return duplicateList;
-
 			}
+		} catch (SQLException e) {
+			LOGGER.error(e.getMessage(), e);
 		}
-
-		catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-
+		return duplicateList;
 	}
 
 	@Override
@@ -136,18 +111,18 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	@Override
 	public int[] redeemAll(int trainer_id) {
-		int [] out = new int[2]; //return array
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
-			String sql = "CALL redeem_all_duplicates(?,?,?)"; //Procedure string
-			//Setup callableStatment
-			try(CallableStatement cs = conn.prepareCall(sql)){
-				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
-				cs.registerOutParameter(2, Types.INTEGER); //Out param for added credits
-				cs.registerOutParameter(3, Types.INTEGER);//out param for new total
-				cs.execute();				//Prepare the resultset
+		int[] out = new int[2]; // return array
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { // create connection
+			String sql = "CALL redeem_all_duplicates(?,?,?)"; // Procedure string
+			// Setup callableStatment
+			try (CallableStatement cs = conn.prepareCall(sql)) {
+				cs.setInt(1, trainer_id);// Set the trainer id in the callable statement
+				cs.registerOutParameter(2, Types.INTEGER); // Out param for added credits
+				cs.registerOutParameter(3, Types.INTEGER);// out param for new total
+				cs.execute(); // Prepare the resultset
 
-				out[0] = cs.getInt(2); //set return value
-				out[1] = cs.getInt(3);//set return value
+				out[0] = cs.getInt(2); // set return value
+				out[1] = cs.getInt(3);// set return value
 			}
 			return out; // return array of values
 
@@ -158,16 +133,15 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public int[] redeemSpecific(int trainerId, int pokeId)
-	{
-		int [] out = new int[2]; //return array
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
-			String sql = "CALL redeem_duplicate(?,?, ?, ?)"; //Procedure string
-			//Setup callableStatment
-			try(CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)){
+	public int[] redeemSpecific(int trainerId, int pokeId) {
+		int[] out = new int[2]; // return array
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { // create connection
+			String sql = "CALL redeem_duplicate(?,?, ?, ?)"; // Procedure string
+			// Setup callableStatment
+			try (CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)) {
 				cs.execute();
-				out[0] = cs.getInt(3); //set return value
-				out[1] = cs.getInt(4);//set return value
+				out[0] = cs.getInt(3); // set return value
+				out[1] = cs.getInt(4);// set return value
 			}
 			return out; // return array of values
 
@@ -177,7 +151,6 @@ public class TrainerDAOImp implements TrainerDAO {
 		}
 
 	}
-
 
 	@Override
 	public Trainer verifyLogin(String username, String password) {

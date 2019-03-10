@@ -34,9 +34,9 @@ public interface TrainerDAO {
 	
 	/**
 	 * Redeem all Pokemon for a specific trainer.
-	 * @param trainer_id ID of the current trainer.
+	 * @param trainerId ID of the current trainer.
 	 */
-	public int[] redeemAll(int trainer_id);
+	public int[] redeemAll(int trainerId);
 	
 	/**
 	 * Redeems a specific Pokemon from a trainer's collection.
