@@ -34,9 +34,11 @@ export class ShopComponent implements OnInit {
     this.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
+        console.log(data);
         for (let i = 0; i < data.length; i++){
           this.allPoke[i] = data[i];
         }
+        console.log(this.allPoke);
       }
     )
   }
