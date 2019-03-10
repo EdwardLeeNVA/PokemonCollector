@@ -21,13 +21,12 @@ public class TrainerFactory {
 		try {
 			int id = result.getInt(1);
 			String username = result.getString(2);
-			String password = result.getString(3);
 			String email = result.getString(4);
 			String fname = result.getString(5);
 			String lname = result.getString(6);
 			int credits = result.getInt(7);
 			int score = result.getInt(8);
-			return create(id, username, credits, score);
+			return create(id, username, email, fname, lname, credits, score);
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
 			return null;
@@ -37,10 +36,13 @@ public class TrainerFactory {
 	/**
 	 * Creates a Trainer bean with the specified parameters.
 	 */
-	public static Trainer create(int id, String username, int credits, int score) {
+	public static Trainer create(int id, String username, String email, String fname, String lname, int credits, int score) {
 		Trainer trainer = new Trainer();
-		trainer.setUsername(username);
 		trainer.setUserID(id);
+		trainer.setUsername(username);
+		trainer.setEmail(email);
+		trainer.setFirstName(fname);
+		trainer.setLastName(lname);
 		trainer.setCredits(credits);
 		trainer.setScore(score);
 		return trainer;
