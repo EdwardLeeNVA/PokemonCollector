@@ -141,24 +141,25 @@ public class CachingUtility {
 	}
 
 	public com.revature.pokemonv2.model.Pokemon getPokemon(Integer poke_id){
-			PokeApi poke = new PokeApiClient();
-			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);
+			/*PokeApi poke = new PokeApiClient();
+			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);*/
 
 			ArrayList<String> typeTemp = new ArrayList<>();
-			int z = 0;
+			/*int z = 0;
 			while (z < p.getTypes().size()) {
 				typeTemp.add(p.getTypes().get(z).getType().getName());
-			}
+			}*/
 
 			Map<String, Integer> statTemp = new HashMap<>();
-			int statCount = 0;
+			/*int statCount = 0;
 			int cost = 0;
 			while (statCount < p.getStats().size()) {
 				statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
 				cost += p.getStats().get(statCount).getStat().component3();
-			}
-
-			return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);
+			}*/
+			
+			return new com.revature.pokemonv2.model.Pokemon(74, "Geodude", "test", (String[])typeTemp.toArray(), new HashMap<String, Integer>(), 0);
+			/*return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);*/
 
 	}
 }
