@@ -14,7 +14,7 @@ import { RedeemComponent } from './components/redeem/redeem.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
 import { NavComponent } from './components/nav/nav.component';
-
+import { JwtInterceptorService } from './services/jwt-interceptor.service'
 
 @NgModule({
   declarations: [
@@ -36,11 +36,11 @@ import { NavComponent } from './components/nav/nav.component';
     RouterModule,
     FormsModule
   ],
-  providers: [/*{
+  providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptorService,
     multi: true
-  }*/],
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
