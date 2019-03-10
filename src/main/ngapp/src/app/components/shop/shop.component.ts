@@ -40,7 +40,7 @@ export class ShopComponent implements OnInit {
 
     // Check if the trainer has enough credits:
 
-    let trainer: Trainer = JSON.parse(sessionStorage.getItem("USER_DATA"));
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
 
     let cost: number = this.allPoke[pokemonID].cost;
 
