@@ -64,17 +64,9 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				mapper.writeValue(response.getOutputStream(), PlayerService.getPlayerService().login(request, response);
 			break;
-		case "generatePokemon":
-			//enter the jwt token which needs to be decrypted
-			String username1 = TokenService.getInstance().getUserDetailsFromToken(
-					request.getHeader("Authorization")).getUsername();;
-			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
-					request.getHeader("Authorization")).getUserID();
-			//generate a random pokemon and add it to the user's collection
-			int pokemonId = new Random().nextInt(150)+1;
-			
-			
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
+		case "generatePokemon":		
+			//write the generated pokemon to the response
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
 			break;
 		default:
 			System.out.println("URI not recognized");
