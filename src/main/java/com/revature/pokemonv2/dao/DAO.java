@@ -27,6 +27,7 @@ public class DAO {
 	
 	
 	public List<Pokemon> getTrainerPokedex(String username) {
+		logger.trace("Database called for pokedex");
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			String sql = "call get_all_pokemon(?)";
 			try (CallableStatement cs = conn.prepareCall(sql)) {
@@ -36,6 +37,7 @@ public class DAO {
 					while (rs.next()) {
 						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
 					}
+					logger.trace("Pokedex returned by DB: " + pokedex);
 					return pokedex;
 				}
 			}
