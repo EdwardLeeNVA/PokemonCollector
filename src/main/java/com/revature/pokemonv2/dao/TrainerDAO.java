@@ -19,6 +19,9 @@ public interface TrainerDAO {
 	 */
 	public List<Pokemon> getDuplicates(int trainerId);
 
+	/**
+	 * Creates a new trainer and assigns the username and password to the object
+	 */
 	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response);
 
 	/**
