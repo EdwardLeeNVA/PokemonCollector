@@ -6,24 +6,20 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.PokemonFactory;
-
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.PokemonFactory;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.service.TokenService;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
-
-import oracle.jdbc.OracleTypes;
 
 /**
  * The TrainerDAOImp class contains methods that deal with the selection,
