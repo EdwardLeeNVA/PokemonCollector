@@ -1,9 +1,9 @@
 package com.revature.pokemonv2.utilities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
+import me.sargunvohra.lib.pokekotlin.client.PokeApi;
+import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import org.apache.log4j.Logger;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
@@ -16,7 +16,6 @@ import com.revature.pokemonv2.model.Pokemon;
 public class CachingUtility {
  	
 	 private final Cache<String, ArrayList> pokedexCache;
-	 private final Cache<Integer, Pokemon> allPokemonCache;
 	 private static CachingUtility cachingUtility = new CachingUtility();
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
 	 
@@ -24,7 +23,6 @@ public class CachingUtility {
 	 private CachingUtility(){
 		 
 		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, ArrayList.class);
-		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
@@ -41,7 +39,7 @@ public class CachingUtility {
 		ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
 		Pokemon temp = pokeList.remove(poke_id);
 		if(temp == null){
-			temp = this.getPokemonFromCache(poke_id);
+			temp = this.getPokemon(poke_id);
 		} else {
 			temp.setCount(temp.getCount() + 1);
 		}
@@ -76,10 +74,6 @@ public class CachingUtility {
 		this.pokedexCache.put(username, newPokeList);
 		return this.pokedexCache.get(username);
 	}
-	 
-	 public Pokemon getPokemonFromCache(Integer i) {
-		 return this.allPokemonCache.get(i);
-	 }
 	
 	 public boolean removeCollection(String username) {
 		 try {
@@ -118,5 +112,27 @@ public class CachingUtility {
 		counter.setCount(counter.getCount() + 1);
 		list.add(counter);
 		return list;
+	}
+
+	public com.revature.pokemonv2.model.Pokemon getPokemon(Integer poke_id){
+			PokeApi poke = new PokeApiClient();
+			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);
+
+			ArrayList<String> typeTemp = new ArrayList<>();
+			int z = 0;
+			while (z < p.getTypes().size()) {
+				typeTemp.add(p.getTypes().get(z).getType().getName());
+			}
+
+			Map<String, Integer> statTemp = new HashMap<>();
+			int statCount = 0;
+			int cost = 0;
+			while (statCount < p.getStats().size()) {
+				statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
+				cost += p.getStats().get(statCount).getStat().component3();
+			}
+
+			return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);
+
 	}
 }
