@@ -19,33 +19,12 @@
                 data-toggle="modal"
                 data-target="#newpokemonModal"
                 class="shop-buy-btn"
+                id="shop-buy-btn"
                 type="submit"
               >
                 Buy
               </button>
-              <div
-                class="alert alert-danger alert-dismissible fade show d-none"
-                id="no-credit-alert"
-                role="alert"
-              >
-                <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
-  
-                <strong>Oops!!</strong> You dont have enough credits.....
-  
-                <img
-                  src="http://i65.tinypic.com/27zauqe.png"
-                  alt="Image and video hosting by TinyPic"
-                />
-                <button
-                  id="login-alert"
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  (click)="onAlertClose()"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+           
             </div>
   
             <div class="radio-card-grid">
@@ -85,38 +64,16 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-<div>
-  <form>
-    <!-- <input class="form-check-input" type="radio" value="15" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
-    <label>15</label>
-    <input class="form-check-input" type="radio" value="30" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
-    <label>30</label>
-    <input class="form-check-input" type="radio" value="75" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
-    <label>75</label>
-    <input class="form-check-input" type="radio" value="150" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
-    <label>150</label> -->
-    <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-      <option value=0>Number of Pokemon per page</option>
-      <option value=20>20</option>
-      <option value=50>50</option>
-      <option value=100>100</option>
-    </select>
-  </form>
 </div>
-  <!--put number of pages in here-->
-  <div class="row justify-content-md-center">
-    <nav aria-label="Page navigation example">
-      <ul>
-        <li><a class="page-link" (click)="prevPage()" aria-label="Previous"></a></li>
-        <li><a class="page-link" (click)="nextPage()" aria-label="Next"></a></li>
-      </ul>
-    </nav>
-=======
->>>>>>> d20b5552ce59b465241ec60dab2d07d4bbaeaa13
+<div class="radio-card-grid" *ngIf="pokePages">
+    <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
+      <input class="form-check-input customRadioBtn" type="radio" name="gridRadios"
+        value="{{allPoke.pokemon.id}}" checked/>
+    </div>
   </div>
   
-  <!-- Modal -->
+  
+  <!-- Modal for chosen pokemon-->
   <div
     class="modal fade"
     id="newpokemonModal"
@@ -152,44 +109,92 @@
               <p>Defense: {{ this.defense }}</p>
             </div>
           </div>
-  
+          <!-- start no credits alert -->
+          <div
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="no-credit-alert"
+          role="alert"
+        >
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+          <strong>Oops!!</strong> You dont have enough credits.....
+
+          <img
+            src="http://i65.tinypic.com/27zauqe.png"
+            alt="Image and video hosting by TinyPic"
+          />
+          <button
+            id="login-alert"
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- end no credit alert -->
+        <!-- start I choose you alert -->
+        <div
+        class="alert alert-danger alert-dismissible fade show d-none"
+        id="add-pokemon-alert"
+        role="alert"
+      >
+        <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+        <strong>I Choose You!!</strong> Pokemon has been added to your collection.
+
+        <img
+          src="http://i65.tinypic.com/27zauqe.png"
+          alt="Image and video hosting by TinyPic"
+        />
+        <button
+          id="login-alert"
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="onAlertClose()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <!-- end I choose you alert -->
+        <!-- start confirmation button -->
+          <button
+                data-toggle="modal"
+                data-target="#newpokemonConfirm"
+                class="shop-buy-btn"
+                type="submit"
+              >
+                I Choose You!
+              </button>
+        <!--end confirmation button  -->
+        <!-- start close button -->
           <button
             type="button"
-            class="newPokemon-Modal-Buttons "
+            class="shop-buy-btn"
             data-dismiss="modal"
           >
             Close
           </button>
+        <!-- end close button  -->
         </div>
       </div>
     </div>
   </div>
-  <!-- </div>
+<!-- end modal -->
+<!-- stuff thats on standby
+     pagination form on standby 
+    <form>
+        <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
+          <option value=0>Number of Pokemon per page</option>
+          <option value=20>20</option>
+          <option value=50>50</option>
+          <option value=100>100</option>
+        </select>
+      </form>
     </div>
-  </div> -->
-  <div container>
-      <div row>
-        <div col>
-          navbar placeholder
-        </div>
-      </div>
-    </div>
-    <div container>
-      <div row>
-        <div col>
-         <form>
-            <select name="selectNumPoke" [(ngModel)]="numPoke" (change)="populatePokePages()">
-              <option value=0>Number of Pokemon per page</option>
-              <option value=20>20</option>
-              <option value=50>50</option>
-              <option value=100>100</option>
-            </select>
-          </form>
-        </div>
-      </div>
-    </div>
-    
-      <!--put number of pages in here-->
+      put number of pages in here
       <div class="row justify-content-md-center">
         <nav aria-label="Page navigation example">
           <ul>
@@ -198,12 +203,6 @@
           </ul>
         </nav>
       </div>
-    
-    <div class="radio-card-grid" *ngIf="pokePages">
-      <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
-        <input class="form-check-input customRadioBtn" type="radio" name="gridRadios"
-          value="{{allPoke.pokemon.id}}" checked/>
-      </div>
-    </div>
-    
+    --> 
+   
   

@@ -34,10 +34,14 @@ export class ShopComponent implements OnInit {
     $("#generate-pokemon-draw-btn").removeClass("d-none");
     this.cardShow = true;
   }
+
+
+  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
   //method that calls above observable
+  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
@@ -76,6 +80,7 @@ export class ShopComponent implements OnInit {
     }
 
   }
+  //pagination methods on standby
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
