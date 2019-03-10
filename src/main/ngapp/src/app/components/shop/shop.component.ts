@@ -43,6 +43,7 @@ export class ShopComponent implements OnInit {
     }else{
       alert("You can't get ye Pokemon")
     }
+  }
   onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
