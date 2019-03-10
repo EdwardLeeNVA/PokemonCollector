@@ -19,8 +19,8 @@ export class ShopComponent implements OnInit {
   private numPoke: number;
   private currentPage: number = 0;
   private numPages: number;
-  private allPoke: [Pokemon];
-  private pokePages: [Pokemon];
+  private allPoke: Pokemon[];
+  private pokePages: Pokemon[];
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
