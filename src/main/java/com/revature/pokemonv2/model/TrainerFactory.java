@@ -17,11 +17,16 @@ public class TrainerFactory {
 	/**
 	 * Creates a Trainer bean from ResultSet.
 	 */
-	public static Trainer createFromResult(ResultSet result, String username) {
+	public static Trainer createFromResult(ResultSet result) {
 		try {
 			int id = result.getInt(1);
-			int credits = result.getInt(2);
-			int score = result.getInt(3);
+			String username = result.getString(2);
+			String password = result.getString(3);
+			String email = result.getString(4);
+			String fname = result.getString(5);
+			String lname = result.getString(6);
+			int credits = result.getInt(7);
+			int score = result.getInt(8);
 			return create(id, username, credits, score);
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
