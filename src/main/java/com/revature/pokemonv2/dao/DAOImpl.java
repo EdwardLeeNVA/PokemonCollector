@@ -37,24 +37,34 @@ public class DAOImpl implements DAO{
 
 	@Override
 	public Map<Trainer, Integer> getPokemonCountByTrainer() {
-		
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			// Try with resources on the PreparedStatement
-			String sql = "{? = call get_pokemon_count_by_trainer}"; 
-			CallableStatement cs = conn.prepareCall(sql); 
-			cs.registerOutParameter(1, OracleTypes.NUMERIC);
-			cs.execute();
-			Integer stats = cs.getInt(1);
-			System.out.println(stats);
-			return new HashMap<Trainer, Integer>(); 			
+			String sql = "CALL get_pokemon_count_per_trainer(?)";
+			try(CallableStatement cs = conn.prepareCall(sql)){
+				cs.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+				cs.execute();
+				Map<Trainer, Integer> trainers = new HashMap<Trainer, Integer>(); 
+				try(ResultSet rs = (ResultSet) cs.getObject(1)){
+				//While the result set has another object create a trainer object and push it to the leaderboard array.
+					while(rs.next()) {
+						Trainer t = new Trainer(
+							rs.getString("username"),  
+							rs.getString("f_name"),  
+							rs.getString("l_name"),  
+							rs.getInt("score"), 
+							rs.getInt("credits"),  
+							rs.getInt("ID")
+						); 
+						Integer c = rs.getInt("count(*)");
+						trainers.put(t, c); 
+					}
+				}
+				return trainers;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//LOGGER.error(e.getMessage(), e);
+			return null;
 		}
-		return null;
-
-		
-		
 	}
 
 	@Override
