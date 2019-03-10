@@ -189,9 +189,10 @@ public class DAOImpl implements DAO{
 		} catch (SQLException e) {
 			logger.error("getTrainerPokedex didn't work");
 			return new ArrayList<Pokemon>();
-		}
-
-		
+		}	
 	}
+	
+	
+	
 }
 

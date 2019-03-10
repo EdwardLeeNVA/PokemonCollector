@@ -10,6 +10,9 @@ import java.util.Random;
 import java.util.List;
 import java.util.Map;
 
+import oracle.jdbc.OracleTypes;
+import org.apache.log4j.Logger;
+
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
@@ -20,6 +23,7 @@ import com.revature.pokemonv2.utilities.PokedexLoadWriter;
 
 public interface DAO {
 	
+	final static Logger logger = Logger.getLogger(DAO.class);
 	
 	// GET STATISTICS DATA
 	public Map<Trainer, Integer> getPokemonCountByTrainer();           // "user1 has 30 pokemon"       | "user2 has 80 pokemon"       | .... 
@@ -31,8 +35,37 @@ public interface DAO {
 	public Map<Type, 	Integer> getTypeFrequency(Trainer trainer);    // "user1 has 8 flying types"   | "user2 has 31 water types"   | ....
 	public Map<Trainer, Integer> getTrainerScore(); 				   // "user1 has 888 points"       | "user2 has 889 points"       | ....
 	public Map<Trainer, Integer> getTrainerCredits(); 				   // "user1 has 1 credits"        | "user2 has 100000 credits"   | ....
-	List<Pokemon> getTrainerPokedex(String username);
 	List<Trainer> getLeaderboard(int topN);
+
+	default public List<Pokemon> getTrainerPokedex(String username) {
+		logger.trace("Database called for pokedex");
+		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+			String sql = "call get_all_pokemon(?, ?)";
+			logger.trace("Entered sql statement creation.");
+			try (CallableStatement cs = conn.prepareCall(sql)) {
+				cs.setString(1, username);
+				cs.registerOutParameter(2, OracleTypes.CURSOR);
+				logger.trace("Entered callable statement creation.");
+				try  {
+					cs.executeQuery();
+					ResultSet rs = (ResultSet)cs.getObject(2);
+					logger.trace("Query executed and iterating through cursor.");
+					ArrayList<Pokemon> pokedex = new ArrayList<>();
+					while (rs.next()) {
+						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
+					}
+					logger.trace("Pokedex returned by DB: " + pokedex);
+					return pokedex;
+				} catch (SQLException e){
+					logger.error("getTrainerPokedex didn't work");
+					return new ArrayList<Pokemon>();
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("getTrainerPokedex didn't work");
+			return new ArrayList<Pokemon>();
+		}	
+	}
 
 	/**
 	 * 
@@ -40,13 +73,13 @@ public interface DAO {
 	 * @param pokemonId the pokemon's id
 	 * @return score the player's score after generating the pokemon
 	 */
-	public static Pokemon generatePokemon(int trainerId, int pokemonId) {
+	public static Pokemon generatePokemon(int trainerId, int pokemonId, String username) {
 		Connection conn = ConnectionUtility.getInstance().getConnection();
 		
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)");) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
@@ -54,9 +87,12 @@ public interface DAO {
 		
 			cs.setInt(2, pokemonId);		
 			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
+			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
 			cs.execute();			
-			//return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+
+			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
+
 			return pokemon;
 			
 		} catch (SQLException e) {

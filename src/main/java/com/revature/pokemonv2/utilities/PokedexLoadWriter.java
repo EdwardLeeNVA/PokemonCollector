@@ -26,6 +26,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 
 	@Override
 	public ArrayList<com.revature.pokemonv2.model.Pokemon> load(Object key) throws Exception {
+		logger.trace("Entered load writer load method with key: " + key);
 		ArrayList<com.revature.pokemonv2.model.Pokemon> returnPokeDex = new ArrayList<>();
 		List<com.revature.pokemonv2.model.Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
 			
@@ -36,6 +37,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 		}
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
+		logger.trace("Added returnPokeDex to log containing: " +returnPokeDex);
 		return returnPokeDex;
 	}
 
