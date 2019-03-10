@@ -14,6 +14,7 @@ export class PokedexService {
   ) {}
 
   generatePokemon() {
+    console.log("generate method in pokedex service")
     return this.http.get<any>("/PokemonCollector/servlet/generatePokemon");
   }
 
