@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d09c2fdd496addfc80c1578c94bbf83d2683a79
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
