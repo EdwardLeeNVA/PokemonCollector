@@ -1,25 +1,24 @@
 package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Random;
-
-import javax.servlet.ServletException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.TokenService;
 import com.revature.pokemonv2.utilities.CachingUtility;
-import com.revature.pokemonv2.utilities.Driver;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
 import com.revature.pokemonv2.service.LeaderBoardService;
+import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.RedeemService;
+import com.revature.pokemonv2.service.TokenService;
 
 /**
  * The master dispatcher class relays HTTP requests to different end points.
@@ -68,13 +67,20 @@ public class MasterDispatcher {
 			mapper.writeValue(response.getOutputStream(),
 					LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 			break;
-
-		case "debug":
-			Driver.tomcatDebug();
 		case "generatePokemon":
 			// write the generated pokemon to the response
 			mapper.writeValue(response.getOutputStream(), PlayerService.generatePokemon(request, response));
+		case "duplicate":
+			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
+			RedeemService.getDuplicates(request, response);
 			break;
+		case "redeem":
+			//Endpoint for redeem call. Redeems a specific pokemon			
+			RedeemService.redeemSpecific(request, response);
+			break;
+		case "redeemAll":
+			//Endpoint for redeem all call. Redeems all pokemon.
+			RedeemService.redeemAll(request, response);
 		default:
 			System.out.println("URI not recognized");
 		}

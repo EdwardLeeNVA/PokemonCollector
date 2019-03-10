@@ -17,6 +17,12 @@ export class StatsComponent implements OnInit {
 
   Highcharts = Highcharts;
 
+
+
+
+
+
+  
   PokemonOption = {
     chart: {
         plotBackgroundColor: null,

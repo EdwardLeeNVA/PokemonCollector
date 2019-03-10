@@ -23,7 +23,7 @@ public class PlayerService {
 	//Object mapper
 	private static final ObjectMapper mapper = new ObjectMapper();
 	//Trainer DAO instance
-	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
+	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
 	//Player service instance
 	private static PlayerService instance;
 
@@ -50,11 +50,13 @@ public class PlayerService {
 	public static Pokemon generatePokemon(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//enter the jwt token which needs to be decrypted
+		String username = TokenService.getInstance().getUserDetailsFromToken(
+				request.getHeader("Authorization")).getUsername();
 		int trainerId = TokenService.getInstance().getUserDetailsFromToken(
 				request.getHeader("Authorization")).getUserID();
 		//generate a random pokemon and add it to the user's collection
 		int pokemonId = new Random().nextInt(150)+1;
-			return DAO.generatePokemon(trainerId, pokemonId);
+			return DAO.generatePokemon(trainerId, pokemonId, username);
 	}
 	
 	/**
@@ -69,7 +71,7 @@ public class PlayerService {
 		String username = TokenService.getInstance().getUserDetailsFromToken(
 				request.getHeader("Authorization")).getUsername();
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
-		Pokemon p = CachingUtility.getCachingUtility().getPokemonFromCache(id);
+		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
 		int cost = p.getCost();
 		//dao command to remove the money
 		if(trainer.purchasePokemon(username, cost)) {
