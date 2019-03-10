@@ -30,7 +30,7 @@ export class ShopComponent implements OnInit {
 
     // Check if the trainer has enough credits:
 
-    let trainer: Trainer = JSON.parse(session.getItem("USER_DATA"));
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("USER_DATA"));
 
     let cost: number = this.allPoke[pokemonID].cost;
 
@@ -77,21 +77,6 @@ export class ShopComponent implements OnInit {
       count++;
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
-  }
-
-  buyPokemon(pokemonID: number) {
-
-    // Check if user already owns specified Pokemon:
-
-    let owned: boolean = false; // fix this when we actually have access to the cache
-
-    // If the user does not own the Pokemon, add it to their collecion:
-    if (!owned) {
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
-    }else{
-      alert("You already own that Pokemon")
-    }
-
   }
   //wrap around to first page if on last page
   nextPage(): void{
