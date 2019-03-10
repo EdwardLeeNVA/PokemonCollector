@@ -18,6 +18,7 @@ public class CachingUtility {
 	 private final Cache<String, ArrayList> pokedexCache;
 	 private static CachingUtility cachingUtility = new CachingUtility();
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
+	 private final String ALL_POKEMON = "red";
 	 
 	 
 	 private CachingUtility(){
@@ -29,7 +30,7 @@ public class CachingUtility {
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList checkCache(String username) {
+	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
 
 		 return this.pokedexCache.get(username);
 	 }
@@ -54,7 +55,7 @@ public class CachingUtility {
 //		return this.pokedexCache.get(username);
 //	 }
 
-	public ArrayList addToCache(String username, int poke_id) {
+	public ArrayList<com.revature.pokemonv2.model.Pokemon> addToCache(String username, int poke_id) {
 		ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
 		Pokemon temp = pokeList.remove(poke_id);
 		if(temp == null){
@@ -69,7 +70,7 @@ public class CachingUtility {
 		return this.pokedexCache.get(username);
 	}
 
-	public ArrayList redeemSinglePokemon(String username, int poke_id){
+	public ArrayList<com.revature.pokemonv2.model.Pokemon> redeemSinglePokemon(String username, int poke_id){
 
 		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
 		Pokemon temp = newPokeList.remove(poke_id);
@@ -82,7 +83,7 @@ public class CachingUtility {
 
 	
 
-	public ArrayList redeemAllPokemon(String username){
+	public ArrayList<com.revature.pokemonv2.model.Pokemon> redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
 		for(int i = 0; i < newPokeList.size(); i++){
@@ -113,8 +114,8 @@ public class CachingUtility {
 		 }
 	 }
 	 
-	 public ArrayList getAllPokemon() {
-		 return pokedexCache.get("red");
+	 public ArrayList<com.revature.pokemonv2.model.Pokemon> getAllPokemon() {
+		 return pokedexCache.get(ALL_POKEMON);
 	 }
 	 
 	
@@ -130,7 +131,7 @@ public class CachingUtility {
 	}
 
 	// This method will increment the counter pokemon in the Pokedex for custom eviction
-	public ArrayList incrementCacheHit(ArrayList list){
+	public ArrayList<com.revature.pokemonv2.model.Pokemon> incrementCacheHit(ArrayList list){
 		Pokemon counter = (Pokemon)list.remove(0);
 		counter.setCount(counter.getCount() + 1);
 		list.add(counter);

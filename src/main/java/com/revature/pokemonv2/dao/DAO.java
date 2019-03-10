@@ -27,6 +27,7 @@ public class DAO {
 	
 	
 	public List<Pokemon> getTrainerPokedex(String username) {
+		logger.trace("Database called for pokedex");
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			String sql = "call get_all_pokemon(?)";
 			try (CallableStatement cs = conn.prepareCall(sql)) {
@@ -36,6 +37,7 @@ public class DAO {
 					while (rs.next()) {
 						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
 					}
+					logger.trace("Pokedex returned by DB: " + pokedex);
 					return pokedex;
 				}
 			}
@@ -59,7 +61,7 @@ public class DAO {
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)");) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
@@ -67,6 +69,7 @@ public class DAO {
 		
 			cs.setInt(2, pokemonId);		
 			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
+			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
 			cs.execute();			
 			//return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
