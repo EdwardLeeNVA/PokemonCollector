@@ -18,7 +18,7 @@ export class AccountInfoComponent implements OnInit {
 
   constructor(public trainerService: TrainerService) { }
   ngOnInit() {
-    let userData = JSON.parse(sessionStorage.getItem("USER_DATA"));
+    let userData = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
     this.firstName = userData.firstName;
     this.lastName = userData.lastName;
     this.username = userData.username;
@@ -27,23 +27,37 @@ export class AccountInfoComponent implements OnInit {
 
   // Calls the TrainerService method to use HTTPClient to make a request to the server
   update(): void {
-    let updatedTrainer: Trainer = {
-      userID: -1,
+    // TODO: Reduce this repeated code by sending an array of 2 JSON objects with the request
+    // data to send, uncluding the old username
+    let allData = {
+      userID: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).userID,
+      oldUsername: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).username,
       username: this.username,
       password: this.password,
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      credits: JSON.parse(sessionStorage.getItem("USER_DATA")).credits,
-      score: JSON.parse(sessionStorage.getItem("USER_DATA")).score
+      credits: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).credits,
+      score: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).score
     };
-    this.trainerService.updateTrainer(updatedTrainer).subscribe(
+    // copy of that data, excluding old username, to overwrite the sessionStorage
+    let updated: Trainer = {
+      userID: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).userID,
+      username: this.username,
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      credits: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).credits,
+      score: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).score
+    }
+    this.trainerService.updateTrainer(allData).subscribe(
       data => {
         this.failureMessage = data.failure;
         if (this.failureMessage === '') {
           // Prevent the password from being saved to sessionStorage
-          updatedTrainer.password = null;
-          sessionStorage.setItem("USER_DATA", JSON.stringify(updatedTrainer));
+          updated.password = null;
+          sessionStorage.setItem("TRAINER_DATA", JSON.stringify(updated));
         }
       }
     );
