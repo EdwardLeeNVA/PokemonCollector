@@ -62,7 +62,7 @@ public class TrainerDAOImp implements TrainerDAO {
 				// Executing out parameters
 				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
 					if (rs.next()) {
-						return TrainerFactory.createFromResult(rs, username);
+						return TrainerFactory.createFromResult(rs);
 					}
 				}
 			}
