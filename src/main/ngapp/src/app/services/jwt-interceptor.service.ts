@@ -6,7 +6,7 @@ import {
   HttpEvent
 } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { TokenService } from "./services/token.service";
+import { TokenService } from "./token.service";
 
 @Injectable({
   providedIn: "root"
@@ -24,6 +24,7 @@ export class JwtInterceptorService {
     req = req.clone({
       headers: this.tokenService.getAuthorizedRequestHeader()
     });
+    return next.handle(req);
   }
 
   //Injects tokenSerivce into JwtInterceptorService

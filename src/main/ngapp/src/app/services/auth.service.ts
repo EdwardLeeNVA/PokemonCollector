@@ -15,12 +15,16 @@ export class AuthService {
     This function takes in 2 parameters, the username and password and 
     returns an observable. It makes a HTTP POST request to the login endpoint
   */
-  attemptLogin(username: String, password: String): Observable<any> {
+  attemptLogin(username: string, password: string): Observable<any> {
+    let credentials : FormData = new FormData();
+    credentials.append("USERNAME", username);
+    credentials.append("PASSWORD", password);
     return this.http.post(
       environment.api.login,
-      { USERNAME: username, PASSWORD: password },
+      credentials,
       {
-        headers: this.getHttpHeaders()
+        headers: this.getHttpHeaders(),
+        observe: "response"
       }
     );
   }

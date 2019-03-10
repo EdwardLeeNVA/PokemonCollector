@@ -17,7 +17,7 @@ export class TokenService {
   setCurrentUserToken(token: string) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
-      this.router.navigate([GeneratePokemonComponent]);
+      this.router.navigateByUrl("/generate");
     } else {
       throw new Error();
     }
@@ -27,7 +27,7 @@ export class TokenService {
   */
   getAuthorizedRequestHeader(): HttpHeaders {
     const headers: HttpHeaders = new HttpHeaders({
-      Authorization: sessionStorage.getItem("CURRENT_USER"),
+      "Authorization": sessionStorage.getItem("CURRENT_USER"),
       "Access-Control-Allow-Origin": "http://localhost:4200",
       "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Headers":

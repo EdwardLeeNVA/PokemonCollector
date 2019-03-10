@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { TrainerService } from "src/app/services/trainer.service";
 import { AuthService } from "src/app/services/auth.service";
 import { TokenService } from "src/app/services/token.service";
 
@@ -15,8 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private tokenService: TokenService,
-    private trainerService: TrainerService
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {}
@@ -28,7 +26,7 @@ export class LoginComponent implements OnInit {
       .attemptLogin(this.trainer.username, this.trainer.password)
       .subscribe(data => {
         if (data != null) {
-          this.tokenService.setCurrentUserToken(data.token);
+          this.tokenService.setCurrentUserToken(data.headers.get("Authorization"));
         }
       });
   }
