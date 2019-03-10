@@ -32,10 +32,29 @@ public class CachingUtility {
 	 }
 	 
 	 public ArrayList checkCache(String username) {
-	 	// Logic for counting cache hits
-	 	/*this.pokedexCache.put(username, incrementCacheHit(this.pokedexCache.get(username)));*/
-		return this.pokedexCache.get(username);
+
+		 return this.pokedexCache.get(username);
 	 }
+	 
+//	 public ArrayList addToCache(String username, int poke_id) {
+//		 ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
+//		 Pokemon temp = pokeList.remove(poke_id);
+//		 if(temp == null){
+//		 	temp = this.getPokemonFromCache(poke_id);
+//		 } else {
+//		 	temp.setCount(temp.getCount() + 1);
+//		 }
+//		 pokeList.add(temp);
+//		 this.pokedexCache.put(username, pokeList);
+//		 return this.pokedexCache.get(username);
+//	 }
+
+//	 public ArrayList redeemSinglePokemon(String username, int poke_id){
+//
+//	 	// Logic for counting cache hits
+//	 	/*this.pokedexCache.put(username, incrementCacheHit(this.pokedexCache.get(username)));*/
+//		return this.pokedexCache.get(username);
+//	 }
 
 	public ArrayList addToCache(String username, int poke_id) {
 		ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
@@ -53,29 +72,34 @@ public class CachingUtility {
 	}
 
 	public ArrayList redeemSinglePokemon(String username, int poke_id){
+
 		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
 		Pokemon temp = newPokeList.remove(poke_id);
 		temp.setCount(1);
 		newPokeList.add(temp);
-		// Logic for counting cache hits
-		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
+
 		this.pokedexCache.put(username, newPokeList);
-		return null;
-	}
+	 	return null;
+	 }
+
+	
 
 	public ArrayList redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
 		for(int i = 0; i < newPokeList.size(); i++){
+
 			Pokemon temp = origPokeList.get(i);
 			temp.setCount(1);
 			newPokeList.add(temp);
 		}
+
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
 		this.pokedexCache.put(username, newPokeList);
 		return this.pokedexCache.get(username);
 	}
+
 	 
 	 public Pokemon getPokemonFromCache(Integer i) {
 		 return this.allPokemonCache.get(i);
