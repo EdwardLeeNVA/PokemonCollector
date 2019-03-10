@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Trainer} from "../../models/Trainer";
+import {TrainerService} from "../../services/trainer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing',
@@ -8,10 +11,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private http : HttpClient) {
-  }
-
   configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
+
+  public trainer: Trainer;
+  public login_status: boolean;
+
+  constructor(private trainerService: TrainerService, private router: Router, private http : HttpClient) { }
 
   ngOnInit() {
 
@@ -27,6 +32,14 @@ export class LandingComponent implements OnInit {
       `
     }
   });
+
+    //this.trainerService.checkSessionStorage();
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    if(this.trainer != null){
+      this.trainerService.checkSessionStorage();
+      this.router.navigateByUrl("/PokemonCollector/ng/generate");
+    }
   }
 
 }
