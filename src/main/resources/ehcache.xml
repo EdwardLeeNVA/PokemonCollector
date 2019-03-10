@@ -34,7 +34,7 @@
 		</loader-writer>
 		<resources>
 			<heap unit="entries">100</heap>
-			<offheap unit="MB">20</offheap>
+			<!--<offheap unit="MB">20</offheap>-->
 		</resources>
 	</cache>
 	<cache alias ="allPokemonCache">

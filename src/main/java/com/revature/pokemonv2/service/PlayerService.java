@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.service;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,10 +46,14 @@ public class PlayerService {
 	}
 	
 	//temporary until merged with project with pokemon service
-	//returns the user's score
-	public static Pokemon generatePokemon(int trainerId, int pokemonId)
+	//returns the pokemon
+	public static Pokemon generatePokemon(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		//enter the jwt token which needs to be decrypted
+		int trainerId = TokenService.getInstance().getUserDetailsFromToken(
+				request.getHeader("Authorization")).getUserID();
+		//generate a random pokemon and add it to the user's collection
+		int pokemonId = new Random().nextInt(150)+1;
 			return DAO.generatePokemon(trainerId, pokemonId);
 	}
 	
