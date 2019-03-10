@@ -16,7 +16,7 @@ import com.revature.pokemonv2.model.Pokemon;
 public class CachingUtility {
  	
 	 private final Cache<String, ArrayList> pokedexCache;
-	 private static CachingUtility cachingUtility = new CachingUtility();
+	 private static CachingUtility cachingUtility;
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
 	 private final String ALL_POKEMON = "red";
 	 
@@ -27,6 +27,8 @@ public class CachingUtility {
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
+		 if (cachingUtility == null)
+			 cachingUtility = new CachingUtility();
 		 return cachingUtility;
 	 }
 	 
