@@ -32,7 +32,7 @@ public class LeaderBoardService {
 	
 	public List<Trainer> returnLeaderBoard(HttpServletRequest request, HttpServletResponse response) {
 		
-		return DAOImpl.getInstance().getLeaderboard();
+		return DAOImpl.getInstance().getLeaderboard(10);
 				
 	}
 	
