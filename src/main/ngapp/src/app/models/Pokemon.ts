@@ -5,4 +5,5 @@ export class Pokemon {
   types: string[];
   stats: any[];
   count: number;
+  cost: number;
 }

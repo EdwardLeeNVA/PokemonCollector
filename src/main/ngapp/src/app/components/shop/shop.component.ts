@@ -4,9 +4,13 @@ import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
+=======
+import { Trainer } from '../../models/Trainer';
+>>>>>>> b5310a04a3a3eb5682af647f8e56979c8d266946
 
 @Component({
   selector: 'app-shop',
@@ -37,7 +41,24 @@ export class ShopComponent implements OnInit {
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
   }
-  
+  buyPokemon(pokemonID: number) {
+
+    // Check if the trainer has enough credits:
+
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("USER_DATA"));
+
+    let cost: number = this.allPoke[pokemonID].cost;
+
+    let hasCredits: boolean = trainer.credits >= cost;
+
+    // If the trainer has enough credits, add the Pokemon to their collecion:
+    if (hasCredits) {
+      trainer.credits = trainer.credits-cost;
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+    }else{
+      alert("You can't get ye Pokemon")
+    }
+  }
   onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
@@ -71,21 +92,6 @@ export class ShopComponent implements OnInit {
       count++;
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
-  }
-
-  buyPokemon(pokemonID: number) {
-
-    // Check if user already owns specified Pokemon:
-
-    let owned: boolean = false; // fix this when we actually have access to the cache
-
-    // If the user does not own the Pokemon, add it to their collecion:
-    if (!owned) {
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
-    }else{
-      alert("You already own that Pokemon")
-    }
-
   }
   //wrap around to first page if on last page
   nextPage(): void{
