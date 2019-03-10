@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Pokemon } from "src/app/models/Pokemon";
-import { PokedexService } from "../../services/pokedex.service";
-import { Trainer } from "src/app/models/Trainer";
-
+import { Trainer } from "../../models/Trainer";
 import { TrainerService } from "../../services/trainer.service";
 import { Router } from "@angular/router";
+import { Pokemon } from "src/app/models/Pokemon";
+import { PokedexService } from "../../services/pokedex.service";
 
 @Component({
   selector: "app-redeem",
@@ -12,12 +11,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./redeem.component.css"]
 })
 export class RedeemComponent implements OnInit {
-  //declare trainer object to store trainer details
-  /* HARD CODED, WOULD NEED TO CHANGE */
-  //trainer: Trainer = {id: 0,username: '',password: '',f_name: '',l_name: '',email: ''};
-  //declare pokemon object to store pokemon ID of specific pokemon being redeemed
-  /* HARD CODED, WOULD NEED TO CHANGE */
-  pokemon: Pokemon = {
+  public trainer: Trainer;
+  public login_status: boolean;
+  public pokemon: Pokemon = {
     id: 0,
     name: "",
     image: "",
@@ -27,16 +23,28 @@ export class RedeemComponent implements OnInit {
   };
 
   //stores an array of Pokemon objects to display to DOM
-  duplicatePokemon: Pokemon[];
+  public duplicatePokemon: Pokemon[];
   //stores credit amounts change and new credit amount
-  credits: number[];
+  public credits: number[];
 
-  constructor(private pokedexService: PokedexService) {}
+  constructor(
+    private trainerService: TrainerService,
+    private router: Router,
+    private pokedexService: PokedexService
+  ) {}
 
   ngOnInit() {
-    //store trainer object values from local
-    /* WRITE CODE HERE */
-    //get duplicate pokemon for trainer
+    //this.trainerService.checkSessionStorage();
+    this.trainerService.login_status_bs.subscribe(
+      status => (this.login_status = status)
+    );
+    this.trainerService.current_trainer_bs.subscribe(
+      trainer => (this.trainer = trainer)
+    );
+    if (this.trainer == null) {
+      this.trainerService.updateLogout();
+      this.router.navigateByUrl("/PokemonCollector/ng/landing");
+    }
     this.getDuplicates();
   }
 

@@ -1,13 +1,17 @@
 package com.revature.pokemonv2.utilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import me.sargunvohra.lib.pokekotlin.client.PokeApi;
+import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
+import me.sargunvohra.lib.pokekotlin.model.Pokemon;
 import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
 import com.revature.pokemonv2.dao.DAO;
-import com.revature.pokemonv2.model.Pokemon;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
@@ -18,18 +22,18 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 
 	@Override
-	public ArrayList<Pokemon> load(Object key) throws Exception {
-		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
-		if(key == "red") {
+	public ArrayList<com.revature.pokemonv2.model.Pokemon> load(Object key) throws Exception {
+		ArrayList<com.revature.pokemonv2.model.Pokemon> returnPokeDex = new ArrayList<>();
+		if(key.equals("red")) {
 			for (int i = 1; i <= MAX_POKEDEX_SIZE; i++ ) {
-				returnPokeDex.add(cachingUtility.getPokemonFromCache(i));
+				returnPokeDex.add(cachingUtility.getPokemon(i));
 			}
 			return returnPokeDex;
-		}else {
-			List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+		} else {
+			List<com.revature.pokemonv2.model.Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
 			
-			for (Pokemon p : pokeDex) {
-				Pokemon poke = cachingUtility.getPokemonFromCache(p.getId());
+			for (com.revature.pokemonv2.model.Pokemon p : pokeDex) {
+				com.revature.pokemonv2.model.Pokemon poke = cachingUtility.getPokemon(p.getId());
 				poke.setCount(p.getCount());
 				returnPokeDex.add(poke);
 			}
@@ -49,5 +53,4 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	public void delete(Object key) throws Exception {
 		// TODO
 	}
-
 }

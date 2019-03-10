@@ -66,7 +66,7 @@ public class DAO {
 			//new Random().nextInt(151-1)+1
 		
 			cs.setInt(2, pokemonId);		
-			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
 			cs.setInt(3, pokemon.getCost());
 			cs.execute();			
 			//return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);

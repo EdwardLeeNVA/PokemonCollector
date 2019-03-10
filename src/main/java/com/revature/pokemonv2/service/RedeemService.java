@@ -46,7 +46,7 @@ public class RedeemService {
 			//Loop through the duplicatesArray
 			for(Pokemon x : duplicatesArray) {
 				//Create a pokemon object from the cached value base on the duplicate pokemon id.
-				Pokemon temp = CachingUtility.getCachingUtility().getPokemonFromCache(x.getId());
+				Pokemon temp = CachingUtility.getCachingUtility().getPokemon(x.getId());
 				//Add a pokemon to the final pokemon list
 				duplicateJSONList.add(temp);
 			}
