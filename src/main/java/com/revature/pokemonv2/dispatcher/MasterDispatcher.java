@@ -59,6 +59,7 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				PlayerService.getPlayerService().login(request, response);
 			break;
+
 		case "duplicate":
 			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
 			RedeemService.getDuplicates(request, response);
@@ -74,14 +75,15 @@ public class MasterDispatcher {
 			RedeemService.redeemAll(request, response);
 		case "generatePokemon":
 			//enter the jwt token which needs to be decrypted
-			String username1 = TokenService.getInstance().getUserDetailsFromToken(
-					request.getHeader("Authorization")).getUsername();;
-			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
-					request.getHeader("Authorization")).getUserID();
-			//generate a random pokemon and add it to the user's collection
-			int pokemonId = new Random().nextInt(150)+1;
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
-			break;
+//			String username1 = TokenService.getInstance().getUserDetailsFromToken(
+//					request.getHeader("Authorization")).getUsername();;
+//			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
+//					request.getHeader("Authorization")).getUserID();
+//			//generate a random pokemon and add it to the user's collection
+//			int pokemonId = new Random().nextInt(150)+1;
+//			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
+//
+//			break;
 		default:
 			System.out.println("URI not recognized");
 		}

@@ -39,8 +39,10 @@ export class LoginComponent implements OnInit {
     this.trainerService.loginTrainer(credentials).subscribe(
       data => {
         console.log(data);
-        sessionStorage.setItem("USER", data.token);
-        this.router.navigateByUrl("/home");
+        if (data.headers.get("Authorization")) {
+          sessionStorage.setItem("USER", data.headers.get("Authorization"));
+          this.router.navigateByUrl("/generate");
+        }
       }
     );
   }
