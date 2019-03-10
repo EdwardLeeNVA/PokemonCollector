@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
+import {Trainer} from "../../models/Trainer";
+import {TrainerService} from "../../services/trainer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-generate-pokemon',
@@ -14,12 +17,23 @@ export class GeneratePokemonComponent implements OnInit {
   private attack: number;
   private defense: number;
   private cardShow: boolean = false;
+  public trainer: Trainer;
+  public login_status: boolean;
 
   constructor(
     private pokedexService: PokedexService,
+    private trainerService: TrainerService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    //this.trainerService.checkSessionStorage();
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    if(this.trainer == null){
+      this.trainerService.updateLogout();
+      this.router.navigateByUrl("/PokemonCollector/ng/landing");
+    }
   }
 
   // generatePokemon() {

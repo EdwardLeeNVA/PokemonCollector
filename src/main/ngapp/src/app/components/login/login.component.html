@@ -21,9 +21,10 @@
             #name="ngModel"
             name="USERNAME"
             class="form-control"
+            id="USERNAME"
             [class.is-valid]="name.valid"
             [class.is-invalid]="name.invalid && name.touched"
-            [(ngModel)]="trainer.username"
+            [(ngModel)]="trainerInput.username"
           />
           <small
             class="text-danger"
@@ -39,9 +40,10 @@
             #password="ngModel"
             name="PASSWORD"
             class="form-control"
+            id="PASSWORD"
             [class.is-valid]="password.valid"
             [class.is-invalid]="password.invalid && password.touched"
-            [(ngModel)]="trainer.password"
+            [(ngModel)]="trainerInput.password"
           />
           <small
             class="text-danger"
