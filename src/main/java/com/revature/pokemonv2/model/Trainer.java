@@ -1,12 +1,14 @@
 package com.revature.pokemonv2.model;
 
 public class Trainer implements Comparable<Trainer>{
+	private int userID;
 	private String username;
+	private String password;
 	private String firstName;
 	private String lastName;
 	private int score;
+	private String email;
 	private int credits;
-	private int userID;
 	
 	public Trainer() { /*Empty constructor*/ }
 	public Trainer(String username, String firstName, String lastName) {
@@ -63,5 +65,18 @@ public class Trainer implements Comparable<Trainer>{
 	@Override
 	public int compareTo(Trainer t2) {
 		return t2.score-this.score;
+	}
+	/**
+	 * Gets the trainer's email.
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Sets the trainer's email.
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
