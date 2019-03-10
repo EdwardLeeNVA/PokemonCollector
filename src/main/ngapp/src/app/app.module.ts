@@ -15,6 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { GeneratePokemonComponent } from './components/generate-pokemon/generate-pokemon.component';
 import { NavComponent } from './components/nav/nav.component';
 import { JwtInterceptorService } from './services/jwt-interceptor.service'
+import { HighchartsChartModule } from 'highcharts-angular';
+import { StatsComponent } from './components/stats/stats.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { JwtInterceptorService } from './services/jwt-interceptor.service'
     CollectionComponent,
     RedeemComponent,
     GeneratePokemonComponent,
-    NavComponent
+    NavComponent,
+    StatsComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +38,8 @@ import { JwtInterceptorService } from './services/jwt-interceptor.service'
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    HighchartsChartModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

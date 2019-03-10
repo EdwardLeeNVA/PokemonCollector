@@ -1,65 +1,20 @@
-<!--<div class="container  text-light  main-container" id="mainContainer">
-  <div class="row">
-    <div class="col-md-6 justify-content-center" id="player-preview-section">
-      <div class="player-preview-heading">
-        <h2>Player Preview</h2>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-6" id="leaderboard-col">
-      <div class="container" id="leaderboard-container">
-        <div class="row">
-          <div>
-            <div>
-              <table class=" col-md-6 justify-content-center" id="leaderboardTable">
-                <thead>
-                  <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody id="leaderboardBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form #playerForm="ngForm" (ngSubmit)="onSubmit()" novalidate id="username-container">
-        <button class="center" routerLink="/login" id='button'>Temp to Login</button>
-        <button class="center" routerLink="/register" id='button'>Temp to Register</button>
-      </form>
-    </div>
-  </div>
-</div>
--->
-<html>
-  <br>
-  <h1 style="color:white;" align="center">Top 10 Scores</h1>
+<h1 style="color:white;" align="center">Top 10 Scores</h1>
 <div align="center">
   <div>
     <table id="leaderboardTable">
       <thead>
-        </thead>
-        <tr>
-          <th class="tabletext" id="tableusername" scope="col">Username</th>
-          <th class="tabletext" id="tablescore" scope="col">Score</th>
-        </tr>
-      
+      </thead>
+      <tr>
+        <th class="tabletext" id="tableusername" scope="col">Username</th>
+        <th class="tabletext" id="tablescore" scope="col">Score</th>
+      </tr>
+
       <tbody id="leaderboardBody"></tbody>
     </table>
   </div>
   <br>
   <div>
-    <button class="button">Stats</button>
+    <button class="button" routerLink="/stats">Stats</button>
   </div>
   <br>
 </div>
-
-</html>

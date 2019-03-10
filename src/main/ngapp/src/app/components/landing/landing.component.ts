@@ -3,6 +3,7 @@ import { Trainer } from "../../models/Trainer";
 import { TrainerService } from "../../services/trainer.service";
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -10,6 +11,7 @@ import { Router } from "@angular/router";
 })
 export class LandingComponent implements OnInit {
 
+  
 
   public trainer: Trainer;
   public login_status: boolean;
@@ -23,7 +25,7 @@ export class LandingComponent implements OnInit {
     fetch(this.configUrl)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        //console.log(res);
         let table = document.getElementById('leaderboardBody');
         for (let data of res) {
           table.innerHTML = table.innerHTML + `

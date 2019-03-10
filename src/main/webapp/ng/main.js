@@ -44,6 +44,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_shop_shop_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/shop/shop.component */ "./src/app/components/shop/shop.component.ts");
 /* harmony import */ var _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/redeem/redeem.component */ "./src/app/components/redeem/redeem.component.ts");
 /* harmony import */ var _components_generate_pokemon_generate_pokemon_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/generate-pokemon/generate-pokemon.component */ "./src/app/components/generate-pokemon/generate-pokemon.component.ts");
+/* harmony import */ var _components_stats_stats_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/stats/stats.component */ "./src/app/components/stats/stats.component.ts");
+
 
 
 
@@ -86,6 +88,9 @@ var appRoutes = [
     {
         path: 'redeem',
         component: _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_8__["RedeemComponent"]
+    }, {
+        path: 'stats',
+        component: _components_stats_stats_component__WEBPACK_IMPORTED_MODULE_10__["StatsComponent"]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -185,6 +190,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_generate_pokemon_generate_pokemon_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/generate-pokemon/generate-pokemon.component */ "./src/app/components/generate-pokemon/generate-pokemon.component.ts");
 /* harmony import */ var _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/nav/nav.component */ "./src/app/components/nav/nav.component.ts");
 /* harmony import */ var _services_jwt_interceptor_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/jwt-interceptor.service */ "./src/app/services/jwt-interceptor.service.ts");
+/* harmony import */ var highcharts_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! highcharts-angular */ "./node_modules/highcharts-angular/fesm5/highcharts-angular.js");
+/* harmony import */ var _components_stats_stats_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/stats/stats.component */ "./src/app/components/stats/stats.component.ts");
+
+
 
 
 
@@ -216,7 +225,8 @@ var AppModule = /** @class */ (function () {
                 _components_collection_collection_component__WEBPACK_IMPORTED_MODULE_11__["CollectionComponent"],
                 _components_redeem_redeem_component__WEBPACK_IMPORTED_MODULE_12__["RedeemComponent"],
                 _components_generate_pokemon_generate_pokemon_component__WEBPACK_IMPORTED_MODULE_14__["GeneratePokemonComponent"],
-                _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_15__["NavComponent"]
+                _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_15__["NavComponent"],
+                _components_stats_stats_component__WEBPACK_IMPORTED_MODULE_18__["StatsComponent"]
             ],
             imports: [
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
@@ -224,7 +234,8 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                highcharts_angular__WEBPACK_IMPORTED_MODULE_17__["HighchartsChartModule"]
             ],
             providers: [{
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
@@ -437,7 +448,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#leaderboardTable {\r\n  border: 2px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n.flex-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 1px solid black;\r\n}\r\n\r\n#tablescore {\r\n  border: 1px solid black;\r\n}\r\n\r\n/*html {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  body {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  .main-container {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  #landing-pokeball-cont {\r\n    text-align: center;\r\n    margin-top: 100px;\r\n  }\r\n  \r\n  #player-preview-section {\r\n  }\r\n  \r\n  .player-preview-heading {\r\n    text-align: center;\r\n    border: 1px solid yellow;\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    color: white;\r\n  }\r\n  \r\n  .user-item {\r\n  }\r\n  #tableusername{\r\n    background: linear-gradient(to top, black,black);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white; \r\n  }\r\n  #username-label {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    margin-left: 10px;\r\n    width: 50%;\r\n    padding: 5px;\r\n    border: 2px solid yellow;\r\n  }\r\n  \r\n  #username-container {\r\n    overflow-y: scroll;\r\n    max-height: 300px;\r\n  }\r\n\r\n  #button {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    color: white;   \r\n  }\r\n\r\n  #leaderboardTable{\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white;   \r\n  }*/\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHdCQUF3QjtFQUN4Qiw0REFBNEQ7QUFDOUQ7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQTBESSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuLmZsZXgtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbn1cclxuXHJcbiNidXR0b24ge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5odG1sLFxyXG5ib2R5IHtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbn1cclxuXHJcbi5ncmlkLWNvbnRhaW5lciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLWdhcDogNTBweCAxMDBweDtcclxufVxyXG5cclxuI3RhYmxldXNlcm5hbWUge1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xyXG59XHJcblxyXG4jdGFibGVzY29yZSB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XHJcbn1cclxuXHJcbi8qaHRtbCB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbiAgfVxyXG4gIGJvZHkge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gIH1cclxuICBcclxuICAubWFpbi1jb250YWluZXIge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gIH1cclxuICBcclxuICAjbGFuZGluZy1wb2tlYmFsbC1jb250IHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbi10b3A6IDEwMHB4O1xyXG4gIH1cclxuICBcclxuICAjcGxheWVyLXByZXZpZXctc2VjdGlvbiB7XHJcbiAgfVxyXG4gIFxyXG4gIC5wbGF5ZXItcHJldmlldy1oZWFkaW5nIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHllbGxvdztcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICB9XHJcbiAgXHJcbiAgLnVzZXItaXRlbSB7XHJcbiAgfVxyXG4gICN0YWJsZXVzZXJuYW1le1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgYmxhY2ssYmxhY2spO1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgY29sb3I6IHdoaXRlOyBcclxuICB9XHJcbiAgI3VzZXJuYW1lLWxhYmVsIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICB9XHJcbiAgXHJcbiAgI3VzZXJuYW1lLWNvbnRhaW5lciB7XHJcbiAgICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcbiAgICBtYXgtaGVpZ2h0OiAzMDBweDtcclxuICB9XHJcblxyXG4gICNidXR0b24ge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gICAgY29sb3I6IHdoaXRlOyAgIFxyXG4gIH1cclxuXHJcbiAgI2xlYWRlcmJvYXJkVGFibGV7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBjb2xvcjogd2hpdGU7ICAgXHJcbiAgfSovXHJcbiJdfQ== */"
+module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 2px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n.tabletext{\r\n  color: white\r\n}\r\n\r\n.button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;   \r\n}\r\n\r\n/*html {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  body {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  .main-container {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n  \r\n  #landing-pokeball-cont {\r\n    text-align: center;\r\n    margin-top: 100px;\r\n  }\r\n  \r\n  #player-preview-section {\r\n  }\r\n  \r\n  .player-preview-heading {\r\n    text-align: center;\r\n    border: 1px solid yellow;\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    color: white;\r\n  }\r\n  \r\n  .user-item {\r\n  }\r\n  #tableusername{\r\n    background: linear-gradient(to top, black,black);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white; \r\n  }\r\n  #username-label {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    margin-left: 10px;\r\n    width: 50%;\r\n    padding: 5px;\r\n    border: 2px solid yellow;\r\n  }\r\n  \r\n  #username-container {\r\n    overflow-y: scroll;\r\n    max-height: 300px;\r\n  }\r\n\r\n  #button {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    color: white;   \r\n  }\r\n\r\n  #leaderboardTable{\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow;\r\n    text-align: center;\r\n    color: white;   \r\n  }*/\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFO0FBQ0Y7O0FBRUE7RUFDRSw0REFBNEQ7RUFDNUQsd0JBQXdCO0VBQ3hCLFlBQVk7QUFDZDs7QUFFQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQTBESSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICB3aWR0aCA6IDk1JTtcclxufVxyXG5cclxudGFibGUsIHRoLCB0ZCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuI2J1dHRvbiB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmh0bWwsXHJcbmJvZHkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtZ2FwOiA1MHB4IDEwMHB4O1xyXG59XHJcblxyXG4udGFibGV0ZXh0e1xyXG4gIGNvbG9yOiB3aGl0ZVxyXG59XHJcblxyXG4uYnV0dG9uIHtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gIGNvbG9yOiB3aGl0ZTsgICBcclxufVxyXG5cclxuLypodG1sIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxuICB9XHJcbiAgYm9keSB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbiAgfVxyXG4gIFxyXG4gIC5tYWluLWNvbnRhaW5lciB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbiAgfVxyXG4gIFxyXG4gICNsYW5kaW5nLXBva2ViYWxsLWNvbnQge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLXRvcDogMTAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gICNwbGF5ZXItcHJldmlldy1zZWN0aW9uIHtcclxuICB9XHJcbiAgXHJcbiAgLnBsYXllci1wcmV2aWV3LWhlYWRpbmcge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gIH1cclxuICBcclxuICAudXNlci1pdGVtIHtcclxuICB9XHJcbiAgI3RhYmxldXNlcm5hbWV7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCBibGFjayxibGFjayk7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBjb2xvcjogd2hpdGU7IFxyXG4gIH1cclxuICAjdXNlcm5hbWUtbGFiZWwge1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbiAgICB3aWR0aDogNTAlO1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gIH1cclxuICBcclxuICAjdXNlcm5hbWUtY29udGFpbmVyIHtcclxuICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuICAgIG1heC1oZWlnaHQ6IDMwMHB4O1xyXG4gIH1cclxuXHJcbiAgI2J1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgICBjb2xvcjogd2hpdGU7ICAgXHJcbiAgfVxyXG5cclxuICAjbGVhZGVyYm9hcmRUYWJsZXtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiB3aGl0ZTsgICBcclxuICB9Ki9cclxuIl19 */"
 
 /***/ }),
 
@@ -448,7 +459,7 @@ module.exports = "#leaderboardTable {\r\n  border: 2px solid yellow;\r\n  backgr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"container  text-light  main-container\" id=\"mainContainer\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6 justify-content-center\" id=\"player-preview-section\">\r\n      <div class=\"player-preview-heading\">\r\n        <h2>Player Preview</h2>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\" id=\"leaderboard-col\">\r\n      <div class=\"container\" id=\"leaderboard-container\">\r\n        <div class=\"row\">\r\n          <div>\r\n            <div>\r\n              <table class=\" col-md-6 justify-content-center\" id=\"leaderboardTable\">\r\n                <thead>\r\n                  <tr>\r\n                    <th scope=\"col\">Username</th>\r\n                    <th scope=\"col\">Score</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody id=\"leaderboardBody\"></tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-6\">\r\n      <form #playerForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" novalidate id=\"username-container\">\r\n        <button class=\"center\" routerLink=\"/login\" id='button'>Temp to Login</button>\r\n        <button class=\"center\" routerLink=\"/register\" id='button'>Temp to Register</button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n-->\r\n<html>\r\n<div class=\"flex-container\">\r\n  <div>\r\n    <table  id=\"leaderboardTable\">\r\n      <thead>\r\n        <tr>\r\n          <th id=\"tableusername\" scope=\"col\">Username</th>\r\n          <th id=\"tablescore\" scope=\"col\">Score</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <div>\r\n    <form #playerForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" novalidate id=\"username-container\">\r\n      <div>\r\n        <button routerLink=\"/login\" id='button'>Temp to Login</button>\r\n      </div>\r\n      <div>\r\n        <button routerLink=\"/register\" id='button'>Temp to Register</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>\r\n\r\n</html>\r\n"
+module.exports = "<h1 style=\"color:white;\" align=\"center\">Top 10 Scores</h1>\r\n<div align=\"center\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>"
 
 /***/ }),
 
@@ -464,31 +475,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingComponent", function() { return LandingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
+/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 var LandingComponent = /** @class */ (function () {
-    function LandingComponent(trainerService, router, http) {
+    function LandingComponent(trainerService, router) {
         this.trainerService = trainerService;
         this.router = router;
-        this.http = http;
         this.configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
     }
     LandingComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get(this.configUrl)
-            .subscribe(function (Response) {
-            //console.log(Response);
-            console.log("Updateing rows");
+        fetch(this.configUrl)
+            .then(function (res) { return res.json(); })
+            .then(function (res) {
+            //console.log(res);
             var table = document.getElementById('leaderboardBody');
-            for (var _i = 0, Response_1 = Response; _i < Response_1.length; _i++) {
-                var data = Response_1[_i];
-                table.innerHTML = table.innerHTML + ("\n      <td align=\"left\" id =\"tableusername\">" + data.username + "<td> \n      <td align=\"left\" id =\"tablescore\">" + data.score + "<td>\n      ");
+            for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+                var data = res_1[_i];
+                table.innerHTML = table.innerHTML + ("\n          <tr>\n      <td style=\"color: white; border: 1px solid black;\" align=\"left\" id =\"tableusername\">" + data.username + "</td> \n      <td style=\"color: white; border: 1px solid black;\" align=\"left\" id =\"tablescore\">" + data.score + "</td>\n      </tr>\n      ");
             }
         });
         //this.trainerService.checkSessionStorage();
@@ -505,7 +513,7 @@ var LandingComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./landing.component.html */ "./src/app/components/landing/landing.component.html"),
             styles: [__webpack_require__(/*! ./landing.component.css */ "./src/app/components/landing/landing.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_trainer_service__WEBPACK_IMPORTED_MODULE_3__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LandingComponent);
     return LandingComponent;
 }());
@@ -963,6 +971,160 @@ var ShopComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ShopComponent);
     return ShopComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/stats/stats.component.css":
+/*!******************************************************!*\
+  !*** ./src/app/components/stats/stats.component.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc3RhdHMvc3RhdHMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/components/stats/stats.component.html":
+/*!*******************************************************!*\
+  !*** ./src/app/components/stats/stats.component.html ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/stats/stats.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/components/stats/stats.component.ts ***!
+  \*****************************************************/
+/*! exports provided: StatsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsComponent", function() { return StatsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! highcharts */ "./node_modules/highcharts/highcharts.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(highcharts__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var StatsComponent = /** @class */ (function () {
+    function StatsComponent() {
+        this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
+        this.PokemonOption = {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Pokemon Types'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                        // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                    name: 'Pokemon Type',
+                    colorByPoint: true,
+                    data: [
+                        {
+                            name: 'Normal',
+                            y: 65,
+                            color: 'grey'
+                        }, {
+                            name: 'Water',
+                            y: 62,
+                            color: 'blue'
+                        }, {
+                            name: 'Grass',
+                            y: 38,
+                            color: 'Green'
+                        }, {
+                            name: 'Psychic',
+                            y: 35,
+                            color: 'pink'
+                        }, {
+                            name: 'Fire',
+                            y: 31,
+                            color: 'orange'
+                        }, {
+                            name: 'Electric',
+                            y: 28,
+                            color: 'yellow'
+                        }, {
+                            name: 'Fighting',
+                            y: 22,
+                            color: 'Red'
+                        }, {
+                            name: 'Bug',
+                            y: 18,
+                            color: 'darkgreen'
+                        }, {
+                            name: 'Poison',
+                            y: 16,
+                            color: 'magenta'
+                        }, {
+                            name: 'Ground',
+                            y: 15,
+                            color: 'brown'
+                        }, {
+                            name: 'Ice',
+                            y: 14,
+                            color: 'lightblue'
+                        }, {
+                            name: 'Dragon',
+                            y: 12,
+                            color: 'Blue'
+                        }, {
+                            name: 'Rock',
+                            y: 11,
+                            color: 'darkgrey'
+                        }, {
+                            name: 'Ghost',
+                            y: 9,
+                            color: 'purple'
+                        }, {
+                            name: 'Flying',
+                            y: 7,
+                            color: 'purple'
+                        }
+                    ]
+                }]
+        };
+    }
+    StatsComponent.prototype.ngOnInit = function () {
+    };
+    StatsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-stats',
+            template: __webpack_require__(/*! ./stats.component.html */ "./src/app/components/stats/stats.component.html"),
+            styles: [__webpack_require__(/*! ./stats.component.css */ "./src/app/components/stats/stats.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], StatsComponent);
+    return StatsComponent;
 }());
 
 

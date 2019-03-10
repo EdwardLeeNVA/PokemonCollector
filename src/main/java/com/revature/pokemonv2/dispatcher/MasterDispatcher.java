@@ -1,4 +1,4 @@
- package com.revature.pokemonv2.dispatcher;
+package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
 import java.util.List;
@@ -48,8 +48,8 @@ public class MasterDispatcher {
 			break;
 		case "collection":
 			if (!isUnfiltered) {
-				String username = TokenService.getInstance().getUserDetailsFromToken(
-						request.getHeader("Authorization")).getUsername();
+				String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader("Authorization"))
+						.getUsername();
 				mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			}
 			break;
@@ -65,14 +65,15 @@ public class MasterDispatcher {
 				PlayerService.getPlayerService().login(request, response);
 			break;
 		case "leaderboard":
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
+			mapper.writeValue(response.getOutputStream(),
+					LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 			break;
-		
-		case "debug": 
+
+		case "debug":
 			Driver.tomcatDebug();
-					case "generatePokemon":		
-			//write the generated pokemon to the response
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
+		case "generatePokemon":
+			// write the generated pokemon to the response
+			mapper.writeValue(response.getOutputStream(), PlayerService.generatePokemon(request, response));
 			break;
 		default:
 			System.out.println("URI not recognized");
