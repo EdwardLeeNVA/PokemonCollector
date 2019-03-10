@@ -1,5 +1,6 @@
 package com.revature.pokemonv2.dao;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.service.TokenService;
@@ -25,6 +28,7 @@ public class TrainerDAOImp implements TrainerDAO {
 	private static final TokenService tokenService = TokenService.getInstance();
 	private static TrainerDAOImp trainer = null;
 	private static final Logger LOGGER = Logger.getLogger(TrainerDAOImp.class);
+	private static ObjectMapper mapper = new ObjectMapper();
 
 	/**
 	 * Gets the instance of the class.
@@ -45,6 +49,15 @@ public class TrainerDAOImp implements TrainerDAO {
 			// Generate a token for the user
 			final String token = tokenService.generateToken(login);
 			response.addHeader("Authorization", "Bearer " + token);
+			try {
+				response.getWriter().write(mapper.writeValueAsString(login));
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return token;
 		}
 		return "";
@@ -62,7 +75,7 @@ public class TrainerDAOImp implements TrainerDAO {
 				// Executing out parameters
 				try (ResultSet rs = (ResultSet) cs.getObject(3)) {
 					if (rs.next()) {
-						return TrainerFactory.createFromResult(rs, username);
+						return TrainerFactory.createFromResult(rs);
 					}
 				}
 			}

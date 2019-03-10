@@ -52,7 +52,9 @@ public class MasterDispatcher {
 			}
 			break;
 		case "purchase":
-			PlayerService.getPlayerService().purchasePokemon(request, response);
+			if(!isUnfiltered) {
+				PlayerService.getPlayerService().purchasePokemon(request, response);
+			}
 			break;
 		case "allpokemon":
 			mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
@@ -60,7 +62,7 @@ public class MasterDispatcher {
 		// Logins the user and generates an authentication token if successful
 		case "login":
 			if (isUnfiltered)
-				PlayerService.getPlayerService().login(request, response);
+				mapper.writeValue(response.getOutputStream(), PlayerService.getPlayerService().login(request, response));
 			break;
 		case "generatePokemon":		
 			//write the generated pokemon to the response
