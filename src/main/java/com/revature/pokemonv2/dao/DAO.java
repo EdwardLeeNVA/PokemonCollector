@@ -53,7 +53,7 @@ public class DAO {
 	 * @param pokemonId the pokemon's id
 	 * @return score the player's score after generating the pokemon
 	 */
-	public static Pokemon generatePokemon(int trainerId, int pokemonId) {
+	public static Pokemon generatePokemon(int trainerId, int pokemonId, String username) {
 		Connection conn = ConnectionUtility.getInstance().getConnection();
 		
 		//until we merge with the connection pool
@@ -70,7 +70,9 @@ public class DAO {
 			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
 			cs.execute();			
-			//return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+
+			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
+
 			return pokemon;
 			
 		} catch (SQLException e) {
