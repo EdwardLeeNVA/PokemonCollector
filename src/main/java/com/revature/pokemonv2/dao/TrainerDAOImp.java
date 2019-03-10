@@ -1,5 +1,6 @@
 package com.revature.pokemonv2.dao;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.service.TokenService;
@@ -40,13 +45,21 @@ public class TrainerDAOImp implements TrainerDAO {
 	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		// Creates a new trainer and assigns the username and password to the object
 		// Verifies if the user is valid
-		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
-		if (login != null) {
-			// Generate a token for the user
-			final String token = tokenService.generateToken(login);
-			System.out.println(token);
-			response.addHeader("Authorization", "Bearer " + token);
-		}
+		ObjectNode node;
+		try
+			{
+			node = new ObjectMapper().readValue(request.getReader(), ObjectNode.class);
+			Trainer login = verifyLogin(node.get("USERNAME").asText(), node.get("PASSWORD").asText());
+			if (login != null) {
+				// Generate a token for the user
+				final String token = tokenService.generateToken(login);
+				System.out.println(token);
+				response.addHeader("Authorization", "Bearer " + token);
+			}
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		return "";
 	}
 
