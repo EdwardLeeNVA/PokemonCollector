@@ -4,7 +4,7 @@ import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { Trainer } from '../../models/Trainer';
 
 @Component({
   selector: 'app-shop',
@@ -25,7 +25,24 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.populatePokeArray();
   }
-  
+  buyPokemon(pokemonID: number) {
+
+    // Check if the trainer has enough credits:
+
+    let trainer: Trainer = JSON.parse(session.getItem("USER_DATA"));
+
+    let cost: number = this.allPoke[pokemonID].cost;
+
+    let hasCredits: boolean = trainer.credits >= cost;
+
+    // If the trainer has enough credits, add the Pokemon to their collecion:
+    if (hasCredits) {
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+    }else{
+      alert("You can't get ye Pokemon")
+    }
+
+  }
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
