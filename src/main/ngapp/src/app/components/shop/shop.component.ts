@@ -4,13 +4,9 @@ import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
-=======
-import { Trainer } from '../../models/Trainer';
->>>>>>> b5310a04a3a3eb5682af647f8e56979c8d266946
 
 @Component({
   selector: 'app-shop',
