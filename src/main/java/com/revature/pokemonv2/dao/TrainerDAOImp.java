@@ -95,7 +95,6 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	@Override
 	public String loginAuthentication(HttpServletRequest request, HttpServletResponse response) {
-		// Creates a new trainer and assigns the username and password to the object
 		// Verifies if the user is valid
 		String token = "";
 		Trainer login = verifyLogin(request.getParameter("USERNAME"), request.getParameter("PASSWORD"));
@@ -149,26 +148,21 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public int[] redeemSpecific(int trainer_id, int poke_id)
+	public int[] redeemSpecific(int trainerId, int pokeId)
 	{
 		int [] out = new int[2]; //return array
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) { //create connection
 			String sql = "CALL redeem_duplicate(?,?, ?, ?)"; //Procedure string
 			//Setup callableStatment
-			try(CallableStatement cs = conn.prepareCall(sql)){
-				cs.setInt(1, trainer_id);//Set the trainer id in the callable statement
-				cs.setInt(2, poke_id);//Set the pokemon id in the callable statement
-				cs.registerOutParameter(3, Types.INTEGER); //Out param for added credits
-				cs.registerOutParameter(4, Types.INTEGER);//out param for new total
-				cs.execute();				//Prepare the resultset
-
+			try(CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)){
+				cs.execute();
 				out[0] = cs.getInt(3); //set return value
 				out[1] = cs.getInt(4);//set return value
 			}
 			return out; //return array of values
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(), e);
 			return null;
 		}
 

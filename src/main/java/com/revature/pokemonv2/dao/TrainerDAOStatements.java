@@ -3,6 +3,7 @@ package com.revature.pokemonv2.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import oracle.jdbc.OracleTypes;
 
@@ -41,6 +42,26 @@ class TrainerDAOStatements {
 		CallableStatement statement = connection.prepareCall("CALL update_credits(?,?)");
 		statement.setString(1, username);
 		statement.setInt(2, (cost * -1));
+		return statement;
+	}
+	
+	/**
+	 * Statement for redeemSpecific.
+	 * Out param 3 for added credits.
+	 * Out param 4 for new total.
+	 * 
+	 * @param connection database connection
+	 * @param trainerId ID of trainer
+	 * @param pokeId ID of Pokemon
+	 * @return a CallableStatement
+	 * @throws SQLException 
+	 */
+	static CallableStatement redeemSpecificStatement(Connection connection, int trainerId, int pokeId) throws SQLException {
+		CallableStatement statement = connection.prepareCall("CALL redeem_duplicate(?, ?, ?, ?)");
+		statement.setInt(1, trainerId);
+		statement.setInt(2, pokeId);
+		statement.registerOutParameter(3, Types.INTEGER); 
+		statement.registerOutParameter(4, Types.INTEGER);
 		return statement;
 	}
 
