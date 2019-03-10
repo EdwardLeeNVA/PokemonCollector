@@ -1,23 +1,20 @@
  package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Random;
-
-import javax.servlet.ServletException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
-import com.revature.pokemonv2.service.PlayerService;
-import com.revature.pokemonv2.service.TokenService;
-import com.revature.pokemonv2.utilities.CachingUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
+import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.RedeemService;
+import com.revature.pokemonv2.service.TokenService;
 
 /**
  * The master dispatcher class relays HTTP requests to different end points.
@@ -62,10 +59,31 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				PlayerService.getPlayerService().login(request, response);
 			break;
-		case "generatePokemon":		
-			//write the generated pokemon to the response
-			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
+
+		case "duplicate":
+			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
+			RedeemService.getDuplicates(request, response);
 			break;
+		case "redeem":
+			//Endpoint for redeem call. Redeems a specific pokemon
+			
+			RedeemService.redeemSpecific(request, response);
+			break;
+		case "redeemAll":
+			//Endpoint for redeem all call. Redeems all pokemon.
+			
+			RedeemService.redeemAll(request, response);
+		case "generatePokemon":
+			//enter the jwt token which needs to be decrypted
+//			String username1 = TokenService.getInstance().getUserDetailsFromToken(
+//					request.getHeader("Authorization")).getUsername();;
+//			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
+//					request.getHeader("Authorization")).getUserID();
+//			//generate a random pokemon and add it to the user's collection
+//			int pokemonId = new Random().nextInt(150)+1;
+//			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
+//
+//			break;
 		default:
 			System.out.println("URI not recognized");
 		}

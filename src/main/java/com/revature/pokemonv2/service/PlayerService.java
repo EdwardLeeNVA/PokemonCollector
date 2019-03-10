@@ -23,7 +23,7 @@ public class PlayerService {
 	//Object mapper
 	private static final ObjectMapper mapper = new ObjectMapper();
 	//Trainer DAO instance
-	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
+	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
 	//Player service instance
 	private static PlayerService instance;
 
