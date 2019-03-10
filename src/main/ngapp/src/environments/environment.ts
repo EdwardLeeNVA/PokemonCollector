@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    login: "http://localhost:8080/PokemonCollector/servlet/unfiltered/login"
+    login: "/PokemonCollector/servlet/unfiltered/login"
   }
 };
 

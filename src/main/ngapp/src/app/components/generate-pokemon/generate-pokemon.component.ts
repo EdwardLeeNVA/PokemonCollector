@@ -52,6 +52,7 @@ export class GeneratePokemonComponent implements OnInit {
   onClick() {
     this.pokedexService.generatePokemon().subscribe(
       data => {
+        console.log("Pokemon: " + data);
         this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
         this.pokemonType = data.types[0].type.name;
         this.pokemonSprite = data.sprites.front_default;

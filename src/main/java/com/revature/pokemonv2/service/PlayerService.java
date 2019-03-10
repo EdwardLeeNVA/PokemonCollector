@@ -67,8 +67,6 @@ public class PlayerService {
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(
 				request.getHeader("Authorization")).getUsername();
-		int credits = TokenService.getInstance().getUserDetailsFromToken(
-				request.getHeader("Authorization")).getCredits(); //need to know if they can update the token or if I should be the one to do it
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
 		Pokemon p = CachingUtility.getCachingUtility().getPokemonFromCache(id);
 		int cost = p.getCost();
