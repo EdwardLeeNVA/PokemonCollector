@@ -1,20 +1,17 @@
 <!-- Default Navbar -->
 <nav class="navbar navbar-expand-lg " id="baseNavBar" *ngIf="!login_status">
-    <button class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
-      <a class="nav-link customLink" href="/PokemonCollector/ng/login" routerLink="login">Login</a>
-      <a class="nav-link customLink" href="/PokemonCollector/ng/register" routerLink="register">Sign Up</a>
-      <a class="nav-link customLink" href="/PokemonCollector/ng/landing" routerLink="landing">Home</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link customLink" href="/PokemonCollector/ng/login" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link customLink" href="/PokemonCollector/ng/register" routerLink="register">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link customLink" href="/PokemonCollector/ng/landing" routerLink="landing">Home</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
@@ -22,24 +19,8 @@
   <nav class="navbar navbar-expand-lg " id="logged-nav-bar" *ngIf="login_status">
     <img src="http://i65.tinypic.com/25iyve1.png" alt="Image and video hosting by TinyPic"/>
 
-    <!-- Get info from JWT? Use behavior subject to persist this info
-    <h5 class="player-info">{{ username }}</h5>
-    <h5 class="player-info">Score {{ this.score }}</h5>
-    <h5 class="player-info">Credits {{ credit }}</h5> -->
-    
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav2">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link customLink" href="/PokemonCollector/ng/generate" routerLink="generate">Home<span class="sr-only">(current)</span></a>

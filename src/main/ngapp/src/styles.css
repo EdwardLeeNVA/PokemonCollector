@@ -32,6 +32,15 @@
     background: linear-gradient(to top, #990033 0%, #cc0000 65%);
     color: white;
   }
+
+  .player-info {
+    font-size: 15px;
+    padding: 10px;
+  }
+  
+  .logged-links {
+    float: right;
+  }
   
   /*********************************************************Global Styles for PokemonCards**********************/
   
@@ -96,15 +105,4 @@
     font-size: 14px;
     padding: 0px;
     margin: 0px;
-  }
-  
-  /***********************************************************************************************************/
-  
-  .player-info {
-    font-size: 15px;
-    padding: 10px;
-  }
-  
-  .logged-links {
-    float: right;
   }

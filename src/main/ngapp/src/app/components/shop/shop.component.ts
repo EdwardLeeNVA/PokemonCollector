@@ -24,12 +24,17 @@ export class ShopComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
 
-  constructor(private http: HttpClient, private trainerService: TrainerService) { }
+  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
     this.populatePokeArray();
+    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    if(this.trainer == null){
+      this.trainerService.updateLogout();
+      this.router.navigateByUrl("/PokemonCollector/ng/landing");
+    }
   }
   
   getAllPokemon(): Observable<any[]>{

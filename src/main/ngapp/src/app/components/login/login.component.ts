@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { TrainerService } from 'src/app/services/trainer.service';
-import { Trainer } from 'src/app/models/Trainer';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "src/app/services/auth.service";
+import { TokenService } from "src/app/services/token.service";
+import {TrainerService} from "../../services/trainer.service";
+import {Router} from "@angular/router";
+import {Trainer} from "../../models/Trainer";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-
   NO_LOGIN_FAILED = "";
   LOGIN_FAILED = "<p>Wrong username or password.</p>";
   currentLoginMessage = this.NO_LOGIN_FAILED;
@@ -17,39 +18,41 @@ export class LoginComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
 
-  constructor(private trainerService: TrainerService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private trainerService: TrainerService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
-  }
-
-  loginResponse(response: string) {
-    if (response.length > 0) {
-      this.loginSucceeded();
-    } else {
-      this.loginFailed();
+    if(this.trainer != null){
+      this.trainerService.checkSessionStorage();
+      this.router.navigateByUrl("/PokemonCollector/ng/generate");
     }
   }
 
-  loginSucceeded() {
+  trainerInput: Trainer = {
+    userID: 0,
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    credits: 0,
+    score: 0
+  };
 
-  }
-
-  loginFailed() {
-    this.currentLoginMessage = this.LOGIN_FAILED;
-  }
-  
   loginTrainer() {
-    let credentials : FormData = new FormData(document.querySelector("form"));
-    this.trainerService.loginTrainer(credentials).subscribe(
-      data => {
-        console.log(data);
-        if (data.headers.get("Authorization")) {
-          sessionStorage.setItem("USER", data.headers.get("Authorization"));
-          this.router.navigateByUrl("/generate");
+    this.authService
+      .attemptLogin(this.trainerInput.username, this.trainerInput.password)
+      .subscribe(data => {
+        if (data != null) {
+          this.tokenService.setCurrentUserToken(data.headers.get("Authorization"), data);
         }
-      }
-    );
+      });
   }
 }

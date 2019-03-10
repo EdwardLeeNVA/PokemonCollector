@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    login: "http://localhost:8080/PokemonCollector/servlet/unfiltered/login"
+  }
 };
 
 /*
