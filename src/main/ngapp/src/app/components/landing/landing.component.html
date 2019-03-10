@@ -40,28 +40,26 @@
 </div>
 -->
 <html>
-<div class="flex-container">
+  <br>
+  <h1 style="color:white;" align="center">Top 10 Scores</h1>
+<div align="center">
   <div>
-    <table  id="leaderboardTable">
+    <table id="leaderboardTable">
       <thead>
+        </thead>
         <tr>
-          <th id="tableusername" scope="col">Username</th>
-          <th id="tablescore" scope="col">Score</th>
+          <th class="tabletext" id="tableusername" scope="col">Username</th>
+          <th class="tabletext" id="tablescore" scope="col">Score</th>
         </tr>
-      </thead>
+      
       <tbody id="leaderboardBody"></tbody>
     </table>
   </div>
+  <br>
   <div>
-    <form #playerForm="ngForm" (ngSubmit)="onSubmit()" novalidate id="username-container">
-      <div>
-        <button routerLink="/login" id='button'>Temp to Login</button>
-      </div>
-      <div>
-        <button routerLink="/register" id='button'>Temp to Register</button>
-      </div>
-    </form>
+    <button class="button">Stats</button>
   </div>
+  <br>
 </div>
 
 </html>
