@@ -11,12 +11,18 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   NO_LOGIN_FAILED = "";
-  LOGIN_FAILED = "<p>Wrong username and password.</p>";
+  LOGIN_FAILED = "<p>Wrong username or password.</p>";
   currentLoginMessage = this.NO_LOGIN_FAILED;
+
+  public trainer: Trainer;
+  public login_status: boolean;
 
   constructor(private trainerService: TrainerService, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+  }
 
   loginResponse(response: string) {
     if (response.length > 0) {

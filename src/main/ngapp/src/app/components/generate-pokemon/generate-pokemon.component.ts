@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokedexService } from '../../services/pokedex.service';
+import {Trainer} from "../../models/Trainer";
 
 @Component({
   selector: 'app-generate-pokemon',
@@ -14,12 +15,16 @@ export class GeneratePokemonComponent implements OnInit {
   private attack: number;
   private defense: number;
   private cardShow: boolean = false;
+  public trainer: Trainer;
+  public login_status: boolean;
 
   constructor(
     private pokedexService: PokedexService,
   ) {}
 
   ngOnInit() {
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
   }
 
   // generatePokemon() {
