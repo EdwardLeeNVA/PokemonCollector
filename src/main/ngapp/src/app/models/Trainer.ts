@@ -1,9 +1,9 @@
 export class Trainer {
-    id: number;
+    userID: number;
     username: string;
     password: string;
-    f_name: string;
-    l_name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     credits: number;
     score: number;

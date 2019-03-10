@@ -4,7 +4,8 @@ import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Trainer } from '../../models/Trainer';
+import {Trainer} from "../../models/Trainer";
+import {TrainerService} from "../../services/trainer.service";
 
 @Component({
   selector: 'app-shop',
@@ -19,12 +20,21 @@ export class ShopComponent implements OnInit {
   private numPages: number;
   private allPoke: [Pokemon];
   private pokePages: [Pokemon];
-  cardShow: boolean = false;
+  public trainer: Trainer;
+  public login_status: boolean;
+  public cardShow: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
     this.populatePokeArray();
+    //this.trainerService.checkSessionStorage();
+    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
+    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    if(this.trainer == null){
+      this.trainerService.updateLogout();
+      this.router.navigateByUrl("/PokemonCollector/ng/landing");
+    }
   }
   buyPokemon(pokemonID: number) {
 
