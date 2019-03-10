@@ -59,16 +59,18 @@ public class DAO {
 		//until we merge with the connection pool
 		//conn = pool.getConnection();
 		
-		try (CallableStatement cs = conn.prepareCall("{call add_pokemon(?,?,?)}");) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)");) {
 			cs.setInt(1, trainerId);
 			
 			//change new Random().nextInt(150) for 1 based index to
 			//new Random().nextInt(151-1)+1
 		
 			cs.setInt(2, pokemonId);		
-			cs.setInt(3, CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId).getCost());
+			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			cs.setInt(3, pokemon.getCost());
 			cs.execute();			
-			return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			//return CachingUtility.getCachingUtility().getPokemonFromCache(pokemonId);
+			return pokemon;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

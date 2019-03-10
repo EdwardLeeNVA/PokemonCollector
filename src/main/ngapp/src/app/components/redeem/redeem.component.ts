@@ -1,29 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/models/Pokemon';
-import { PokedexService } from '../../services/pokedex.service';
-import { Trainer } from 'src/app/models/Trainer';
+import { Component, OnInit } from "@angular/core";
+import { Pokemon } from "src/app/models/Pokemon";
+import { PokedexService } from "../../services/pokedex.service";
+import { Trainer } from "src/app/models/Trainer";
+
+import { TrainerService } from "../../services/trainer.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-redeem',
-  templateUrl: './redeem.component.html',
-  styleUrls: ['./redeem.component.css']
+  selector: "app-redeem",
+  templateUrl: "./redeem.component.html",
+  styleUrls: ["./redeem.component.css"]
 })
 export class RedeemComponent implements OnInit {
-
   //declare trainer object to store trainer details
   /* HARD CODED, WOULD NEED TO CHANGE */
-  trainer: Trainer = {id: 0,username: '',password: '',f_name: '',l_name: '',email: ''};
+  //trainer: Trainer = {id: 0,username: '',password: '',f_name: '',l_name: '',email: ''};
   //declare pokemon object to store pokemon ID of specific pokemon being redeemed
   /* HARD CODED, WOULD NEED TO CHANGE */
-  pokemon: Pokemon = {id: 0,name: '',image: '',types: null,stats: null,count: 2};
+  pokemon: Pokemon = {
+    id: 0,
+    name: "",
+    image: "",
+    types: null,
+    stats: null,
+    count: 2
+  };
 
   //stores an array of Pokemon objects to display to DOM
   duplicatePokemon: Pokemon[];
   //stores credit amounts change and new credit amount
   credits: number[];
 
-  constructor(private pokedexService: PokedexService) { }
-
+  constructor(private pokedexService: PokedexService) {}
 
   ngOnInit() {
     //store trainer object values from local
@@ -33,18 +41,17 @@ export class RedeemComponent implements OnInit {
   }
 
   //method that gets duplicates returned from service method and assigns it to variable
-  getDuplicates(){
+  getDuplicates() {
     this.duplicatePokemon = this.pokedexService.getDuplicates();
   }
 
   //method that gets redeemed credits returned from service method and assigns it to variable
-  redeemAll(){
+  redeemAll() {
     this.credits = this.pokedexService.redeemAll();
   }
 
   //method that gets redeemed credits returned from service method based on a specific pokemon ID and assigns to variable
-  redeemSpecific(){
+  redeemSpecific() {
     this.credits = this.pokedexService.redeemSpecific(this.pokemon.id);
   }
-
 }

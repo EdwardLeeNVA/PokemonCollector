@@ -3,20 +3,23 @@ import { Router } from "@angular/router";
 import { HttpHeaders } from "@angular/common/http";
 
 import { GeneratePokemonComponent } from "../components/generate-pokemon/generate-pokemon.component";
+import {TrainerService} from "./trainer.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class TokenService {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private trainerService: TrainerService) {}
 
   /*
   Sets a user token to session storage when the 
   user logs in
   */
-  setCurrentUserToken(token: string) {
+  setCurrentUserToken(token: string, resp: any) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
+      sessionStorage.setItem("TRAINER_DATA", JSON.stringify(resp));
+      this.trainerService.updateValidLogin(resp);
       this.router.navigateByUrl("/generate");
     } else {
       throw new Error();
