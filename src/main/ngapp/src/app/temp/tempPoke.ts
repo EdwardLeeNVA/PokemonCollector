@@ -55,7 +55,8 @@ export const POKEMON: Pokemon[] = [
       }
     }
   ],
-  count: 2
+  count: 2,
+  cost: 0
 },
 { id: 2,
     name: 'ivysaur',
@@ -111,7 +112,8 @@ export const POKEMON: Pokemon[] = [
      }
    }
  ],
- count: 3
+ count: 3,
+ cost: 0
 },
 { id: 3,
     name: 'venusaur',
@@ -167,7 +169,8 @@ export const POKEMON: Pokemon[] = [
      }
    }
  ],
- count: 5
+ count: 5,
+ cost: 0
 },
 { id: 4,
     name: 'charmander',
@@ -223,7 +226,8 @@ export const POKEMON: Pokemon[] = [
      }
    }
  ],
- count: 5
+ count: 5,
+ cost: 0
 }
 ,
 { id: 5,
@@ -280,6 +284,7 @@ export const POKEMON: Pokemon[] = [
      }
    }
  ],
- count: 1
+ count: 1,
+ cost: 0
 }
 ];
