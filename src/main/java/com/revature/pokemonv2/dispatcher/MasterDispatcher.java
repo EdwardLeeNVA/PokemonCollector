@@ -65,12 +65,12 @@ public class MasterDispatcher {
 			break;
 		case "redeem":
 			//Endpoint for redeem call. Redeems a specific pokemon
-			//POST: Takes trainerID and PokemonID
+			
 			RedeemService.redeemSpecific(request, response);
 			break;
 		case "redeemAll":
 			//Endpoint for redeem all call. Redeems all pokemon.
-			//POST Takes trainerID.
+			
 			RedeemService.redeemAll(request, response);
 		case "generatePokemon":
 			//enter the jwt token which needs to be decrypted
