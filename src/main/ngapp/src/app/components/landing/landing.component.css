@@ -1,5 +1,5 @@
 #leaderboardTable {
-  border: 2px solid yellow;
+  border: 3px solid yellow;
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
 }
 
@@ -25,11 +25,11 @@ body {
 }
 
 #tableusername {
-  border: 1px solid black;
+  border: 3px solid yellow;
 }
 
 #tablescore {
-  border: 1px solid black;
+  border: 3px solid yellow;
 }
 
 /*html {

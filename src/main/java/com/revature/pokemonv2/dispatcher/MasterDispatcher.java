@@ -58,10 +58,12 @@ public class MasterDispatcher {
 			if (isUnfiltered)
 				PlayerService.getPlayerService().login(request, response);
 			break;
-		case "leaderboard":
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
-			break;
-		
+//		case "leaderboard":
+//			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
+//			break;
+//		case "stats":
+//			mapper.writeValue(response.getOutputStream(),"words");
+//			break;
 		case "debug": 
 			Driver.tomcatDebug();
 			
