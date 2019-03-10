@@ -37,8 +37,11 @@ public class RedeemService {
 			final String token = request.getHeader("Authorization"); //get JWT token
 			//Retrieve userID from the token
 			int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); //Get trainer id from token
+			System.out.println("ID from token" + ID);
 			//Call get duplicates with the trainer ID. Returns a list of Pokemon Objects
 			ArrayList<Pokemon> duplicatesArray = TrainerDAOImp.getTrainerDAO().get_duplicates(ID);
+			System.out.println("USer duplicates " + duplicatesArray);
+			
 			//Use duplicatesArray to retrieve each pokemons information from the cache.
 			//Loop through the duplicatesArray
 			for(Pokemon x : duplicatesArray) {
