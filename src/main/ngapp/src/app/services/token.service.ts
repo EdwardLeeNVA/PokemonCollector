@@ -3,7 +3,8 @@ import { Router } from "@angular/router";
 import { HttpHeaders } from "@angular/common/http";
 
 import { GeneratePokemonComponent } from "../components/generate-pokemon/generate-pokemon.component";
-import {TrainerService} from "./trainer.service";
+import { TrainerService } from "./trainer.service";
+import { Trainer } from "../models/Trainer";
 
 @Injectable({
   providedIn: "root"
@@ -30,7 +31,7 @@ export class TokenService {
   */
   getAuthorizedRequestHeader(): HttpHeaders {
     const headers: HttpHeaders = new HttpHeaders({
-      "Authorization": sessionStorage.getItem("CURRENT_USER"),
+      Authorization: sessionStorage.getItem("CURRENT_USER"),
       "Access-Control-Allow-Origin": "http://localhost:4200",
       "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Headers":
