@@ -30,9 +30,12 @@ public class DAO {
 		logger.trace("Database called for pokedex");
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			String sql = "call get_all_pokemon(?)";
+			logger.trace("Entered sql statement creation.");
 			try (CallableStatement cs = conn.prepareCall(sql)) {
 				cs.setString(1, username);
+				logger.trace("Entered callable statement creation.");
 				try (ResultSet rs = cs.executeQuery()) {
+					logger.trace("Query executed and iterating through cursor.");
 					ArrayList<Pokemon> pokedex = new ArrayList<>();
 					while (rs.next()) {
 						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
