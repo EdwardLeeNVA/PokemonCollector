@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 
+import oracle.jdbc.OracleTypes;
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
@@ -29,12 +30,15 @@ public class DAO {
 	public List<Pokemon> getTrainerPokedex(String username) {
 		logger.trace("Database called for pokedex");
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			String sql = "call get_all_pokemon(?)";
+			String sql = "call get_all_pokemon(?, ?)";
 			logger.trace("Entered sql statement creation.");
 			try (CallableStatement cs = conn.prepareCall(sql)) {
 				cs.setString(1, username);
+				cs.registerOutParameter(2, OracleTypes.CURSOR);
 				logger.trace("Entered callable statement creation.");
-				try (ResultSet rs = cs.executeQuery()) {
+				try  {
+					cs.executeQuery();
+					ResultSet rs = (ResultSet)cs.getObject(2);
 					logger.trace("Query executed and iterating through cursor.");
 					ArrayList<Pokemon> pokedex = new ArrayList<>();
 					while (rs.next()) {
@@ -42,6 +46,9 @@ public class DAO {
 					}
 					logger.trace("Pokedex returned by DB: " + pokedex);
 					return pokedex;
+				} catch (SQLException e){
+					logger.error("getTrainerPokedex didn't work");
+					return new ArrayList<Pokemon>();
 				}
 			}
 		} catch (SQLException e) {
