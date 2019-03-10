@@ -23,7 +23,7 @@ public class PlayerService {
 	//Object mapper
 	private static final ObjectMapper mapper = new ObjectMapper();
 	//Trainer DAO instance
-	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
+	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
 	//Player service instance
 	private static PlayerService instance;
 
@@ -71,7 +71,7 @@ public class PlayerService {
 		String username = TokenService.getInstance().getUserDetailsFromToken(
 				request.getHeader("Authorization")).getUsername();
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
-		Pokemon p = CachingUtility.getCachingUtility().getPokemonFromCache(id);
+		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
 		int cost = p.getCost();
 		//dao command to remove the money
 		if(trainer.purchasePokemon(username, cost)) {

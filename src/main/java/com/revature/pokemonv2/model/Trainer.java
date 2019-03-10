@@ -1,14 +1,14 @@
 package com.revature.pokemonv2.model;
 
 public class Trainer {
+	private int userID;
 	private String username;
+	private String password;
 	private String firstName;
 	private String lastName;
-	private String password;
 	private String email;
-	private int score;
 	private int credits;
-	private int userID;
+	private int score;
 	
 	/**
 	 * Empty constructor.
@@ -72,20 +72,6 @@ public class Trainer {
 	}
 	
 	/**
-	 * The trainer's first name.
-	 */
-	public String getEmail() {
-		return email;
-	}
-	
-	/**
-	 * Sets the trainer's first name.
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	/**
 	 * The trainer's score.
 	 */
 	public int getScore() {
@@ -125,5 +111,19 @@ public class Trainer {
 	 */
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+
+	/**
+	 * Gets the trainer's email.
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Sets the trainer's email.
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

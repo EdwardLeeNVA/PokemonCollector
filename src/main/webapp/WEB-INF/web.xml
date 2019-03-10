@@ -8,11 +8,7 @@
 		<filter-name>JwtAuthenticationFilter</filter-name>
 		<filter-class>com.revature.pokemonv2.filter.AuthenticationFilter</filter-class>
 	</filter>
-<<<<<<< HEAD
- 	<filter>
-=======
 	<filter>
->>>>>>> f22a788a565b9cde493436d0f3893e986ac4d56d
 		<filter-name>CorsFilter</filter-name>
 		<filter-class>com.revature.pokemonv2.filter.CorsFilter</filter-class>
 	</filter>
