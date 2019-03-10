@@ -6,7 +6,11 @@ import java.util.Map;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
-
+/**
+ * 
+ * @author idrios
+ *
+ */
 public interface DAO {
 	
 	
@@ -22,6 +26,6 @@ public interface DAO {
 	public Map<Trainer, Integer> getTrainerCredits(); 				   // "user1 has 1 credits"        | "user2 has 100000 credits"   | ....
 
 	List<Pokemon> getTrainerPokedex(String username);
-	List<Trainer> getLeaderboard();
+	List<Trainer> getLeaderboard(int topN);
 
 }

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.TokenService;
+import com.revature.pokemonv2.utilities.Driver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
@@ -59,6 +60,10 @@ public class MasterDispatcher {
 		case "leaderboard":
 			
 			break;
+		
+		case "debug": 
+			Driver.tomcatDebug();
+			
 		default:
 			System.out.println("URI not recognized");
 		}
