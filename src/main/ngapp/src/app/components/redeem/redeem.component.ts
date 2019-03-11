@@ -13,14 +13,7 @@ import { PokedexService } from "../../services/pokedex.service";
 export class RedeemComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
-  public pokemon: Pokemon = {
-    id: 0,
-    name: "",
-    image: "",
-    types: null,
-    stats: null,
-    count: 2
-  };
+  public pokemon: Pokemon = {id: 0,name: '',imageUrl: '',type: null,stats: null,count: 2, cost: 0};
 
   //stores an array of Pokemon objects to display to DOM
   public duplicatePokemon: Pokemon[];

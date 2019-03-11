@@ -19,8 +19,20 @@ export class TokenService {
   setCurrentUserToken(token: string, resp: any) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
-      sessionStorage.setItem("TRAINER_DATA", JSON.stringify(resp));
-      this.trainerService.updateValidLogin(resp);
+      console.log(resp);
+      let t: Trainer = {
+        userID: resp.body.userID,
+        username: resp.body.username,
+        password: '',
+        firstName: resp.body.firstName,
+        lastName: resp.body.lastName,
+        email: resp.body.email,
+        credits: resp.body.credits,
+        score: resp.body.score
+      }
+      console.log(t);
+      sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
+      this.trainerService.updateValidLogin(t);
       this.router.navigateByUrl("/generate");
     } else {
       throw new Error();

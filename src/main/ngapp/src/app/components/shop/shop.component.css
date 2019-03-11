@@ -173,3 +173,12 @@ body {
 .pokemon-card-name {
   color: white;
 }
+
+
+#shop-buy-btn .shop-buy-btn  {
+    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+    border: 2px solid yellow !important;
+    color: white;
+    width: 30%;
+    margin-bottom: 30px;
+  }

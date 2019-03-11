@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
-
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -28,7 +27,6 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
-    this.populatePokeArray();
     //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
@@ -36,8 +34,27 @@ export class ShopComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.populatePokeArray();
+    this.populatePokePages();
   }
-  
+  buyPokemon(pokemonID: number) {
+
+    // Check if the trainer has enough credits:
+
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
+
+    let cost: number = this.allPoke[pokemonID].cost;
+
+    let hasCredits: boolean = trainer.credits >= cost;
+
+    // If the trainer has enough credits, add the Pokemon to their collecion:
+    if (hasCredits) {
+      trainer.credits = trainer.credits-cost;
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+    }else{
+      alert("You can't get ye Pokemon")
+    }
+  }
   onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
@@ -45,10 +62,14 @@ export class ShopComponent implements OnInit {
     $("#generate-pokemon-draw-btn").removeClass("d-none");
     this.cardShow = true;
   }
+
+
+  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
   //method that calls above observable
+  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
@@ -59,11 +80,12 @@ export class ShopComponent implements OnInit {
           console.log(data[i]);
           let newPoke = new Pokemon();
           newPoke.name = data[i].name;
-          newPoke.image = data[i].image;
+          newPoke.imageUrl = data[i].image;
           newPoke.id = data[i].id;
           newPoke.count = data[i].count;
           newPoke.stats = data[i].stats;
-          newPoke.types = data[i].types;
+          newPoke.type = data[i].types;
+          newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
         console.log(this.allPoke);
@@ -81,21 +103,7 @@ export class ShopComponent implements OnInit {
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
-
-  buyPokemon(pokemonID: number) {
-
-    // Check if user already owns specified Pokemon:
-
-    let owned: boolean = false; // fix this when we actually have access to the cache
-
-    // If the user does not own the Pokemon, add it to their collecion:
-    if (!owned) {
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
-    }else{
-      alert("You already own that Pokemon")
-    }
-
-  }
+  //pagination methods on standby
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
@@ -115,5 +123,4 @@ export class ShopComponent implements OnInit {
       this.currentPage--;
     }
   }
-
 }
