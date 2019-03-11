@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/************confirm global styling changes with Marcellus or Maria*********************************************/
 #userInfoList {
     list-style: none;
   }
@@ -36,6 +37,7 @@
   .player-info {
     font-size: 15px;
     padding: 10px;
+    color: white;
   }
   
   .logged-links {
@@ -106,3 +108,27 @@
     padding: 0px;
     margin: 0px;
   }
+  
+  /***********************************************************************************************************/
+  
+  .player-info {
+    font-size: 15px;
+    padding: 10px;
+  }
+  
+  .logged-links {
+    float: right;
+  }
+/**************************************btn styling**************************************************************/
+.customRadioBtn {
+  background-color: red;
+  padding: 10px;
+  border: 1px solid yellow;
+}
+.shop-buy-btn {
+  background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+  border: 2px solid yellow !important;
+  color: white;
+  width: 80%;
+  margin-bottom: 30px;
+}
