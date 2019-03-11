@@ -51,6 +51,7 @@ export class RedeemComponent implements OnInit {
   //method that gets duplicates returned from service method and assigns it to variable
   getDuplicates() {
     this.duplicatePokemon = this.pokedexService.getDuplicates();
+    console.log(this.duplicatePokemon);
   }
 
   //method that gets redeemed credits returned from service method and assigns it to variable
