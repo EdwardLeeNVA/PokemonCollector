@@ -3,7 +3,7 @@ import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
@@ -24,6 +24,10 @@ export class ShopComponent implements OnInit {
   public login_status: boolean;
   public cardShow: boolean = false;
   public selectedPoke: number;
+  private httpJSON = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })};
 
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
