@@ -53,6 +53,7 @@ export class ShopComponent implements OnInit {
     let hasCredits: boolean = trainer.credits >= cost;
 
     // If the trainer has enough credits, add the Pokemon to their collecion:
+    console.log();
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
       return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
