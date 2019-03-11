@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.filter;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 
 import javax.servlet.Filter;
@@ -12,6 +13,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.jni.Directory;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -20,6 +23,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * throws an unauthorized error.
  */
 public class AuthenticationFilter implements Filter {
+	
+	private static String[] unfilteredRoutes = {
+			"/PokemonCollector/ng/index.html",
+			"/PokemonCollector/ng/runtime.js",
+			"/PokemonCollector/ng/polyfills.js",
+			"/PokemonCollector/ng/styles.js",
+			"/PokemonCollector/ng/vendor.js",
+			"/PokemonCollector/ng/main.js",
+			
+			"/PokemonCollector",
+			"/PokemonCollector/",
+			"/PokemonCollector/ng/landing",
+			"/PokemonCollector/ng/landing",
+			"/PokemonCollector/ng/login",
+			"/PokemonCollector/ng/register",
+			"/PokemonCollector/servlet/unfiltered/login",
+			"/PokemonCollector/servlet/unfiltered/register"
+	};
 
 	private ObjectMapper mapper;
 
@@ -48,7 +69,8 @@ public class AuthenticationFilter implements Filter {
 		
 		String path = httpRequest.getRequestURI();
 		//There is no token, the user is not logged in
-		if (token == null && !(path.contains("ng") || path.contains("unfiltered"))) {
+		if (token == null &&
+				!Arrays.asList(unfilteredRoutes).stream().anyMatch(route -> path.equals(route))) {
 			response.resetBuffer();
 			response.setContentType("application/json");
 			response.getOutputStream().write(mapper
