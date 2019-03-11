@@ -55,7 +55,7 @@ export class ShopComponent implements OnInit {
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.selectedPoke, this.httpJSON);
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
     }else{
       alert("You can't afford this Pokemon")
     }

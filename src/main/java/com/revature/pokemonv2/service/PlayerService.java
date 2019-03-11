@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.PokemonDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
@@ -70,13 +72,23 @@ public class PlayerService {
 	
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
-		log.info(request.getParameterMap());
-		int id = Integer.parseInt(request.getParameter("pokemonId"));
-		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
+		Pokemon p = null;
+		try {
+			p = mapper.readValue(request.getReader(), Pokemon.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int cost = p.getCost();
 		// dao command to remove the money
 		if (trainer.purchasePokemon(username, cost)) {
-			CachingUtility.getCachingUtility().addToCache(username, id);
+			CachingUtility.getCachingUtility().addToCache(username, p.getId());
 			// return true;
 		}
 		// return false;
