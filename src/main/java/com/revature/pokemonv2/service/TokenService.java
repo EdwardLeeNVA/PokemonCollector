@@ -13,6 +13,10 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.util.Date;
 import java.util.UUID;
+
+import org.apache.log4j.Logger;
+
+import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Trainer;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -29,6 +33,8 @@ public class TokenService {
 	private static final TokenService instance = new TokenService();
 	// Generates a public and private key
 	private final KeyPair keyPair;
+	
+	private static final Logger LOGGER = Logger.getLogger(TokenService.class);
 
 	// Private constructor
 	private TokenService() {
@@ -98,7 +104,7 @@ public class TokenService {
 			Jwts.parser().setSigningKey(keyPair.getPublic()).parseClaimsJws(token);
 			return true;
 		} catch (Exception e) {
-			// TODO
+			LOGGER.error(e.getMessage(), e);
 		}
 		return false;
 	}

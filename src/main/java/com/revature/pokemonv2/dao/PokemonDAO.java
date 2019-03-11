@@ -20,7 +20,7 @@ public class PokemonDAO {
 	 * EhCache for Pokemon
 	 */
 
-	final static Logger logger = Logger.getLogger(PokemonDAO.class);
+	private final static Logger logger = Logger.getLogger(PokemonDAO.class);
 
 	public List<Pokemon> getTrainerPokedex(String username) {
 		logger.trace("Database called for pokedex");

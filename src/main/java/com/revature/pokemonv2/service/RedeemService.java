@@ -7,11 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.CachingUtility;
 
 /**
