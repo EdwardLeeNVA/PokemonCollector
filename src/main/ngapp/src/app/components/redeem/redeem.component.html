@@ -8,42 +8,39 @@
           src="https://fontmeme.com/permalink/190224/e057290604f69fe455bee18756e64510.png"
           alt="pokemon-font"
         /><br />
-        <button class="shop-buy-btn" (click)="onBuyAll()">Redeem All</button>
-        <form #redeemForm="ngForm" (ngSubmit)="onRedeemSubmit()" novalidate>
-          <button
-            data-toggle="modal"
-            data-target="#newpokemonModal"
-            class="shop-buy-btn"
-            type="submit"
-          >
+        <button class="shop-buy-btn" (click)="redeemAll()">Redeem All</button>
+        <form #redeemForm="ngForm" (ngSubmit)="redeemSpecific()" novalidate>
+          <!-- data-toggle="modal"
+            data-target="#newpokemonModal" -->
+          <button class="shop-buy-btn" type="submit">
             Sell
           </button>
 
           <div class="radio-card-grid">
             <div
               class="form-check radio-form-item"
-              *ngFor="let pokemon of pokemonArr"
+              *ngFor="let pokemonX of duplicatePokemon"
             >
               <input
                 class="form-check-input"
                 type="radio"
                 #pokemonCard="ngModel"
                 name="gridRadios"
-                value="{{ pokemon.pokemonId }}"
+                value="{{ pokemonX.id }}"
                 checked
-                [(ngModel)]="pokemonModel.pokemonId"
+                [(ngModel)]="pokemon.id"
               />
               <div class="pokemon-card-outer">
                 <label class="form-check-label text-light" for="gridRadios1">
-                  {{ pokemon.pokemonName }}
+                  {{ pokemonX.name }}
                 </label>
-                <img class="pokemon-card-img" src="{{ pokemon.URL }}" />
+                <img class="pokemon-card-img" src="{{ pokemonX.imageUrl }}" />
                 <div class="pokemon-card-info-cont">
-                  <p>Cost: {{ pokemon.pokemonRarity }}</p>
+                  <p>Cost: {{ pokemonX.cost }}</p>
                   <br />
-                  <p>Type: {{ pokemon.pokemonType }}</p>
+                  <p>Type: {{ pokemonX.type[0] }}</p>
 
-                  <p>Count: {{ pokemonCount }}</p>
+                  <p>Count: {{ pokemonX.count }}</p>
                 </div>
               </div>
             </div>
