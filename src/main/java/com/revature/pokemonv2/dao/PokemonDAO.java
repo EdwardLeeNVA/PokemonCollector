@@ -64,8 +64,6 @@ public class PokemonDAO {
 			cs.setInt(3, pokemon.getCost());
 			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();
-			
-			pokemon.setCount(cs.getInt(4));
 
 			pokemon.setCount(cs.getInt(4));
 			
