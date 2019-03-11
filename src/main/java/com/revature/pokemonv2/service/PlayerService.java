@@ -68,11 +68,15 @@ public class PlayerService {
 	}
 
 	public void updateTrainer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.getWriter()
-				.append(mapper.writeValueAsString(trainer.updateTrainer(Integer.parseInt(request.getParameter("id")),
-						request.getParameter("oldUsername"), request.getParameter("username"),
-						request.getParameter("password"), request.getParameter("email"), request.getParameter("fname"),
-						request.getParameter("lname"))));
+		JsonNode node = mapper.readTree(request.getAttribute("updated").toString());
+		response.getWriter().append(mapper.writeValueAsString(trainer.updateTrainer(
+						Integer.parseInt(node.get("id").asText()),
+						request.getAttribute("oldUsername").toString(), 
+						node.get("username").asText(),
+						node.get("password").asText(), 
+						node.get("email").asText(), 
+						node.get("firstName").asText(),
+						node.get("lastName").asText())));
 	}
 
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {

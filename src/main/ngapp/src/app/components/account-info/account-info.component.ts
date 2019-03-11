@@ -27,20 +27,7 @@ export class AccountInfoComponent implements OnInit {
 
   // Calls the TrainerService method to use HTTPClient to make a request to the server
   update(): void {
-    // TODO: Reduce this repeated code by sending an array of 2 JSON objects with the request
-    // data to send, uncluding the old username
-    let allData = {
-      userID: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).userID,
-      oldUsername: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).username,
-      username: this.username,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      credits: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).credits,
-      score: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).score
-    };
-    // copy of that data, excluding old username, to overwrite the sessionStorage
+    // updated trainer information
     let updated: Trainer = {
       userID: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).userID,
       username: this.username,
@@ -51,6 +38,11 @@ export class AccountInfoComponent implements OnInit {
       credits: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).credits,
       score: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).score
     }
+    // data to send, including the old username and updated trainer info
+    let allData = {
+      oldUsername: JSON.parse(sessionStorage.getItem("TRAINER_DATA")).username,
+      updated
+    };
     this.trainerService.updateTrainer(allData).subscribe(
       data => {
         this.failureMessage = data.failure;

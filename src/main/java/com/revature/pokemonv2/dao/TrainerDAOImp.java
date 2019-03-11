@@ -109,17 +109,16 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	// Update's the trainer's account information
 	@Override
-	public String updateTrainer(int id, String oldUsername, String newUsername, String password, String email,
-			String f_name, String l_name) {
+	public String updateTrainer(int id, String oldUsername, String newUsername, String password, String email, String firstName, String lastName) {
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			try (CallableStatement cs = conn.prepareCall("CALL update_trainer(?,?,?,?,?,?,?)");) {
+			try (CallableStatement cs = conn.prepareCall("CALL update_trainer(?,?,?,?,?,?,?,?)");) {
 				cs.setInt(1, id);
 				cs.setString(2, oldUsername);
 				cs.setString(3, newUsername);
 				cs.setString(4, password);
 				cs.setString(5, email);
-				cs.setString(6, f_name);
-				cs.setString(7, l_name);
+				cs.setString(6, firstName);
+				cs.setString(7, lastName);
 				cs.registerOutParameter(8, Types.VARCHAR);
 				cs.executeUpdate();
 				return cs.getString(8);
