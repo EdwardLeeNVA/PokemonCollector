@@ -34,7 +34,7 @@ public class RedeemService {
 	public static void getDuplicates(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ArrayList<Pokemon> duplicateJSONList = null;
+		ArrayList<Pokemon> duplicateJSONList =  new ArrayList();
 		// Retrieve the JWT token
 		final String token = request.getHeader("Authorization"); // get JWT token
 		// Retrieve userID from the token
@@ -55,7 +55,7 @@ public class RedeemService {
 			// Add a pokemon to the final pokemon list
 			duplicateJSONList.add(temp);
 		}
-
+		
 		// Use object mapper to map the JSON to the response.
 		response.setContentType("application/json");
 		response.getWriter().append(mapper.writeValueAsString(duplicateJSONList));
