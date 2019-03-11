@@ -35,7 +35,6 @@ public class AuthenticationFilter implements Filter {
 			"/PokemonCollector",
 			"/PokemonCollector/",
 			"/PokemonCollector/ng/landing",
-			"/PokemonCollector/ng/landing",
 			"/PokemonCollector/ng/login",
 			"/PokemonCollector/ng/register",
 			"/PokemonCollector/servlet/unfiltered/login",
