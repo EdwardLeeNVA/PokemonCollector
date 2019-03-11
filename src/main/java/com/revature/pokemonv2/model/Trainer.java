@@ -21,7 +21,7 @@ public class Trainer implements Comparable<Trainer>{
 		this.lastName = lastName;
 	}
 
-	public Trainer(int userID, String username, String firstName, String lastName, int credits, int score) {
+	public Trainer(String username, String firstName, String lastName, int credits, int score, int userID) {
 		this.userID = userID;
 		this.username = username;
 		this.firstName = firstName;
