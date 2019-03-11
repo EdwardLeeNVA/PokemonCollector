@@ -6,14 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Stats;
-import com.revature.pokemonv2.model.Trainer;
-import com.revature.pokemonv2.model.Type;
 import com.revature.pokemonv2.model.PokemonFactory;
 import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;

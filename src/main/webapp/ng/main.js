@@ -337,7 +337,7 @@ var CollectionComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pokemon-card-outer {\r\n    margin: 15px;\r\n    height: 320px;\r\n    width: 50%;\r\n    text-align: center;\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 5px solid yellow !important;\r\n    border-radius: 18px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    border: 1px solid #ccc;\r\n    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);\r\n    max-width: 50% !important;\r\n    transition: all 0.2s;\r\n  }\r\n\r\n  .pokemon-card-img {\r\n    border: 2px solid yellow;\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n    display: flex;\r\n    width: 50%;\r\n  }\r\n\r\n  .pokemon-card-info-cont {\r\n    margin-top: 10px;\r\n    font-size: 12px;\r\n    background-color: rgba(244, 248, 6, 0.952);\r\n    color: black;\r\n    width: 70%;\r\n    height: 40%;\r\n    display: flex;\r\n    flex-direction: column; \r\n    justify-content: center;\r\n  }\r\n\r\n  /* body {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  } */\r\n\r\n  #newPokemonModal {\r\n    border: none;\r\n  }\r\n\r\n  #newPokemon-Modal-Content {\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n  }\r\n\r\n  #newPokemon-Modal-Body {\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n\r\n  .newPokemon-Modal-Buttons {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow !important;\r\n    color: black;\r\n    width: 100%;\r\n  }\r\n\r\n  .newPokemon-Generate-Button {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow !important;\r\n    color: white;\r\n    width: 80%;\r\n    margin-bottom: 30px;\r\n  }\r\n\r\n  #draw-button-container {\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n  }\r\n\r\n  #catch-em-all-header {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .pokemon-card-name {\r\n    color: white;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9nZW5lcmF0ZS1wb2tlbW9uL2dlbmVyYXRlLXBva2Vtb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsVUFBVTtJQUNWLGtCQUFrQjtJQUNsQiw0REFBNEQ7SUFDNUQsbUNBQW1DO0lBQ25DLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLG1CQUFtQjtJQUNuQixzQkFBc0I7SUFDdEIsOENBQThDO0lBQzlDLHlCQUF5QjtJQUN6QixvQkFBb0I7RUFDdEI7O0VBRUE7SUFDRSx3QkFBd0I7SUFDeEIscUVBQXFFO0lBQ3JFLGFBQWE7SUFDYixVQUFVO0VBQ1o7O0VBRUE7SUFDRSxnQkFBZ0I7SUFDaEIsZUFBZTtJQUNmLDBDQUEwQztJQUMxQyxZQUFZO0lBQ1osVUFBVTtJQUNWLFdBQVc7SUFDWCxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLHVCQUF1QjtFQUN6Qjs7RUFFQTs7S0FFRzs7RUFFSDtJQUNFLFlBQVk7RUFDZDs7RUFFQTtJQUNFLHdDQUF3QztJQUN4Qyx1QkFBdUI7RUFDekI7O0VBRUE7SUFDRSx3Q0FBd0M7SUFDeEMsdUJBQXVCO0lBQ3ZCLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsNERBQTREO0lBQzVELG1DQUFtQztJQUNuQyxZQUFZO0lBQ1osV0FBVztFQUNiOztFQUVBO0lBQ0UsNERBQTREO0lBQzVELG1DQUFtQztJQUNuQyxZQUFZO0lBQ1osVUFBVTtJQUNWLG1CQUFtQjtFQUNyQjs7RUFFQTtJQUNFLHFFQUFxRTtFQUN2RTs7RUFFQTtJQUNFLGdCQUFnQjtJQUNoQixtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxZQUFZO0VBQ2QiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2dlbmVyYXRlLXBva2Vtb24vZ2VuZXJhdGUtcG9rZW1vbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBva2Vtb24tY2FyZC1vdXRlciB7XHJcbiAgICBtYXJnaW46IDE1cHg7XHJcbiAgICBoZWlnaHQ6IDMyMHB4O1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogNXB4IHNvbGlkIHllbGxvdyAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMThweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNjY2M7XHJcbiAgICBib3gtc2hhZG93OiAycHggMnB4IDZweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xyXG4gICAgbWF4LXdpZHRoOiA1MCUgIWltcG9ydGFudDtcclxuICAgIHRyYW5zaXRpb246IGFsbCAwLjJzO1xyXG4gIH1cclxuXHJcbiAgLnBva2Vtb24tY2FyZC1pbWcge1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgfVxyXG4gIFxyXG4gIC5wb2tlbW9uLWNhcmQtaW5mby1jb250IHtcclxuICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI0NCwgMjQ4LCA2LCAwLjk1Mik7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICB3aWR0aDogNzAlO1xyXG4gICAgaGVpZ2h0OiA0MCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgXHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLyogYm9keSB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgfSAqL1xyXG5cclxuICAjbmV3UG9rZW1vbk1vZGFsIHtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbiAgXHJcbiAgI25ld1Bva2Vtb24tTW9kYWwtQ29udGVudCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG4gIFxyXG4gICNuZXdQb2tlbW9uLU1vZGFsLUJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAubmV3UG9rZW1vbi1Nb2RhbC1CdXR0b25zIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdyAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgfVxyXG4gIFxyXG4gIC5uZXdQb2tlbW9uLUdlbmVyYXRlLUJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3cgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHdpZHRoOiA4MCU7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAzMHB4O1xyXG4gIH1cclxuICBcclxuICAjZHJhdy1idXR0b24tY29udGFpbmVyIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxuICB9XHJcbiAgXHJcbiAgI2NhdGNoLWVtLWFsbC1oZWFkZXIge1xyXG4gICAgbWFyZ2luLXRvcDogMjBweDtcclxuICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5wb2tlbW9uLWNhcmQtbmFtZSB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgfSJdfQ== */"
+module.exports = ".pokemon-card-outer {\r\n    margin: 15px;\r\n    height: 320px;\r\n    width: 50%;\r\n    text-align: center;\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 5px solid yellow !important;\r\n    border-radius: 18px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    border: 1px solid #ccc;\r\n    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);\r\n    max-width: 50% !important;\r\n    transition: all 0.2s;\r\n  }\r\n\r\n  .pokemon-card-img {\r\n    border: 2px solid yellow;\r\n    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n    display: flex;\r\n    width: 50%;\r\n  }\r\n\r\n  .pokemon-card-info-cont {\r\n    margin-top: 10px;\r\n    font-size: 12px;\r\n    background-color: rgba(244, 248, 6, 0.952);\r\n    color: black;\r\n    width: 70%;\r\n    height: 40%;\r\n    display: flex;\r\n    flex-direction: column; \r\n    justify-content: center;\r\n  }\r\n\r\n  /* body {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  } */\r\n\r\n  #newPokemonModal {\r\n    border: none;\r\n  }\r\n\r\n  #newPokemon-Modal-Content {\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n  }\r\n\r\n  #newPokemon-Modal-Body {\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n\r\n  .newPokemon-Modal-Buttons {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow !important;\r\n    color: black;\r\n    width: 100%;\r\n  }\r\n\r\n  .newPokemon-Generate-Button {\r\n    background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n    border: 2px solid yellow !important;\r\n    color: white;\r\n    width: 80%;\r\n    margin-bottom: 30px;\r\n  }\r\n\r\n  #catch-em-all-header {\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n  }\r\n\r\n  .pokemon-card-name {\r\n    color: white;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9nZW5lcmF0ZS1wb2tlbW9uL2dlbmVyYXRlLXBva2Vtb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsVUFBVTtJQUNWLGtCQUFrQjtJQUNsQiw0REFBNEQ7SUFDNUQsbUNBQW1DO0lBQ25DLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLG1CQUFtQjtJQUNuQixzQkFBc0I7SUFDdEIsOENBQThDO0lBQzlDLHlCQUF5QjtJQUN6QixvQkFBb0I7RUFDdEI7O0VBRUE7SUFDRSx3QkFBd0I7SUFDeEIscUVBQXFFO0lBQ3JFLGFBQWE7SUFDYixVQUFVO0VBQ1o7O0VBRUE7SUFDRSxnQkFBZ0I7SUFDaEIsZUFBZTtJQUNmLDBDQUEwQztJQUMxQyxZQUFZO0lBQ1osVUFBVTtJQUNWLFdBQVc7SUFDWCxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLHVCQUF1QjtFQUN6Qjs7RUFFQTs7S0FFRzs7RUFFSDtJQUNFLFlBQVk7RUFDZDs7RUFFQTtJQUNFLHdDQUF3QztJQUN4Qyx1QkFBdUI7RUFDekI7O0VBRUE7SUFDRSx3Q0FBd0M7SUFDeEMsdUJBQXVCO0lBQ3ZCLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsNERBQTREO0lBQzVELG1DQUFtQztJQUNuQyxZQUFZO0lBQ1osV0FBVztFQUNiOztFQUVBO0lBQ0UsNERBQTREO0lBQzVELG1DQUFtQztJQUNuQyxZQUFZO0lBQ1osVUFBVTtJQUNWLG1CQUFtQjtFQUNyQjs7RUFFQTtJQUNFLGdCQUFnQjtJQUNoQixtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxZQUFZO0VBQ2QiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2dlbmVyYXRlLXBva2Vtb24vZ2VuZXJhdGUtcG9rZW1vbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBva2Vtb24tY2FyZC1vdXRlciB7XHJcbiAgICBtYXJnaW46IDE1cHg7XHJcbiAgICBoZWlnaHQ6IDMyMHB4O1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogNXB4IHNvbGlkIHllbGxvdyAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMThweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNjY2M7XHJcbiAgICBib3gtc2hhZG93OiAycHggMnB4IDZweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xyXG4gICAgbWF4LXdpZHRoOiA1MCUgIWltcG9ydGFudDtcclxuICAgIHRyYW5zaXRpb246IGFsbCAwLjJzO1xyXG4gIH1cclxuXHJcbiAgLnBva2Vtb24tY2FyZC1pbWcge1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgeWVsbG93O1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSBsZWZ0LCAjMDAwMDY2IDAlLCAjNjY2Njk5IDEwMCUpO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgfVxyXG4gIFxyXG4gIC5wb2tlbW9uLWNhcmQtaW5mby1jb250IHtcclxuICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI0NCwgMjQ4LCA2LCAwLjk1Mik7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICB3aWR0aDogNzAlO1xyXG4gICAgaGVpZ2h0OiA0MCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgXHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLyogYm9keSB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgfSAqL1xyXG5cclxuICAjbmV3UG9rZW1vbk1vZGFsIHtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbiAgXHJcbiAgI25ld1Bva2Vtb24tTW9kYWwtQ29udGVudCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG4gIFxyXG4gICNuZXdQb2tlbW9uLU1vZGFsLUJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIH1cclxuICBcclxuICAubmV3UG9rZW1vbi1Nb2RhbC1CdXR0b25zIHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdyAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgfVxyXG4gIFxyXG4gIC5uZXdQb2tlbW9uLUdlbmVyYXRlLUJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3cgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHdpZHRoOiA4MCU7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAzMHB4O1xyXG4gIH1cclxuICBcclxuICAjY2F0Y2gtZW0tYWxsLWhlYWRlciB7XHJcbiAgICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcclxuICB9XHJcbiAgXHJcbiAgLnBva2Vtb24tY2FyZC1uYW1lIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICB9Il19 */"
 
 /***/ }),
 
@@ -348,7 +348,7 @@ module.exports = ".pokemon-card-outer {\r\n    margin: 15px;\r\n    height: 320p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container col-md-8\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n      <!-- <div class=\"container\" id=\"draw-button-container\"> -->\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      <!-- </div> -->\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p><b>Type: {{pokemonType}}</b></p>\r\n                  <p><b>HP: {{hp}}</b></p>\r\n                  <p><b>Attack: {{attack}}</b></p>\r\n                  <p><b>Defense: {{defense}}</b></p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p><b>Type: {{pokemonType}}</b></p>\r\n                  <p><b>HP: {{hp}}</b></p>\r\n                  <p><b>Attack: {{attack}}</b></p>\r\n                  <p><b>Defense: {{defense}}</b></p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -404,13 +404,12 @@ var GeneratePokemonComponent = /** @class */ (function () {
     GeneratePokemonComponent.prototype.onClick = function () {
         var _this = this;
         this.pokedexService.generatePokemon().subscribe(function (data) {
-            console.log("Pokemon: " + data);
             _this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-            _this.pokemonType = data.types[0].type.name;
-            _this.pokemonSprite = data.sprites.front_default;
-            _this.hp = data.stats[5].base_stat;
-            _this.attack = data.stats[4].base_stat;
-            _this.defense = data.stats[3].base_stat;
+            _this.pokemonType = data.type[0];
+            _this.pokemonSprite = data.imageUrl;
+            _this.hp = data.stats.hp;
+            _this.attack = data.stats.attack;
+            _this.defense = data.stats.defense;
         });
         if (this.cardShow) {
             $("#generate-pokemon-pokeball").removeClass("d-none");
@@ -603,6 +602,7 @@ var LoginComponent = /** @class */ (function () {
             .subscribe(function (data) {
             if (data != null) {
                 _this.tokenService.setCurrentUserToken(data.headers.get("Authorization"), data);
+                //this.trainerService.updateValidLogin(data);
             }
         });
     };
@@ -642,7 +642,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Default Navbar -->\r\n<nav class=\"navbar navbar-expand-lg \" id=\"baseNavBar\" *ngIf=\"!login_status\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n      <ul class=\"navbar-nav\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/login\" routerLink=\"login\">Login</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/register\" routerLink=\"register\">Sign Up</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/landing\" routerLink=\"landing\">Home</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n</nav>\r\n\r\n  <!-- Signed-In Navbar -->\r\n  <nav class=\"navbar navbar-expand-lg \" id=\"logged-nav-bar\" *ngIf=\"login_status\">\r\n    <img src=\"http://i65.tinypic.com/25iyve1.png\" alt=\"Image and video hosting by TinyPic\"/>\r\n\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav2\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/generate\" routerLink=\"generate\">Home<span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/shop\" routerLink=\"shop\">Shop</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/redeem\" routerLink=\"redeem\">Redeem</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/collection\" routerLink=\"collection\">View Collection</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng\" (click)=\"onLogout()\">Logout</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <router-outlet></router-outlet>\r\n"
+module.exports = "<!-- Default Navbar -->\r\n<nav class=\"navbar navbar-expand-lg \" id=\"baseNavBar\" *ngIf=\"!login_status\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n      <ul class=\"navbar-nav\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/login\" routerLink=\"login\">Login</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/register\" routerLink=\"register\">Sign Up</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/landing\" routerLink=\"landing\">Home</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n</nav>\r\n\r\n  <!-- Signed-In Navbar -->\r\n  <nav class=\"navbar navbar-expand-lg \" id=\"logged-nav-bar\" *ngIf=\"login_status\">\r\n    <img src=\"http://i65.tinypic.com/25iyve1.png\" alt=\"Image and video hosting by TinyPic\"/>\r\n    <p class=\"player-info\">Welcome, {{this.trainer.username}}!</p>\r\n    <p class=\"player-info\">Credits: {{this.trainer.credits}}</p>\r\n    <p class=\"player-info\">Score: {{this.trainer.score}}</p>\r\n\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarNav2\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/generate\" routerLink=\"generate\">Home<span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/shop\" routerLink=\"shop\">Shop</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/redeem\" routerLink=\"redeem\">Redeem</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng/collection\" routerLink=\"collection\">View Collection</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link customLink\" href=\"/PokemonCollector/ng\" (click)=\"onLogout()\">Logout</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -672,7 +672,10 @@ var NavComponent = /** @class */ (function () {
     NavComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.trainerService.login_status_bs.subscribe(function (status) { return _this.login_status = status; });
-        this.trainerService.current_trainer_bs.subscribe(function (trainer) { return _this.trainer = trainer; });
+        this.trainerService.current_trainer_bs.subscribe(function (trainer) {
+            console.log("trainer: " + _this.trainer);
+            _this.trainer = trainer;
+        });
     };
     NavComponent.prototype.onLogout = function () {
         sessionStorage.clear();
@@ -899,9 +902,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopComponent", function() { return ShopComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+
 
 
 
@@ -943,8 +948,17 @@ var ShopComponent = /** @class */ (function () {
         this.getAllPokemon().subscribe(function (data) {
             //put all pokemon into pokemon array
             console.log(data);
+            _this.allPoke = [];
             for (var i = 0; i < data.length; i++) {
-                _this.allPoke[i] = data[i];
+                console.log(data[i]);
+                var newPoke = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__["Pokemon"]();
+                newPoke.name = data[i].name;
+                newPoke.image = data[i].image;
+                newPoke.id = data[i].id;
+                newPoke.count = data[i].count;
+                newPoke.stats = data[i].stats;
+                newPoke.types = data[i].types;
+                _this.allPoke[i] = newPoke;
             }
             console.log(_this.allPoke);
         });
@@ -994,7 +1008,7 @@ var ShopComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shop.component.html */ "./src/app/components/shop/shop.component.html"),
             styles: [__webpack_require__(/*! ./shop.component.css */ "./src/app/components/shop/shop.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], ShopComponent);
     return ShopComponent;
 }());
@@ -1021,7 +1035,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\n</div>\n"
+module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1044,7 +1058,117 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsComponent = /** @class */ (function () {
     function StatsComponent() {
+        this.data1 = [
+            {
+                name: 'Normal',
+                y: 65,
+            }, {
+                name: 'Water',
+                y: 62,
+            }, {
+                name: 'Grass',
+                y: 38,
+            }, {
+                name: 'Psychic',
+                y: 35,
+            }, {
+                name: 'Fire',
+                y: 31,
+            }, {
+                name: 'Electric',
+                y: 28,
+            }, {
+                name: 'Fighting',
+                y: 22,
+            }, {
+                name: 'Bug',
+                y: 18,
+            }, {
+                name: 'Poison',
+                y: 16,
+            }, {
+                name: 'Ground',
+                y: 15,
+            }, {
+                name: 'Ice',
+                y: 14,
+            }, {
+                name: 'Dragon',
+                y: 12,
+            }, {
+                name: 'Rock',
+                y: 11,
+            }, {
+                name: 'Ghost',
+                y: 9,
+            }, {
+                name: 'Flying',
+                y: 7,
+            }
+        ];
         this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
+        this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
+    }
+    StatsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        fetch(this.configUrl)
+            .then(function (res) { return res.json(); })
+            .then(function (res) {
+            console.log(res);
+            _this.data1 = res;
+            _this.load();
+        });
+    };
+    StatsComponent.prototype.load = function () {
+        this.pokeCount = {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Pokemons per trainer'
+            },
+            subtitle: {
+                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Population (millions)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+            },
+            series: [{
+                    name: 'Population',
+                    data: this.data1,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.0f}',
+                        y: -50,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        };
         this.PokemonOption = {
             chart: {
                 plotBackgroundColor: null,
@@ -1074,73 +1198,9 @@ var StatsComponent = /** @class */ (function () {
             series: [{
                     name: 'Pokemon Type',
                     colorByPoint: true,
-                    data: [
-                        {
-                            name: 'Normal',
-                            y: 65,
-                            color: 'grey'
-                        }, {
-                            name: 'Water',
-                            y: 62,
-                            color: 'blue'
-                        }, {
-                            name: 'Grass',
-                            y: 38,
-                            color: 'Green'
-                        }, {
-                            name: 'Psychic',
-                            y: 35,
-                            color: 'pink'
-                        }, {
-                            name: 'Fire',
-                            y: 31,
-                            color: 'orange'
-                        }, {
-                            name: 'Electric',
-                            y: 28,
-                            color: 'yellow'
-                        }, {
-                            name: 'Fighting',
-                            y: 22,
-                            color: 'Red'
-                        }, {
-                            name: 'Bug',
-                            y: 18,
-                            color: 'darkgreen'
-                        }, {
-                            name: 'Poison',
-                            y: 16,
-                            color: 'magenta'
-                        }, {
-                            name: 'Ground',
-                            y: 15,
-                            color: 'brown'
-                        }, {
-                            name: 'Ice',
-                            y: 14,
-                            color: 'lightblue'
-                        }, {
-                            name: 'Dragon',
-                            y: 12,
-                            color: 'Blue'
-                        }, {
-                            name: 'Rock',
-                            y: 11,
-                            color: 'darkgrey'
-                        }, {
-                            name: 'Ghost',
-                            y: 9,
-                            color: 'purple'
-                        }, {
-                            name: 'Flying',
-                            y: 7,
-                            color: 'purple'
-                        }
-                    ]
+                    data: this.data1
                 }]
         };
-    }
-    StatsComponent.prototype.ngOnInit = function () {
     };
     StatsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1151,6 +1211,26 @@ var StatsComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], StatsComponent);
     return StatsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/Pokemon.ts":
+/*!***********************************!*\
+  !*** ./src/app/models/Pokemon.ts ***!
+  \***********************************/
+/*! exports provided: Pokemon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pokemon", function() { return Pokemon; });
+var Pokemon = /** @class */ (function () {
+    function Pokemon() {
+    }
+    return Pokemon;
 }());
 
 
@@ -1235,7 +1315,7 @@ var JwtInterceptorService = /** @class */ (function () {
     //Before any HTTP request is sent, it intercepts the HTTP request
     JwtInterceptorService.prototype.intercept = function (req, next) {
         //If you are on the login page
-        if (req.url.includes("login") || req.url.includes("register")) {
+        if (req.url.includes("login") || req.url.includes("register") || req.url === "/") {
             return next.handle(req);
         }
         req = req.clone({
@@ -1269,8 +1349,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _temp_tempPoke__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../temp/tempPoke */ "./src/app/temp/tempPoke.ts");
-
 
 
 
@@ -1283,7 +1361,11 @@ var PokedexService = /** @class */ (function () {
     };
     PokedexService.prototype.getTrainersPokemon = function (newTrainer) {
         console.log(newTrainer);
-        return _temp_tempPoke__WEBPACK_IMPORTED_MODULE_3__["POKEMON"];
+        this._http.get("/PokemonCollector/servlet/collection")
+            .subscribe(function (response) {
+            return response;
+        });
+        return null;
     };
     //method that returns an array of Pokemon objects in response
     PokedexService.prototype.getDuplicates = function () {
@@ -1441,11 +1523,6 @@ var TrainerService = /** @class */ (function () {
         this.login_status = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
         this.login_status_bs = this.login_status.asObservable();
     }
-    //Method call for POST request for logging in a trainer.
-    TrainerService.prototype.loginTrainer = function (credentials) {
-        console.log(credentials);
-        return this._http.post("/PokemonCollector/servlet/unfiltered/login", credentials, { observe: "response" });
-    };
     //Method call for POST request for registering a new trainer.
     TrainerService.prototype.createTrainer = function (credentials) {
         return this._http.post("/PokemonCollector/servlet/unfiltered/register", credentials, { observe: "response" });
@@ -1474,302 +1551,6 @@ var TrainerService = /** @class */ (function () {
     return TrainerService;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/app/temp/tempPoke.ts":
-/*!**********************************!*\
-  !*** ./src/app/temp/tempPoke.ts ***!
-  \**********************************/
-/*! exports provided: POKEMON */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "POKEMON", function() { return POKEMON; });
-var POKEMON = [
-    { id: 1,
-        name: 'bulbasaur',
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
-        types: ["poison", "grass"],
-        stats: [
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "speed",
-                    "url": "https://pokeapi.co/api/v2/stat/6/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 0,
-                "stat": {
-                    "name": "special-defense",
-                    "url": "https://pokeapi.co/api/v2/stat/5/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 1,
-                "stat": {
-                    "name": "special-attack",
-                    "url": "https://pokeapi.co/api/v2/stat/4/"
-                }
-            },
-            {
-                "base_stat": 49,
-                "effort": 0,
-                "stat": {
-                    "name": "defense",
-                    "url": "https://pokeapi.co/api/v2/stat/3/"
-                }
-            },
-            {
-                "base_stat": 49,
-                "effort": 0,
-                "stat": {
-                    "name": "attack",
-                    "url": "https://pokeapi.co/api/v2/stat/2/"
-                }
-            },
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "hp",
-                    "url": "https://pokeapi.co/api/v2/stat/1/"
-                }
-            }
-        ],
-        count: 2
-    },
-    { id: 2,
-        name: 'ivysaur',
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png",
-        types: ["poison", "grass"],
-        stats: [
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "speed",
-                    "url": "https://pokeapi.co/api/v2/stat/6/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 0,
-                "stat": {
-                    "name": "special-defense",
-                    "url": "https://pokeapi.co/api/v2/stat/5/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 1,
-                "stat": {
-                    "name": "special-attack",
-                    "url": "https://pokeapi.co/api/v2/stat/4/"
-                }
-            },
-            {
-                "base_stat": 63,
-                "effort": 0,
-                "stat": {
-                    "name": "defense",
-                    "url": "https://pokeapi.co/api/v2/stat/3/"
-                }
-            },
-            {
-                "base_stat": 62,
-                "effort": 0,
-                "stat": {
-                    "name": "attack",
-                    "url": "https://pokeapi.co/api/v2/stat/2/"
-                }
-            },
-            {
-                "base_stat": 60,
-                "effort": 0,
-                "stat": {
-                    "name": "hp",
-                    "url": "https://pokeapi.co/api/v2/stat/1/"
-                }
-            }
-        ],
-        count: 3
-    },
-    { id: 3,
-        name: 'venusaur',
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png",
-        types: ["poison", "grass"],
-        stats: [
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "speed",
-                    "url": "https://pokeapi.co/api/v2/stat/6/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 0,
-                "stat": {
-                    "name": "special-defense",
-                    "url": "https://pokeapi.co/api/v2/stat/5/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 1,
-                "stat": {
-                    "name": "special-attack",
-                    "url": "https://pokeapi.co/api/v2/stat/4/"
-                }
-            },
-            {
-                "base_stat": 83,
-                "effort": 0,
-                "stat": {
-                    "name": "defense",
-                    "url": "https://pokeapi.co/api/v2/stat/3/"
-                }
-            },
-            {
-                "base_stat": 82,
-                "effort": 0,
-                "stat": {
-                    "name": "attack",
-                    "url": "https://pokeapi.co/api/v2/stat/2/"
-                }
-            },
-            {
-                "base_stat": 80,
-                "effort": 0,
-                "stat": {
-                    "name": "hp",
-                    "url": "https://pokeapi.co/api/v2/stat/1/"
-                }
-            }
-        ],
-        count: 5
-    },
-    { id: 4,
-        name: 'charmander',
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png",
-        types: ["fire"],
-        stats: [
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "speed",
-                    "url": "https://pokeapi.co/api/v2/stat/6/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 0,
-                "stat": {
-                    "name": "special-defense",
-                    "url": "https://pokeapi.co/api/v2/stat/5/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 1,
-                "stat": {
-                    "name": "special-attack",
-                    "url": "https://pokeapi.co/api/v2/stat/4/"
-                }
-            },
-            {
-                "base_stat": 43,
-                "effort": 0,
-                "stat": {
-                    "name": "defense",
-                    "url": "https://pokeapi.co/api/v2/stat/3/"
-                }
-            },
-            {
-                "base_stat": 52,
-                "effort": 0,
-                "stat": {
-                    "name": "attack",
-                    "url": "https://pokeapi.co/api/v2/stat/2/"
-                }
-            },
-            {
-                "base_stat": 39,
-                "effort": 0,
-                "stat": {
-                    "name": "hp",
-                    "url": "https://pokeapi.co/api/v2/stat/1/"
-                }
-            }
-        ],
-        count: 5
-    },
-    { id: 5,
-        name: 'charmeleon',
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/5.png",
-        types: ["fire"],
-        stats: [
-            {
-                "base_stat": 45,
-                "effort": 0,
-                "stat": {
-                    "name": "speed",
-                    "url": "https://pokeapi.co/api/v2/stat/6/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 0,
-                "stat": {
-                    "name": "special-defense",
-                    "url": "https://pokeapi.co/api/v2/stat/5/"
-                }
-            },
-            {
-                "base_stat": 65,
-                "effort": 1,
-                "stat": {
-                    "name": "special-attack",
-                    "url": "https://pokeapi.co/api/v2/stat/4/"
-                }
-            },
-            {
-                "base_stat": 58,
-                "effort": 0,
-                "stat": {
-                    "name": "defense",
-                    "url": "https://pokeapi.co/api/v2/stat/3/"
-                }
-            },
-            {
-                "base_stat": 64,
-                "effort": 0,
-                "stat": {
-                    "name": "attack",
-                    "url": "https://pokeapi.co/api/v2/stat/2/"
-                }
-            },
-            {
-                "base_stat": 58,
-                "effort": 0,
-                "stat": {
-                    "name": "hp",
-                    "url": "https://pokeapi.co/api/v2/stat/1/"
-                }
-            }
-        ],
-        count: 1
-    }
-];
 
 
 /***/ }),

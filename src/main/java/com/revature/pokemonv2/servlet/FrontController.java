@@ -52,9 +52,9 @@ public class FrontController extends DefaultServlet {
 			response.sendRedirect("/PokemonCollector/ng/index.html");
 		else if ((uri.contains("/ng/") && Arrays.asList(ngRoutes).stream().anyMatch(route -> uri.contains(route))))
 			request.getRequestDispatcher("/ng/index.html").forward(request, response);
-		else if (uri.equals("/PokemonCollector/stat/leaderboard"))
+		else if (uri.equals("/PokemonCollector/ng/leaderboard"))
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
-		else if (uri.equals("/PokemonCollector/stat/stats"))
+		else if (uri.equals("/PokemonCollector/ng/stats"))
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
 		
 		else {
