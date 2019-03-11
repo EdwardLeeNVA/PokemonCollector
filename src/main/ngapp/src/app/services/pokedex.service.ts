@@ -4,16 +4,17 @@ import { Trainer } from "../models/Trainer";
 
 import { POKEMON } from "../temp/tempPoke";
 import { Pokemon } from "../models/Pokemon";
+import { RedeemTicket } from "../models/redeem-ticket";
 
 @Injectable({
   providedIn: "root"
 })
 export class PokedexService {
   //used to store ArrayList of Pokemon Objects from the Response of the GET request to get trainer's dup' pokemon
-  duplicatePokemon: Pokemon[]; //FOR REDEEM COMPONENT
+  duplicatePokemon: any; //FOR REDEEM COMPONENT
   //used to store Array of 'int' from the Response of the GET request to get trainer's remaining credits
-  credits: number[]; //FOR REDEEM COMPONENT
-
+  credits: any; //FOR REDEEM COMPONENT
+  redeemTicketModel = new RedeemTicket(0);
   constructor(private _http: HttpClient) {}
 
   generatePokemon() {
@@ -30,54 +31,23 @@ export class PokedexService {
     return null;
   }
 
-  //method that returns an array of Pokemon objects in response
-  // getDuplicates(): Pokemon[] {
-  //   //make GET request, get array of Pokemon objects
-  //   this._http
-  //     .get<any>("/PokemonCollector/servlet/duplicate")
-  //     .subscribe(Response => {
-  //       //test what we get as response
-
-  //       //assign data from response to duplicatePokemon variable
-  //       /*WRITE CODE HERE*/
-  //       this.duplicatePokemon = Response;
-  //     });
-
-  //   //return the array of Pokemon
-  //   return this.duplicatePokemon;
-  // }
-
+  //returns all duplicate pokemon of logged in user
   getDuplicates() {
     return this._http.get<any>("/PokemonCollector/servlet/duplicate");
   }
 
-  //method that redeems all pokemon and returns credits gained and total credits after redeem
-  redeemAll(): number[] {
-    //make GET request, get array of 'int's which will resemble credits earned and credits after redeem
-    this._http
-      .get<any>("/PokemonCollector/servlet/redeemAll")
-      .subscribe(Response => {
-        //test what we get as response
-        //console.log(Response);
-        //assign data from response to credits variable
-        /*WRITE CODE HERE*/
-      });
-    //return the credits
-    return this.credits;
+  //returns updated credits and increased credit amount when redeeming all pokemon
+  redeemAll() {
+    return this._http.get<any>("/PokemonCollector/servlet/redeemAll");
   }
 
-  //method that redeems specific pokemon and returns credits gained and total credits after redeem
-  redeemSpecific(pokemonId: number): number[] {
-    //make POST request, get array of 'int's which will resemble credits earned and credits after redeem
-    this._http
-      .post<any>("/PokemonCollector/servlet/redeem", pokemonId)
-      .subscribe(Response => {
-        //test what we get as response
-        //console.log(Response);
-        //assign data from response to credits variable
-        /*WRITE CODE HERE*/
-      });
-    //return the credits
-    return this.credits;
+  //returns updated credits and increased credit amount when redeeming a specific pokemon
+  redeemSpecific(redeemTicket: RedeemTicket) {
+    //make POST request to get array of 'int's which will resemble credits earned and credits after redeem
+    console.log("redeemTicket ", redeemTicket);
+    return this._http.post<any>(
+      "/PokemonCollector/servlet/redeem",
+      redeemTicket
+    );
   }
 }

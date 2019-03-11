@@ -68,6 +68,7 @@ public class MasterDispatcher {
 			//Endpoint for redeem all call. Redeems all pokemon.
 			
 			RedeemService.redeemAll(request, response);
+			break;
 		case "generatePokemon":
 			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
 

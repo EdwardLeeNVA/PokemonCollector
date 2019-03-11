@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
@@ -79,11 +80,14 @@ public class RedeemService {
 		int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); // Get trainer id from
 																								// token
 		String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); // get username from
-																									// token
-		int pokeID = Integer.parseInt(request.getParameter("pokemonId")); // Get specific pokemonid
+		//If you pass an object as a parameter, use objectNode to get the attribute from the parameter
+		final ObjectNode node = new ObjectMapper().readValue(request.getReader(),ObjectNode.class);
+		//POKEID is the parameter of the object that was passed ( {POKEID: <number>} )
+		//This method gets the value of the parameter POKEID
+		int pokeID = node.get("POKEID").asInt();
 
 		int[] res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID); // Execute redeem, returns new credits and
-																				// total credits
+			System.out.println(res);	                   										// total credits
 
 		CachingUtility.getCachingUtility().redeemSinglePokemon(username, pokeID);
 		response.setContentType("application/json");
@@ -100,21 +104,20 @@ public class RedeemService {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	public static void redeemAll(HttpServletRequest request, HttpServletResponse response)
+	public static void redeemAll(HttpServletRequest request, HttpServletResponse resp)
 			throws ServletException, IOException {
 		final String token = request.getHeader("Authorization"); // get JWT token
 		int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); // Get trainer id from
 																								// token
 		String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); // get username from
 																									// token
-		int pokeID = Integer.parseInt(request.getParameter("pokemonId")); // Get specific pokemonid
 
-		int[] res = TrainerDAOImp.getTrainerDAO().redeemAll(ID); // Execute redeem, returns new credits and total
-																	// credits
+		int[] creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID); // Execute redeem, returns new credits and total
+		System.out.println(creditArr);
 
 		CachingUtility.getCachingUtility().redeemAllPokemon(username);
-		response.setContentType("application/json");
-		response.getWriter().append(mapper.writeValueAsString(res));
+		resp.setContentType("application/json");
+		resp.getWriter().append(mapper.writeValueAsString(creditArr));
 
 	}
 }
