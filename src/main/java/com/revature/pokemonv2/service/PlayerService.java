@@ -39,7 +39,7 @@ public class PlayerService {
 		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
 		int trainerId = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUserID();
 		// generate a random pokemon and add it to the user's collection
-		int pokemonId = new Random().nextInt(150) + 1;
+		int pokemonId = new Random().nextInt(151) + 1;
 		return PokemonDAO.generatePokemon(trainerId, pokemonId, username);
 	}
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { JSONP_ERR_WRONG_METHOD } from '@angular/common/http/src/jsonp';
-import { load } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-stats',
@@ -62,7 +60,7 @@ export class StatsComponent implements OnInit {
 
   constructor() { }
 
-  configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
+  configUrl = "/PokemonCollector/ng/stats";
 
   pokeCount;
   PokemonOption;

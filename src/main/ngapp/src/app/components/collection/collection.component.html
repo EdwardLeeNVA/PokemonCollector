@@ -13,13 +13,13 @@
             *ngFor="let pokemon of trainersPokemon"
           >
             <h4 class="pokemon-card-name">{{ pokemon.pokemonName }}</h4>
-            <img [src]="pokemon.image" class="pokemon-card-img" />
+            <img [src]="pokemon.imageUrl" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-              <p>Type: {{ pokemon.types }}</p>
-              <p>HP: {{ pokemon.stats[5].base_stat }}</p>
+              <p>Type: {{ pokemon.type[0] }}</p>
+              <p>HP: {{ pokemon.stats.hp }}</p>
   
-              <p>Attack: {{ pokemon.stats[3].base_stat }}</p>
-              <p>Defense: {{ pokemon.stats[4].base_stat }}</p>
+              <p>Attack: {{ pokemon.stats.attack }}</p>
+              <p>Defense: {{ pokemon.stats.defense }}</p>
             </div>
           </div>
         </div>

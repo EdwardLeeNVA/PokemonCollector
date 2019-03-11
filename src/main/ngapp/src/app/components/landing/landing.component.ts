@@ -18,7 +18,7 @@ export class LandingComponent implements OnInit {
 
   constructor(private trainerService: TrainerService, private router: Router) { }
 
-  configUrl = "http://localhost:8080/PokemonCollector/ng/leaderboard";
+  configUrl = "/PokemonCollector/ng/leaderboard";
 
   ngOnInit() {
 
