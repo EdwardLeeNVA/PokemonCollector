@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.utilities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.revature.pokemonv2.model.Pokemon;
@@ -12,9 +13,7 @@ import com.revature.pokemonv2.dao.PokemonDAO;
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 	private static PokemonDAO dao = new PokemonDAO();
-	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
-	private final int MAX_POKEDEX_SIZE = 151;
-	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
+	final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
 	@Override
@@ -25,11 +24,11 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 		logger.trace("Pokedex received from DAO: " + pokeDex);
 		for (Pokemon p : pokeDex) {
 			logger.trace("Addeding current pokemon: " + p.getId());
-			logger.trace(cachingUtility);
-			Pokemon poke = cachingUtility.getPokemon(p.getId());
+			Pokemon poke = CachingUtility.getCachingUtility().getPokemon(p.getId());
 			poke.setCount(p.getCount());
 			returnPokeDex.add(poke);
 		}
+		Collections.sort(returnPokeDex, PokedexSorter.getInstance());
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
 		logger.trace("Added returnPokeDex to log containing: " +returnPokeDex);
