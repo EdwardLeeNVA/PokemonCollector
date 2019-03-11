@@ -17,10 +17,11 @@ export class RedeemComponent implements OnInit {
   public pokemon: Pokemon = {
     id: 0,
     name: "",
-    image: "",
-    types: null,
+    imageUrl: "",
+    type: null,
     stats: null,
-    count: 0
+    count: 0,
+    cost: 0
   };
 
   //stores an array of Pokemon objects to display to DOM

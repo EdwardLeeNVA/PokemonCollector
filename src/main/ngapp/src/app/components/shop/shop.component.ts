@@ -3,10 +3,9 @@ import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
-
 
 @Component({
   selector: 'app-shop',
@@ -24,11 +23,15 @@ export class ShopComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
+  public selectedPoke: number;
+  private httpJSON = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })};
 
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
-    this.populatePokeArray();
     //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
@@ -36,19 +39,41 @@ export class ShopComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.populatePokeArray();
+    this.populatePokePages();
   }
-  
-  onBallClick() {
+  onBuySubmit() {
+
+    // Check if the trainer has enough credits:
+
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
+
+    let cost: number = this.allPoke[this.selectedPoke].cost;
+
+    let hasCredits: boolean = trainer.credits >= cost;
+
+    // If the trainer has enough credits, add the Pokemon to their collecion:
+    if (hasCredits) {
+      trainer.credits = trainer.credits-cost;
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
+    }else{
+      alert("You can't afford this Pokemon")
+    }
+  }  onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
     $("#generate-pokemon-card").removeClass("d-none");
     $("#generate-pokemon-draw-btn").removeClass("d-none");
     this.cardShow = true;
   }
+
+
+  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
   //method that calls above observable
+  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
@@ -58,12 +83,13 @@ export class ShopComponent implements OnInit {
         for (let i = 0; i < data.length; i++){
           console.log(data[i]);
           let newPoke = new Pokemon();
-          newPoke.name = data[i].name;
-          newPoke.image = data[i].image;
+          newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
+          newPoke.imageUrl = data[i].imageUrl;
           newPoke.id = data[i].id;
           newPoke.count = data[i].count;
           newPoke.stats = data[i].stats;
-          newPoke.types = data[i].types;
+          newPoke.type = data[i].type;
+          newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
         console.log(this.allPoke);
@@ -81,21 +107,7 @@ export class ShopComponent implements OnInit {
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
-
-  buyPokemon(pokemonID: number) {
-
-    // Check if user already owns specified Pokemon:
-
-    let owned: boolean = false; // fix this when we actually have access to the cache
-
-    // If the user does not own the Pokemon, add it to their collecion:
-    if (!owned) {
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
-    }else{
-      alert("You already own that Pokemon")
-    }
-
-  }
+  //pagination methods on standby
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
@@ -115,5 +127,4 @@ export class ShopComponent implements OnInit {
       this.currentPage--;
     }
   }
-
 }

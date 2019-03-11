@@ -47,7 +47,9 @@ public class CachingUtility {
 		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(temp.getCount() + 1);
 		pokeList.add(temp);
-		//Collections.sort(pokeList, PokedexSorter.getInstance());
+
+		Collections.sort(pokeList, PokedexSorter.getInstance());
+
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
 		this.pokedexCache.put(username, pokeList);
@@ -60,7 +62,9 @@ public class CachingUtility {
 		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(1);
 		newPokeList.add(temp);
-		//Collections.sort(newPokeList, PokedexSorter.getInstance());
+
+		Collections.sort(newPokeList, PokedexSorter.getInstance());
+
 		this.pokedexCache.put(username, newPokeList);
 	 	return newPokeList;
 	 }
@@ -75,7 +79,9 @@ public class CachingUtility {
 			temp.setCount(1);
 			newPokeList.add(temp);
 		}
-		//Collections.sort(newPokeList, PokedexSorter.getInstance());
+
+		Collections.sort(newPokeList, PokedexSorter.getInstance());
+
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
 		this.pokedexCache.put(username, newPokeList);

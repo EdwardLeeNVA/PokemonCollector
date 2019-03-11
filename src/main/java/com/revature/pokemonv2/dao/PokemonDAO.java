@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class PokemonDAO {
 		// until we merge with the connection pool
 		// conn = pool.getConnection();
 
-		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?,?)")) {
 			cs.setInt(1, trainerId);
 
 			// change new Random().nextInt(150) for 1 based index to
@@ -61,8 +62,11 @@ public class PokemonDAO {
 			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
 			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
+			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();
 
+			pokemon.setCount(cs.getInt(4));
+			
 			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 
 			return pokemon;

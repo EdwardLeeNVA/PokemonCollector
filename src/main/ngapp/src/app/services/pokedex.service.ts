@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Trainer } from "../models/Trainer";
 
-import { POKEMON } from "../temp/tempPoke";
+// import { POKEMON } from "../temp/tempPoke";
 import { Pokemon } from "../models/Pokemon";
 import { RedeemTicket } from "../models/redeem-ticket";
 
@@ -15,20 +15,17 @@ export class PokedexService {
   //used to store Array of 'int' from the Response of the GET request to get trainer's remaining credits
   credits: any; //FOR REDEEM COMPONENT
   redeemTicketModel = new RedeemTicket(0);
+
+  trainerPokemon: Pokemon[];
+
   constructor(private _http: HttpClient) {}
 
   generatePokemon() {
     return this._http.get<any>("/PokemonCollector/servlet/generatePokemon");
   }
 
-  getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
-    console.log(newTrainer);
-    this._http
-      .get<any>("/PokemonCollector/servlet/collection")
-      .subscribe(response => {
-        return response;
-      });
-    return null;
+  getTrainersPokemon(username: String) {
+    return this._http.get<any>("/PokemonCollector/servlet/collection");
   }
 
   //returns all duplicate pokemon of logged in user

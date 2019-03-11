@@ -1,4 +1,4 @@
- package com.revature.pokemonv2.dispatcher;
+package com.revature.pokemonv2.dispatcher;
 
 import java.io.IOException;
 import java.util.Random;
@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.revature.pokemonv2.service.PlayerService;
+import com.revature.pokemonv2.service.TokenService;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.service.CollectionService;
 import com.revature.pokemonv2.service.CollectionServiceImpl;
+import com.revature.pokemonv2.service.LeaderBoardService;
 import com.revature.pokemonv2.service.PlayerService;
 import com.revature.pokemonv2.service.RedeemService;
 import com.revature.pokemonv2.service.TokenService;
@@ -49,29 +53,30 @@ public class MasterDispatcher {
 			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			break;
 		case "purchase":
-			PlayerService.getPlayerService().purchasePokemon(request, response);
+				PlayerService.getPlayerService().purchasePokemon(request, response);
+			
 			break;
 		case "allpokemon":
-			mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
+				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
 			break;
-
 		case "duplicate":
 			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
 			RedeemService.getDuplicates(request, response);
 			break;
+		case "leaderboard":
+			mapper.writeValue(response.getOutputStream(),
+					LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
+			break;
 		case "redeem":
-			//Endpoint for redeem call. Redeems a specific pokemon
-			
+			//Endpoint for redeem call. Redeems a specific pokemon			
 			RedeemService.redeemSpecific(request, response);
 			break;
 		case "redeemAll":
 			//Endpoint for redeem all call. Redeems all pokemon.
-			
 			RedeemService.redeemAll(request, response);
 			break;
 		case "generatePokemon":
 			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
-
 			break;
 		default:
 			System.out.println("URI not recognized");
