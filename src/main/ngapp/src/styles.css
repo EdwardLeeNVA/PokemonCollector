@@ -37,6 +37,7 @@
   .player-info {
     font-size: 15px;
     padding: 10px;
+    color: white;
   }
   
   .logged-links {
@@ -106,7 +107,6 @@
     font-size: 14px;
     padding: 0px;
     margin: 0px;
-<<<<<<< HEAD
   }
   
   /***********************************************************************************************************/
@@ -132,6 +132,3 @@
   width: 80%;
   margin-bottom: 30px;
 }
-=======
-  }
->>>>>>> 78425ad281e0f81dd172d539913e5bc0cea7f797

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Trainer } from "../models/Trainer";
 
-import { POKEMON } from "../temp/tempPoke";
+// import { POKEMON } from "../temp/tempPoke";
 import { Pokemon } from "../models/Pokemon";
 
 @Injectable({
@@ -13,6 +13,7 @@ export class PokedexService {
   duplicatePokemon: Pokemon[]; //FOR REDEEM COMPONENT
   //used to store Array of 'int' from the Response of the GET request to get trainer's remaining credits
   credits: number[]; //FOR REDEEM COMPONENT
+  trainerPokemon: Pokemon[];
 
   constructor(private _http: HttpClient) {}
 
@@ -20,14 +21,18 @@ export class PokedexService {
     return this._http.get<any>("/PokemonCollector/servlet/generatePokemon");
   }
 
-  getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
-    console.log(newTrainer);
-    this._http.get<any>("/PokemonCollector/servlet/collection")
-    .subscribe (response => {
-      return response;
-    });
-    return null;
+  getTrainersPokemon(newTrainer: Trainer) {
+    return this._http.get<any>("/PokemonCollector/servlet/collection");
   }
+
+  // getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
+  //   console.log(newTrainer);
+  //   this._http.get<any>("/PokemonCollector/servlet/collection")
+  //   .subscribe (response => {
+  //     this.trainerPokemon = response;
+  //   });
+  //   return this.trainerPokemon;
+  // }
 
   //method that returns an array of Pokemon objects in response
   getDuplicates(): Pokemon[] {
