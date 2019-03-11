@@ -5,6 +5,7 @@ import { Trainer } from "../models/Trainer";
 // import { POKEMON } from "../temp/tempPoke";
 import { Pokemon } from "../models/Pokemon";
 import { RedeemTicket } from "../models/redeem-ticket";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -43,5 +44,10 @@ export class PokedexService {
       "/PokemonCollector/servlet/redeem",
       redeemTicket
     );
+  }
+
+  //gets all pokeinfo from the cache
+  getAllPokemon(): Observable<any[]>{
+    return this._http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
 }
