@@ -79,12 +79,12 @@ export class ShopComponent implements OnInit {
         for (let i = 0; i < data.length; i++){
           console.log(data[i]);
           let newPoke = new Pokemon();
-          newPoke.name = data[i].name;
-          newPoke.imageUrl = data[i].image;
+          newPoke.name = data[i].name.toUpperCase() + data[i].name.substr(1);
+          newPoke.imageUrl = data[i].imageUrl;
           newPoke.id = data[i].id;
           newPoke.count = data[i].count;
           newPoke.stats = data[i].stats;
-          newPoke.type = data[i].types;
+          newPoke.type = data[i].type;
           newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
