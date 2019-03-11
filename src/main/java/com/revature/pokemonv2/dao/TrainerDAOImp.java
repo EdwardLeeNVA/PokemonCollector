@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;<<<<<<<HEAD
-import java.sql.Types;=======
-import java.util.List;>>>>>>>staging
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
