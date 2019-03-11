@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.servlets.DefaultServlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dispatcher.MasterDispatcher;
+import com.revature.pokemonv2.service.LeaderBoardService;
 
 /**
  * The Front Controller class contains all the methods to handle servlet
@@ -41,6 +43,7 @@ public class FrontController extends DefaultServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		final ObjectMapper mapper = new ObjectMapper();
 		String uri = request.getRequestURI();
 		
 		if (uri.contains("/servlet/"))
@@ -49,6 +52,11 @@ public class FrontController extends DefaultServlet {
 			response.sendRedirect("/PokemonCollector/ng/index.html");
 		else if ((uri.contains("/ng/") && Arrays.asList(ngRoutes).stream().anyMatch(route -> uri.contains(route))))
 			request.getRequestDispatcher("/ng/index.html").forward(request, response);
+		else if (uri.equals("/PokemonCollector/ng/leaderboard"))
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
+		else if (uri.equals("/PokemonCollector/ng/stats"))
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
+		
 		else {
 			switch (request.getMethod()) {
 			case "GET":
