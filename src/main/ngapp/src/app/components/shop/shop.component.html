@@ -111,13 +111,18 @@
             <!-- *ngFor="let pokemon of pokemonArr" -->
             <h4 class="pokemon-card-name">{{ this.pokemonName }}</h4>
   
-            <img src="{{ this.pokemonURL }}" class="pokemon-card-img" />
+            <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-              <p>Type: {{ this.pokemonType }}</p>
-              <p>HP: {{ this.hp }}</p>
-              <p>Attack: {{ this.attack }}</p>
-              <p>Defense: {{ this.defense }}</p>
-            </div>
+                <p>Stats:</p>
+                <div *ngFor="let stats of stats">
+                  <p>Attack: {{this.stats.attack }}</p>
+                  <p>Defense: {{this.stats.defense }} </p>
+                  <p>HP: {{this.stats.hp}}</p>
+                  <p>Special-attack: {{this.stats.special-attack}}</p>
+                  <p>Special-defense: {{this.stats.special-defense}}</p>
+                  <p>Speed: {{this.stats.speed}}</p>
+                </div>
+        </div>
           </div>
           <!-- start no credits alert -->
           <div
