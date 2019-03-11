@@ -51,12 +51,11 @@ export class ShopComponent implements OnInit {
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.selectedPoke);
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
     }else{
       alert("You can't afford this Pokemon")
     }
-  }
-  onBallClick() {
+  }  onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
     $("#generate-pokemon-card").removeClass("d-none");
