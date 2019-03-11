@@ -270,7 +270,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.pokemonName }}</h4>\r\n            <img [src]=\"pokemon.image\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p>Type: {{ pokemon.types }}</p>\r\n              <p>HP: {{ pokemon.stats[5].base_stat }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats[3].base_stat }}</p>\r\n              <p>Defense: {{ pokemon.stats[4].base_stat }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p>Type: {{ pokemon.type[0] }}</p>\r\n              <p *ngIf=\"pokemon.type[1] != null\"> Type 2: {{ pokemon.type[1] }} </p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -313,7 +313,7 @@ var CollectionComponent = /** @class */ (function () {
     };
     CollectionComponent.prototype.getTrainersPokemon = function () {
         var _this = this;
-        this.pokedexService.getTrainersPokemon(this.trainer).subscribe(function (response) { _this.trainersPokemon = response; }), function (err) { return console.log("Error: $(err)"); };
+        this.pokedexService.getTrainersPokemon(this.trainer.username).subscribe(function (response) { _this.trainersPokemon = response; }), function (err) { return console.log("Error: $(err)"); };
     };
     CollectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -410,6 +410,8 @@ var GeneratePokemonComponent = /** @class */ (function () {
             _this.hp = data.stats.hp;
             _this.attack = data.stats.attack;
             _this.defense = data.stats.defense;
+            _this.trainer.score = data.count;
+            _this.trainerService.updateValidLogin(_this.trainer);
         });
         if (this.cardShow) {
             $("#generate-pokemon-pokeball").removeClass("d-none");
@@ -673,7 +675,6 @@ var NavComponent = /** @class */ (function () {
         var _this = this;
         this.trainerService.login_status_bs.subscribe(function (status) { return _this.login_status = status; });
         this.trainerService.current_trainer_bs.subscribe(function (trainer) {
-            console.log("trainer: " + _this.trainer);
             _this.trainer = trainer;
         });
     };
@@ -1036,7 +1037,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
+module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCountTotal\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1107,6 +1108,7 @@ var StatsComponent = /** @class */ (function () {
                 y: 7,
             }
         ];
+        this.total = this.data1;
         this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
         this.configUrl = "/PokemonCollector/ng/stats";
     }
@@ -1117,11 +1119,17 @@ var StatsComponent = /** @class */ (function () {
             .then(function (res) {
             console.log(res);
             _this.data1 = res;
+        });
+        fetch(this.configUrl)
+            .then(function (res) { return res.json(); })
+            .then(function (res) {
+            console.log(res);
+            _this.total = res;
             _this.load();
         });
     };
     StatsComponent.prototype.load = function () {
-        this.pokeCount = {
+        this.pokeCountTotal = {
             chart: {
                 type: 'column'
             },
@@ -1129,7 +1137,7 @@ var StatsComponent = /** @class */ (function () {
                 text: 'Pokemons per trainer'
             },
             subtitle: {
-                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+                text: 'Top 10'
             },
             xAxis: {
                 type: 'category',
@@ -1144,14 +1152,63 @@ var StatsComponent = /** @class */ (function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Population (millions)'
+                    text: 'Pokemon'
                 }
             },
             legend: {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+            },
+            series: [{
+                    name: 'Population',
+                    data: this.total,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.0f}',
+                        y: -50,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        };
+        this.pokeCount = {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Unique Pokemons per trainer'
+            },
+            subtitle: {
+                text: 'Top 10'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Pokemon'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
             },
             series: [{
                     name: 'Population',
@@ -1360,7 +1417,7 @@ var PokedexService = /** @class */ (function () {
     PokedexService.prototype.generatePokemon = function () {
         return this._http.get("/PokemonCollector/servlet/generatePokemon");
     };
-    PokedexService.prototype.getTrainersPokemon = function (newTrainer) {
+    PokedexService.prototype.getTrainersPokemon = function (username) {
         return this._http.get("/PokemonCollector/servlet/collection");
     };
     // getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
@@ -1635,7 +1692,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Workspace\Project 3\src\main\ngapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\omarg\Documents\Workspace\PokemonCollector\src\main\ngapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

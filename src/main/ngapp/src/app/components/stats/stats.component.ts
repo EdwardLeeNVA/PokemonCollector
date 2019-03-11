@@ -56,6 +56,8 @@ export class StatsComponent implements OnInit {
       y: 7,
     }];
 
+    total = this.data1;
+
   Highcharts = Highcharts;
 
   constructor() { }
@@ -63,6 +65,7 @@ export class StatsComponent implements OnInit {
   configUrl = "/PokemonCollector/ng/stats";
 
   pokeCount;
+  pokeCountTotal;
   PokemonOption;
 
   ngOnInit() {
@@ -71,20 +74,79 @@ export class StatsComponent implements OnInit {
       .then(res => {
         console.log(res);
         this.data1 = res;
+
+
+        this.configUrl = "/PokemonCollector/ng/stats2";
+      fetch(this.configUrl)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.total = res;
         this.load();
+      });
       });
   }
 
   load() {
+    this.pokeCountTotal = {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Pokemons Per Trainer'
+      },
+      subtitle: {
+        text: 'Top 10'
+      },
+      xAxis: {
+        type: 'category',
+        labels: {
+          rotation: -45,
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+          }
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Pokemon'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+      },
+      series: [{
+        name: 'Population',
+        data: this.total,
+        dataLabels: {
+          enabled: true,
+          rotation: -90,
+          color: '#FFFFFF',
+          align: 'right',
+          format: '{point.y:.0f}', // one decimal
+          y: -40, // 10 pixels down from the top
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+          }
+        }
+      }]
+    }
+
     this.pokeCount = {
       chart: {
         type: 'column'
       },
       title: {
-        text: 'Unique Pokemons per trainer'
+        text: 'Unique Pokemons Per Trainer'
       },
       subtitle: {
-        text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+        text: 'Top 10'
       },
       xAxis: {
         type: 'category',
@@ -117,7 +179,7 @@ export class StatsComponent implements OnInit {
           color: '#FFFFFF',
           align: 'right',
           format: '{point.y:.0f}', // one decimal
-          y: -50, // 10 pixels down from the top
+          y: -30, // 10 pixels down from the top
           style: {
             fontSize: '13px',
             fontFamily: 'Verdana, sans-serif'
@@ -125,8 +187,6 @@ export class StatsComponent implements OnInit {
         }
       }]
     }
-
-
 
     this.PokemonOption = {
       chart: {
