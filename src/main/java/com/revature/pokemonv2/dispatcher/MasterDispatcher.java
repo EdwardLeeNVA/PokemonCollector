@@ -58,7 +58,6 @@ public class MasterDispatcher {
 			break;
 		case "allpokemon":
 				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
-			}
 			break;
 		case "duplicate":
 			if(!isUnfiltered)
