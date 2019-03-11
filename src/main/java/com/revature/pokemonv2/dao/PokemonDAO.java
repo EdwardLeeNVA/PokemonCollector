@@ -4,47 +4,39 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.PokemonFactory;
 import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
-import com.revature.pokemonv2.utilities.PokedexLoadWriter;
 
-public class DAO {
+public class PokemonDAO {
 
-	
 	/**
 	 * EhCache for Pokemon
 	 */
-	
-	final static Logger logger = Logger.getLogger(DAO.class);
-	
-	
+
+	final static Logger logger = Logger.getLogger(PokemonDAO.class);
+
 	public List<Pokemon> getTrainerPokedex(String username) {
+		logger.trace("Database called for pokedex");
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			String sql = "call get_all_pokemon(?)";
-			try (CallableStatement cs = conn.prepareCall(sql)) {
-				cs.setString(1, username);
-				try (ResultSet rs = cs.executeQuery()) {
-					ArrayList<Pokemon> pokedex = new ArrayList<>();
-					while (rs.next()) {
-						pokedex.add(new Pokemon(rs.getInt("pokemon_id"), rs.getInt("count")));
-					}
-					return pokedex;
-				}
+			try (CallableStatement cs = PokemonDAOStatements.getTrainerPokedexStatement(conn, username)) {
+				cs.execute();
+				ResultSet rs = (ResultSet) cs.getObject(2);
+				logger.trace("Query executed and iterating through cursor.");
+				List<Pokemon> pokedex = PokemonFactory.createListFromResultSet(rs);
+				logger.trace("Pokedex returned by DB: " + pokedex);
+				return pokedex;
 			}
 		} catch (SQLException e) {
-			logger.error("getTrainerPokedex didn't work");
+			logger.error("getTrainerPokedex didn't work", e);
 			return new ArrayList<Pokemon>();
 		}
-
-		
 	}
 
 	/**
@@ -55,36 +47,36 @@ public class DAO {
 	 */
 	public static Pokemon generatePokemon(int trainerId, int pokemonId, String username) {
 		Connection conn = ConnectionUtility.getInstance().getConnection();
-		
-		//until we merge with the connection pool
-		//conn = pool.getConnection();
-		
+
+		// until we merge with the connection pool
+		// conn = pool.getConnection();
+
 		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
 			cs.setInt(1, trainerId);
-			
-			//change new Random().nextInt(150) for 1 based index to
-			//new Random().nextInt(151-1)+1
-		
-			cs.setInt(2, pokemonId);		
+
+			// change new Random().nextInt(150) for 1 based index to
+			// new Random().nextInt(151-1)+1
+
+			cs.setInt(2, pokemonId);
 			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
 			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
-			cs.execute();			
+			cs.execute();
 
 			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 
 			return pokemon;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			//log.error(e.getMessage());
-		}finally {
-			
-			//until we merge with connection pool
+			// log.error(e.getMessage());
+		} finally {
+
+			// until we merge with connection pool
 			ConnectionUtility.freeConnection(conn);
-			
+
 		}
-	return null;
+		return null;
 	}
-	
+
 }

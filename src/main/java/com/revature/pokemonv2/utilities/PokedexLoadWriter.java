@@ -1,34 +1,32 @@
 package com.revature.pokemonv2.utilities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import me.sargunvohra.lib.pokekotlin.client.PokeApi;
-import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
-import me.sargunvohra.lib.pokekotlin.model.Pokemon;
+import com.revature.pokemonv2.model.Pokemon;
 import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
-import com.revature.pokemonv2.dao.DAO;
+import com.revature.pokemonv2.dao.PokemonDAO;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
-	private static DAO dao = new DAO();
+	private static PokemonDAO dao = new PokemonDAO();
 	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
 	private final int MAX_POKEDEX_SIZE = 151;
 	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
 	@Override
-	public ArrayList<com.revature.pokemonv2.model.Pokemon> load(Object key) throws Exception {
+	public ArrayList<Pokemon> load(Object key) throws Exception {
 		logger.trace("Entered load writer load method with key: " + key);
-		ArrayList<com.revature.pokemonv2.model.Pokemon> returnPokeDex = new ArrayList<>();
-		List<com.revature.pokemonv2.model.Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
-			
-		for (com.revature.pokemonv2.model.Pokemon p : pokeDex) {
-			com.revature.pokemonv2.model.Pokemon poke = cachingUtility.getPokemon(p.getId());
+		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
+		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+		logger.trace("Pokedex received from DAO: " + pokeDex);
+		for (Pokemon p : pokeDex) {
+			logger.trace("Addeding current pokemon: " + p.getId());
+			logger.trace(cachingUtility);
+			Pokemon poke = cachingUtility.getPokemon(p.getId());
 			poke.setCount(p.getCount());
 			returnPokeDex.add(poke);
 		}
