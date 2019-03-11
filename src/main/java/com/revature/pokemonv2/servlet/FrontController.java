@@ -1,6 +1,10 @@
 package com.revature.pokemonv2.servlet;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,50 +22,66 @@ import com.revature.pokemonv2.dispatcher.MasterDispatcher;
 @MultipartConfig(maxRequestSize = 1024 * 1024 * 100)
 public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 4826138980180601133L;
+	private static String[] ngRoutes = {
+			"landing",
+			"login",
+			"register",
+			"generate",
+			"collection",
+			"landing",
+			"shop",
+			"redeem"
+	};
+	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
-
+		
 		if (uri.contains("/servlet/"))
 			MasterDispatcher.process(request, response);
-		else if (uri.equals("/PokemonCollector/ng") || uri.equals("/PokemonCollector/ng/"))
+		else if (uri.equals("/PokemonCollector") || uri.equals("/PokemonCollector/"))
 			response.sendRedirect("/PokemonCollector/ng/index.html");
-		else
-			super.doGet(request, response);
+		else if ((uri.contains("/ng/") && Arrays.asList(ngRoutes).stream().anyMatch(route -> uri.contains(route))))
+			request.getRequestDispatcher("/ng/index.html").forward(request, response);
+		else {
+			switch (request.getMethod()) {
+			case "GET":
+				super.doGet(request, response);
+				break;
+			case "POST":
+				super.doPost(request, response);
+				break;
+			case "PUT":
+				super.doPut(request, response);
+				break;
+			case "DELETE":
+				super.doDelete(request, response);
+				break;
+			}
+		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String uri = request.getRequestURI();
-
-		if (uri.contains("/servlet/"))
-			MasterDispatcher.process(request, response);
-		else
-			super.doPost(request, response);
+		doGet(request, response);
 	}
 
 	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String uri = request.getRequestURI();
-
-		if (uri.contains("/servlet/"))
-			MasterDispatcher.process(request, response);
-		else
-			super.doPut(request, response);
+		doGet(request, response);
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String uri = request.getRequestURI();
-
-		if (uri.contains("/servlet/"))
-			MasterDispatcher.process(request, response);
-		else
-			super.doDelete(request, response);
+		doGet(request, response);
 	}
 }

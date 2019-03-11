@@ -26,3 +26,12 @@ src/main/webapp/ng/
 hs_err_pid*
 
 
+pom.xml
+.idea/workspace.xml
+.idea/libraries/Maven__io_jsonwebtoken_jjwt_jackson_0_10_5.xml
+.idea/encodings.xml
+.idea/artifacts/PokemonCollector_war_exploded.xml
+PokemonCollector.iml
+.settings/org.eclipse.jdt.apt.core.prefs
+.idea/libraries/Maven__io_jsonwebtoken_jjwt_impl_0_10_5.xml
+.idea/libraries/Maven__io_jsonwebtoken_jjwt_api_0_10_5.xml

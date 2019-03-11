@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.pokemonv2.dao.DAO;
-import com.revature.pokemonv2.dao.TrainerDAO;
+import com.revature.pokemonv2.dao.PokemonDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Trainer;
@@ -20,18 +19,35 @@ import com.revature.pokemonv2.utilities.CachingUtility;
  * The PlayerService class contains methods that service the TrainerDAOImp.
  */
 public class PlayerService {
-	private PlayerService() {
-	}
 
-	// Object mapper
-	private static final ObjectMapper mapper = new ObjectMapper();
-	// Trainer DAO instance
-	private static TrainerDAO trainer = TrainerDAOImp.getTrainerDAO();
-	// Player service instance
+	private static final String AUTH = "Authorization";
+
 	private static PlayerService instance;
 
+	private static final ObjectMapper mapper = new ObjectMapper();
+
+	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
+
 	/**
-	 * Returns an instance of the PlayerService class.
+	 * Temporary until merged with Pokemon service.
+	 * 
+	 * @return the pokemon
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public static Pokemon generatePokemon(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// enter the jwt token which needs to be decrypted
+		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
+		int trainerId = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUserID();
+		// generate a random pokemon and add it to the user's collection
+		int pokemonId = new Random().nextInt(150) + 1;
+		return PokemonDAO.generatePokemon(trainerId, pokemonId, username);
+	}
+
+	/**
+	 * 
+	 * @return an instance of the PlayerService class
 	 */
 	public static PlayerService getPlayerService() {
 		if (instance == null) {
@@ -40,24 +56,7 @@ public class PlayerService {
 		return instance;
 	}
 
-	/**
-	 * Takes in parameters and registers a new Trainer.
-	 */
-	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
-				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0);
-	}
-
-	// temporary until merged with project with pokemon service
-	// returns the pokemon
-	public static Pokemon generatePokemon(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// enter the jwt token which needs to be decrypted
-		int trainerId = TokenService.getInstance().getUserDetailsFromToken(request.getHeader("Authorization"))
-				.getUserID();
-		// generate a random pokemon and add it to the user's collection
-		int pokemonId = new Random().nextInt(150) + 1;
-		return DAO.generatePokemon(trainerId, pokemonId);
+	private PlayerService() {
 	}
 
 	/**
@@ -69,25 +68,29 @@ public class PlayerService {
 
 	public void updateTrainer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		JsonNode node = mapper.readTree(request.getAttribute("updated").toString());
-		response.getWriter().append(mapper.writeValueAsString(trainer.updateTrainer(
-						Integer.parseInt(node.get("id").asText()),
-						request.getAttribute("oldUsername").toString(), 
-						node.get("username").asText(),
-						node.get("password").asText(), 
-						node.get("email").asText(), 
-						node.get("firstName").asText(),
+		response.getWriter()
+				.append(mapper.writeValueAsString(trainer.updateTrainer(Integer.parseInt(node.get("id").asText()),
+						request.getAttribute("oldUsername").toString(), node.get("username").asText(),
+						node.get("password").asText(), node.get("email").asText(), node.get("firstName").asText(),
 						node.get("lastName").asText())));
 	}
 
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
-		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader("Authorization"))
-				.getUsername();
+		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
-		Pokemon p = CachingUtility.getCachingUtility().getPokemonFromCache(id);
+		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
 		int cost = p.getCost();
 		// dao command to remove the money
 		if (trainer.purchasePokemon(username, cost)) {
 			CachingUtility.getCachingUtility().addToCache(username, id);
 		}
+	}
+
+	/**
+	 * Takes in parameters and registers a new Trainer.
+	 */
+	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
+				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0);
 	}
 }

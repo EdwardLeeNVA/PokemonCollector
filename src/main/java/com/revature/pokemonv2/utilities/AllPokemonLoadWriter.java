@@ -1,59 +1,36 @@
 package com.revature.pokemonv2.utilities;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.revature.pokemonv2.model.Pokemon;
+import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
-
-import me.sargunvohra.lib.pokekotlin.client.PokeApi;
-import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
-import me.sargunvohra.lib.pokekotlin.model.Pokemon;
 
 
 
 public class AllPokemonLoadWriter implements CacheLoaderWriter {
-	
-	
-	
+    private static final Logger logger = Logger.getLogger(AllPokemonLoadWriter.class);
 
-	@Override
-	public com.revature.pokemonv2.model.Pokemon load(Object i) throws Exception {
+    @Override
+    public Pokemon load(Object i) throws Exception {
+        return CachingUtility.getCachingUtility().getPokemon((Integer) i);
+    }
 
-		PokeApi poke = new PokeApiClient();
-		Pokemon p = poke.getPokemon((Integer)i);
-		
-		ArrayList<String> temp = new ArrayList<>();
-		int z = 0;
-		while (z < p.getTypes().size()) {
-			temp.add(p.getTypes().get(z).getType().getName());
-		}
-		
-		Map<String, Integer> statTemp = new HashMap<>();
-		int statCount = 0;
-		int cost = 0;
-		while (statCount < p.getStats().size()) {
-			statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
-			cost += p.getStats().get(statCount).getStat().component3();
-		}
-		
-		return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])temp.toArray(), statTemp, cost);
-		
-	}
+    @Override
+    public void write(Object key, Object value) throws Exception {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void write(Object key, Object value) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void delete(Object key) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
+    @Override
+    public void delete(Object key) throws Exception {
+        // TODO Auto-generated method stub
 
-
-	
+    }
 }

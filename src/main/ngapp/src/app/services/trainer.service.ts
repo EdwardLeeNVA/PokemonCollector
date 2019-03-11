@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs";
 import { Trainer } from "../models/Trainer";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TrainerService {
-
   constructor(private _http: HttpClient) { }
 
   private current_trainer = new BehaviorSubject(null);
@@ -16,20 +15,18 @@ export class TrainerService {
   private login_status = new BehaviorSubject(false);
   public login_status_bs = this.login_status.asObservable();
 
-  //Method call for POST request for logging in a trainer.
-  loginTrainer(credentials: FormData) {
-    console.log(credentials);
-    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/login", credentials, { observe: 'response' });
+  // Method call for POST request for updating a trainer's personal info
+  updateTrainer(update: any) {
+    return this._http.post<any>("/PokemonCollector/servlet/updateTrainer", update);
   }
 
   //Method call for POST request for registering a new trainer.
   createTrainer(credentials: FormData) {
-    return this._http.post<any>("/PokemonCollector/servlet/unfiltered/register", credentials, { observe: 'response' });
-  }
-
-  // Method call for POST request for updating a trainer's personal info
-  updateTrainer(update: any) {
-    return this._http.post<any>("/PokemonCollector/servlet/updateTrainer", update);
+    return this._http.post<any>(
+      "/PokemonCollector/servlet/unfiltered/register",
+      credentials,
+      { observe: "response" }
+    );
   }
 
   updateValidLogin(trainer: Trainer) {
