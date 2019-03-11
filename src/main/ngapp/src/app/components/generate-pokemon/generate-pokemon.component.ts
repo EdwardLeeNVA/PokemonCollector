@@ -58,7 +58,7 @@ export class GeneratePokemonComponent implements OnInit {
         this.hp = data.stats.hp;
         this.attack = data.stats.attack;
         this.defense = data.stats.defense;
-        this.trainer.score = data.score;
+        this.trainer.score = data.count;
         this.trainerService.updateValidLogin(this.trainer);
       }
     );
