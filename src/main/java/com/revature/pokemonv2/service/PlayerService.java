@@ -18,6 +18,9 @@ import com.revature.pokemonv2.utilities.CachingUtility;
  * The PlayerService class contains methods that service the TrainerDAOImp.
  */
 public class PlayerService {
+	
+	private static final String AUTH = "Authorization";
+	
 	private PlayerService() {
 	}
 	//Object mapper
@@ -51,9 +54,9 @@ public class PlayerService {
 			throws ServletException, IOException {
 		//enter the jwt token which needs to be decrypted
 		String username = TokenService.getInstance().getUserDetailsFromToken(
-				request.getHeader("Authorization")).getUsername();
+				request.getHeader(AUTH)).getUsername();
 		int trainerId = TokenService.getInstance().getUserDetailsFromToken(
-				request.getHeader("Authorization")).getUserID();
+				request.getHeader(AUTH)).getUserID();
 		//generate a random pokemon and add it to the user's collection
 		int pokemonId = new Random().nextInt(150)+1;
 			return PokemonDAO.generatePokemon(trainerId, pokemonId, username);
@@ -68,7 +71,7 @@ public class PlayerService {
 	
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(
-				request.getHeader("Authorization")).getUsername();
+				request.getHeader(AUTH)).getUsername();
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
 		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
 		int cost = p.getCost();
