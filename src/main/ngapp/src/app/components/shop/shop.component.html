@@ -55,7 +55,16 @@
                     <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
                     <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>Stats: {{ pokemon.stats }}</p>
+                    <p>Stats:</p>
+                    <div *ngFor="let stats of stats">
+                      <p>Attack: {{stats.attack }}</p>
+                      <p>Defense: {{stats.defense }} </p>
+                      <p>HP: {{stats.hp}}</p>
+                      <p>Special-attack: {{stats.special-attack}}</p>
+                      <p>Special-defense: {{stats.special-defense}}</p>
+                      <p>Speed: {{stats.speed}}</p>
+                    </div>
+                    <!-- <p>Stats: {{ pokemon.stats }}</p> -->
 
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
