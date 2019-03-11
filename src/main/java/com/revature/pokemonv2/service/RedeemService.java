@@ -15,7 +15,8 @@ import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.CachingUtility;
 
 /**
- * @author Timothy Jordan, Anup Saha
+ * @author Timothy Jordan
+ * @author Anup Saha
  *
  */
 public class RedeemService {

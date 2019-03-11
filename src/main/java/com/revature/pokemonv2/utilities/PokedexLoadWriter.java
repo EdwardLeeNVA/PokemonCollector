@@ -7,12 +7,12 @@ import com.revature.pokemonv2.model.Pokemon;
 import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
-import com.revature.pokemonv2.dao.DAO;
+import com.revature.pokemonv2.dao.PokemonDAO;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
-	private static DAO dao = new DAO();
-	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
+	private static PokemonDAO dao = new PokemonDAO();
+	final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
 	@Override
