@@ -30,15 +30,16 @@ public class AuthenticationFilter implements Filter {
 			"/PokemonCollector/ng/polyfills.js",
 			"/PokemonCollector/ng/styles.js",
 			"/PokemonCollector/ng/vendor.js",
-			"/PokemonCollector/ng/main.js",
-			
+			"/PokemonCollector/ng/main.js",		
 			"/PokemonCollector",
 			"/PokemonCollector/",
 			"/PokemonCollector/ng/landing",
 			"/PokemonCollector/ng/login",
 			"/PokemonCollector/ng/register",
 			"/PokemonCollector/servlet/unfiltered/login",
-			"/PokemonCollector/servlet/unfiltered/register"
+			"/PokemonCollector/servlet/unfiltered/register",
+			"/PokemonCollector/ng/leaderboard",
+			"/PokemonCollector/ng/stats"
 	};
 
 	private ObjectMapper mapper;

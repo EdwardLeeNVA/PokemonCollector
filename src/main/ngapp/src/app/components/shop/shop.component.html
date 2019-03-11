@@ -28,7 +28,7 @@
             </div>
   
             <div class="radio-card-grid">
-              <div *ngIf = "allPoke"
+              <div
                 class="form-check radio-form-item"
                 *ngFor="let pokemon of allPoke"
               >
@@ -46,16 +46,27 @@
                     class="form-check-label shop-poke-name"
                     for="gridRadios1"
                   >
-                    {{ pokemon.pokemonName }}
+                    {{ pokemon.name }}
                   </label>
-                  <img class="pokemon-card-img" src="{{ pokemon.URL }}" />
+                  <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                    <p>Type: {{ pokemon.pokemonType }}</p>
+                    <p>Type: {{ pokemon.type }}</p>
   
-                    <p>HP: {{ pokemon.hp }}</p>
+                    <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
-                    <p>Defense: {{ pokemon.defense }}</p>
-                    <p>Cost: {{ pokemon.pokemonRarity }}</p>
+                    <p>Defense: {{ pokemon.defense }}</p> -->
+                    <p>Stats:</p>
+                    <div *ngFor="let stats of stats">
+                      <p>Attack: {{stats.attack }}</p>
+                      <p>Defense: {{stats.defense }} </p>
+                      <p>HP: {{stats.hp}}</p>
+                      <p>Special-attack: {{stats.special-attack}}</p>
+                      <p>Special-defense: {{stats.special-defense}}</p>
+                      <p>Speed: {{stats.speed}}</p>
+                    </div>
+                    <!-- <p>Stats: {{ pokemon.stats }}</p> -->
+
+                    <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
               </div>
@@ -64,6 +75,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
 <div>
   <form>
     <!-- <input class="form-check-input" type="radio" value="15" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
@@ -90,6 +102,8 @@
         <li><a class="page-link" (click)="nextPage()" aria-label="Next"></a></li>
       </ul>
     </nav>
+=======
+>>>>>>> 6d3433f894e6776f5b25cf8851d30dca58d25f07
 </div>
 <div class="radio-card-grid" *ngIf="pokePages">
     <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
