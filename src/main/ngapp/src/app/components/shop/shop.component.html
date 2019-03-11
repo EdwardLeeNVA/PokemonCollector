@@ -37,27 +37,27 @@
                   type="radio"
                   #pokemonCard="ngModel"
                   name="gridRadios"
-                  value="{{ allPoke.id }}"
+                  value="{{ pokemon.id }}"
                   checked
-                  [(ngModel)]="allPoke.id"
+                  [(ngModel)]="pokemon.id"
                 />
                 <div class="pokemon-card-outer">
                   <label
                     class="form-check-label shop-poke-name"
                     for="gridRadios1"
                   >
-                    {{ allPoke.name }}
+                    {{ pokemon.name }}
                   </label>
-                  <img class="pokemon-card-img" src="{{ allPoke.imageUrl }}" />
+                  <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                    <p>Type: {{ allPoke.type }}</p>
+                    <p>Type: {{ pokemon.type }}</p>
   
                     <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
                     <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>Stats: {{ allPoke.stats }}</p>
+                    <p>Stats: {{ pokemon.stats }}</p>
 
-                    <p>Cost: {{ allPoke.cost }}</p>
+                    <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
               </div>
