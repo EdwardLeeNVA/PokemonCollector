@@ -15,6 +15,8 @@ export class TrainerService {
   private login_status = new BehaviorSubject(false);
   public login_status_bs = this.login_status.asObservable();
 
+  public trainer: Trainer = new Trainer();
+
   //Method call for POST request for registering a new trainer.
   createTrainer(credentials: FormData) {
     return this._http.post<any>(
