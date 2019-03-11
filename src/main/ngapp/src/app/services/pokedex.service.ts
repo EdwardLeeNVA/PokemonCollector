@@ -22,7 +22,11 @@ export class PokedexService {
 
   getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
     console.log(newTrainer);
-    return POKEMON;
+    this._http.get<any>("/PokemonCollector/servlet/collection")
+    .subscribe (response => {
+      return response;
+    });
+    return null;
   }
 
   //method that returns an array of Pokemon objects in response

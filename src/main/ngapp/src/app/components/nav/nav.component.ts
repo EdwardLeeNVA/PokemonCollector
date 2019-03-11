@@ -16,7 +16,10 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
-    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    this.trainerService.current_trainer_bs.subscribe(trainer => {
+      console.log("trainer: " + this.trainer);
+      this.trainer = trainer;
+    });
   }
 
   onLogout(){
