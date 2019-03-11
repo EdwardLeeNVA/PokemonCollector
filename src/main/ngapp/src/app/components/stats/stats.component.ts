@@ -81,7 +81,7 @@ export class StatsComponent implements OnInit {
         type: 'column'
       },
       title: {
-        text: 'Pokemons per trainer'
+        text: 'Unique Pokemons per trainer'
       },
       subtitle: {
         text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
@@ -99,14 +99,14 @@ export class StatsComponent implements OnInit {
       yAxis: {
         min: 0,
         title: {
-          text: 'Population (millions)'
+          text: 'Pokemon'
         }
       },
       legend: {
         enabled: false
       },
       tooltip: {
-        pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
       },
       series: [{
         name: 'Population',
