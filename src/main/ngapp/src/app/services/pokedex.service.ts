@@ -21,7 +21,7 @@ export class PokedexService {
     return this._http.get<any>("/PokemonCollector/servlet/generatePokemon");
   }
 
-  getTrainersPokemon(newTrainer: Trainer) {
+  getTrainersPokemon(username: String) {
     return this._http.get<any>("/PokemonCollector/servlet/collection");
   }
 
