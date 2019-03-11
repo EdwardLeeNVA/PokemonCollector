@@ -28,81 +28,10 @@ body {
   grid-gap: 50px 100px;
 }
 
-<<<<<<< HEAD
 #tableusername {
   border: 3px solid yellow;
 }
 
 #tablescore {
   border: 3px solid yellow;
-=======
-.tabletext{
-  color: white
 }
-
-.button {
-  background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-  border: 2px solid yellow;
-  color: white;   
->>>>>>> 03e8a9c282ee4f3cd0747328cf9ff3ebab8afcf1
-}
-
-/*html {
-    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
-  }
-  body {
-    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
-  }
-  
-  .main-container {
-    background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
-  }
-  
-  #landing-pokeball-cont {
-    text-align: center;
-    margin-top: 100px;
-  }
-  
-  #player-preview-section {
-  }
-  
-  .player-preview-heading {
-    text-align: center;
-    border: 1px solid yellow;
-    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-    color: white;
-  }
-  
-  .user-item {
-  }
-  #tableusername{
-    background: linear-gradient(to top, black,black);
-    border: 2px solid yellow;
-    text-align: center;
-    color: white; 
-  }
-  #username-label {
-    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-    margin-left: 10px;
-    width: 50%;
-    padding: 5px;
-    border: 2px solid yellow;
-  }
-  
-  #username-container {
-    overflow-y: scroll;
-    max-height: 300px;
-  }
-
-  #button {
-    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-    border: 2px solid yellow;
-    color: white;   
-  }
-
-  #leaderboardTable{
-    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
-    border: 2px solid yellow;
-    text-align: center;
-    color: white;   
-  }*/

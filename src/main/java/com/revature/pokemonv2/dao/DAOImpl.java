@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.data.SampleData;
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.Stats;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.model.Type;
@@ -35,27 +36,54 @@ public class DAOImpl implements DAO{
 		return mInstance; 
 	}
 
+//	@Override
+//	public Map<Trainer, Integer> getPokemonCountByTrainer() {
+//		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
+//			String sql = "CALL get_pokemon_count_per_trainer(?)";
+//			try(CallableStatement cs = conn.prepareCall(sql)){
+//				cs.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
+//				cs.execute();
+//				Map<Trainer, Integer> trainers = new HashMap<Trainer, Integer>(); 
+//				try(ResultSet rs = (ResultSet) cs.getObject(1)){
+//				//While the result set has another object create a trainer object and push it to the leaderboard array.
+//					while(rs.next()) {
+//						Trainer t = new Trainer(
+//							rs.getString("username"),  
+//							rs.getString("f_name"),  
+//							rs.getString("l_name"),  
+//							rs.getInt("score"), 
+//							rs.getInt("credits"),  
+//							rs.getInt("ID")
+//						); 
+//						Integer c = rs.getInt("count(*)");
+//						trainers.put(t, c); 
+//					}
+//				}
+//				return trainers;
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
+	
 	@Override
-	public Map<Trainer, Integer> getPokemonCountByTrainer() {
+	public List<Stats> getPokemonCountByTrainer() {
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			String sql = "CALL get_pokemon_count_per_trainer(?)";
 			try(CallableStatement cs = conn.prepareCall(sql)){
 				cs.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
 				cs.execute();
-				Map<Trainer, Integer> trainers = new HashMap<Trainer, Integer>(); 
+				List<Stats> trainers = new ArrayList<Stats>(); 
 				try(ResultSet rs = (ResultSet) cs.getObject(1)){
 				//While the result set has another object create a trainer object and push it to the leaderboard array.
 					while(rs.next()) {
-						Trainer t = new Trainer(
+						Stats t = new Stats(
 							rs.getString("username"),  
-							rs.getString("f_name"),  
-							rs.getString("l_name"),  
-							rs.getInt("score"), 
-							rs.getInt("credits"),  
-							rs.getInt("ID")
+							rs.getInt("count(*)")
 						); 
-						Integer c = rs.getInt("count(*)");
-						trainers.put(t, c); 
+						trainers.add(t); 
 					}
 				}
 				return trainers;
@@ -66,6 +94,7 @@ public class DAOImpl implements DAO{
 			return null;
 		}
 	}
+
 
 	@Override
 	public Map<Trainer, Integer> getUniquePokemonCountByTrainer() {

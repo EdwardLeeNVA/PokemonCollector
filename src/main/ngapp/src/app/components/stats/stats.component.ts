@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { JSONP_ERR_WRONG_METHOD } from '@angular/common/http/src/jsonp';
+import { load } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-stats',
@@ -8,113 +10,158 @@ import * as Highcharts from 'highcharts';
 })
 export class StatsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-
-
-  }
+  data1 = [
+    {
+      name: 'Normal',
+      y: 65,
+    }, {
+      name: 'Water',
+      y: 62,
+    }, {
+      name: 'Grass',
+      y: 38,
+    }, {
+      name: 'Psychic',
+      y: 35,
+    }, {
+      name: 'Fire',
+      y: 31,
+    }, {
+      name: 'Electric',
+      y: 28,
+    }, {
+      name: 'Fighting',
+      y: 22,
+    }, {
+      name: 'Bug',
+      y: 18,
+    }, {
+      name: 'Poison',
+      y: 16,
+    }, {
+      name: 'Ground',
+      y: 15,
+    }, {
+      name: 'Ice',
+      y: 14,
+    }, {
+      name: 'Dragon',
+      y: 12,
+    }, {
+      name: 'Rock',
+      y: 11,
+    }, {
+      name: 'Ghost',
+      y: 9,
+    }, {
+      name: 'Flying',
+      y: 7,
+    }];
 
   Highcharts = Highcharts;
 
+  constructor() { }
+
+  configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
+
+  pokeCount;
+  PokemonOption;
+
+  ngOnInit() {
+    fetch(this.configUrl)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.data1 = res;
+        this.load();
+      });
+  }
+
+  load() {
+    this.pokeCount = {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Pokemons per trainer'
+      },
+      subtitle: {
+        text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+      },
+      xAxis: {
+        type: 'category',
+        labels: {
+          rotation: -45,
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+          }
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Population (millions)'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+      },
+      series: [{
+        name: 'Population',
+        data: this.data1,
+        dataLabels: {
+          enabled: true,
+          rotation: -90,
+          color: '#FFFFFF',
+          align: 'right',
+          format: '{point.y:.1f}', // one decimal
+          y: 10, // 10 pixels down from the top
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+          }
+        }
+      }]
+    }
 
 
 
-
-
-  
-  PokemonOption = {
-    chart: {
+    this.PokemonOption = {
+      chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie'
-    },
-    title: {
+      },
+      title: {
         text: 'Pokemon Types'
-    },
-    tooltip: {
+      },
+      tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
+      },
+      plotOptions: {
         pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                   // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                }
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+            style: {
+              // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
             }
+          }
         }
-    },
-    series: [{
-      name: 'Pokemon Type',
-      colorByPoint: true,
-      data: [
-         {
-        name: 'Normal',
-        y: 65,
-        color:'grey'
-      },{
-        name: 'Water',
-        y: 62,
-        color:'blue'
-      }, {
-        name: 'Grass',
-        y: 38,
-        color:'Green'
-      }, {
-        name: 'Psychic',
-        y: 35,
-        color : 'pink'
-      }, {
-        name: 'Fire',
-        y: 31,
-        color:'orange'
-      }, {
-        name: 'Electric',
-        y: 28,
-        color:'yellow'
-      }, {
-        name: 'Fighting',
-        y: 22,
-        color:'Red'
-      }, {
-        name: 'Bug',
-        y: 18,
-        color: 'darkgreen'
-      }, {
-        name: 'Poison',
-        y: 16,
-        color : 'magenta'
-      }, {
-        name: 'Ground',
-        y: 15,
-        color:'brown'
-      }, {
-        name: 'Ice',
-        y: 14,
-        color:'lightblue'
-      }, {
-        name: 'Dragon',
-        y: 12,
-        color:'Blue'
-      }, {
-        name: 'Rock',
-        y: 11,
-        color : 'darkgrey'
-      },  {
-        name: 'Ghost',
-        y: 9,
-        color:'purple'
-      },    {
-        name: 'Flying',
-        y: 7,
-        color : 'purple'
-      }   ]
-    }]
-  };
+      },
+      series: [{
+        name: 'Pokemon Type',
+        colorByPoint: true,
+        data: this.data1
+      }]
+    };
+  }
 
 }

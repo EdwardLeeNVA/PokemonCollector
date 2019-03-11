@@ -14,6 +14,7 @@ import oracle.jdbc.OracleTypes;
 import org.apache.log4j.Logger;
 
 import com.revature.pokemonv2.model.Pokemon;
+import com.revature.pokemonv2.model.Stats;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.Type;
 import com.revature.pokemonv2.utilities.CachingUtility;
@@ -26,7 +27,7 @@ public interface DAO {
 	final static Logger logger = Logger.getLogger(DAO.class);
 	
 	// GET STATISTICS DATA
-	public Map<Trainer, Integer> getPokemonCountByTrainer();           // "user1 has 30 pokemon"       | "user2 has 80 pokemon"       | .... 
+	public List<Stats> getPokemonCountByTrainer();           // "user1 has 30 pokemon"       | "user2 has 80 pokemon"       | .... 
 	public Map<Trainer, Integer> getUniquePokemonCountByTrainer();     // "user1 has 18 unique pokemon"| "user2 has 61 unique pokemon"| .... 
 	public Map<Pokemon, Integer> getPokemonPopularity();			   // "42 users have bulbasaur"    | "31 users have ivysaur"      | ....
 	public Map<Pokemon, Integer> getPokmeonFrequency();				   // "62 bulbasuars caught"       | "44 ivysaurs caught"         | ....

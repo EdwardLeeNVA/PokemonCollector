@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.DAOImpl;
+import com.revature.pokemonv2.model.Stats;
 import com.revature.pokemonv2.model.Trainer;
 
 public class LeaderBoardService {
@@ -38,7 +39,7 @@ public class LeaderBoardService {
 	}
 	
 	
-	public Map<Trainer, Integer> returngetPokemonCountByTrainer(HttpServletRequest request, HttpServletResponse response){
+	public List<Stats> returngetPokemonCountByTrainer(HttpServletRequest request, HttpServletResponse response){
 		return DAOImpl.getInstance().getPokemonCountByTrainer();
 	}
 }
