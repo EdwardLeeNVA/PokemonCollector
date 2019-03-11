@@ -43,7 +43,7 @@ public class RedeemService {
 
 		// Call get duplicates with the trainer ID. Returns a list of Pokemon Objects
 		ArrayList<Pokemon> duplicatesArray = (ArrayList<Pokemon>) TrainerDAOImp.getTrainerDAO().getDuplicates(ID);
-
+		
 		// Use duplicatesArray to retrieve each pokemons information from the cache.
 		// Loop through the duplicatesArray
 		for (Pokemon x : duplicatesArray) {
@@ -51,6 +51,8 @@ public class RedeemService {
 			// id.
 
 			Pokemon temp = CachingUtility.getCachingUtility().getPokemon(x.getId());
+			
+			temp.setCount(x.getCount());
 
 			// Add a pokemon to the final pokemon list
 			duplicateJSONList.add(temp);

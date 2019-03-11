@@ -22,26 +22,33 @@ export class PokedexService {
 
   getTrainersPokemon(newTrainer: Trainer): Pokemon[] {
     console.log(newTrainer);
-    this._http.get<any>("/PokemonCollector/servlet/collection")
-    .subscribe (response => {
-      return response;
-    });
+    this._http
+      .get<any>("/PokemonCollector/servlet/collection")
+      .subscribe(response => {
+        return response;
+      });
     return null;
   }
 
   //method that returns an array of Pokemon objects in response
-  getDuplicates(): Pokemon[] {
-    //make GET request, get array of Pokemon objects
-    this._http
-      .get<any>("/PokemonCollector/servlet/duplicate")
-      .subscribe(Response => {
-        //test what we get as response
-        console.log(Response);
-        //assign data from response to duplicatePokemon variable
-        /*WRITE CODE HERE*/
-      });
-    //return the array of Pokemon
-    return this.duplicatePokemon;
+  // getDuplicates(): Pokemon[] {
+  //   //make GET request, get array of Pokemon objects
+  //   this._http
+  //     .get<any>("/PokemonCollector/servlet/duplicate")
+  //     .subscribe(Response => {
+  //       //test what we get as response
+
+  //       //assign data from response to duplicatePokemon variable
+  //       /*WRITE CODE HERE*/
+  //       this.duplicatePokemon = Response;
+  //     });
+
+  //   //return the array of Pokemon
+  //   return this.duplicatePokemon;
+  // }
+
+  getDuplicates() {
+    return this._http.get<any>("/PokemonCollector/servlet/duplicate");
   }
 
   //method that redeems all pokemon and returns credits gained and total credits after redeem
@@ -51,7 +58,7 @@ export class PokedexService {
       .get<any>("/PokemonCollector/servlet/redeemAll")
       .subscribe(Response => {
         //test what we get as response
-        console.log(Response);
+        //console.log(Response);
         //assign data from response to credits variable
         /*WRITE CODE HERE*/
       });
@@ -66,7 +73,7 @@ export class PokedexService {
       .post<any>("/PokemonCollector/servlet/redeem", pokemonId)
       .subscribe(Response => {
         //test what we get as response
-        console.log(Response);
+        //console.log(Response);
         //assign data from response to credits variable
         /*WRITE CODE HERE*/
       });
