@@ -71,9 +71,9 @@ public class PlayerService {
 		// dao command to remove the money
 		if (trainer.purchasePokemon(username, cost)) {
 			CachingUtility.getCachingUtility().addToCache(username, id);
-			return true;
+			// return true;
 		}
-		return false;
+		// return false;
 	}
 
 	/**

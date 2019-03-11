@@ -49,12 +49,10 @@ public class MasterDispatcher {
 			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			break;
 		case "purchase":
-			if(!isUnfiltered) {
 				PlayerService.getPlayerService().purchasePokemon(request, response);
-			}
+			
 			break;
 		case "allpokemon":
-			if (!isUnfiltered)
 				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
 			break;
 		case "duplicate":
