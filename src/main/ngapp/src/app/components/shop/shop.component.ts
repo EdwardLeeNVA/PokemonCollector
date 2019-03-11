@@ -22,8 +22,8 @@ export class ShopComponent implements OnInit {
   private numPoke: number;
   private currentPage: number = 0;
   private numPages: number;
-  private allPoke: [Pokemon];
-  private pokePages: [Pokemon];
+  private allPoke: Pokemon[];
+  private pokePages: Pokemon[];
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
@@ -78,8 +78,17 @@ export class ShopComponent implements OnInit {
       data => {
         //put all pokemon into pokemon array
         console.log(data);
+        this.allPoke = [];
         for (let i = 0; i < data.length; i++){
-          this.allPoke[i] = data[i];
+          console.log(data[i]);
+          let newPoke = new Pokemon();
+          newPoke.name = data[i].name;
+          newPoke.image = data[i].image;
+          newPoke.id = data[i].id;
+          newPoke.count = data[i].count;
+          newPoke.stats = data[i].stats;
+          newPoke.types = data[i].types;
+          this.allPoke[i] = newPoke;
         }
         console.log(this.allPoke);
       }

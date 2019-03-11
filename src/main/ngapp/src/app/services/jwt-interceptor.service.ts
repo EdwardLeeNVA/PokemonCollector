@@ -18,7 +18,7 @@ export class JwtInterceptorService {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     //If you are on the login page
-    if (req.url.includes("login")) {
+    if (req.url.includes("login") || req.url.includes("register")) {
       return next.handle(req);
     }
     req = req.clone({
