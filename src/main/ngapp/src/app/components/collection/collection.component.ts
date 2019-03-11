@@ -28,6 +28,7 @@ export class CollectionComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.getTrainersPokemon();
   }
 
   getTrainersPokemon() {       
