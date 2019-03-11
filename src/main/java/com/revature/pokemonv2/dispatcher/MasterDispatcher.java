@@ -33,31 +33,26 @@ public class MasterDispatcher {
 	public static void process(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		String[] uriStrings = request.getRequestURI().split("/");
-		boolean isUnfiltered = uriStrings[uriStrings.length - 2].equals("unfiltered");
 		String uri = uriStrings[uriStrings.length - 1];
 
 		switch (uri) {
+		// Logins the user and generates an authentication token if successful
+		case "login":
+				PlayerService.getPlayerService().login(request, response);
+			break;
 		case "register":
-			if (isUnfiltered)
 				PlayerService.getPlayerService().registerPlayer(request, response);
 			break;
 		case "collection":
-			if (!isUnfiltered) {
-				String username = TokenService.getInstance().getUserDetailsFromToken(
-						request.getHeader("Authorization")).getUsername();
-				mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
-			}
+			String username = TokenService.getInstance().getUserDetailsFromToken(
+					request.getHeader("Authorization")).getUsername();
+			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			break;
 		case "purchase":
 			PlayerService.getPlayerService().purchasePokemon(request, response);
 			break;
 		case "allpokemon":
 			mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
-			break;
-		// Logins the user and generates an authentication token if successful
-		case "login":
-			if (isUnfiltered)
-				PlayerService.getPlayerService().login(request, response);
 			break;
 
 		case "duplicate":
@@ -74,16 +69,9 @@ public class MasterDispatcher {
 			
 			RedeemService.redeemAll(request, response);
 		case "generatePokemon":
-			//enter the jwt token which needs to be decrypted
-//			String username1 = TokenService.getInstance().getUserDetailsFromToken(
-//					request.getHeader("Authorization")).getUsername();;
-//			int trainerId = TokenService.getInstance().getUserDetailsFromToken(
-//					request.getHeader("Authorization")).getUserID();
-//			//generate a random pokemon and add it to the user's collection
-//			int pokemonId = new Random().nextInt(150)+1;
-//			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(trainerId, pokemonId));
-//
-//			break;
+			mapper.writeValue(response.getOutputStream(),PlayerService.generatePokemon(request, response));
+
+			break;
 		default:
 			System.out.println("URI not recognized");
 		}
