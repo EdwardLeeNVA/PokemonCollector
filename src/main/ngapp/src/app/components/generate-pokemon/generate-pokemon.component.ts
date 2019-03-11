@@ -52,13 +52,12 @@ export class GeneratePokemonComponent implements OnInit {
   onClick() {
     this.pokedexService.generatePokemon().subscribe(
       data => {
-        console.log("Pokemon: " + data);
         this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-        this.pokemonType = data.types[0].type.name;
-        this.pokemonSprite = data.sprites.front_default;
-        this.hp = data.stats[5].base_stat;
-        this.attack = data.stats[4].base_stat;
-        this.defense = data.stats[3].base_stat;
+        this.pokemonType = data.type[0];
+        this.pokemonSprite = data.imageUrl;
+        this.hp = data.stats.hp;
+        this.attack = data.stats.attack;
+        this.defense = data.stats.defense;
       }
     );
 

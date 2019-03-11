@@ -25,6 +25,6 @@ export class NavComponent implements OnInit {
   onLogout(){
     sessionStorage.clear();
     this.trainerService.updateLogout();
-    this.router.navigateByUrl("/landing");
+    this.router.navigateByUrl("");
   }
 }
