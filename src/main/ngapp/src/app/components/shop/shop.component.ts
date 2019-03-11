@@ -3,7 +3,7 @@ import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
@@ -38,6 +38,10 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
     this.populatePokePages();
   }
+  private httpJSON = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })};
   onBuySubmit() {
 
     // Check if the trainer has enough credits:
@@ -51,7 +55,7 @@ export class ShopComponent implements OnInit {
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.selectedPoke);
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.selectedPoke, this.httpJSON);
     }else{
       alert("You can't afford this Pokemon")
     }
