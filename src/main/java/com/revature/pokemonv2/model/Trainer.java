@@ -1,7 +1,5 @@
 package com.revature.pokemonv2.model;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Trainer implements Comparable<Trainer>{
 	private int userID;
 	private String username;
@@ -145,7 +143,7 @@ public class Trainer implements Comparable<Trainer>{
 	}
 
 	@Override
-	public int compareTo(@NotNull Trainer o) {
+	public int compareTo(Trainer o) {
 		return o.score - this.score;
 	}
 }
