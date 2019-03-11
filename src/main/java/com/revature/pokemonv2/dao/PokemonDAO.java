@@ -62,7 +62,7 @@ public class PokemonDAO {
 			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
 			logger.trace("Pokemon generated: " + pokemon.getName());
 			cs.setInt(3, pokemon.getCost());
-			cs.setInt(4, Types.INTEGER);
+			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();
 
 			pokemon.setCount(cs.getInt(4));
