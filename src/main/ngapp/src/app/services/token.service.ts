@@ -21,14 +21,14 @@ export class TokenService {
       sessionStorage.setItem("CURRENT_USER", token);
       console.log(resp);
       let t: Trainer = {
-        userID: resp.userID,
-        username: resp.username,
+        userID: resp.body.userID,
+        username: resp.body.username,
         password: '',
-        firstName: resp.firstName,
-        lastName: resp.lastName,
-        email: resp.email,
-        credits: resp.credits,
-        score: resp.score
+        firstName: resp.body.firstName,
+        lastName: resp.body.lastName,
+        email: resp.body.email,
+        credits: resp.body.credits,
+        score: resp.body.score
       }
       console.log(t);
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
