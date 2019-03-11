@@ -28,10 +28,11 @@ export class CollectionComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.getTrainersPokemon();
   }
 
   getTrainersPokemon() {       
-    this.pokedexService.getTrainersPokemon(this.trainer).subscribe(
+    this.pokedexService.getTrainersPokemon(this.trainer.username).subscribe(
       response => {this.trainersPokemon = response}
     ), (err: any) => console.log(`Error: $(err)`)
   }
