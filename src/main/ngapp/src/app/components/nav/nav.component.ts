@@ -22,6 +22,6 @@ export class NavComponent implements OnInit {
   onLogout(){
     sessionStorage.clear();
     this.trainerService.updateLogout();
-    this.router.navigateByUrl("/PokemonCollector/ng/landing");
+    this.router.navigateByUrl("/landing");
   }
 }

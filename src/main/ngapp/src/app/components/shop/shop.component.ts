@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
-
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -19,8 +18,8 @@ export class ShopComponent implements OnInit {
   private numPoke: number;
   private currentPage: number = 0;
   private numPages: number;
-  private allPoke: [Pokemon];
-  private pokePages: [Pokemon];
+  private allPoke: Pokemon[];
+  private pokePages: Pokemon[];
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
@@ -28,7 +27,6 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
-    this.populatePokeArray();
     //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
@@ -36,12 +34,14 @@ export class ShopComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.populatePokeArray();
+    this.populatePokePages();
   }
   buyPokemon(pokemonID: number) {
 
     // Check if the trainer has enough credits:
 
-    let trainer: Trainer = JSON.parse(sessionStorage.getItem("USER_DATA"));
+    let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
 
     let cost: number = this.allPoke[pokemonID].cost;
 
@@ -62,17 +62,30 @@ export class ShopComponent implements OnInit {
     $("#generate-pokemon-draw-btn").removeClass("d-none");
     this.cardShow = true;
   }
+
+
+  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
   //method that calls above observable
+  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
         console.log(data);
+        this.allPoke = [];
         for (let i = 0; i < data.length; i++){
-          this.allPoke[i] = data[i];
+          console.log(data[i]);
+          let newPoke = new Pokemon();
+          newPoke.name = data[i].name;
+          newPoke.image = data[i].image;
+          newPoke.id = data[i].id;
+          newPoke.count = data[i].count;
+          newPoke.stats = data[i].stats;
+          newPoke.types = data[i].types;
+          this.allPoke[i] = newPoke;
         }
         console.log(this.allPoke);
       }
@@ -89,6 +102,7 @@ export class ShopComponent implements OnInit {
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
+  //pagination methods on standby
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
@@ -108,5 +122,4 @@ export class ShopComponent implements OnInit {
       this.currentPage--;
     }
   }
-
 }

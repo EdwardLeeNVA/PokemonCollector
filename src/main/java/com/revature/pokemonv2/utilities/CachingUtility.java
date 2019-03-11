@@ -1,7 +1,11 @@
 package com.revature.pokemonv2.utilities;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import me.sargunvohra.lib.pokekotlin.client.PokeApi;
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import org.apache.log4j.Logger;
@@ -16,86 +20,66 @@ import com.revature.pokemonv2.model.Pokemon;
 public class CachingUtility {
  	
 	 private final Cache<String, ArrayList> pokedexCache;
-	 private static CachingUtility cachingUtility = new CachingUtility();
+	 private final Cache<Integer, Pokemon> allPokemonCache;
+	 private static CachingUtility cachingUtility;
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
+	 private final String ALL_POKEMON = "red";
+	private static final ObjectMapper mapper = new ObjectMapper();
 	 
 	 
 	 private CachingUtility(){
-		 
 		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, ArrayList.class);
+		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
+		 if (cachingUtility == null)
+			 cachingUtility = new CachingUtility();
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList checkCache(String username) {
-
+	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
-	 
-//	 public ArrayList addToCache(String username, int poke_id) {
-//		 ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
-//		 Pokemon temp = pokeList.remove(poke_id);
-//		 if(temp == null){
-//		 	temp = this.getPokemonFromCache(poke_id);
-//		 } else {
-//		 	temp.setCount(temp.getCount() + 1);
-//		 }
-//		 pokeList.add(temp);
-//		 this.pokedexCache.put(username, pokeList);
-//		 return this.pokedexCache.get(username);
-//	 }
 
-//	 public ArrayList redeemSinglePokemon(String username, int poke_id){
-//
-//	 	// Logic for counting cache hits
-//	 	/*this.pokedexCache.put(username, incrementCacheHit(this.pokedexCache.get(username)));*/
-//		return this.pokedexCache.get(username);
-//	 }
-
-	public ArrayList addToCache(String username, int poke_id) {
-		ArrayList<Pokemon> pokeList = (ArrayList<Pokemon>) this.pokedexCache.get(username);
-		Pokemon temp = pokeList.remove(poke_id);
-		if(temp == null){
-			temp = this.getPokemon(poke_id);
-		} else {
-			temp.setCount(temp.getCount() + 1);
-		}
+	public ArrayList<Pokemon> addToCache(String username, int pokeId) {
+		ArrayList<Pokemon> pokeList = this.pokedexCache.get(username);
+		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
+		temp.setCount(temp.getCount() + 1);
 		pokeList.add(temp);
+		Collections.sort(pokeList, PokedexSorter.getInstance());
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
 		this.pokedexCache.put(username, pokeList);
-		return this.pokedexCache.get(username);
+		return pokeList;
 	}
 
-	public ArrayList redeemSinglePokemon(String username, int poke_id){
+	public ArrayList<Pokemon> redeemSinglePokemon(String username, int pokeId){
 
 		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
-		Pokemon temp = newPokeList.remove(poke_id);
+		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(1);
 		newPokeList.add(temp);
-
+		Collections.sort(newPokeList, PokedexSorter.getInstance());
 		this.pokedexCache.put(username, newPokeList);
-	 	return null;
+	 	return newPokeList;
 	 }
 
 	
 
-	public ArrayList redeemAllPokemon(String username){
+	public ArrayList<Pokemon> redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
 		for(int i = 0; i < newPokeList.size(); i++){
-
 			Pokemon temp = origPokeList.get(i);
 			temp.setCount(1);
 			newPokeList.add(temp);
 		}
-
+		Collections.sort(newPokeList, PokedexSorter.getInstance());
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
 		this.pokedexCache.put(username, newPokeList);
-		return this.pokedexCache.get(username);
+		return newPokeList;
 	}
 	
 	 public boolean removeCollection(String username) {
@@ -113,8 +97,8 @@ public class CachingUtility {
 		 }
 	 }
 	 
-	 public ArrayList getAllPokemon() {
-		 return pokedexCache.get("red");
+	 public ArrayList<Pokemon> getAllPokemon() {
+		 return pokedexCache.get(ALL_POKEMON);
 	 }
 	 
 	
@@ -124,38 +108,64 @@ public class CachingUtility {
  		cacheManager.init();
 		return cacheManager;
  	}
- 	
+
 	public Cache getCache(){
 	 	return this.pokedexCache;
 	}
 
 	// This method will increment the counter pokemon in the Pokedex for custom eviction
-	public ArrayList incrementCacheHit(ArrayList list){
+	public ArrayList<Pokemon> incrementCacheHit(ArrayList list){
 		Pokemon counter = (Pokemon)list.remove(0);
 		counter.setCount(counter.getCount() + 1);
 		list.add(counter);
 		return list;
 	}
 
-	public com.revature.pokemonv2.model.Pokemon getPokemon(Integer poke_id){
-			PokeApi poke = new PokeApiClient();
-			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);
-
-			ArrayList<String> typeTemp = new ArrayList<>();
-			int z = 0;
-			while (z < p.getTypes().size()) {
-				typeTemp.add(p.getTypes().get(z).getType().getName());
+	public Pokemon findPokemon(ArrayList<Pokemon> pokeList, Integer pokeId){
+		Pokemon temp = null;
+		for(int x = 0; x < pokeList.size(); x++){
+			if(pokeList.get(x).getId() == pokeId){
+				temp = pokeList.remove(x);
 			}
+		}
+		if(temp == null){
+			temp = this.getPokemon(pokeId);
+			temp.setCount(0);
+		}
+	 	return temp;
+	}
 
-			Map<String, Integer> statTemp = new HashMap<>();
-			int statCount = 0;
+	public Pokemon getPokemon(Integer pokeId){
+		try {
+			StringBuilder pokeBaseURL = new StringBuilder("https://pokeapi.co/api/v2/pokemon/");
+			pokeBaseURL.append(pokeId);
+			URL url = new URL(pokeBaseURL.toString());
+			HttpURLConnection http = (HttpURLConnection) url.openConnection();
+			http.setRequestMethod("GET");
+			http.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
+			http.setRequestProperty("Accept-Language", "en-US,en;q=0.5");;
+			JsonNode resp = mapper.readTree(http.getInputStream());
+			String[] types = new String[resp.get("types").size()];
+			Map<String, Integer> stats = new HashMap<>();
 			int cost = 0;
-			while (statCount < p.getStats().size()) {
-				statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
-				cost += p.getStats().get(statCount).getStat().component3();
+			for(int x = 0; x < resp.get("stats").size(); x++){
+				stats.put(resp.get("stats").get(x).get("stat").get("name").asText(), resp.get("stats").get(x).get("base_stat").asInt());
+				cost += resp.get("stats").get(x).get("base_stat").asInt();
 			}
-
-			return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);
-
+			for(int x = 0; x < resp.get("types").size(); x++){
+				types[x] = resp.get("types").get(x).get("type").get("name").asText();
+			}
+			return new Pokemon(
+					resp.get("id").asInt(),
+					resp.get("name").asText(),
+					resp.get("sprites").get("front_default").asText(),
+					types,
+					stats,
+					cost
+			);
+		} catch (Exception e) {
+			logger.error("Failed to retrieve Pokemon in CachingUtility.", e);
+			return null;
+		}
 	}
 }
