@@ -7,10 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4d09c2fdd496addfc80c1578c94bbf83d2683a79
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -31,7 +27,6 @@ export class ShopComponent implements OnInit {
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
-    this.populatePokeArray();
     //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
@@ -39,6 +34,8 @@ export class ShopComponent implements OnInit {
       this.trainerService.updateLogout();
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
+    this.populatePokeArray();
+    this.populatePokePages();
   }
   buyPokemon(pokemonID: number) {
 
@@ -105,25 +102,7 @@ export class ShopComponent implements OnInit {
     }
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
   }
-<<<<<<< HEAD
-
-  buyPokemon(pokemonID: number) {
-
-    // Check if user already owns specified Pokemon:
-
-    let owned: boolean = false; // fix this when we actually have access to the cache
-
-    // If the user does not own the Pokemon, add it to their collecion:
-    if (!owned) {
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
-    }else{
-      alert("You already own that Pokemon")
-    }
-
-  }
   //pagination methods on standby
-=======
->>>>>>> 78425ad281e0f81dd172d539913e5bc0cea7f797
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
@@ -143,5 +122,4 @@ export class ShopComponent implements OnInit {
       this.currentPage--;
     }
   }
-
 }
