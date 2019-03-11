@@ -23,6 +23,7 @@ export class ShopComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
+  public selectedPoke: number;
 
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
@@ -37,22 +38,22 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
     this.populatePokePages();
   }
-  buyPokemon(pokemonID: number) {
+  onBuySubmit() {
 
     // Check if the trainer has enough credits:
 
     let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
 
-    let cost: number = this.allPoke[pokemonID].cost;
+    let cost: number = this.allPoke[this.selectedPoke].cost;
 
     let hasCredits: boolean = trainer.credits >= cost;
 
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.selectedPoke);
     }else{
-      alert("You can't get ye Pokemon")
+      alert("You can't afford this Pokemon")
     }
   }
   onBallClick() {
