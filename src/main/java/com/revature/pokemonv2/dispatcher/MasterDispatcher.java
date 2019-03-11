@@ -58,8 +58,10 @@ public class MasterDispatcher {
 			break;
 		case "allpokemon":
 				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
+			}
 			break;
 		case "duplicate":
+			if(!isUnfiltered)
 			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
 			RedeemService.getDuplicates(request, response);
 			break;
