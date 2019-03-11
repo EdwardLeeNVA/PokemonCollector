@@ -17,6 +17,21 @@ public class Trainer implements Comparable<Trainer>{
 	 */
 	public Trainer() { /*Empty constructor*/ }
 
+	public Trainer(String username, String firstName, String lastName) {
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public Trainer(int userID, String username, String firstName, String lastName, int credits, int score) {
+		this.userID = userID;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.credits = credits;
+		this.score = score;
+	}
+
 	/**
 	 * The trainer's username.
 	 */
