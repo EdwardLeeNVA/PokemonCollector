@@ -16,7 +16,7 @@
             <img [src]="pokemon.imageUrl" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
               <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0] }}</p>
-              <p *ngIf= "pokemon.type[1] != null"> Type: {{pokemon.type[1]}} " / " {{pokemon.type[0]}}</p>
+              <p *ngIf= "pokemon.type[1] != null"> Type: {{pokemon.type[1] + " / " + pokemon.type[0]}}</p>
               <p>HP: {{ pokemon.stats.hp }}</p>
   
               <p>Attack: {{ pokemon.stats.attack }}</p>
