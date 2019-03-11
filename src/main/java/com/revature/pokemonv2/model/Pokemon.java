@@ -18,8 +18,8 @@ public class Pokemon {
 	 * Empty Pokemon constructor.
 	 */
 	public Pokemon() { /*Empty Constructor */}
-	
-	
+
+
 	/**
 	 * Pokemon constructor with only ID and count.
 	 */
@@ -111,7 +111,7 @@ public class Pokemon {
 	 */
 	public void setCount(int count) {
 		this.count = count;
-	} 
+	}
 	public Integer getCost() {
 		return this.cost;
 	}
@@ -122,7 +122,7 @@ public class Pokemon {
 		return "Pokemon [id=" + id + ", name=" + name + ", imageUrl=" + imageUrl + ", type=" + Arrays.toString(type)
 				+ ", stats=" + stats + ", count=" + count + ", cost=" + cost + "]";
 	}
-	
-	
-	
+
+
+
 }

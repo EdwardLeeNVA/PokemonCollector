@@ -3,7 +3,7 @@ import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Trainer} from "../../models/Trainer";
 import {TrainerService} from "../../services/trainer.service";
 
@@ -23,8 +23,13 @@ export class ShopComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
+  public selectedPoke: number;
+  private httpJSON = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })};
 
-  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
+  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router, private pokedexService: PokedexService) { }
 
   ngOnInit() {
     //this.trainerService.checkSessionStorage();
@@ -37,25 +42,24 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
     this.populatePokePages();
   }
-  buyPokemon(pokemonID: number) {
+  onBuySubmit() {
 
     // Check if the trainer has enough credits:
 
     let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
 
-    let cost: number = this.allPoke[pokemonID].cost;
+    let cost: number = this.allPoke[this.selectedPoke].cost;
 
     let hasCredits: boolean = trainer.credits >= cost;
 
     // If the trainer has enough credits, add the Pokemon to their collecion:
     if (hasCredits) {
       trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", pokemonID);
+      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
     }else{
-      alert("You can't get ye Pokemon")
+      alert("You can't afford this Pokemon")
     }
-  }
-  onBallClick() {
+  }  onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
     $("#generate-pokemon-card").removeClass("d-none");
@@ -64,14 +68,11 @@ export class ShopComponent implements OnInit {
   }
 
 
-  //gets all pokeinfo from the cache
-  getAllPokemon(): Observable<any[]>{
-    return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
-  }
+
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
-    this.getAllPokemon().subscribe(
+    this.pokedexService.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
         console.log(data);
@@ -79,12 +80,12 @@ export class ShopComponent implements OnInit {
         for (let i = 0; i < data.length; i++){
           console.log(data[i]);
           let newPoke = new Pokemon();
-          newPoke.name = data[i].name;
-          newPoke.imageUrl = data[i].image;
+          newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
+          newPoke.imageUrl = data[i].imageUrl;
           newPoke.id = data[i].id;
           newPoke.count = data[i].count;
           newPoke.stats = data[i].stats;
-          newPoke.type = data[i].types;
+          newPoke.type = data[i].type;
           newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }

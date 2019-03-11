@@ -1,0 +1,7 @@
+package com.revature.pokemonv2.model;
+
+public enum Type {
+	NORMAL, GRASS, FIRE, WATER, FIGHTING, FLYING,
+	POISON, GROUND, ROCK, BUG, GHOST, ELECTRIC, 
+	PSYCHIC, ICE, DRAGON, DARK, STEEL, FAIRY
+}
