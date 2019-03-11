@@ -44,12 +44,8 @@ public class CachingUtility {
 
 	public ArrayList<Pokemon> addToCache(String username, int pokeId) {
 		ArrayList<Pokemon> pokeList = this.pokedexCache.get(username);
-		Pokemon temp = pokeList.remove(pokeId);
-		if(temp == null){
-			temp = this.getPokemon(pokeId);
-		} else {
-			temp.setCount(temp.getCount() + 1);
-		}
+		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
+		temp.setCount(temp.getCount() + 1);
 		pokeList.add(temp);
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
@@ -60,10 +56,9 @@ public class CachingUtility {
 	public ArrayList<Pokemon> redeemSinglePokemon(String username, int pokeId){
 
 		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
-		Pokemon temp = newPokeList.remove(pokeId);
+		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(1);
 		newPokeList.add(temp);
-
 		this.pokedexCache.put(username, newPokeList);
 	 	return newPokeList;
 	 }
@@ -122,6 +117,20 @@ public class CachingUtility {
 		counter.setCount(counter.getCount() + 1);
 		list.add(counter);
 		return list;
+	}
+
+	public Pokemon findPokemon(ArrayList<Pokemon> pokeList, Integer pokeId){
+		Pokemon temp = null;
+		for(int x = 0; x < pokeList.size(); x++){
+			if(pokeList.get(x).getId() == pokeId){
+				temp = pokeList.remove(x);
+			}
+		}
+		if(temp == null){
+			temp = this.getPokemon(pokeId);
+			temp.setCount(0);
+		}
+	 	return temp;
 	}
 
 	public Pokemon getPokemon(Integer pokeId){
