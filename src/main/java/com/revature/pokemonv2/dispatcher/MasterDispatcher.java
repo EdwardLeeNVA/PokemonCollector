@@ -44,9 +44,11 @@ public class MasterDispatcher {
 				PlayerService.getPlayerService().registerPlayer(request, response);
 			break;
 		case "collection":
+			if(!isUnfiltered) {
 			String username = TokenService.getInstance().getUserDetailsFromToken(
 					request.getHeader("Authorization")).getUsername();
 			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
+			}
 			break;
 		case "purchase":
 			if(!isUnfiltered) {
@@ -54,10 +56,12 @@ public class MasterDispatcher {
 			}
 			break;
 		case "allpokemon":
-			if (!isUnfiltered)
+			if (!isUnfiltered) {
 				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
+			}
 			break;
 		case "duplicate":
+			if(!isUnfiltered)
 			//Endpoint for duplicate call. Retrieves all duplicate pokemon for a specific user.
 			RedeemService.getDuplicates(request, response);
 			break;
