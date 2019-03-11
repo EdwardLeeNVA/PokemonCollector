@@ -59,8 +59,8 @@
                       <p>Attack: {{ pokemon.stats.attack }}</p>
                       <p>Defense: {{ pokemon.stats.defense }} </p>
                       <p>HP: {{ pokemon.stats.hp }}</p>
-                      <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
-                      <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
+                      <p>Special attack: {{ pokemon.stats.special-attack }}</p>
+                      <p>Special defense: {{ pokemon.stats.special-defense }}</p>
                       <p>Speed: {{ pokemon.stats.speed }}</p>
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
@@ -105,17 +105,18 @@
             id="generate-pokemon-card"
           >
             <!-- *ngFor="let pokemon of pokemonArr" -->
-            <h4 class="pokemon-card-name">{{ this.pokemonName }}</h4>
+            <h4 class="pokemon-card-name">{{ this.name }}</h4>
   
             <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                <p>Stats:</p>
+                <!-- <p>Stats:</p>
                 <p>Attack: {{ pokemon.stats.attack }}</p>
                 <p>Defense: {{ pokemon.stats.defense }} </p>
                 <p>HP: {{ pokemon.stats.hp }}</p>
                 <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
                 <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
-                <p>Speed: {{ pokemon.stats.speed }}</p>
+                <p>Speed: {{ pokemon.stats.speed }}</p> -->
+                <p>Type: {{this.type}}</p>
             </div>
           </div>
           <!-- start no credits alert -->
@@ -151,7 +152,7 @@
       >
         <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
 
-        <strong>I Choose You!!</strong> Pokemon has been added to your collection.
+        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.
 
         <img
           src="http://i65.tinypic.com/27zauqe.png"
