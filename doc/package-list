@@ -1,8 +1,0 @@
-com.revature.pokemonv2.dao
-com.revature.pokemonv2.dispatcher
-com.revature.pokemonv2.exceptions
-com.revature.pokemonv2.filter
-com.revature.pokemonv2.model
-com.revature.pokemonv2.service
-com.revature.pokemonv2.servlet
-com.revature.pokemonv2.utilities
