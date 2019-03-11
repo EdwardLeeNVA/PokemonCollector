@@ -67,6 +67,8 @@ public class PokemonDAO {
 			
 			pokemon.setCount(cs.getInt(4));
 
+			pokemon.setCount(cs.getInt(4));
+			
 			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 
 			return pokemon;
