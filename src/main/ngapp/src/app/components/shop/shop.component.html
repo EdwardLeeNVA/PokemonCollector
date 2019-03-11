@@ -50,23 +50,73 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                    <p>Type: {{ pokemon.type }}</p>
-  
+                      <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
+                      <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
+                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
                     <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
                     <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>Stats:</p>
+                    <p>HP: {{ pokemon.stats.hp }}</p>
+                    <p>Attack: {{ pokemon.stats.attack }}</p>
+                    <p>Defense: {{ pokemon.stats.defense }} </p>
+                    <!-- <p>Stats:</p>
                       <p>Attack: {{ pokemon.stats.attack }}</p>
                       <p>Defense: {{ pokemon.stats.defense }} </p>
                       <p>HP: {{ pokemon.stats.hp }}</p>
                       <p>Special attack: {{ pokemon.stats.special-attack }}</p>
                       <p>Special defense: {{ pokemon.stats.special-defense }}</p>
-                      <p>Speed: {{ pokemon.stats.speed }}</p>
+                      <p>Speed: {{ pokemon.stats.speed }}</p> -->
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
               </div>
             </div>
+            <p>--trying pagination below here</p>
+            <div class="radio-card-grid" *ngIf = "numPoke != 0">
+                <div
+                  class="form-check radio-form-item"
+                  *ngFor="let pokemon of pokePages"
+                >
+                  <input
+                    class="form-check-input customRadioBtn"
+                    type="radio"
+                    #pokemonCard="ngModel"
+                    name="gridRadios"
+                    value="{{ pokemon.id }}"
+                    checked
+                    [(ngModel)]="selectedPoke"
+                  />
+                  <div class="pokemon-card-outer">
+                    <label
+                      class="form-check-label shop-poke-name"
+                      for="gridRadios1"
+                    >
+                      {{ pokemon.name }}
+                    </label>
+                    <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
+                    <div class="pokemon-card-info-cont">
+                        <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
+                        <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
+                            pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
+                      <!-- <p>HP: {{ pokemon.hp }}</p>
+                      <p>Attack: {{ pokemon.attack }}</p>
+                      <p>Defense: {{ pokemon.defense }}</p> -->
+                      <p>HP: {{ pokemon.stats.hp }}</p>
+                      <p>Attack: {{ pokemon.stats.attack }}</p>
+                      <p>Defense: {{ pokemon.stats.defense }} </p>
+                      <!-- <p>Stats:</p>
+                        <p>Attack: {{ pokemon.stats.attack }}</p>
+                        <p>Defense: {{ pokemon.stats.defense }} </p>
+                        <p>HP: {{ pokemon.stats.hp }}</p>
+                        <p>Special attack: {{ pokemon.stats.special-attack }}</p>
+                        <p>Special defense: {{ pokemon.stats.special-defense }}</p>
+                        <p>Speed: {{ pokemon.stats.speed }}</p> -->
+                      <p>Cost: {{ pokemon.cost }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
           </form>
         </div>
       </div>
@@ -193,8 +243,6 @@
     </div>
   </div>
 <!-- end modal -->
-<!-- stuff thats on standby
-     pagination form on standby 
     <form>
         <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
           <option value=0>Number of Pokemon per page</option>
@@ -204,7 +252,6 @@
         </select>
       </form>
     </div>
-      put number of pages in here
       <div class="row justify-content-md-center">
         <nav aria-label="Page navigation example">
           <ul>
@@ -213,6 +260,7 @@
           </ul>
         </nav>
       </div>
-    --> 
+    </form>
+    
    
   
