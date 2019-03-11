@@ -7,11 +7,11 @@ import com.revature.pokemonv2.model.Pokemon;
 import org.apache.log4j.Logger;
 import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
-import com.revature.pokemonv2.dao.DAO;
+import com.revature.pokemonv2.dao.PokemonDAO;
 
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
-	private static DAO dao = new DAO();
+	private static PokemonDAO dao = new PokemonDAO();
 	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
 	private final int MAX_POKEDEX_SIZE = 151;
 	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);

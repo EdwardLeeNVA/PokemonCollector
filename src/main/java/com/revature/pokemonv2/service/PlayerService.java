@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.pokemonv2.dao.DAO;
+import com.revature.pokemonv2.dao.PokemonDAO;
 import com.revature.pokemonv2.dao.TrainerDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
@@ -56,7 +56,7 @@ public class PlayerService {
 				request.getHeader("Authorization")).getUserID();
 		//generate a random pokemon and add it to the user's collection
 		int pokemonId = new Random().nextInt(150)+1;
-			return DAO.generatePokemon(trainerId, pokemonId, username);
+			return PokemonDAO.generatePokemon(trainerId, pokemonId, username);
 	}
 	
 	/**
