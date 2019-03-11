@@ -16,7 +16,7 @@ import com.revature.pokemonv2.model.Pokemon;
 public class CachingUtility {
  	
 	 private final Cache<String, ArrayList> pokedexCache;
-	 private static CachingUtility cachingUtility = new CachingUtility();
+	 private static CachingUtility cachingUtility;
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
 	 private final String ALL_POKEMON = "red";
 	 
@@ -27,6 +27,8 @@ public class CachingUtility {
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
+		 if (cachingUtility == null)
+			 cachingUtility = new CachingUtility();
 		 return cachingUtility;
 	 }
 	 
@@ -139,24 +141,29 @@ public class CachingUtility {
 	}
 
 	public com.revature.pokemonv2.model.Pokemon getPokemon(Integer poke_id){
-			PokeApi poke = new PokeApiClient();
-			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);
+			/*PokeApi poke = new PokeApiClient();
+			me.sargunvohra.lib.pokekotlin.model.Pokemon p = poke.getPokemon(poke_id);*/
 
 			ArrayList<String> typeTemp = new ArrayList<>();
-			int z = 0;
+			/*int z = 0;
 			while (z < p.getTypes().size()) {
 				typeTemp.add(p.getTypes().get(z).getType().getName());
+			}*/
+			String[] brock = new String[typeTemp.size()];
+			for(int x = 0; x < typeTemp.size(); x++){
+				brock[x] = typeTemp.get(x);
 			}
 
 			Map<String, Integer> statTemp = new HashMap<>();
-			int statCount = 0;
+			/*int statCount = 0;
 			int cost = 0;
 			while (statCount < p.getStats().size()) {
 				statTemp.put(p.getStats().get(statCount).getStat().getName(), p.getStats().get(statCount).getStat().component3());
 				cost += p.getStats().get(statCount).getStat().component3();
-			}
+			}*/
 
-			return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);
+			return new com.revature.pokemonv2.model.Pokemon(74, "Geodude", "test", brock, new HashMap<String, Integer>(), 0);
+			/*return new com.revature.pokemonv2.model.Pokemon(p.getId(), p.getName(), p.getSprites().getFrontDefault(),(String[])typeTemp.toArray(), statTemp, cost);*/
 
 	}
 }
