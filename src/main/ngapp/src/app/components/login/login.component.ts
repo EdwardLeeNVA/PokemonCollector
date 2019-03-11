@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         if (data != null) {
           this.tokenService.setCurrentUserToken(data.headers.get("Authorization"), data);
+          //this.trainerService.updateValidLogin(data);
         }
       });
   }
