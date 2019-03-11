@@ -7,11 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pokemonv2.dao.PokemonDAO;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.utilities.CachingUtility;
+import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 /**
  * The PlayerService class contains methods that service the TrainerDAOImp.
@@ -25,6 +28,7 @@ public class PlayerService {
 	private static final ObjectMapper mapper = new ObjectMapper();
 
 	private static TrainerDAOImp trainer = TrainerDAOImp.getTrainerDAO();
+	private static final Logger log = Logger.getLogger(ConnectionUtility.class);
 
 	/**
 	 * Temporary until merged with Pokemon service.
@@ -63,8 +67,10 @@ public class PlayerService {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		return trainer.loginAuthentication(request, response);
 	}
+	
 	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
+		log.info(request.getParameterMap());
 		int id = Integer.parseInt(request.getParameter("pokemonId"));
 		Pokemon p = CachingUtility.getCachingUtility().getPokemon(id);
 		int cost = p.getCost();
