@@ -54,7 +54,8 @@ public class MasterDispatcher {
 			}
 			break;
 		case "allpokemon":
-			mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
+			if (!isUnfiltered)
+				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());
 			break;
 		// Logins the user and generates an authentication token if successful
 		case "login":
