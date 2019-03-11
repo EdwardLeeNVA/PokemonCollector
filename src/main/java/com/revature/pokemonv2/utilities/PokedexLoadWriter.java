@@ -1,6 +1,7 @@
 package com.revature.pokemonv2.utilities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.revature.pokemonv2.model.Pokemon;
@@ -27,6 +28,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 			poke.setCount(p.getCount());
 			returnPokeDex.add(poke);
 		}
+		Collections.sort(returnPokeDex, PokedexSorter.getInstance());
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
 		logger.trace("Added returnPokeDex to log containing: " +returnPokeDex);
