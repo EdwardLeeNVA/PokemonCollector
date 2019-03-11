@@ -37,9 +37,9 @@
                   type="radio"
                   #pokemonCard="ngModel"
                   name="gridRadios"
-                  value="{{ pokemon.pokemonId }}"
+                  value="{{ pokemon.id }}"
                   checked
-                  [(ngModel)]="pokemonModel.pokemonId"
+                  [(ngModel)]="selectedPoke"
                 />
                 <div class="pokemon-card-outer">
                   <label
@@ -64,7 +64,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
 <div>
   <form>
     <!-- <input class="form-check-input" type="radio" value="15" [(ngModel)]="numPoke" (radioStateChange)="populatePages()"/>
@@ -91,14 +90,12 @@
         <li><a class="page-link" (click)="nextPage()" aria-label="Next"></a></li>
       </ul>
     </nav>
-=======
 </div>
 <div class="radio-card-grid" *ngIf="pokePages">
     <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
       <input class="form-check-input customRadioBtn" type="radio" name="gridRadios"
         value="{{allPoke.pokemon.id}}" checked/>
     </div>
->>>>>>> 03fe97faa9c007bc2e23b3948b6c15eea976262e
   </div>
   
   <!-- Modal for chosen pokemon-->
