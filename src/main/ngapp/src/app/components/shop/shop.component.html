@@ -50,18 +50,19 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                    <p>Type: {{ pokemon.type }}</p>
-  
+                      <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
+                      <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
+                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
                     <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
                     <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>Stats:</p>
+                    <!-- <p>Stats:</p>
                       <p>Attack: {{ pokemon.stats.attack }}</p>
                       <p>Defense: {{ pokemon.stats.defense }} </p>
                       <p>HP: {{ pokemon.stats.hp }}</p>
                       <p>Special attack: {{ pokemon.stats.special-attack }}</p>
                       <p>Special defense: {{ pokemon.stats.special-defense }}</p>
-                      <p>Speed: {{ pokemon.stats.speed }}</p>
+                      <p>Speed: {{ pokemon.stats.speed }}</p> -->
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
