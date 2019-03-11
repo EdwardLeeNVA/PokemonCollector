@@ -77,7 +77,7 @@ public class TokenService {
 		// Encrypt the ID with different parameters
 		return Jwts.builder().signWith(keyPair.getPrivate(), SignatureAlgorithm.RS256)
 				// Encrypt the trainer user name
-				.setSubject(details.getUsername())
+				.setSubject(details.getUsername()) 
 				// Encrypt the trainer score/credits
 				.claim("userID", details.getUserID())
 				.claim("score", details.getScore())
