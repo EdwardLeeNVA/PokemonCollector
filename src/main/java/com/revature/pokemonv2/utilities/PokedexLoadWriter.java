@@ -12,8 +12,6 @@ import com.revature.pokemonv2.dao.DAO;
 public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 	private static DAO dao = new DAO();
-	private static final CachingUtility cachingUtility = CachingUtility.getCachingUtility();
-	private final int MAX_POKEDEX_SIZE = 151;
 	 final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
 	
 
@@ -25,8 +23,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 		logger.trace("Pokedex received from DAO: " + pokeDex);
 		for (Pokemon p : pokeDex) {
 			logger.trace("Addeding current pokemon: " + p.getId());
-			logger.trace(cachingUtility);
-			Pokemon poke = cachingUtility.getPokemon(p.getId());
+			Pokemon poke = CachingUtility.getCachingUtility().getPokemon(p.getId());
 			poke.setCount(p.getCount());
 			returnPokeDex.add(poke);
 		}
