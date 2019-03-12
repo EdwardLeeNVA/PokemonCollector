@@ -38,10 +38,6 @@ export class TokenService {
         val => val,
         err => err
       );
-      this.pokedexService.getAllPokemon().subscribe(
-        val => val,
-        err => err
-      );
       this.router.navigateByUrl("/generate");
     } else {
       throw new Error();

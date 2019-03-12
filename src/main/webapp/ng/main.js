@@ -769,6 +769,9 @@ var RedeemComponent = /** @class */ (function () {
         var _this = this;
         this.pokedexService.redeemAll().subscribe(function (Response) {
             _this.credits = Response;
+            console.log(Response);
+            _this.trainer.credits = Response[1];
+            _this.trainerService.updateValidLogin(_this.trainer);
         });
         // location.reload(true);
         this.duplicatePokemon = [];
@@ -785,7 +788,10 @@ var RedeemComponent = /** @class */ (function () {
             .redeemSpecific(this.redeemTicketModel)
             .subscribe(function (Response) {
             //Sets the this.credits to response.
+            console.log(Response);
             _this.credits = Response;
+            _this.trainer.credits = Response[1];
+            _this.trainerService.updateValidLogin(_this.trainer);
         });
         var tempArr = new Array();
         //Step through the existing duplicatePokemon array and push all values without redeemed array to temp Array
@@ -945,7 +951,7 @@ var ShopComponent = /** @class */ (function () {
         this.currentPage = 0;
         this.cardShow = false;
         this.httpJSON = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
                 'Content-Type': 'application/json'
             })
         };
@@ -963,14 +969,13 @@ var ShopComponent = /** @class */ (function () {
         this.populatePokePages();
     };
     ShopComponent.prototype.onBuySubmit = function () {
-        console.log("In the purchase method");
         // Check if the trainer has enough credits:
-        var cost = this.allPoke[this.selectedPoke - 1].cost;
-        console.log(this.allPoke[this.selectedPoke - 1]);
-        var hasCredits = this.trainer.credits >= cost;
+        var trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
+        var cost = this.allPoke[this.selectedPoke].cost;
+        var hasCredits = trainer.credits >= cost;
         // If the trainer has enough credits, add the Pokemon to their collecion:
         if (hasCredits) {
-            this.trainer.credits = this.trainer.credits - cost;
+            trainer.credits = trainer.credits - cost;
             return this.http.post("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke - 1], this.httpJSON);
         }
         else {
