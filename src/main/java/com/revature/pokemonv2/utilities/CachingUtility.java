@@ -30,6 +30,7 @@ public class CachingUtility {
 	 private CachingUtility(){
 		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, ArrayList.class);
 		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
+		 getAllPokemon();
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
