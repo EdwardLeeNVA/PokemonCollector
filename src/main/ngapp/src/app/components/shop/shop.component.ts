@@ -14,9 +14,10 @@ import {TrainerService} from "../../services/trainer.service";
 })
 export class ShopComponent implements OnInit {
   private TOTALPOKEMON: number = 151;
-  
+  private showPagination: boolean = false;
+  private paginationArray: number[];
   private numPoke: number;
-  private currentPage: number = 0;
+  private currentPage: number;
   private numPages: number;
   private allPoke: Pokemon[];
   private pokePages: Pokemon[];
@@ -93,34 +94,67 @@ export class ShopComponent implements OnInit {
     )
   }
 
+  // populatePokePages(): void{
+  //   let count = 0;
+  //   this.currentPage = 0;
+  //   //display number of pokemon on page from radio button
+  //   for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
+  //     this.pokePages[count] = this.allPoke[i];
+  //     count++;
+  //   }
+  //   this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+  // }
+  
   populatePokePages(): void{
-    let count = 0;
-    this.currentPage = 0;
-    //display number of pokemon on page from radio button
-    for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
-      this.pokePages[count] = this.allPoke[i];
-      count++;
-    }
-    this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+    this.currentPage = 1;
+    this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke));
+    this.showPagination = true;
   }
+
+  changePokePages(): void{
+    if (((this.currentPage*this.numPoke)+1) > this.allPoke.length){
+      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke);
+    }
+    else{
+      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke)+1);
+    }
+  }
+
   //pagination methods on standby
+  showPaginationNavbar(): void{
+    this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+    for (let i = 0; i < this.numPages; i++){
+      this.paginationArray[i] = i+1;
+    }
+  }
+
+  //jump to specific page
+  specificPage(pageNumber: number): void{
+    this.currentPage = pageNumber;
+    this.changePokePages();
+  }
+
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
-      this.currentPage = 0;
+      this.currentPage = 1;
+      this.changePokePages();
     }
     else{
       this.currentPage++;
+      this.changePokePages();
     }
   }
 
   //wrap around to last page if on first page
   prevPage(): void{
-    if (this.currentPage == 0){
+    if (this.currentPage == 1){
       this.currentPage = this.numPages;
+      this.changePokePages();
     }
     else{
       this.currentPage--;
+      this.changePokePages();
     }
   }
 }
