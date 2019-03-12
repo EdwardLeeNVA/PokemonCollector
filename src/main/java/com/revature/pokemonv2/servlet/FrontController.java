@@ -39,6 +39,7 @@ public class FrontController extends DefaultServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		CachingUtility.getCachingUtility().getAllPokemon();
 	}
 
 	@Override
