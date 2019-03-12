@@ -26,6 +26,7 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 			returnPokeDex.add(poke);
 		}
 		Collections.sort(returnPokeDex, PokedexSorter.getInstance());
+		logger.trace("Finished loading pokedex");
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
 		return returnPokeDex;

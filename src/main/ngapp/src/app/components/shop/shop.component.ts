@@ -14,17 +14,18 @@ import {TrainerService} from "../../services/trainer.service";
 })
 export class ShopComponent implements OnInit {
   private TOTALPOKEMON: number = 151;
-  private showPagination: boolean = false;
+  public showPagination: boolean = false;
   private paginationArray: number[];
-  private numPoke: number;
+  public numPoke: number;
   private currentPage: number;
-  private numPages: number;
-  private allPoke: Pokemon[];
-  private pokePages: Pokemon[];
+  public numPages: number;
+  public allPoke: Pokemon[];
+  public pokePages: Pokemon[];
   public trainer: Trainer;
   public login_status: boolean;
   public cardShow: boolean = false;
   public selectedPoke: number;
+  public alertShowing: boolean = false;
   private httpJSON = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -41,15 +42,15 @@ export class ShopComponent implements OnInit {
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
     this.populatePokeArray();
-    this.populatePokePages();
+    // this.populatePokePages();
   }
-  onBallClick() {
-    //Hide pokeball img and show card div
-    $("#generate-pokemon-pokeball").addClass("d-none");
-    $("#generate-pokemon-card").removeClass("d-none");
-    $("#generate-pokemon-draw-btn").removeClass("d-none");
-    this.cardShow = true;
-  }
+  // onBallClick() {
+  //   //Hide pokeball img and show card div
+  //   $("#generate-pokemon-pokeball").addClass("d-none");
+  //   $("#generate-pokemon-card").removeClass("d-none");
+  //   $("#generate-pokemon-draw-btn").removeClass("d-none");
+  //   this.cardShow = true;
+  
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
@@ -133,6 +134,36 @@ export class ShopComponent implements OnInit {
     else{
       this.currentPage--;
       this.changePokePages();
+    }
+  }
+
+  onBuySubmit() {
+    if (this.trainer.credits > this.allPoke[this.selectedPoke-1].cost){
+      if (this.alertShowing == false){
+        $("#no-credit-alert").removeClass("d-none");
+        this.alertShowing = true;  
+      }
+    }
+    else{
+      let cost: number = this.allPoke[this.selectedPoke-1].cost;
+        console.log("In purchase True")
+        this.trainer.credits = this.trainer.credits-cost;
+        this.trainerService.updateValidLogin(this.trainer);
+        this.http.post(
+           "/PokemonCollector/servlet/purchase",
+           this.allPoke[this.selectedPoke-1]
+         ).subscribe();      
+      }
+      if (this.alertShowing){
+        $("#no-credit-alert").removeClass("d-none");
+        this.alertShowing = false;  
+      }
+  } 
+
+  onAlertClose() {
+    if (this.alertShowing) {
+      $("#login-alert").addClass("d-none");
+      this.alertShowing = false;
     }
   }
 }
