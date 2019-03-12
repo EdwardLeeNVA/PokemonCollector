@@ -18,6 +18,7 @@ import com.revature.pokemonv2.model.PokemonFactory;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.model.TrainerFactory;
 import com.revature.pokemonv2.service.TokenService;
+import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 import com.revature.pokemonv2.utilities.TestConnectionPool;
 
@@ -124,19 +125,19 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public int[] redeemAll(int trainerId, boolean isTesting) {
+	public int redeemAll(int trainerId, String username, boolean isTesting) {
 		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
 				: ConnectionUtility.getInstance().getConnection();
-		
-		int[] out = new int[2];
+
 		try (CallableStatement cs = TrainerDAOStatements.redeemAllStatement(conn, trainerId)) {
 			cs.execute();
-			out[0] = cs.getInt(2);
-			out[1] = cs.getInt(3);
+			
+			int out = CachingUtility.getCachingUtility().redeemAllPokemon(username);
+			
 			return out;
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
-			return null;
+			return 0;
 		} finally {
 			if (isTesting)
 				TestConnectionPool.getInstance().releaseConnection(conn);
@@ -146,19 +147,18 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public int[] redeemSpecific(int trainerId, int pokeId, boolean isTesting) {
+	public int redeemSpecific(int trainerId, int pokeId, String username, boolean isTesting) {
 		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
 				: ConnectionUtility.getInstance().getConnection();
 		
 		int[] out = new int[2]; // return array
 		try (CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)) {
 			cs.execute();
-			out[0] = cs.getInt(3);
-			out[1] = cs.getInt(4);
-			return out; // return array of values
+			
+			return CachingUtility.getCachingUtility().redeemSinglePokemon(username, pokeId); // return array of values
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);
-			return null;
+			return 0;
 		} finally {
 			if (isTesting)
 				TestConnectionPool.getInstance().releaseConnection(conn);

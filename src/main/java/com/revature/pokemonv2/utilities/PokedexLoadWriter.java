@@ -18,20 +18,16 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 
 	@Override
 	public ArrayList<Pokemon> load(Object key) throws Exception {
-		logger.trace("Entered load writer load method with key: " + key);
 		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
 		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key, isTesting);
-		logger.trace("Pokedex received from DAO: " + pokeDex);
 		for (Pokemon p : pokeDex) {
-			logger.trace("Addeding current pokemon: " + p.getId());
-			Pokemon poke = CachingUtility.getCachingUtility().getPokemon(p.getId());
+			Pokemon poke = CachingUtility.getCachingUtility().getPokemonCache(p.getId());
 			poke.setCount(p.getCount());
 			returnPokeDex.add(poke);
 		}
 		Collections.sort(returnPokeDex, PokedexSorter.getInstance());
 			// Adds dummy pokemon to counter Cache hits
 			/*returnPokeDex.add(new Pokemon(0, 1));*/
-		logger.trace("Added returnPokeDex to log containing: " +returnPokeDex);
 		return returnPokeDex;
 	}
 

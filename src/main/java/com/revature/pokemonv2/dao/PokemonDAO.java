@@ -32,9 +32,7 @@ public class PokemonDAO {
 		try (CallableStatement cs = PokemonDAOStatements.getTrainerPokedexStatement(conn, username)) {
 			cs.execute();
 			ResultSet rs = (ResultSet) cs.getObject(2);
-			logger.trace("Query executed and iterating through cursor.");
 			List<Pokemon> pokedex = PokemonFactory.createListFromResultSet(rs);
-			logger.trace("Pokedex returned by DB: " + pokedex);
 			return pokedex;
 		} catch (SQLException e) {
 			logger.error("getTrainerPokedex didn't work", e);
@@ -60,28 +58,22 @@ public class PokemonDAO {
 		// until we merge with the connection pool
 		// conn = pool.getConnection();
 
-		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?,?)")) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
 			cs.setInt(1, trainerId);
 
 			// change new Random().nextInt(150) for 1 based index to
 			// new Random().nextInt(151-1)+1
 
 			cs.setInt(2, pokemonId);
-			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
-			logger.trace("Pokemon generated: " + pokemon.getName());
+			Pokemon pokemon = CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 			cs.setInt(3, pokemon.getCost());
-			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();
-
-			pokemon.setCount(cs.getInt(4));
-			
-			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 
 			return pokemon;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// log.error(e.getMessage());
+			 logger.error(e.getMessage(), e);
 		} finally {
 			if (isTesting)
 				TestConnectionPool.getInstance().releaseConnection(conn);

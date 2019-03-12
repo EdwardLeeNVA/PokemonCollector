@@ -41,4 +41,8 @@ public class LeaderBoardService {
 	public List<Stats> returngetPokemonCountByTrainer(HttpServletRequest request, HttpServletResponse response){
 		return StatsDAOImpl.getInstance().getPokemonCountByTrainer(false);
 	}
+	
+	public List<Stats> returngetTotalPokemonCountByTrainer(HttpServletRequest request, HttpServletResponse response){
+		return StatsDAOImpl.getInstance().getTotalPokemonCountByTrainer(false);
+	}
 }

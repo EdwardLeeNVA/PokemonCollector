@@ -12,10 +12,12 @@ import com.revature.pokemonv2.model.Stats;
 import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 import com.revature.pokemonv2.utilities.TestConnectionPool;
+import org.apache.log4j.Logger;
 
 public class StatsDAOImpl implements StatDAO {
 
 	private static StatsDAOImpl mInstance;
+	private static final Logger logger = Logger.getLogger(StatsDAOImpl.class);
 
 	private StatsDAOImpl() {
 		super();
@@ -48,7 +50,7 @@ public class StatsDAOImpl implements StatDAO {
 			}
 			return trainers;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("SQL Exception in getPokemonCountByTrainer.", e);
 			return null;
 		} finally {
 			if (isTesting)
@@ -81,7 +83,7 @@ public class StatsDAOImpl implements StatDAO {
 			}
 			return leaderboard;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("SQL Exception in getLeaderboard.", e);
 			return null;
 		} finally {
 			if (isTesting)
@@ -111,7 +113,7 @@ public class StatsDAOImpl implements StatDAO {
 			}
 			return trainers;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("SQL Exception in getTotalPokemonCountByTrainer.", e);
 			return null;
 		} finally {
 			if (isTesting)

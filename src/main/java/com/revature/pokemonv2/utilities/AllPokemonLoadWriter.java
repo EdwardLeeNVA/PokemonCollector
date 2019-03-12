@@ -15,7 +15,6 @@ import org.ehcache.spi.loaderwriter.CacheLoaderWriter;
 
 
 public class AllPokemonLoadWriter implements CacheLoaderWriter {
-    private static final Logger logger = Logger.getLogger(AllPokemonLoadWriter.class);
 
     @Override
     public Pokemon load(Object i) throws Exception {
