@@ -39,6 +39,17 @@ public class Pokemon {
 		this.count = 1;
 		this.cost = cost;
 	}
+	
+	public Pokemon(int id, String name, String imageUrl, String[] type, Map<String, Integer> stats, Integer count, Integer cost) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.type = type;
+		this.stats = stats;
+		this.count = count;
+		this.cost = cost;
+	}
 
 	/**
 	 * Gets the Pokemon's ID

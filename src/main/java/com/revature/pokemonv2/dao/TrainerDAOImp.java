@@ -150,11 +150,8 @@ public class TrainerDAOImp implements TrainerDAO {
 	public int redeemSpecific(int trainerId, int pokeId, String username, boolean isTesting) {
 		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
 				: ConnectionUtility.getInstance().getConnection();
-		
-		int[] out = new int[2]; // return array
 		try (CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)) {
 			cs.execute();
-			
 			return CachingUtility.getCachingUtility().redeemSinglePokemon(username, pokeId); // return array of values
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);

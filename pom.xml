@@ -70,6 +70,8 @@
 							<arguments>
 								<argument>build</argument>
 								<argument>--baseHref=/PokemonCollector/ng/</argument>
+								<argument>--prod</argument>
+								<argument>--outputPath=../webapps/ng/</argument>
 							</arguments>
 						</configuration>
 						<goals>
