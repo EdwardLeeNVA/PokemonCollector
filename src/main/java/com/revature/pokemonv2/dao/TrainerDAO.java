@@ -11,13 +11,13 @@ import com.revature.pokemonv2.model.Trainer;
 public interface TrainerDAO {
 
 	public boolean createTrainer(String username, String password, String email, String f_name, String l_name,
-			int credit, int score);
+			int credit, int score, boolean isTesting);
 
 	/**
 	 * Method for fetching all duplicate pokemon of a specfiic trainer. Takes an int
 	 * @return an ArrayList of pokemon objects
 	 */
-	public List<Pokemon> getDuplicates(int trainerId);
+	public List<Pokemon> getDuplicates(int trainerId, boolean isTesting);
 
 	/**
 	 * Creates a new trainer and assigns the username and password to the object
@@ -30,13 +30,13 @@ public interface TrainerDAO {
 	 * Because of the cache, this will just try to remove the credits from the
 	 * account, and not remove the Pokemon.
 	 */
-	public boolean purchasePokemon(String username, int cost);
+	public boolean purchasePokemon(String username, int cost, boolean isTesting);
 	
 	/**
 	 * Redeem all Pokemon for a specific trainer.
 	 * @param trainerId ID of the current trainer.
 	 */
-	public int redeemAll(int trainerId, String username);
+	public int redeemAll(int trainerId, String username, boolean isTesting);
 	
 	/**
 	 * Redeems a specific Pokemon from a trainer's collection.
@@ -45,10 +45,10 @@ public interface TrainerDAO {
 	 * @param pokeId ID of the Pokemon being redeemed.
 	 * @return the amount of credits of credits given (index 0) and total credits (index 1).
 	 */
-	public int redeemSpecific(int trainerId, int pokeId, String username);
+	public int redeemSpecific(int trainerId, int pokeId, String username, boolean isTesting);
 
 	/**
 	 * Verifies via SQL whether the user login is correct
 	 */
-	public Trainer verifyLogin(String username, String password);
+	public Trainer verifyLogin(String username, String password, boolean isTesting);
 }
