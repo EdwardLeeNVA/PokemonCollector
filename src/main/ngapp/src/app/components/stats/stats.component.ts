@@ -8,83 +8,54 @@ import * as Highcharts from 'highcharts';
 })
 export class StatsComponent implements OnInit {
 
-  data1 = [
-    {
-      name: 'Normal',
-      y: 65,
-    }, {
-      name: 'Water',
-      y: 62,
-    }, {
-      name: 'Grass',
-      y: 38,
-    }, {
-      name: 'Psychic',
-      y: 35,
-    }, {
-      name: 'Fire',
-      y: 31,
-    }, {
-      name: 'Electric',
-      y: 28,
-    }, {
-      name: 'Fighting',
-      y: 22,
-    }, {
-      name: 'Bug',
-      y: 18,
-    }, {
-      name: 'Poison',
-      y: 16,
-    }, {
-      name: 'Ground',
-      y: 15,
-    }, {
-      name: 'Ice',
-      y: 14,
-    }, {
-      name: 'Dragon',
-      y: 12,
-    }, {
-      name: 'Rock',
-      y: 11,
-    }, {
-      name: 'Ghost',
-      y: 9,
-    }, {
-      name: 'Flying',
-      y: 7,
-    }];
+  data1 ;
+
+    total = this.data1;
 
   Highcharts = Highcharts;
 
   constructor() { }
 
-  configUrl = "/PokemonCollector/ng/stats";
+  //configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
+     configUrl = "/PokemonCollector/ng/stats";
 
   pokeCount;
+  pokeCountTotal;
   PokemonOption;
 
   ngOnInit() {
     fetch(this.configUrl)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.data1 = res;
+
+
+        this.configUrl = "/PokemonCollector/ng/stats2";
+        //this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
+      fetch(this.configUrl)
+      .then(res => res.json())
+      .then(res => {
+        this.total = res;
         this.load();
+      });
       });
   }
 
   load() {
-    this.pokeCount = {
+    this.pokeCountTotal = {
       chart: {
-        type: 'column'
+        type: 'column',
+        marginBottom: "150",
+        spacingTop : "1",
+        marginTop : "150",
+        marginLeft: "150",
+        marginRight : "150"
       },
       title: {
-        text: 'Pokemons per trainer'
+        text: 'Pokemons Per Trainer'
       },
       subtitle: {
-        text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+        text: 'Top 10'
       },
       xAxis: {
         type: 'category',
@@ -99,26 +70,84 @@ export class StatsComponent implements OnInit {
       yAxis: {
         min: 0,
         title: {
-          text: 'Population (millions)'
+          text: 'Pokemon'
         }
       },
       legend: {
         enabled: false
       },
       tooltip: {
-        pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+      },
+      series: [{
+        name: 'Population',
+        data: this.total,
+        dataLabels: {
+          enabled: true,
+          rotation: 0,
+          color: 'black',
+          align: 'right',
+          format: '{point.y:.0f}', // one decimal
+          y: -25, // 10 pixels down from the top
+          x: -10,
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+            }
+        }
+      }]
+    }
+
+    this.pokeCount = {
+      chart: {
+        type: 'column',
+        marginBottom: "150",
+        marginTop : "150",
+        marginLeft: "150",
+        marginRight : "150",
+        spacingTop : "1",
+
+      },
+      title: {
+        text: 'Unique Pokemons Per Trainer'
+      },
+      subtitle: {
+        text: 'Top 10'
+      },
+      xAxis: {
+        type: 'category',
+        labels: {
+          rotation: -45,
+          style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+          }
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Pokemon'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
       },
       series: [{
         name: 'Population',
         data: this.data1,
         dataLabels: {
           enabled: true,
-          rotation: -90,
-          color: '#FFFFFF',
+          rotation: 0,
+          color: '#black',
           align: 'right',
-          format: '{point.y:.0f}', // one decimal
-          y: -50, // 10 pixels down from the top
-          style: {
+          format: '{point.y:.0f}',
+          y: -25, 
+          x: -10,
+            style: {
             fontSize: '13px',
             fontFamily: 'Verdana, sans-serif'
           }
@@ -133,10 +162,18 @@ export class StatsComponent implements OnInit {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: 'pie'
+        type: 'pie',
+        marginBottom: "150",
+        marginTop : "150",
+        marginLeft: "150",
+        marginRight : "150",
+        spacingTop : "1",
       },
       title: {
-        text: 'Pokemon Types'
+        text: 'Distribution Of Pokemon Per Players'
+      },
+      subtitle: {
+        text: 'Top 10'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -147,7 +184,7 @@ export class StatsComponent implements OnInit {
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+            format: '<b>{point.name}</b>',
             style: {
               // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
             }
@@ -155,9 +192,9 @@ export class StatsComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Pokemon Type',
+        name: 'Pokemon',
         colorByPoint: true,
-        data: this.data1
+        data: this.total
       }]
     };
   }
