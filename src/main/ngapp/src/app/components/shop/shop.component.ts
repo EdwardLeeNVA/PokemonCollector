@@ -39,7 +39,6 @@ export class ShopComponent implements OnInit {
     }
     this.populatePokeArray();
   }
-
   onBuySubmit() {
     if (this.trainer.credits > this.allPoke[this.selectedPoke-1].cost){
       if (this.alertShowing == false){
@@ -62,7 +61,6 @@ export class ShopComponent implements OnInit {
         this.alertShowing = false;  
       }
   }  
-
   //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
@@ -110,7 +108,7 @@ export class ShopComponent implements OnInit {
   }
 
   changePokePages(): void{
-    if (((this.currentPage*this.numPoke)+1) > this.allPoke.length){
+    if (((this.currentPage*this.numPoke)) > this.allPoke.length){
       this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke);
     }
     else{

@@ -50,21 +50,16 @@ public class PokemonDAO {
 		// until we merge with the connection pool
 		// conn = pool.getConnection();
 
-		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?,?)")) {
+		try (CallableStatement cs = conn.prepareCall("call add_pokemon(?,?,?)")) {
 			cs.setInt(1, trainerId);
 
 			// change new Random().nextInt(150) for 1 based index to
 			// new Random().nextInt(151-1)+1
 
 			cs.setInt(2, pokemonId);
-			Pokemon pokemon = CachingUtility.getCachingUtility().getPokemon(pokemonId);
+			Pokemon pokemon = CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 			cs.setInt(3, pokemon.getCost());
-			cs.registerOutParameter(4, Types.INTEGER);
 			cs.execute();
-
-			pokemon.setCount(cs.getInt(4));
-			
-			CachingUtility.getCachingUtility().addToCache(username, pokemonId);
 
 			return pokemon;
 
