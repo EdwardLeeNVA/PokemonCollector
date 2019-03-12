@@ -14,12 +14,17 @@ public class PokedexEvictor implements EvictionAdvisor<String, ArrayList> {
      */
     @Override
         public boolean adviseAgainstEviction(String key, ArrayList value) {
-            ArrayList<Pokemon> list = (ArrayList<Pokemon>)cachingUtility.getCache().get(key);
+            if(key.equals("red")){
+                return true;
+            } else {
+                return false;
+            }
+            /*ArrayList<Pokemon> list = (ArrayList<Pokemon>)cachingUtility.getCache().get(key);
             int current_hits = list.get(0).getCount();
-            return checkForHigherPriorityKey(list, current_hits);
+            return checkForHigherPriorityKey(list, current_hits);*/
     }
 
-    public boolean checkForHigherPriorityKey(ArrayList<Pokemon> list, int current_hits){
+    /*public boolean checkForHigherPriorityKey(ArrayList<Pokemon> list, int current_hits){
         if(current_hits == 1) return false;
         for(Pokemon p : list){
             if(p.getId() != 0 && p.getCount() < current_hits){
@@ -27,5 +32,5 @@ public class PokedexEvictor implements EvictionAdvisor<String, ArrayList> {
             }
         }
         return false;
-    }
+    }*/
 }
