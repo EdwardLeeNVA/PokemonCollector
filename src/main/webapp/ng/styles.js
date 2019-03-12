@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\my_git_repos\PokemonCollectorGroup\PokemonCollector\src\main\ngapp\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\Brock Sokevitz\Documents\GitHub\PokemonCollector\src\main\ngapp\src\styles.css */"./src/styles.css");
 
 
 /***/ })

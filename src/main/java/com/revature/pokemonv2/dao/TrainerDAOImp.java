@@ -123,7 +123,6 @@ public class TrainerDAOImp implements TrainerDAO {
 
 	@Override
 	public int redeemSpecific(int trainerId, int pokeId, String username) {
-		int[] out = new int[2]; // return array
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			try (CallableStatement cs = TrainerDAOStatements.redeemSpecificStatement(conn, trainerId, pokeId)) {
 				cs.execute();

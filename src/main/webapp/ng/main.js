@@ -270,7 +270,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0] }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{pokemon.type[1] + \" / \" + pokemon.type[0]}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + \" / \" + \r\n                  pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -348,7 +348,7 @@ module.exports = ".pokemon-card-outer {\r\n    margin: 15px;\r\n    height: 320p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p><b>Type: {{pokemonType}}</b></p>\r\n                  <p><b>HP: {{hp}}</b></p>\r\n                  <p><b>Attack: {{attack}}</b></p>\r\n                  <p><b>Defense: {{defense}}</b></p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p *ngIf= \"pokemonType?.length == 1\">Type: {{ pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>\r\n                  <p *ngIf= \"pokemonType?.length == 2\"> Type: {{ pokemonType[1].charAt(0).toUpperCase() + pokemonType[1].substring(1) + \" / \"\r\n                     + pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>\r\n                  <p>HP: {{hp}}</p>\r\n                  <p>Attack: {{attack}}</p>\r\n                  <p>Defense: {{defense}}</p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -381,7 +381,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
     }
     GeneratePokemonComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //this.trainerService.checkSessionStorage();
+        //Subscribe to behavior subjects within this component
         this.trainerService.login_status_bs.subscribe(function (status) { return _this.login_status = status; });
         this.trainerService.current_trainer_bs.subscribe(function (trainer) { return _this.trainer = trainer; });
         if (this.trainer == null) {
@@ -389,23 +389,12 @@ var GeneratePokemonComponent = /** @class */ (function () {
             this.router.navigateByUrl("/PokemonCollector/ng/landing");
         }
     };
-    // generatePokemon() {
-    //   this.pokedexService.generatePokemon().subscribe(
-    //     data => {
-    //       this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-    //       this.pokemonType = data.types[0].type.name;
-    //       this.pokemonSprite = data.sprites.front_default;
-    //       this.hp = data.stats[5].base_stat;
-    //       this.attack = data.stats[4].base_stat;
-    //       this.defense = data.stats[3].base_stat;
-    //     }
-    //   );
-    // }
+    //Subscribe to generatePokemon observable in PokedexService. Set variables based on response and update score in the behavior subject.
     GeneratePokemonComponent.prototype.onClick = function () {
         var _this = this;
         this.pokedexService.generatePokemon().subscribe(function (data) {
             _this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-            _this.pokemonType = data.type[0];
+            _this.pokemonType = data.type;
             _this.pokemonSprite = data.imageUrl;
             _this.hp = data.stats.hp;
             _this.attack = data.stats.attack;
@@ -413,12 +402,14 @@ var GeneratePokemonComponent = /** @class */ (function () {
             _this.trainer.score = data.count;
             _this.trainerService.updateValidLogin(_this.trainer);
         });
+        //Display pokemon card
         if (this.cardShow) {
             $("#generate-pokemon-pokeball").removeClass("d-none");
             $("#generate-pokemon-card").addClass("d-none");
             $("#generate-pokemon-draw-btn").addClass("d-none");
         }
     };
+    //Display pokeball modal
     GeneratePokemonComponent.prototype.onBallClick = function () {
         $("#generate-pokemon-pokeball").addClass("d-none");
         $("#generate-pokemon-card").removeClass("d-none");
@@ -449,7 +440,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICB3aWR0aCA6IDk1JTtcclxufVxyXG5cclxudGFibGUsIHRoLCB0ZCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuI2J1dHRvbiB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmh0bWwsXHJcbmJvZHkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtZ2FwOiA1MHB4IDEwMHB4O1xyXG59XHJcblxyXG4jdGFibGV1c2VybmFtZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jdGFibGVzY29yZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcbiJdfQ== */"
+module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\nh1 {\r\n  color: white;\r\n  text-align: center;\r\n}\r\n\r\n#outer-most {\r\n  text-align: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2xhbmRpbmcvbGFuZGluZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7XHJcbiAgd2lkdGggOiA5NSU7XHJcbn1cclxuXHJcbnRhYmxlLCB0aCwgdGQge1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuI2xlYWRlcmJvYXJkVGFibGUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbn1cclxuXHJcbiNidXR0b24ge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5odG1sLFxyXG5ib2R5IHtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbn1cclxuXHJcbi5ncmlkLWNvbnRhaW5lciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLWdhcDogNTBweCAxMDBweDtcclxufVxyXG5cclxuI3RhYmxldXNlcm5hbWUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuI3RhYmxlc2NvcmUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuaDEge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbiNvdXRlci1tb3N0IHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -460,7 +451,7 @@ module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 style=\"color:white;\" align=\"center\">Top 10 Scores</h1>\r\n<div align=\"center\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
+module.exports = "<h1>Top 10 Scores</h1>\r\n<div id=\"outer-most\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -716,7 +707,7 @@ module.exports = ".shop-form-scroll {\r\n}\r\n\r\n#shop-form {\r\n  height: 60%;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col justify-content-center\" id=\"redeem-form-col\">\r\n      <div class=\"shop-form-scroll\">\r\n        <img\r\n          class=\"animated bounce\"\r\n          id=\"redeem-header-image\"\r\n          src=\"https://fontmeme.com/permalink/190224/e057290604f69fe455bee18756e64510.png\"\r\n          alt=\"pokemon-font\"\r\n        /><br />\r\n        <button class=\"shop-buy-btn\" (click)=\"redeemAll()\">Redeem All</button>\r\n        <form #redeemForm=\"ngForm\" (ngSubmit)=\"redeemSpecific()\" novalidate>\r\n          <!-- data-toggle=\"modal\"\r\n            data-target=\"#newpokemonModal\" -->\r\n          <button class=\"shop-buy-btn\" type=\"submit\">\r\n            Sell\r\n          </button>\r\n\r\n          <div class=\"radio-card-grid\">\r\n            <div\r\n              class=\"form-check radio-form-item\"\r\n              *ngFor=\"let pokemonX of duplicatePokemon\"\r\n            >\r\n              <input\r\n                class=\"form-check-input\"\r\n                type=\"radio\"\r\n                #pokemonCard=\"ngModel\"\r\n                name=\"gridRadios\"\r\n                value=\"{{ pokemonX.id }}\"\r\n                checked\r\n                [(ngModel)]=\"pokemon.id\"\r\n              />\r\n              <div class=\"pokemon-card-outer\">\r\n                <label class=\"form-check-label text-light\" for=\"gridRadios1\">\r\n                  {{ pokemonX.name }}\r\n                </label>\r\n                <img class=\"pokemon-card-img\" src=\"{{ pokemonX.imageUrl }}\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p>Cost: {{ pokemonX.cost }}</p>\r\n                  <br />\r\n                  <p>Type: {{ pokemonX.type[0] }}</p>\r\n\r\n                  <p>Count: {{ pokemonX.count }}</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Modal -->\r\n<div\r\n  class=\"modal fade\"\r\n  id=\"newpokemonModal\"\r\n  tabindex=\"-1\"\r\n  role=\"dialog\"\r\n  aria-labelledby=\"newpokemonModel\"\r\n  aria-hidden=\"true\"\r\n>\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div\r\n      class=\"modal-content justify-content-center\"\r\n      id=\"newPokemon-Modal-Content\"\r\n    >\r\n      <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n        <div class=\"pokemon-card-outer text-center \" id=\"generate-pokemon-card\">\r\n          <h4 class=\"pokemon-card-name\">{{ this.pokemonName }}</h4>\r\n\r\n          <img src=\"{{ this.pokemonURL }}\" class=\"pokemon-card-img\" />\r\n          <div class=\"pokemon-card-info-cont\">\r\n            <p>Type: {{ this.pokemonType }}</p>\r\n            <p>HP: {{ this.hp }}</p>\r\n            <p>Attack: {{ this.attack }}</p>\r\n            <p>Defense: {{ this.defense }}</p>\r\n          </div>\r\n        </div>\r\n\r\n        <button\r\n          type=\"button\"\r\n          class=\"newPokemon-Modal-Buttons \"\r\n          data-dismiss=\"modal\"\r\n        >\r\n          Close\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col justify-content-center\" id=\"redeem-form-col\">\r\n      <div class=\"shop-form-scroll\">\r\n        <img\r\n          class=\"animated bounce\"\r\n          id=\"redeem-header-image\"\r\n          src=\"https://fontmeme.com/permalink/190224/e057290604f69fe455bee18756e64510.png\"\r\n          alt=\"pokemon-font\"\r\n        /><br />\r\n        <button class=\"shop-buy-btn\" (click)=\"redeemAll()\">Redeem All</button>\r\n        <form #redeemForm=\"ngForm\" (ngSubmit)=\"redeemSpecific()\" novalidate>\r\n          <!-- data-toggle=\"modal\"\r\n            data-target=\"#newpokemonModal\" -->\r\n          <button class=\"shop-buy-btn\" type=\"submit\">\r\n            Sell\r\n          </button>\r\n\r\n          <div class=\"radio-card-grid\">\r\n            <div\r\n              class=\"form-check radio-form-item\"\r\n              *ngFor=\"let pokemonX of duplicatePokemon\"\r\n            >\r\n              <input\r\n                class=\"form-check-input\"\r\n                type=\"radio\"\r\n                #pokemonCard=\"ngModel\"\r\n                name=\"gridRadios\"\r\n                value=\"{{ pokemonX.id }}\"\r\n                checked\r\n                [(ngModel)]=\"pokemon.id\"\r\n              />\r\n              <div class=\"pokemon-card-outer\">\r\n                <label class=\"form-check-label text-light\" for=\"gridRadios1\">\r\n                  {{ pokemonX.name.charAt(0).toUpperCase() + pokemonX.name.substring(1) }}\r\n                </label>\r\n                <img class=\"pokemon-card-img\" src=\"{{ pokemonX.imageUrl }}\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p>Cost: {{ pokemonX.cost }}</p>\r\n                  <br />\r\n                  <p *ngIf= \"pokemonX.type[1] == null\">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>\r\n                  <p *ngIf= \"pokemonX.type[1] != null\"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + \" / \" + \r\n                  pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>\r\n                  <p>Count: {{ pokemonCount }}</p>\r\n\r\n                  <p>Count: {{ pokemonX.count }}</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Modal -->\r\n<div\r\n  class=\"modal fade\"\r\n  id=\"newpokemonModal\"\r\n  tabindex=\"-1\"\r\n  role=\"dialog\"\r\n  aria-labelledby=\"newpokemonModel\"\r\n  aria-hidden=\"true\"\r\n>\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div\r\n      class=\"modal-content justify-content-center\"\r\n      id=\"newPokemon-Modal-Content\"\r\n    >\r\n      <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n        <div class=\"pokemon-card-outer text-center \" id=\"generate-pokemon-card\">\r\n          <h4 class=\"pokemon-card-name\">{{ this.pokemonName }}</h4>\r\n\r\n          <img src=\"{{ this.pokemonURL }}\" class=\"pokemon-card-img\" />\r\n          <div class=\"pokemon-card-info-cont\">\r\n            <p>Type: {{ this.pokemonType }}</p>\r\n            <p>HP: {{ this.hp }}</p>\r\n            <p>Attack: {{ this.attack }}</p>\r\n            <p>Defense: {{ this.defense }}</p>\r\n          </div>\r\n        </div>\r\n\r\n        <button\r\n          type=\"button\"\r\n          class=\"newPokemon-Modal-Buttons \"\r\n          data-dismiss=\"modal\"\r\n        >\r\n          Close\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -734,8 +725,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
-/* harmony import */ var src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/redeem-ticket */ "./src/app/models/redeem-ticket.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
+/* harmony import */ var src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/models/redeem-ticket */ "./src/app/models/redeem-ticket.ts");
+
 
 
 
@@ -747,18 +740,10 @@ var RedeemComponent = /** @class */ (function () {
         this.trainerService = trainerService;
         this.router = router;
         this.pokedexService = pokedexService;
-        this.pokemon = {
-            id: 0,
-            name: "",
-            imageUrl: "",
-            type: null,
-            stats: null,
-            count: 0,
-            cost: 0
-        };
+        this.pokemon = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_4__["Pokemon"]();
         //stores an array of Pokemon objects to display to DOM
         this.duplicatePokemon = new Array();
-        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_5__["RedeemTicket"](0);
+        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_6__["RedeemTicket"](0);
     }
     RedeemComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -784,11 +769,10 @@ var RedeemComponent = /** @class */ (function () {
         var _this = this;
         this.pokedexService.redeemAll().subscribe(function (Response) {
             _this.credits = Response;
-            console.log(Response);
-            _this.trainer.credits = Response[1];
+            //Update Behavior Subject
+            _this.trainer.credits = _this.trainer.credits + _this.credits;
             _this.trainerService.updateValidLogin(_this.trainer);
         });
-        // location.reload(true);
         this.duplicatePokemon = [];
     };
     //method that gets redeemed credits returned from service method based on a specific pokemon ID and assigns to variable
@@ -803,9 +787,8 @@ var RedeemComponent = /** @class */ (function () {
             .redeemSpecific(this.redeemTicketModel)
             .subscribe(function (Response) {
             //Sets the this.credits to response.
-            console.log(Response);
             _this.credits = Response;
-            _this.trainer.credits = Response[1];
+            _this.trainer.credits = _this.trainer.credits + _this.credits;
             _this.trainerService.updateValidLogin(_this.trainer);
         });
         var tempArr = new Array();
@@ -826,7 +809,7 @@ var RedeemComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__["TrainerService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _services_pokedex_service__WEBPACK_IMPORTED_MODULE_4__["PokedexService"]])
+            _services_pokedex_service__WEBPACK_IMPORTED_MODULE_5__["PokedexService"]])
     ], RedeemComponent);
     return RedeemComponent;
 }());
@@ -928,7 +911,7 @@ module.exports = "html,\r\nbody {\r\n  background: linear-gradient(to bottom lef
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  \r\n  <!-- <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\"> -->\r\n  <div class=\"container \" id=\"shop-form-container\">\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"col justify-content-center\" id=\"shop-form-col\">\r\n        <div class=\"shop-form-scroll\">\r\n          <form name=\"buyForm\" #buyForm=\"ngForm\" (ngSubmit)=\"onBuySubmit()\" novalidate>\r\n            <div id=\"shop-form-header\">\r\n              <img\r\n                class=\"animated shake\"\r\n                id=\"poke-shop-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/7f951f27330efe3f5e717c68950edf06.png\"\r\n                alt=\"\"\r\n              />\r\n              <button\r\n                data-toggle=\"modal\"\r\n                data-target=\"#newpokemonModal\"\r\n                class=\"shop-buy-btn\"\r\n                id=\"shop-buy-btn\"\r\n                type=\"submit\"\r\n              >\r\n                Buy\r\n              </button>\r\n           \r\n            </div>\r\n  \r\n            <div class=\"radio-card-grid\">\r\n              <div\r\n                class=\"form-check radio-form-item\"\r\n                *ngFor=\"let pokemon of allPoke\"\r\n              >\r\n                <input\r\n                  class=\"form-check-input customRadioBtn\"\r\n                  type=\"radio\"\r\n                  #pokemonCard=\"ngModel\"\r\n                  name=\"gridRadios\"\r\n                  value=\"{{ pokemon.id }}\"\r\n                  checked\r\n                  [(ngModel)]=\"selectedPoke\"\r\n                />\r\n                <div class=\"pokemon-card-outer\">\r\n                  <label\r\n                    class=\"form-check-label shop-poke-name\"\r\n                    for=\"gridRadios1\"\r\n                  >\r\n                    {{ pokemon.name }}\r\n                  </label>\r\n                  <img class=\"pokemon-card-img\" src=\"{{ pokemon.imageUrl }}\" />\r\n                  <div class=\"pokemon-card-info-cont\">\r\n                    <p>Type: {{ pokemon.type }}</p>\r\n  \r\n                    <!-- <p>HP: {{ pokemon.hp }}</p>\r\n                    <p>Attack: {{ pokemon.attack }}</p>\r\n                    <p>Defense: {{ pokemon.defense }}</p> -->\r\n                    <p>Stats:</p>\r\n                      <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                      <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                      <p>HP: {{ pokemon.stats.hp }}</p>\r\n                      <p>Special attack: {{ pokemon.stats.special-attack }}</p>\r\n                      <p>Special defense: {{ pokemon.stats.special-defense }}</p>\r\n                      <p>Speed: {{ pokemon.stats.speed }}</p>\r\n                    <p>Cost: {{ pokemon.cost }}</p>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"radio-card-grid\" *ngIf=\"pokePages\">\r\n    <div class=\"form-check radio-form-item\" *ngFor=\"let pokemon of pokePages\">\r\n      <input class=\"form-check-input customRadioBtn\" type=\"radio\" name=\"gridRadios\"\r\n        value=\"{{allPoke.pokemon.id}}\" checked/>\r\n    </div>\r\n  </div>\r\n  \r\n  <!-- Modal for chosen pokemon-->\r\n  <div\r\n    class=\"modal fade\"\r\n    id=\"newpokemonModal\"\r\n    tabindex=\"-1\"\r\n    role=\"dialog\"\r\n    aria-labelledby=\"newpokemonModel\"\r\n    aria-hidden=\"true\"\r\n  >\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div\r\n        class=\"modal-content justify-content-center\"\r\n        id=\"newPokemon-Modal-Content\"\r\n      >\r\n        <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n          <img\r\n            src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n            id=\"generate-pokemon-pokeball\"\r\n            class=\"mb-3 animated shake\"\r\n            (click)=\"onBallClick()\"\r\n          />\r\n          <div\r\n            class=\"pokemon-card-outer text-center d-none \"\r\n            id=\"generate-pokemon-card\"\r\n          >\r\n            <!-- *ngFor=\"let pokemon of pokemonArr\" -->\r\n            <h4 class=\"pokemon-card-name\">{{ this.name }}</h4>\r\n  \r\n            <img src=\"{{ this.imageUrl }}\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n                <!-- <p>Stats:</p>\r\n                <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                <p>HP: {{ pokemon.stats.hp }}</p>\r\n                <p>Special-attack: {{ pokemon.stats.special-attack }}</p>\r\n                <p>Special-defense: {{ pokemon.stats.special-defense }}</p>\r\n                <p>Speed: {{ pokemon.stats.speed }}</p> -->\r\n                <p>Type: {{this.type}}</p>\r\n            </div>\r\n          </div>\r\n          <!-- start no credits alert -->\r\n          <div\r\n          class=\"alert alert-danger alert-dismissible fade show d-none\"\r\n          id=\"no-credit-alert\"\r\n          role=\"alert\"\r\n        >\r\n          <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n\r\n          <strong>Oops!!</strong> You dont have enough credits.....\r\n\r\n          <img\r\n            src=\"http://i65.tinypic.com/27zauqe.png\"\r\n            alt=\"Image and video hosting by TinyPic\"\r\n          />\r\n          <button\r\n            id=\"login-alert\"\r\n            type=\"button\"\r\n            class=\"close\"\r\n            aria-label=\"Close\"\r\n            (click)=\"onAlertClose()\"\r\n          >\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <!-- end no credit alert -->\r\n        <!-- start I choose you alert -->\r\n        <div\r\n        class=\"alert alert-danger alert-dismissible fade show d-none\"\r\n        id=\"add-pokemon-alert\"\r\n        role=\"alert\"\r\n      >\r\n        <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n\r\n        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.\r\n\r\n        <img\r\n          src=\"http://i65.tinypic.com/27zauqe.png\"\r\n          alt=\"Image and video hosting by TinyPic\"\r\n        />\r\n        <button\r\n          id=\"login-alert\"\r\n          type=\"button\"\r\n          class=\"close\"\r\n          aria-label=\"Close\"\r\n          (click)=\"onAlertClose()\"\r\n        >\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n        <!-- end I choose you alert -->\r\n        <!-- start confirmation button -->\r\n          <button\r\n                data-toggle=\"modal\"\r\n                data-target=\"#newpokemonConfirm\"\r\n                class=\"shop-buy-btn\"\r\n                type=\"submit\"\r\n              >\r\n                I Choose You!\r\n              </button>\r\n        <!--end confirmation button  -->\r\n        <!-- start close button -->\r\n          <button\r\n            type=\"button\"\r\n            class=\"shop-buy-btn\"\r\n            data-dismiss=\"modal\"\r\n          >\r\n            Close\r\n          </button>\r\n        <!-- end close button  -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n<!-- end modal -->\r\n<!-- stuff thats on standby\r\n     pagination form on standby \r\n    <form>\r\n        <select name=\"setNumPoke\" class=\"form-control\" [(ngModel)]=\"numPoke\" (change)=\"populatePokePages()\">\r\n          <option value=0>Number of Pokemon per page</option>\r\n          <option value=20>20</option>\r\n          <option value=50>50</option>\r\n          <option value=100>100</option>\r\n        </select>\r\n      </form>\r\n    </div>\r\n      put number of pages in here\r\n      <div class=\"row justify-content-md-center\">\r\n        <nav aria-label=\"Page navigation example\">\r\n          <ul>\r\n            <li><a class=\"page-link\" (click)=\"prevPage()\" aria-label=\"Previous\"></a></li>\r\n            <li><a class=\"page-link\" (click)=\"nextPage()\" aria-label=\"Next\"></a></li>\r\n          </ul>\r\n        </nav>\r\n      </div>\r\n    --> \r\n   \r\n  "
+module.exports = "\r\n  \r\n  <!-- <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\"> -->\r\n  <div class=\"container \" id=\"shop-form-container\">\r\n    <div class=\"row justify-content-center\">\r\n      <div class=\"col justify-content-center\" id=\"shop-form-col\">\r\n        <div class=\"shop-form-scroll\">\r\n          <form name=\"buyForm\" #buyForm=\"ngForm\" (ngSubmit)=\"onBuySubmit()\" novalidate>\r\n            <div id=\"shop-form-header\">\r\n              <img\r\n                class=\"animated shake\"\r\n                id=\"poke-shop-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/7f951f27330efe3f5e717c68950edf06.png\"\r\n                alt=\"\"\r\n              />\r\n              <button\r\n                data-toggle=\"modal\"\r\n                data-target=\"#newpokemonModal\"\r\n                class=\"shop-buy-btn\"\r\n                id=\"shop-buy-btn\"\r\n                type=\"submit\"\r\n              >\r\n                Buy\r\n              </button>\r\n           \r\n            </div>\r\n            <form>\r\n              <select name=\"setNumPoke\" class=\"form-control\" [(ngModel)]=\"numPoke\" (change)=\"populatePokePages()\">\r\n                <option value=0>Number of Pokemon per page</option>\r\n                <option value=20>20</option>\r\n                <option value=50>50</option>\r\n                <option value=100>100</option>\r\n              </select>\r\n            </form>\r\n            <div *ngIf=\"showPagination\">\r\n              <button type=\"button\" value=\"previous page\" (click)=\"prevPage()\"><</button>\r\n              <!--\r\n                put numbers for new pages here \r\n                <div *ngFor=\"let number of numPages\">>\r\n              </div>\r\n             -->\r\n             <button type=\"button\" value=\"next page\" (click)=\"nextPage()\">></button>\r\n            </div>            \r\n            <div class=\"radio-card-grid\">\r\n              <div\r\n                class=\"form-check radio-form-item\"\r\n                *ngFor=\"let pokemon of pokePages\"\r\n              >\r\n                <input\r\n                  class=\"form-check-input customRadioBtn\"\r\n                  type=\"radio\"\r\n                  #pokemonCard=\"ngModel\"\r\n                  name=\"gridRadios\"\r\n                  value=\"{{ pokemon.id }}\"\r\n                  checked\r\n                  [(ngModel)]=\"selectedPoke\"\r\n                />\r\n                <div class=\"pokemon-card-outer\">\r\n                  <label\r\n                    class=\"form-check-label shop-poke-name\"\r\n                    for=\"gridRadios1\"\r\n                  >\r\n                    {{ pokemon.name }}\r\n                  </label>\r\n                  <img class=\"pokemon-card-img\" src=\"{{ pokemon.imageUrl }}\" />\r\n                  <div class=\"pokemon-card-info-cont\">\r\n                      <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>\r\n                      <p *ngIf= \"pokemon.type[1] != null\"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + \" / \" +\r\n                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  \r\n                    <!-- <p>HP: {{ pokemon.hp }}</p>\r\n                    <p>Attack: {{ pokemon.attack }}</p>\r\n                    <p>Defense: {{ pokemon.defense }}</p> -->\r\n                    <p>HP: {{ pokemon.stats.hp }}</p>\r\n                    <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                    <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                    <!-- <p>Stats:</p>\r\n                      <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                      <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                      <p>HP: {{ pokemon.stats.hp }}</p>\r\n                      <p>Special attack: {{ pokemon.stats.special-attack }}</p>\r\n                      <p>Special defense: {{ pokemon.stats.special-defense }}</p>\r\n                      <p>Speed: {{ pokemon.stats.speed }}</p> -->\r\n                    <p>Cost: {{ pokemon.cost }}</p>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <!-- <p>--trying pagination below here</p>\r\n            <div class=\"radio-card-grid\" *ngIf = \"numPoke != 0\">\r\n                <div\r\n                  class=\"form-check radio-form-item\"\r\n                  *ngFor=\"let pokemon of pokePages\"\r\n                >\r\n                  <input\r\n                    class=\"form-check-input customRadioBtn\"\r\n                    type=\"radio\"\r\n                    #pokemonCard=\"ngModel\"\r\n                    name=\"gridRadios\"\r\n                    value=\"{{ pokemon.id }}\"\r\n                    checked\r\n                    [(ngModel)]=\"selectedPoke\"\r\n                  />\r\n                  <div class=\"pokemon-card-outer\">\r\n                    <label\r\n                      class=\"form-check-label shop-poke-name\"\r\n                      for=\"gridRadios1\"\r\n                    >\r\n                      {{ pokemon.name }}\r\n                    </label>\r\n                    <img class=\"pokemon-card-img\" src=\"{{ pokemon.imageUrl }}\" />\r\n                    <div class=\"pokemon-card-info-cont\">\r\n                        <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>\r\n                        <p *ngIf= \"pokemon.type[1] != null\"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + \" / \" +\r\n                            pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  \r\n                        <p>HP: {{ pokemon.hp }}</p>\r\n                      <p>Attack: {{ pokemon.attack }}</p>\r\n                      <p>Defense: {{ pokemon.defense }}</p>\r\n                      <p>HP: {{ pokemon.stats.hp }}</p>\r\n                      <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                      <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                       <p>Stats:</p>\r\n                        <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                        <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                        <p>HP: {{ pokemon.stats.hp }}</p>\r\n                        <p>Special attack: {{ pokemon.stats.special-attack }}</p>\r\n                        <p>Special defense: {{ pokemon.stats.special-defense }}</p>\r\n                        <p>Speed: {{ pokemon.stats.speed }}</p>\r\n                      <p>Cost: {{ pokemon.cost }}</p>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div> -->\r\n  \r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n  <!-- Modal for chosen pokemon-->\r\n  <div\r\n    class=\"modal fade\"\r\n    id=\"newpokemonModal\"\r\n    tabindex=\"-1\"\r\n    role=\"dialog\"\r\n    aria-labelledby=\"newpokemonModel\"\r\n    aria-hidden=\"true\"\r\n  >\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div\r\n        class=\"modal-content justify-content-center\"\r\n        id=\"newPokemon-Modal-Content\"\r\n      >\r\n        <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n          <img\r\n            src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n            id=\"generate-pokemon-pokeball\"\r\n            class=\"mb-3 animated shake\"\r\n            (click)=\"onBallClick()\"\r\n          />\r\n          <div\r\n            class=\"pokemon-card-outer text-center d-none \"\r\n            id=\"generate-pokemon-card\"\r\n          >\r\n            <!-- *ngFor=\"let pokemon of pokemonArr\" -->\r\n            <h4 class=\"pokemon-card-name\">{{ this.name }}</h4>\r\n  \r\n            <img src=\"{{ this.imageUrl }}\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n                <!-- <p>Stats:</p>\r\n                <p>Attack: {{ pokemon.stats.attack }}</p>\r\n                <p>Defense: {{ pokemon.stats.defense }} </p>\r\n                <p>HP: {{ pokemon.stats.hp }}</p>\r\n                <p>Special-attack: {{ pokemon.stats.special-attack }}</p>\r\n                <p>Special-defense: {{ pokemon.stats.special-defense }}</p>\r\n                <p>Speed: {{ pokemon.stats.speed }}</p> -->\r\n                <p>Type: {{this.type}}</p>\r\n            </div>\r\n          </div>\r\n          <!-- start no credits alert -->\r\n          <div\r\n          class=\"alert alert-danger alert-dismissible fade show d-none\"\r\n          id=\"no-credit-alert\"\r\n          role=\"alert\"\r\n        >\r\n          <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n\r\n          <strong>Oops!!</strong> You dont have enough credits.....\r\n\r\n          <img\r\n            src=\"http://i65.tinypic.com/27zauqe.png\"\r\n            alt=\"Image and video hosting by TinyPic\"\r\n          />\r\n          <button\r\n            id=\"login-alert\"\r\n            type=\"button\"\r\n            class=\"close\"\r\n            aria-label=\"Close\"\r\n            (click)=\"onAlertClose()\"\r\n          >\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <!-- end no credit alert -->\r\n        <!-- start I choose you alert -->\r\n        <div\r\n        class=\"alert alert-danger alert-dismissible fade show d-none\"\r\n        id=\"add-pokemon-alert\"\r\n        role=\"alert\"\r\n      >\r\n        <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n\r\n        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.\r\n\r\n        <img\r\n          src=\"http://i65.tinypic.com/27zauqe.png\"\r\n          alt=\"Image and video hosting by TinyPic\"\r\n        />\r\n        <button\r\n          id=\"login-alert\"\r\n          type=\"button\"\r\n          class=\"close\"\r\n          aria-label=\"Close\"\r\n          (click)=\"onAlertClose()\"\r\n        >\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n        <!-- end I choose you alert -->\r\n        <!-- start confirmation button -->\r\n          <button\r\n                data-toggle=\"modal\"\r\n                data-target=\"#newpokemonConfirm\"\r\n                class=\"shop-buy-btn\"\r\n                type=\"submit\"\r\n              >\r\n                I Choose You!\r\n              </button>\r\n        <!--end confirmation button  -->\r\n        <!-- start close button -->\r\n          <button\r\n            type=\"button\"\r\n            class=\"shop-buy-btn\"\r\n            data-dismiss=\"modal\"\r\n          >\r\n            Close\r\n          </button>\r\n        <!-- end close button  -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n<!-- end modal -->\r\n<form>\r\n  <select name=\"setNumPoke\" class=\"form-control\" [(ngModel)]=\"numPoke\" (change)=\"populatePokePages()\">\r\n    <option value=0>Number of Pokemon per page</option>\r\n    <option value=20>20</option>\r\n    <option value=50>50</option>\r\n    <option value=100>100</option>\r\n  </select>\r\n</form>    \r\n   \r\n  \r\n"
 
 /***/ }),
 
@@ -944,10 +927,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopComponent", function() { return ShopComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+
 
 
 
@@ -955,15 +940,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShopComponent = /** @class */ (function () {
-    function ShopComponent(http, trainerService, router) {
+    function ShopComponent(http, trainerService, router, pokedexService) {
         this.http = http;
         this.trainerService = trainerService;
         this.router = router;
+        this.pokedexService = pokedexService;
         this.TOTALPOKEMON = 151;
-        this.currentPage = 0;
+        this.showPagination = false;
         this.cardShow = false;
         this.httpJSON = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
                 'Content-Type': 'application/json'
             })
         };
@@ -980,20 +966,6 @@ var ShopComponent = /** @class */ (function () {
         this.populatePokeArray();
         this.populatePokePages();
     };
-    ShopComponent.prototype.onBuySubmit = function () {
-        // Check if the trainer has enough credits:
-        var trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
-        var cost = this.allPoke[this.selectedPoke].cost;
-        var hasCredits = trainer.credits >= cost;
-        // If the trainer has enough credits, add the Pokemon to their collecion:
-        if (hasCredits) {
-            trainer.credits = trainer.credits - cost;
-            return this.http.post("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke - 1], this.httpJSON);
-        }
-        else {
-            alert("You can't afford this Pokemon");
-        }
-    };
     ShopComponent.prototype.onBallClick = function () {
         //Hide pokeball img and show card div
         $("#generate-pokemon-pokeball").addClass("d-none");
@@ -1001,22 +973,16 @@ var ShopComponent = /** @class */ (function () {
         $("#generate-pokemon-draw-btn").removeClass("d-none");
         this.cardShow = true;
     };
-    //gets all pokeinfo from the cache
-    ShopComponent.prototype.getAllPokemon = function () {
-        return this.http.get("/PokemonCollector/servlet/allpokemon");
-    };
     //method that calls above observable
     //iscalled onInit
     ShopComponent.prototype.populatePokeArray = function () {
         var _this = this;
-        this.getAllPokemon().subscribe(function (data) {
+        this.pokedexService.getAllPokemon().subscribe(function (data) {
             //put all pokemon into pokemon array
-            console.log(data);
             _this.allPoke = [];
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i]);
-                var newPoke = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__["Pokemon"]();
-                newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
+                var newPoke = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__["Pokemon"]();
+                newPoke.name = data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1);
                 newPoke.imageUrl = data[i].imageUrl;
                 newPoke.id = data[i].id;
                 newPoke.count = data[i].count;
@@ -1025,36 +991,63 @@ var ShopComponent = /** @class */ (function () {
                 newPoke.cost = data[i].cost;
                 _this.allPoke[i] = newPoke;
             }
-            console.log(_this.allPoke);
         });
     };
+    // populatePokePages(): void{
+    //   let count = 0;
+    //   this.currentPage = 0;
+    //   //display number of pokemon on page from radio button
+    //   for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
+    //     this.pokePages[count] = this.allPoke[i];
+    //     count++;
+    //   }
+    //   this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+    // }
     ShopComponent.prototype.populatePokePages = function () {
-        var count = 0;
-        this.currentPage = 0;
-        //display number of pokemon on page from radio button
-        for (var i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++) {
-            this.pokePages[count] = this.allPoke[i];
-            count++;
+        this.currentPage = 1;
+        this.pokePages = this.allPoke.slice((this.currentPage - 1) * this.numPoke, (this.currentPage * this.numPoke));
+        this.showPagination = true;
+    };
+    ShopComponent.prototype.changePokePages = function () {
+        if (((this.currentPage * this.numPoke) + 1) > this.allPoke.length) {
+            this.pokePages = this.allPoke.slice((this.currentPage - 1) * this.numPoke);
         }
-        this.numPages = Math.ceil(this.TOTALPOKEMON / this.numPoke);
+        else {
+            this.pokePages = this.allPoke.slice((this.currentPage - 1) * this.numPoke, (this.currentPage * this.numPoke) + 1);
+        }
     };
     //pagination methods on standby
+    ShopComponent.prototype.showPaginationNavbar = function () {
+        this.numPages = Math.ceil(this.TOTALPOKEMON / this.numPoke);
+        for (var i = 0; i < this.numPages; i++) {
+            this.paginationArray[i] = i + 1;
+        }
+    };
+    //jump to specific page
+    ShopComponent.prototype.specificPage = function (pageNumber) {
+        this.currentPage = pageNumber;
+        this.changePokePages();
+    };
     //wrap around to first page if on last page
     ShopComponent.prototype.nextPage = function () {
         if (this.currentPage == this.numPages) {
-            this.currentPage = 0;
+            this.currentPage = 1;
+            this.changePokePages();
         }
         else {
             this.currentPage++;
+            this.changePokePages();
         }
     };
     //wrap around to last page if on first page
     ShopComponent.prototype.prevPage = function () {
-        if (this.currentPage == 0) {
+        if (this.currentPage == 1) {
             this.currentPage = this.numPages;
+            this.changePokePages();
         }
         else {
             this.currentPage--;
+            this.changePokePages();
         }
     };
     ShopComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1063,7 +1056,7 @@ var ShopComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shop.component.html */ "./src/app/components/shop/shop.component.html"),
             styles: [__webpack_require__(/*! ./shop.component.css */ "./src/app/components/shop/shop.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__["PokedexService"]])
     ], ShopComponent);
     return ShopComponent;
 }());
@@ -1090,7 +1083,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
+module.exports = "<div align=\"center\">\r\n  <br>\r\n <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCountTotal\" style=\"width: 90%; height: 700px; display: block;  margin : 10px;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1113,77 +1106,42 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsComponent = /** @class */ (function () {
     function StatsComponent() {
-        this.data1 = [
-            {
-                name: 'Normal',
-                y: 65,
-            }, {
-                name: 'Water',
-                y: 62,
-            }, {
-                name: 'Grass',
-                y: 38,
-            }, {
-                name: 'Psychic',
-                y: 35,
-            }, {
-                name: 'Fire',
-                y: 31,
-            }, {
-                name: 'Electric',
-                y: 28,
-            }, {
-                name: 'Fighting',
-                y: 22,
-            }, {
-                name: 'Bug',
-                y: 18,
-            }, {
-                name: 'Poison',
-                y: 16,
-            }, {
-                name: 'Ground',
-                y: 15,
-            }, {
-                name: 'Ice',
-                y: 14,
-            }, {
-                name: 'Dragon',
-                y: 12,
-            }, {
-                name: 'Rock',
-                y: 11,
-            }, {
-                name: 'Ghost',
-                y: 9,
-            }, {
-                name: 'Flying',
-                y: 7,
-            }
-        ];
+        this.total = this.data1;
         this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
-        this.configUrl = "/PokemonCollector/ng/stats";
+        //configUrl = "http://localhost:8080/PokemonCollector/ng/stats1";
+        this.configUrl = "/PokemonCollector/ng/stats1";
     }
     StatsComponent.prototype.ngOnInit = function () {
         var _this = this;
         fetch(this.configUrl)
             .then(function (res) { return res.json(); })
             .then(function (res) {
-            console.log(res);
             _this.data1 = res;
-            _this.load();
+            _this.configUrl = "/PokemonCollector/ng/stats2";
+            //this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
+            fetch(_this.configUrl)
+                .then(function (res) { return res.json(); })
+                .then(function (res) {
+                _this.total = res;
+                _this.load();
+            });
         });
     };
     StatsComponent.prototype.load = function () {
-        this.pokeCount = {
+        this.pokeCountTotal = {
             chart: {
-                type: 'column'
+                type: 'column',
+                marginBottom: "150",
+                spacingTop: "1",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150"
             },
             title: {
-                text: 'Pokemons per trainer'
+                text: 'Pokemons Per Trainer'
             },
             subtitle: {
-                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+                text: 'Top 10'
             },
             xAxis: {
                 type: 'category',
@@ -1198,25 +1156,81 @@ var StatsComponent = /** @class */ (function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Population (millions)'
+                    text: 'Pokemon'
                 }
             },
             legend: {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+            },
+            series: [{
+                    name: 'Population',
+                    data: this.total,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: 0,
+                        color: 'black',
+                        align: 'right',
+                        format: '{point.y:.0f}',
+                        y: -25,
+                        x: -10,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        };
+        this.pokeCount = {
+            chart: {
+                type: 'column',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
+            },
+            title: {
+                text: 'Unique Pokemons Per Trainer'
+            },
+            subtitle: {
+                text: 'Top 10'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Pokemon'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
             },
             series: [{
                     name: 'Population',
                     data: this.data1,
                     dataLabels: {
                         enabled: true,
-                        rotation: -90,
-                        color: '#FFFFFF',
+                        rotation: 0,
+                        color: '#black',
                         align: 'right',
                         format: '{point.y:.0f}',
-                        y: -50,
+                        y: -25,
+                        x: -10,
                         style: {
                             fontSize: '13px',
                             fontFamily: 'Verdana, sans-serif'
@@ -1229,10 +1243,18 @@ var StatsComponent = /** @class */ (function () {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
             },
             title: {
-                text: 'Pokemon Types'
+                text: 'Distribution Of Pokemon Per Players'
+            },
+            subtitle: {
+                text: 'Top 10'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -1243,7 +1265,7 @@ var StatsComponent = /** @class */ (function () {
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        format: '<b>{point.name}</b>',
                         style: {
                         // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                         }
@@ -1251,9 +1273,9 @@ var StatsComponent = /** @class */ (function () {
                 }
             },
             series: [{
-                    name: 'Pokemon Type',
+                    name: 'Pokemon',
                     colorByPoint: true,
-                    data: this.data1
+                    data: this.total
                 }]
         };
     };
@@ -1452,8 +1474,11 @@ var PokedexService = /** @class */ (function () {
     //returns updated credits and increased credit amount when redeeming a specific pokemon
     PokedexService.prototype.redeemSpecific = function (redeemTicket) {
         //make POST request to get array of 'int's which will resemble credits earned and credits after redeem
-        console.log("redeemTicket ", redeemTicket);
         return this._http.post("/PokemonCollector/servlet/redeem", redeemTicket);
+    };
+    //gets all pokeinfo from the cache
+    PokedexService.prototype.getAllPokemon = function () {
+        return this._http.get("/PokemonCollector/servlet/allpokemon");
     };
     PokedexService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1483,15 +1508,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _trainer_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _pokedex_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pokedex.service */ "./src/app/services/pokedex.service.ts");
+
 
 
 
 
 
 var TokenService = /** @class */ (function () {
-    function TokenService(router, trainerService) {
+    function TokenService(router, trainerService, pokedexService) {
         this.router = router;
         this.trainerService = trainerService;
+        this.pokedexService = pokedexService;
     }
     /*
     Sets a user token to session storage when the
@@ -1500,7 +1528,7 @@ var TokenService = /** @class */ (function () {
     TokenService.prototype.setCurrentUserToken = function (token, resp) {
         if (token) {
             sessionStorage.setItem("CURRENT_USER", token);
-            console.log(resp);
+            //console.log(resp);
             var t = {
                 userID: resp.body.userID,
                 username: resp.body.username,
@@ -1511,9 +1539,10 @@ var TokenService = /** @class */ (function () {
                 credits: resp.body.credits,
                 score: resp.body.score
             };
-            console.log(t);
+            //console.log(t);
             sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
             this.trainerService.updateValidLogin(t);
+            this.pokedexService.getTrainersPokemon(t.username).subscribe(function (val) { return val; }, function (err) { return err; });
             this.router.navigateByUrl("/generate");
         }
         else {
@@ -1546,7 +1575,7 @@ var TokenService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"], _pokedex_service__WEBPACK_IMPORTED_MODULE_5__["PokedexService"]])
     ], TokenService);
     return TokenService;
 }());
@@ -1677,7 +1706,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\my_git_repos\PokemonCollectorGroup\PokemonCollector\src\main\ngapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Brock Sokevitz\Documents\GitHub\PokemonCollector\src\main\ngapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })
