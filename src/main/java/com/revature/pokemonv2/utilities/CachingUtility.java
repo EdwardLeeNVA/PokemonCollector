@@ -98,12 +98,10 @@ public class CachingUtility {
 			 pokedexCache.remove(username);
 			 return true;
 		 }catch(NullPointerException e) {
-			 logger.error("NullPointerException for removeCollection");
-			 e.printStackTrace();
+			 logger.error("NullPointerException for removeCollection", e);
 			 return false;
-		 }catch(CacheWritingException c) {
-			 logger.error("cache writing exception for removeCollection");
-			 c.printStackTrace();
+		 }catch(CacheWritingException e) {
+			 logger.error("cache writing exception for removeCollection", e);
 			 return false;
 		 }
 	 }

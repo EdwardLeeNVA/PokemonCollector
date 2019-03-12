@@ -50,7 +50,7 @@ public class ConnectionUtility {
         try {
             c.close();
         } catch (SQLException e) {
-            System.out.println(e);
+            log.error(e.getMessage(), e);
         }
     }
 }

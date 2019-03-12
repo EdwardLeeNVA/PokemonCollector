@@ -24,14 +24,12 @@ public class PokemonDAO {
 	final static Logger logger = Logger.getLogger(PokemonDAO.class);
 
 	public List<Pokemon> getTrainerPokedex(String username) {
-		logger.trace("Database called for pokedex");
+		logger.trace("Database called for pokedex for " + username);
 		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
 			try (CallableStatement cs = PokemonDAOStatements.getTrainerPokedexStatement(conn, username)) {
 				cs.execute();
 				ResultSet rs = (ResultSet) cs.getObject(2);
-				logger.trace("Query executed and iterating through cursor.");
 				List<Pokemon> pokedex = PokemonFactory.createListFromResultSet(rs);
-				logger.trace("Pokedex returned by DB: " + pokedex);
 				return pokedex;
 			}
 		} catch (SQLException e) {
@@ -67,7 +65,7 @@ public class PokemonDAO {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			// log.error(e.getMessage());
+			 logger.error(e.getMessage(), e);
 		} finally {
 
 			// until we merge with connection pool

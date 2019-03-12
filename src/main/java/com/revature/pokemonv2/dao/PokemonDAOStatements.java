@@ -14,10 +14,8 @@ class PokemonDAOStatements {
 
 	static CallableStatement getTrainerPokedexStatement(Connection connection, String username) throws SQLException {
 		CallableStatement statement = connection.prepareCall("call get_all_pokemon(?, ?)");
-		logger.trace("Entered sql statement creation.");
 		statement.setString(1, username);
 		statement.registerOutParameter(2, OracleTypes.CURSOR);
-		logger.trace("Entered callable statement creation.");
 		return statement;
 	}
 	

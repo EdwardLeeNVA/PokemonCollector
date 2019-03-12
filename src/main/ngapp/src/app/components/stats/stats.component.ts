@@ -16,8 +16,8 @@ export class StatsComponent implements OnInit {
 
   constructor() { }
 
-  //configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
-     configUrl = "/PokemonCollector/ng/stats";
+  //configUrl = "http://localhost:8080/PokemonCollector/ng/stats1";
+     configUrl = "/PokemonCollector/ng/stats1";
 
   pokeCount;
   pokeCountTotal;
