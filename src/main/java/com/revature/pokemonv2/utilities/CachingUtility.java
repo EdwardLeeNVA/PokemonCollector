@@ -144,6 +144,10 @@ public class CachingUtility {
 	 	return temp;
 	}
 
+	public Pokemon getPokemonCache(Integer pokeId){
+	 	return this.allPokemonCache.get(pokeId);
+	}
+
 	public Pokemon getPokemon(Integer pokeId){
 		try {
 			StringBuilder pokeBaseURL = new StringBuilder("https://pokeapi.co/api/v2/pokemon/");
