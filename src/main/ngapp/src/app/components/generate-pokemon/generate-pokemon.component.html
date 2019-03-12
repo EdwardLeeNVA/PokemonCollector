@@ -34,7 +34,10 @@
                 <h4 class="pokemon-card-name">{{pokemonName}}</h4>
                 <img src="{{pokemonSprite}}" class="pokemon-card-img"/>
                 <div class="pokemon-card-info-cont">
-                  <p><b>Type: {{pokemonType}}</b></p>
+                  <p *ngIf= "pokemon.type[1] == null"><b>Type: {{ pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</b></p>
+                  <p *ngIf= "pokemon.type[1] != null"><b>Type: {{ (pokemonType[1].charAt(0).toUpperCase() + pokemonType[1].substring(1)) + " / " + 
+                  pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1)}}</b></p>
+                  <p>Count: {{ pokemonCount }}</p>
                   <p><b>HP: {{hp}}</b></p>
                   <p><b>Attack: {{attack}}</b></p>
                   <p><b>Defense: {{defense}}</b></p>
