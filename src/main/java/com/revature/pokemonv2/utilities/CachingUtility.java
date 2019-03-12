@@ -6,8 +6,6 @@ import java.util.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.sargunvohra.lib.pokekotlin.client.PokeApi;
-import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import org.apache.log4j.Logger;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
