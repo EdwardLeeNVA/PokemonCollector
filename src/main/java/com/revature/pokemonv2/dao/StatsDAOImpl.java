@@ -5,17 +5,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.log4j.Logger;
-
-import com.revature.pokemonv2.data.SampleData;
-import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.Stats;
 import com.revature.pokemonv2.model.Trainer;
-import com.revature.pokemonv2.model.Type;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
 
 public class StatsDAOImpl implements StatDAO{
@@ -82,6 +76,7 @@ public class StatsDAOImpl implements StatDAO{
 								);
 						leaderboard.add(t);
 					}
+					Collections.sort(leaderboard);
 				}
 				return leaderboard;
 			}
