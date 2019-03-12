@@ -1,19 +1,35 @@
-<h1>Top 10 Scores</h1>
-<div id="outer-most">
-  <div>
-    <table id="leaderboardTable">
-      <thead></thead>
-      <tr>
-        <th class="tabletext" id="tableusername" scope="col">Username</th>
-        <th class="tabletext" id="tablescore" scope="col">Score</th>
-      </tr>
+<div class="container">
 
-      <tbody id="leaderboardBody"></tbody>
-    </table>
+  <div id="landingWrapper" class="row">
+    <!-- //////NEW ROW ON GRID\\\\\\\ -->
+    <div class="col-md-1"></div>
+    <!-- holds logo for landing page -->
+    <div class="col-md-5">
+      <!-- INNDER COL START -->
+      <div class="row">
+        <div id="leaderLeftSection" class="col-md-12 text-center">
+            <img id="landingLogo" src="http://i64.tinypic.com/n3b6s6.png"><br>
+            <img id="leaderLeftImg" src="http://i64.tinypic.com/xf1e6b.png">
+        </div>
+      </div>
+    </div>
+    <div id="leaderRightSection" class="col-md-5 text-center">
+        <h1 id="leaderHeading">Top 10 Scores</h1>
+        <table id="leaderboardTable">
+          <thead>
+            <tr>
+              <th class="tabletext" id="tableusername" scope="col">Trainer</th>
+              <th class="tabletext" id="tablescore" scope="col">Score</th>
+            </tr>
+          </thead>
+          <!-- populated with rows from the TS file -->
+          <tbody id="leaderboardBody"></tbody>
+        </table>
+        <button id="statsBtn" class="Button" routerLink="/stats">View Statistics</button>
+    </div>
+    <div class="col-md-1"></div>
+
   </div>
-  <br />
-  <div>
-    <button class="Button" routerLink="/stats">Stats</button>
-  </div>
-  <br />
+  
 </div>
+

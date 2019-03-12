@@ -23,16 +23,16 @@
            
             </div>
             <form>
+              <h4 id="dropdown-label">Number of Pokemon per page</h4>
               <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0 selected>Number of Pokemon per page</option>
                 <option value=20>20</option>
                 <option value=50>50</option>
                 <option value=100>100</option>
               </select>
             </form>
             <div *ngIf="showPagination">
-              <button type="button" value="previous page" (click)="prevPage()"><</button>
-              <button type="button" value="next page" (click)="nextPage()">></button>
+              <button class="shop-page-btn" type="button" value="previous page" (click)="prevPage()">Prev</button>
+              <button class="shop-page-btn" type="button" value="next page" (click)="nextPage()">Next</button>
             </div>            
             <div class="radio-card-grid">
               <div
@@ -57,11 +57,13 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
+                    <p>Cost: {{ pokemon.cost }}</p>
+                    <p *ngIf= "pokemon?.type.length == 1">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
+                    <p *ngIf= "pokemon?.type.length == 2"> Type: {{ pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1) + " / "
+                     + pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
                     <p>HP: {{ pokemon.stats.hp }}</p>
                     <p>Attack: {{ pokemon.stats.attack }}</p>
-                    <p>Defense: {{ pokemon.stats.defense }} </p>
-                    <p>Type: {{ pokemon.type }}</p>
-                    <p>Cost: {{ pokemon.cost }}</p>
+                    <p>Defense: {{ pokemon.stats.defense }} </p> 
                   </div>
                 </div>
               </div>
@@ -94,8 +96,13 @@
   
             <img src="{{ allPoke[selectedPoke - 1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                  <p>Type: {{ allPoke[selectedPoke-1].type }}</p>
                 <p>Cost: {{ allPoke[selectedPoke-1].cost }}</p>
+                <p *ngIf= "allPoke[selectedPoke-1]?.type.length == 1">Type: {{ allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
+                <p *ngIf= "allPoke[selectedPoke-1]?.type.length == 2"> Type: {{ allPoke[selectedPoke-1].type[1].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[1].substring(1) + " / "
+                 + allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
+                <p>HP: {{ allPoke[selectedPoke-1].stats.hp }}</p>
+                <p>Attack: {{ allPoke[selectedPoke-1].stats.attack }}</p>
+                <p>Defense: {{ allPoke[selectedPoke-1].stats.defense }} </p> 
             </div>
           </div>
           <!-- start no credits alert -->
@@ -123,6 +130,7 @@
           </button>
         </div>
         <!-- end no credit alert -->
+
         <!-- start I choose you alert -->
         <div
         class="alert alert-danger alert-dismissible fade show d-none"
@@ -148,6 +156,7 @@
         </button>
       </div>
         <!-- end I choose you alert -->
+        
         <!-- start confirmation button -->
           <button
                 data-toggle="modal"

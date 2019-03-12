@@ -9,7 +9,7 @@ import { Trainer } from "../models/Trainer";
 export class TrainerService {
   constructor(private _http: HttpClient) {}
 
-  private current_trainer = new BehaviorSubject(null);
+  private current_trainer = new BehaviorSubject(new Trainer());
   public current_trainer_bs = this.current_trainer.asObservable();
 
   private login_status = new BehaviorSubject(false);
@@ -30,7 +30,7 @@ export class TrainerService {
   }
 
   updateLogout() {
-    this.current_trainer.next(null);
+    this.current_trainer.next(new Trainer());
     this.login_status.next(false);
   }
 

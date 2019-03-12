@@ -15,7 +15,7 @@ export class ShopComponent implements OnInit {
   private TOTALPOKEMON: number = 151;
   public showPagination: boolean = false;
   private paginationArray: number[];
-  public numPoke: number;
+  public numPoke: number = 20;
   private currentPage: number;
   public numPages: number;
   public allPoke: Pokemon[];
@@ -37,6 +37,7 @@ export class ShopComponent implements OnInit {
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
     this.populatePokeArray();
+    this.populatePokePages();
   }
 
   onBuySubmit() {

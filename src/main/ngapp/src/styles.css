@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);
+  background: linear-gradient(to bottom left, #000066 0%, #8a8ae2 100%);
 }
 
 .logged-nav {
@@ -125,6 +125,7 @@ body {
   padding: 10px;
   border: 1px solid yellow;
 }
+
 .shop-buy-btn {
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
   border: 2px solid yellow !important;

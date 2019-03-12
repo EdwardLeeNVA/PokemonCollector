@@ -174,11 +174,23 @@ body {
   color: white;
 }
 
-
 #shop-buy-btn .shop-buy-btn  {
     background: linear-gradient(to top, #990033 0%, #cc0000 65%);
     border: 2px solid yellow !important;
     color: white;
     width: 30%;
     margin-bottom: 30px;
+  }
+
+  .shop-page-btn {
+    background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+    border: 2px solid yellow !important;
+    color: white;
+    width: 75px;
+    margin-bottom: 30px;
+  }
+
+  #dropdown-label {
+    color: white;
+    text-align: center;
   }

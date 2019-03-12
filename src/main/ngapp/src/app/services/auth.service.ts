@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Trainer } from "../models/Trainer";
-import { TrainerService } from "./trainer.service";
 
 @Injectable({
   providedIn: "root"

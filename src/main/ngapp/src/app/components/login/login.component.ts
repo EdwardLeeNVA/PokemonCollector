@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(
       status => (this.login_status = status)
     );
@@ -42,20 +41,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  trainerInput: Trainer = {
-    userID: 0,
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    credits: 0,
-    score: 0
-  };
-
   loginTrainer() {
     this.authService
-      .attemptLogin(this.trainerInput.username, this.trainerInput.password)
+      .attemptLogin(this.trainer.username, this.trainer.password)
       .subscribe(data => {
         if (data.body == null) {
           console.log("in body null if");
@@ -68,7 +56,6 @@ export class LoginComponent implements OnInit {
             data.headers.get("Authorization"),
             data
           );
-          //this.trainerService.updateValidLogin(data);
         }
       });
   }

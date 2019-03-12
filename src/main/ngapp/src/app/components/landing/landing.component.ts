@@ -30,8 +30,8 @@ export class LandingComponent implements OnInit {
         for (let data of res) {
           table.innerHTML = table.innerHTML + `
           <tr>
-      <td style="color: white; border: 1px solid black;" align="left" id ="tableusername">${data.username}</td> 
-      <td style="color: white; border: 1px solid black;" align="left" id ="tablescore">${data.score}</td>
+      <td style="color: white; border: 1px solid black;" id ="tableusername">${data.username}</td> 
+      <td style="color: white; border: 1px solid black;" id ="tablescore">${data.score}</td>
       </tr>
       `
         }
