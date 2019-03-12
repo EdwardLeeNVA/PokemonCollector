@@ -54,8 +54,11 @@ export class RedeemComponent implements OnInit {
   redeemAll() {
     this.pokedexService.redeemAll().subscribe(Response => {
       this.credits = Response;
+      //Update Behavior Subject
+      this.trainer.credits = Response[1];
+      this.trainerService.updateValidLogin(this.trainer);
     });
-    // location.reload(true);
+
     this.duplicatePokemon = [];
   }
 
@@ -70,7 +73,10 @@ export class RedeemComponent implements OnInit {
       .redeemSpecific(this.redeemTicketModel)
       .subscribe(Response => {
         //Sets the this.credits to response.
+
         this.credits = Response;
+        this.trainer.credits = Response[1];
+        this.trainerService.updateValidLogin(this.trainer);
       });
 
     let tempArr = new Array();

@@ -30,16 +30,16 @@ public class CachingUtility {
 	 private CachingUtility(){
 		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, ArrayList.class);
 		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
-		 getAllPokemon();
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
-		 if (cachingUtility == null)
-			 cachingUtility = new CachingUtility();
+		 if (cachingUtility == null) {
+		 	cachingUtility = new CachingUtility();
+		 }
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
+	 public ArrayList<Pokemon> checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
 

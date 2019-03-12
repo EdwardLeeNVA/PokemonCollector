@@ -9,5 +9,6 @@ public interface StatDAO {
 
 	List<Trainer> getLeaderboard(int topN);
 	List<Stats> getPokemonCountByTrainer();
+	List<Stats> getTotalPokemonCountByTrainer();
 
 }
