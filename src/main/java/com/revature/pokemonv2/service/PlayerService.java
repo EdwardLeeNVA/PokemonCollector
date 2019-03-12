@@ -47,7 +47,7 @@ public class PlayerService {
 		int trainerId = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUserID();
 		// generate a random pokemon and add it to the user's collection
 		int pokemonId = new Random().nextInt(151) + 1;
-		return PokemonDAO.generatePokemon(trainerId, pokemonId, username);
+		return PokemonDAO.generatePokemon(trainerId, pokemonId, username, false);
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class PlayerService {
 		}
 		int cost = p.getCost();
 		// dao command to remove the money
-		if (trainer.purchasePokemon(username, cost)) {
+		if (trainer.purchasePokemon(username, cost, false)) {
 			CachingUtility.getCachingUtility().addToCache(username, p.getId());
 			// return true;
 		}
@@ -99,6 +99,6 @@ public class PlayerService {
 	 */
 	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
-				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0);
+				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0, false);
 	}
 }

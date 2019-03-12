@@ -14,12 +14,12 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 	private static PokemonDAO dao = new PokemonDAO();
 	final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
-	
+	public static boolean isTesting;
 
 	@Override
 	public ArrayList<Pokemon> load(Object key) throws Exception {
 		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
-		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key, isTesting);
 		for (Pokemon p : pokeDex) {
 			Pokemon poke = CachingUtility.getCachingUtility().getPokemonCache(p.getId());
 			poke.setCount(p.getCount());
