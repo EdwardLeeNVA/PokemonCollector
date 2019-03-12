@@ -1,28 +1,85 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-12">  
-        <div class="row justify-content-center">
-          <div class="col-md-12">
-            <div id="drawButton" class="draw-pokemon-cont text-center">
-              
-              <img class="animated lightSpeedIn" id="catch-em-all-header"
-                src="https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png"
-              />
+    <div class="col-md-12">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div id="drawButton" class="draw-pokemon-cont text-center">
+            <img
+              class="animated lightSpeedIn img-responsive"
+              id="catch-em-all-header"
+              src="https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png"
+            />
 
-              <!--(click)="onClickMe()"-->
-              <button class="newPokemon-Generate-Button" data-toggle="modal" data-target="#newpokemonModal" (click)="onClick()">
-                Get a pokemon
-              </button>
+            <!--(click)="onClickMe()"-->
+            <button
+              class="newPokemon-Generate-Button"
+              data-toggle="modal"
+              data-target="#newpokemonModal"
+              (click)="onClick()"
+            >
+              Get a pokemon
+            </button>
+            <div class="row" id="rulesContainerRow mt-5">
+              <div class="col-md-2">
+                <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+              </div>
+              <div class="col-md-10">
+                Hello there! Welcome to the world of pokémon!<br />
+                My name is Oak! People call me the pokémon Prof!<br />
+                This application is inhabited by creatures called pokémon! For
+                some people, pokémon are pets. Others use them to build a
+                collection and become a pokémon master.<br />
+                Click this button to generate a random pokémon to add to your
+                collection and increase your score.<br />
+                In the shop you can buy pokémon with credits and build your
+                collection. <br />When you have duplicate pokémon in your
+                collection you can redeem them for more credits to use in the
+                shop.<br />
+                Your goal is to collect them all.<br />
+                Good luck!
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- <div class="container mb-3 mt-3">
+        <div class="row" id="rulesContainerRow">
+          <div class="col-md-2">
+            <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+          </div>
+          <div class="col-md-10">
+            Hello there! Welcome to the world of pokémon!<br> My name is Oak! People
+            call me the pokémon Prof!<br> This application is inhabited by creatures
+            called pokémon! For some people, pokémon are pets. Others use them
+            to build a collection and become a pokémon master.<br> Click this button
+            to generate a random pokémon to add to your collection and increase
+            your score.<br> In the shop you can buy pokémon with credits and build
+            your collection. <br>When you have duplicate pokémon in your collection
+            you can redeem them for more credits to use in the shop.<br> Your goal
+            is to collect them all.<br> Good luck!
+          </div>
+        </div>
+      </div> -->
 
       <!-- Modal -->
-      <div class="modal fade" id="newpokemonModal" tabindex="-1" role="dialog" aria-labelledby="newpokemonModel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="newpokemonModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="newpokemonModel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog" role="document">
-          <div class="modal-content justify-content-center" id="newPokemon-Modal-Content">
-            <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-
+          <div
+            class="modal-content justify-content-center"
+            id="newPokemon-Modal-Content"
+          >
+            <div
+              class="modal-body justify-content-center"
+              id="newPokemon-Modal-Body"
+            >
               <img
                 src="http://i66.tinypic.com/2rrwdck.png"
                 id="generate-pokemon-pokeball"
@@ -30,22 +87,44 @@
                 (click)="onBallClick()"
               />
 
-              <div class="pokemon-card-outer text-center d-none" id="generate-pokemon-card">
-                <h4 class="pokemon-card-name">{{pokemonName}}</h4>
-                <img src="{{pokemonSprite}}" class="pokemon-card-img"/>
+              <div
+                class="pokemon-card-outer text-center d-none"
+                id="generate-pokemon-card"
+              >
+                <h4 class="pokemon-card-name">{{ pokemonName }}</h4>
+                <img src="{{ pokemonSprite }}" class="pokemon-card-img" />
                 <div class="pokemon-card-info-cont">
-                  <p><b>Type: {{pokemonType}}</b></p>
-                  <p><b>HP: {{hp}}</b></p>
-                  <p><b>Attack: {{attack}}</b></p>
-                  <p><b>Defense: {{defense}}</b></p>
+                  <p>
+                    <b>Type: {{ pokemonType }}</b>
+                  </p>
+                  <p>
+                    <b>HP: {{ hp }}</b>
+                  </p>
+                  <p>
+                    <b>Attack: {{ attack }}</b>
+                  </p>
+                  <p>
+                    <b>Defense: {{ defense }}</b>
+                  </p>
                 </div>
               </div>
 
-              <button id="generate-pokemon-draw-btn" type="button" class="newPokemon-Modal-Buttons d-none" (click)="onClick()">
+              <button
+                id="generate-pokemon-draw-btn"
+                type="button"
+                class="newPokemon-Modal-Buttons d-none"
+                (click)="onClick()"
+              >
                 Draw Another!
               </button>
 
-              <button type="button" class="newPokemon-Modal-Buttons" data-dismiss="modal">Close</button>
+              <button
+                type="button"
+                class="newPokemon-Modal-Buttons"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

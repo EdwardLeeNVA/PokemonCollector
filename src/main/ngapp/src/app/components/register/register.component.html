@@ -1,65 +1,128 @@
-<div>
-  <form id="registerForm" class="form-group" #registerForm="ngForm" (ngSubmit)="registerTrainer()" method="POST">
-    <div class="form-group">
-      <label for="username">Username: </label>
-      <input name="username" class="form-control" required
-        placeholder="username" #username>
+<div class="container login-form-cont">
+  <div class="row justify-content-center">
+    <div class="col-md-6 justify-content-center" id="register_outer_cont">
+      <img
+        class="animated wobble mt-3"
+        src="https://fontmeme.com/permalink/190312/16a6fa3029a30455d5905b3f520897c9.png"
+        id="pokeFONT"
+      />
 
-      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-        <div *ngIf="username.errors.required">
-          Username is required.
-        </div>
-      </div>
-    </div>
+      <form
+        id="registerForm"
+        class=" login-form"
+        #registerForm="ngForm"
+        (ngSubmit)="registerTrainer()"
+        method="POST"
+      >
+        <div class="form-group">
+          <label for="username">Username </label>
+          <input
+            name="username"
+            class="form-control"
+            required
+            placeholder="Username"
+            #username
+          />
 
-    <div class="form-group">
-      <label for="password">Password: </label>
-      <input name="password" class="form-control" required type="password"
-        placeholder="password" #password>
-
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-          <div *ngIf="password.errors.required">
-            Password is required.
+          <div
+            *ngIf="username.invalid && (username.dirty || username.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="username.errors.required">
+              Username is required.
+            </div>
           </div>
         </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="fname">First Name: </label>
-      <input name="fname" class="form-control" required
-        placeholder="fname" #fname>
 
-      <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger">
-        <div *ngIf="fname.errors.required">
-          First name is required.
+        <div class="form-group">
+          <label for="password">Password </label>
+          <input
+            name="password"
+            class="form-control"
+            required
+            type="password"
+            placeholder="Password"
+            #password
+          />
+
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="password.errors.required">
+              Password is required.
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="lname">Last Name: </label>
-      <input name="lname" class="form-control" required
-        placeholder="lname" #lname>
 
-      <div *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert alert-danger">
-        <div *ngIf="lname.errors.required">
-          Last name is required.
+        <div class="form-group">
+          <label for="fname">First Name </label>
+          <input
+            name="fname"
+            class="form-control"
+            required
+            placeholder="First Name"
+            #fname
+          />
+
+          <div
+            *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="fname.errors.required">
+              First name is required.
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="email">Email: </label>
-      <input name="email" class="form-control" required type="email"
-        placeholder="email" #email>
 
-      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-        <div *ngIf="email.errors.required">
-          Email is required.
+        <div class="form-group">
+          <label for="lname">Last Name </label>
+          <input
+            name="lname"
+            class="form-control"
+            required
+            placeholder="Last Name"
+            #lname
+          />
+
+          <div
+            *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="lname.errors.required">
+              Last name is required.
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <input name="submit" type="submit" class="btn btn-outline-light" [disabled]="!registerForm.form.valid">
-  </form>
+        <div class="form-group">
+          <label for="email">Email </label>
+          <input
+            name="email"
+            class="form-control"
+            required
+            type="email"
+            placeholder="Email"
+            #email
+          />
+
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="email.errors.required">
+              Email is required.
+            </div>
+          </div>
+        </div>
+
+        <input
+          name="submit"
+          type="submit"
+          class="btn btn-block login-form-btn"
+          [disabled]="!registerForm.form.valid"
+        />
+      </form>
+    </div>
+  </div>
 </div>

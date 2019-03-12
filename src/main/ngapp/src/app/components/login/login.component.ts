@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
 import { TokenService } from "src/app/services/token.service";
-import {TrainerService} from "../../services/trainer.service";
-import {Router} from "@angular/router";
-import {Trainer} from "../../models/Trainer";
+import { TrainerService } from "../../services/trainer.service";
+import { Router } from "@angular/router";
+import { Trainer } from "../../models/Trainer";
 
 @Component({
   selector: "app-login",
@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
 
+  //boolean for login alert
+  alertShowing = false;
+
   constructor(
     private authService: AuthService,
     private tokenService: TokenService,
@@ -27,9 +30,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //this.trainerService.checkSessionStorage();
-    this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
-    this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
-    if(this.trainer != null){
+    this.trainerService.login_status_bs.subscribe(
+      status => (this.login_status = status)
+    );
+    this.trainerService.current_trainer_bs.subscribe(
+      trainer => (this.trainer = trainer)
+    );
+    if (this.trainer != null) {
       this.trainerService.checkSessionStorage();
       this.router.navigateByUrl("/PokemonCollector/ng/generate");
     }
@@ -50,10 +57,26 @@ export class LoginComponent implements OnInit {
     this.authService
       .attemptLogin(this.trainerInput.username, this.trainerInput.password)
       .subscribe(data => {
-        if (data != null) {
-          this.tokenService.setCurrentUserToken(data.headers.get("Authorization"), data);
+        if (data.body == null) {
+          console.log("in body null if");
+          if (this.alertShowing == false) {
+            $("#login-alert").removeClass("d-none");
+            this.alertShowing = true;
+          }
+        } else if (data != null) {
+          this.tokenService.setCurrentUserToken(
+            data.headers.get("Authorization"),
+            data
+          );
           //this.trainerService.updateValidLogin(data);
         }
       });
+  }
+
+  onAlertClose() {
+    if (this.alertShowing) {
+      $("#login-alert").addClass("d-none");
+      this.alertShowing = false;
+    }
   }
 }
