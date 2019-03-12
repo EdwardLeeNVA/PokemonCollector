@@ -10,6 +10,7 @@ public class PokedexLoadWriterTest {
 	@Test
 	public void testLoadEmptyKey() throws Exception {
 		PokedexLoadWriter.isTesting = true;
+		
 		//test.load(null)
 		System.out.println( test.load(null).size());
 		assertEquals(test.load(null).size(), 151 );
@@ -18,6 +19,7 @@ public class PokedexLoadWriterTest {
 	@Test
 	public void testLoadValidKey() throws Exception {
 		PokedexLoadWriter.isTesting = true;
+		
 		assertEquals(test.load("test").size(), 3);
 	}
 }
