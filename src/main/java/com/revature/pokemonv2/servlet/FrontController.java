@@ -58,7 +58,8 @@ public class FrontController extends DefaultServlet {
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 		else if (uri.equals("/PokemonCollector/ng/stats"))
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
-		
+		else if (uri.equals("/PokemonCollector/ng/stats2"))
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetTotalPokemonCountByTrainer(request, response));
 		else {
 			switch (request.getMethod()) {
 			case "GET":
