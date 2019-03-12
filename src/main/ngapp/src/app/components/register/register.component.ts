@@ -28,7 +28,14 @@ export class RegisterComponent implements OnInit {
   registerTrainer() {
     let credentials : FormData = new FormData(document.querySelector("form"));
     this.trainerService.createTrainer(credentials).subscribe(
-      data => this.router.navigateByUrl("/landing")
+      data => {
+        if (data.status === 200) {
+          this.router.navigateByUrl("/landing");
+        } else {
+          console.log("Bad Request");
+        }
+          
+      }
     );
   }
 }
