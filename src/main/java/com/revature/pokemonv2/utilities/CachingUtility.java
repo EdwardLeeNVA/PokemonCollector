@@ -33,12 +33,13 @@ public class CachingUtility {
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
-		 if (cachingUtility == null)
-			 cachingUtility = new CachingUtility();
+		 if (cachingUtility == null) {
+		 	cachingUtility = new CachingUtility();
+		 }
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
+	 public ArrayList<Pokemon> checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
 
@@ -70,7 +71,7 @@ public class CachingUtility {
 	public ArrayList<Pokemon> redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
-		for(int i = 0; i < newPokeList.size(); i++){
+		for(int i = 0; i < origPokeList.size(); i++){
 			Pokemon temp = origPokeList.get(i);
 			temp.setCount(1);
 			newPokeList.add(temp);

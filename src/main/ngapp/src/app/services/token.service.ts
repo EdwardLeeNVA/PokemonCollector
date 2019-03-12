@@ -5,12 +5,13 @@ import { HttpHeaders } from "@angular/common/http";
 import { GeneratePokemonComponent } from "../components/generate-pokemon/generate-pokemon.component";
 import { TrainerService } from "./trainer.service";
 import { Trainer } from "../models/Trainer";
+import {PokedexService} from "./pokedex.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class TokenService {
-  constructor(private router: Router, private trainerService: TrainerService) {}
+  constructor(private router: Router, private trainerService: TrainerService, private pokedexService: PokedexService) {}
 
   /*
   Sets a user token to session storage when the 
@@ -33,6 +34,10 @@ export class TokenService {
       console.log(t);
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
       this.trainerService.updateValidLogin(t);
+      this.pokedexService.getTrainersPokemon(t.username).subscribe(
+        val => val,
+        err => err
+      );
       this.router.navigateByUrl("/generate");
     } else {
       throw new Error();

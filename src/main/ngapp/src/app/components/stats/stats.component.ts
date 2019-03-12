@@ -16,8 +16,8 @@ export class StatsComponent implements OnInit {
 
   constructor() { }
 
-  configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
-    // configUrl = "/PokemonCollector/ng/stats";
+  //configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
+     configUrl = "/PokemonCollector/ng/stats";
 
   pokeCount;
   pokeCountTotal;
@@ -31,8 +31,8 @@ export class StatsComponent implements OnInit {
         this.data1 = res;
 
 
-        //this.configUrl = "/PokemonCollector/ng/stats2";
-        this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
+        this.configUrl = "/PokemonCollector/ng/stats2";
+        //this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
       fetch(this.configUrl)
       .then(res => res.json())
       .then(res => {

@@ -11,6 +11,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.pokemonv2.utilities.CachingUtility;
 import org.apache.catalina.servlets.DefaultServlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,10 +35,11 @@ public class FrontController extends DefaultServlet {
 			"shop",
 			"redeem"
 	};
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		CachingUtility.getCachingUtility().getAllPokemon();
 	}
 
 	@Override
@@ -55,7 +57,7 @@ public class FrontController extends DefaultServlet {
 		else if (uri.equals("/PokemonCollector/ng/leaderboard"))
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 		else if (uri.equals("/PokemonCollector/ng/stats"))
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
+			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));		
 		else if (uri.equals("/PokemonCollector/ng/stats2"))
 			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetTotalPokemonCountByTrainer(request, response));
 		else {
