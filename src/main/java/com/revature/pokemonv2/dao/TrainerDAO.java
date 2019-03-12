@@ -36,7 +36,7 @@ public interface TrainerDAO {
 	 * Redeem all Pokemon for a specific trainer.
 	 * @param trainerId ID of the current trainer.
 	 */
-	public int[] redeemAll(int trainerId);
+	public int redeemAll(int trainerId, String username);
 	
 	/**
 	 * Redeems a specific Pokemon from a trainer's collection.
@@ -45,7 +45,7 @@ public interface TrainerDAO {
 	 * @param pokeId ID of the Pokemon being redeemed.
 	 * @return the amount of credits of credits given (index 0) and total credits (index 1).
 	 */
-	public int[] redeemSpecific(int trainerId, int pokeId);
+	public int redeemSpecific(int trainerId, int pokeId, String username);
 
 	/**
 	 * Verifies via SQL whether the user login is correct
