@@ -270,7 +270,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0] }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{pokemon.type[1] + \" / \" + pokemon.type[0]}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + \" / \" + \r\n                  pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -348,7 +348,7 @@ module.exports = ".pokemon-card-outer {\r\n    margin: 15px;\r\n    height: 320p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p><b>Type: {{pokemonType}}</b></p>\r\n                  <p><b>HP: {{hp}}</b></p>\r\n                  <p><b>Attack: {{attack}}</b></p>\r\n                  <p><b>Defense: {{defense}}</b></p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">  \r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-md-12\">\r\n            <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n              \r\n              <img class=\"animated lightSpeedIn\" id=\"catch-em-all-header\"\r\n                src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n              />\r\n\r\n              <!--(click)=\"onClickMe()\"-->\r\n              <button class=\"newPokemon-Generate-Button\" data-toggle=\"modal\" data-target=\"#newpokemonModal\" (click)=\"onClick()\">\r\n                Get a pokemon\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      <!-- Modal -->\r\n      <div class=\"modal fade\" id=\"newpokemonModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"newpokemonModel\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div class=\"modal-content justify-content-center\" id=\"newPokemon-Modal-Content\">\r\n            <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div class=\"pokemon-card-outer text-center d-none\" id=\"generate-pokemon-card\">\r\n                <h4 class=\"pokemon-card-name\">{{pokemonName}}</h4>\r\n                <img src=\"{{pokemonSprite}}\" class=\"pokemon-card-img\"/>\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p *ngIf= \"pokemonType?.length == 1\">Type: {{ pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>\r\n                  <p *ngIf= \"pokemonType?.length == 2\"> Type: {{ pokemonType[1].charAt(0).toUpperCase() + pokemonType[1].substring(1) + \" / \"\r\n                     + pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>\r\n                  <p>HP: {{hp}}</p>\r\n                  <p>Attack: {{attack}}</p>\r\n                  <p>Defense: {{defense}}</p>\r\n                </div>\r\n              </div>\r\n\r\n              <button id=\"generate-pokemon-draw-btn\" type=\"button\" class=\"newPokemon-Modal-Buttons d-none\" (click)=\"onClick()\">\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button type=\"button\" class=\"newPokemon-Modal-Buttons\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -381,7 +381,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
     }
     GeneratePokemonComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //this.trainerService.checkSessionStorage();
+        //Subscribe to behavior subjects within this component
         this.trainerService.login_status_bs.subscribe(function (status) { return _this.login_status = status; });
         this.trainerService.current_trainer_bs.subscribe(function (trainer) { return _this.trainer = trainer; });
         if (this.trainer == null) {
@@ -389,23 +389,12 @@ var GeneratePokemonComponent = /** @class */ (function () {
             this.router.navigateByUrl("/PokemonCollector/ng/landing");
         }
     };
-    // generatePokemon() {
-    //   this.pokedexService.generatePokemon().subscribe(
-    //     data => {
-    //       this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-    //       this.pokemonType = data.types[0].type.name;
-    //       this.pokemonSprite = data.sprites.front_default;
-    //       this.hp = data.stats[5].base_stat;
-    //       this.attack = data.stats[4].base_stat;
-    //       this.defense = data.stats[3].base_stat;
-    //     }
-    //   );
-    // }
+    //Subscribe to generatePokemon observable in PokedexService. Set variables based on response and update score in the behavior subject.
     GeneratePokemonComponent.prototype.onClick = function () {
         var _this = this;
         this.pokedexService.generatePokemon().subscribe(function (data) {
             _this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-            _this.pokemonType = data.type[0];
+            _this.pokemonType = data.type;
             _this.pokemonSprite = data.imageUrl;
             _this.hp = data.stats.hp;
             _this.attack = data.stats.attack;
@@ -413,12 +402,14 @@ var GeneratePokemonComponent = /** @class */ (function () {
             _this.trainer.score = data.count;
             _this.trainerService.updateValidLogin(_this.trainer);
         });
+        //Display pokemon card
         if (this.cardShow) {
             $("#generate-pokemon-pokeball").removeClass("d-none");
             $("#generate-pokemon-card").addClass("d-none");
             $("#generate-pokemon-draw-btn").addClass("d-none");
         }
     };
+    //Display pokeball modal
     GeneratePokemonComponent.prototype.onBallClick = function () {
         $("#generate-pokemon-pokeball").addClass("d-none");
         $("#generate-pokemon-card").removeClass("d-none");
@@ -449,7 +440,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICB3aWR0aCA6IDk1JTtcclxufVxyXG5cclxudGFibGUsIHRoLCB0ZCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuI2J1dHRvbiB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmh0bWwsXHJcbmJvZHkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtZ2FwOiA1MHB4IDEwMHB4O1xyXG59XHJcblxyXG4jdGFibGV1c2VybmFtZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jdGFibGVzY29yZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcbiJdfQ== */"
+module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\nh1 {\r\n  color: white;\r\n  text-align: center;\r\n}\r\n\r\n#outer-most {\r\n  text-align: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2xhbmRpbmcvbGFuZGluZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xyXG4gIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7XHJcbiAgd2lkdGggOiA5NSU7XHJcbn1cclxuXHJcbnRhYmxlLCB0aCwgdGQge1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuI2xlYWRlcmJvYXJkVGFibGUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjOTkwMDMzIDAlLCAjY2MwMDAwIDY1JSk7XHJcbn1cclxuXHJcbiNidXR0b24ge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxuICBib3JkZXI6IDJweCBzb2xpZCB5ZWxsb3c7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5odG1sLFxyXG5ib2R5IHtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tIGxlZnQsICMwMDAwNjYgMCUsICM2NjY2OTkgMTAwJSk7XHJcbn1cclxuXHJcbi5ncmlkLWNvbnRhaW5lciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLWdhcDogNTBweCAxMDBweDtcclxufVxyXG5cclxuI3RhYmxldXNlcm5hbWUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuI3RhYmxlc2NvcmUge1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkIHllbGxvdztcclxufVxyXG5cclxuaDEge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbiNvdXRlci1tb3N0IHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -460,7 +451,7 @@ module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 style=\"color:white;\" align=\"center\">Top 10 Scores</h1>\r\n<div align=\"center\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
+module.exports = "<h1>Top 10 Scores</h1>\r\n<div id=\"outer-most\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -778,6 +769,9 @@ var RedeemComponent = /** @class */ (function () {
         var _this = this;
         this.pokedexService.redeemAll().subscribe(function (Response) {
             _this.credits = Response;
+            console.log(Response);
+            _this.trainer.credits = Response[1];
+            _this.trainerService.updateValidLogin(_this.trainer);
         });
         // location.reload(true);
         this.duplicatePokemon = [];
@@ -794,7 +788,10 @@ var RedeemComponent = /** @class */ (function () {
             .redeemSpecific(this.redeemTicketModel)
             .subscribe(function (Response) {
             //Sets the this.credits to response.
+            console.log(Response);
             _this.credits = Response;
+            _this.trainer.credits = Response[1];
+            _this.trainerService.updateValidLogin(_this.trainer);
         });
         var tempArr = new Array();
         //Step through the existing duplicatePokemon array and push all values without redeemed array to temp Array
@@ -932,10 +929,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopComponent", function() { return ShopComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+
 
 
 
@@ -943,10 +942,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShopComponent = /** @class */ (function () {
-    function ShopComponent(http, trainerService, router) {
+    function ShopComponent(http, trainerService, router, pokedexService) {
         this.http = http;
         this.trainerService = trainerService;
         this.router = router;
+        this.pokedexService = pokedexService;
         this.TOTALPOKEMON = 151;
         this.currentPage = 0;
         this.cardShow = false;
@@ -990,15 +990,11 @@ var ShopComponent = /** @class */ (function () {
         $("#generate-pokemon-draw-btn").removeClass("d-none");
         this.cardShow = true;
     };
-    //gets all pokeinfo from the cache
-    ShopComponent.prototype.getAllPokemon = function () {
-        return this.http.get("/PokemonCollector/servlet/allpokemon");
-    };
     //method that calls above observable
     //iscalled onInit
     ShopComponent.prototype.populatePokeArray = function () {
         var _this = this;
-        this.getAllPokemon().subscribe(function (data) {
+        this.pokedexService.getAllPokemon().subscribe(function (data) {
             //put all pokemon into pokemon array
             _this.allPoke = [];
             for (var i = 0; i < data.length; i++) {
@@ -1049,7 +1045,7 @@ var ShopComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shop.component.html */ "./src/app/components/shop/shop.component.html"),
             styles: [__webpack_require__(/*! ./shop.component.css */ "./src/app/components/shop/shop.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__["PokedexService"]])
     ], ShopComponent);
     return ShopComponent;
 }());
@@ -1441,6 +1437,10 @@ var PokedexService = /** @class */ (function () {
         console.log("redeemTicket ", redeemTicket);
         return this._http.post("/PokemonCollector/servlet/redeem", redeemTicket);
     };
+    //gets all pokeinfo from the cache
+    PokedexService.prototype.getAllPokemon = function () {
+        return this._http.get("/PokemonCollector/servlet/allpokemon");
+    };
     PokedexService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -1469,15 +1469,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _trainer_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _pokedex_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pokedex.service */ "./src/app/services/pokedex.service.ts");
+
 
 
 
 
 
 var TokenService = /** @class */ (function () {
-    function TokenService(router, trainerService) {
+    function TokenService(router, trainerService, pokedexService) {
         this.router = router;
         this.trainerService = trainerService;
+        this.pokedexService = pokedexService;
     }
     /*
     Sets a user token to session storage when the
@@ -1486,7 +1489,7 @@ var TokenService = /** @class */ (function () {
     TokenService.prototype.setCurrentUserToken = function (token, resp) {
         if (token) {
             sessionStorage.setItem("CURRENT_USER", token);
-            console.log(resp);
+            //console.log(resp);
             var t = {
                 userID: resp.body.userID,
                 username: resp.body.username,
@@ -1497,9 +1500,11 @@ var TokenService = /** @class */ (function () {
                 credits: resp.body.credits,
                 score: resp.body.score
             };
-            console.log(t);
+            //console.log(t);
             sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
             this.trainerService.updateValidLogin(t);
+            this.pokedexService.getTrainersPokemon(t.username).subscribe(function (val) { return val; }, function (err) { return err; });
+            this.pokedexService.getAllPokemon().subscribe(function (val) { return val; }, function (err) { return err; });
             this.router.navigateByUrl("/generate");
         }
         else {
@@ -1532,7 +1537,7 @@ var TokenService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"], _pokedex_service__WEBPACK_IMPORTED_MODULE_5__["PokedexService"]])
     ], TokenService);
     return TokenService;
 }());
@@ -1663,7 +1668,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Workspace\Project 3\src\main\ngapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\my_git_repos\PokemonCollector\src\main\ngapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

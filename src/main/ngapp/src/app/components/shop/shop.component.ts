@@ -30,7 +30,7 @@ export class ShopComponent implements OnInit {
       'Content-Type':  'application/json'
     })};
 
-  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
+  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router, private pokedexService: PokedexService) { }
 
   ngOnInit() {
     //this.trainerService.checkSessionStorage();
@@ -49,12 +49,14 @@ export class ShopComponent implements OnInit {
 
     let cost: number = this.allPoke[this.selectedPoke-1].cost;
     console.log(this.allPoke[this.selectedPoke-1]);
-
+    console.log("credits" +this.trainer.credits + ", Credits:" + cost);
     let hasCredits: boolean = this.trainer.credits >= cost;
 
     // If the trainer has enough credits, add the Pokemon to their collecion:
+    console.log(hasCredits);
     if (hasCredits) {
       this.trainer.credits = this.trainer.credits-cost;
+      this.trainerService.updateValidLogin(this.trainer);
       return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
     }else{
       alert("You can't afford this Pokemon")
@@ -68,14 +70,11 @@ export class ShopComponent implements OnInit {
   }
 
 
-  //gets all pokeinfo from the cache
-  getAllPokemon(): Observable<any[]>{
-    return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
-  }
+
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
-    this.getAllPokemon().subscribe(
+    this.pokedexService.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
         this.allPoke = [];
