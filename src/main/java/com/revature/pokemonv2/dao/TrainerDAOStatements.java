@@ -52,11 +52,9 @@ class TrainerDAOStatements {
 	 */
 	static CallableStatement redeemSpecificStatement(Connection connection, int trainerId, int pokeId)
 			throws SQLException {
-		CallableStatement statement = connection.prepareCall("CALL redeem_duplicate(?, ?, ?, ?)");
+		CallableStatement statement = connection.prepareCall("CALL redeem_duplicate(?, ?)");
 		statement.setInt(1, trainerId);
 		statement.setInt(2, pokeId);
-		statement.registerOutParameter(3, OracleTypes.INTEGER);
-		statement.registerOutParameter(4, OracleTypes.INTEGER);
 		return statement;
 	}
 

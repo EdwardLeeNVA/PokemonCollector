@@ -14,9 +14,10 @@ import {TrainerService} from "../../services/trainer.service";
 })
 export class ShopComponent implements OnInit {
   private TOTALPOKEMON: number = 151;
-  
+  private showPagination: boolean = false;
+  private paginationArray: number[];
   private numPoke: number;
-  private currentPage: number = 0;
+  private currentPage: number;
   private numPages: number;
   private allPoke: Pokemon[];
   private pokePages: Pokemon[];
@@ -42,33 +43,13 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
     this.populatePokePages();
   }
-  onBuySubmit() {
-
-    // Check if the trainer has enough credits:
-
-    let trainer: Trainer = JSON.parse(sessionStorage.getItem("TRAINER_DATA"));
-
-    let cost: number = this.allPoke[this.selectedPoke].cost;
-
-    let hasCredits: boolean = trainer.credits >= cost;
-
-    // If the trainer has enough credits, add the Pokemon to their collecion:
-    if (hasCredits) {
-      trainer.credits = trainer.credits-cost;
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
-    }else{
-      alert("You can't afford this Pokemon")
-    }
-  }  onBallClick() {
+  onBallClick() {
     //Hide pokeball img and show card div
     $("#generate-pokemon-pokeball").addClass("d-none");
     $("#generate-pokemon-card").removeClass("d-none");
     $("#generate-pokemon-draw-btn").removeClass("d-none");
     this.cardShow = true;
   }
-
-
-
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
@@ -78,7 +59,7 @@ export class ShopComponent implements OnInit {
         this.allPoke = [];
         for (let i = 0; i < data.length; i++){
           let newPoke = new Pokemon();
-          newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
+          newPoke.name = data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1);
           newPoke.imageUrl = data[i].imageUrl;
           newPoke.id = data[i].id;
           newPoke.count = data[i].count;
@@ -91,34 +72,67 @@ export class ShopComponent implements OnInit {
     )
   }
 
+  // populatePokePages(): void{
+  //   let count = 0;
+  //   this.currentPage = 0;
+  //   //display number of pokemon on page from radio button
+  //   for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
+  //     this.pokePages[count] = this.allPoke[i];
+  //     count++;
+  //   }
+  //   this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+  // }
+  
   populatePokePages(): void{
-    let count = 0;
-    this.currentPage = 0;
-    //display number of pokemon on page from radio button
-    for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
-      this.pokePages[count] = this.allPoke[i];
-      count++;
-    }
-    this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+    this.currentPage = 1;
+    this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke));
+    this.showPagination = true;
   }
+
+  changePokePages(): void{
+    if (((this.currentPage*this.numPoke)+1) > this.allPoke.length){
+      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke);
+    }
+    else{
+      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke));
+    }
+  }
+
   //pagination methods on standby
+  showPaginationNavbar(): void{
+    this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
+    for (let i = 0; i < this.numPages; i++){
+      this.paginationArray[i] = i+1;
+    }
+  }
+
+  //jump to specific page
+  specificPage(pageNumber: number): void{
+    this.currentPage = pageNumber;
+    this.changePokePages();
+  }
+
   //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
-      this.currentPage = 0;
+      this.currentPage = 1;
+      this.changePokePages();
     }
     else{
       this.currentPage++;
+      this.changePokePages();
     }
   }
 
   //wrap around to last page if on first page
   prevPage(): void{
-    if (this.currentPage == 0){
+    if (this.currentPage == 1){
       this.currentPage = this.numPages;
+      this.changePokePages();
     }
     else{
       this.currentPage--;
+      this.changePokePages();
     }
   }
 }
