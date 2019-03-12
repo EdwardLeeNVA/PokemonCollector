@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col justify-content-center" id="shop-form-col">
         <div class="shop-form-scroll">
-          <form name="buyForm" #buyForm="ngForm" (ngSubmit)="onBuySubmit()" novalidate>
+          <form name="buyForm" #buyForm="ngForm" novalidate>
             <div id="shop-form-header">
               <img
                 class="animated shake"
@@ -28,7 +28,7 @@
             </div>
             <form>
               <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0>Number of Pokemon per page</option>
+                <option value=0 selected>Number of Pokemon per page</option>
                 <option value=20>20</option>
                 <option value=50>50</option>
                 <option value=100>100</option>
@@ -153,20 +153,20 @@
         id="newPokemon-Modal-Content"
       >
         <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-          <img
+        <!--  <img
             src="http://i66.tinypic.com/2rrwdck.png"
             id="generate-pokemon-pokeball"
             class="mb-3 animated shake"
             (click)="onBallClick()"
-          />
+          /> -->
           <div
-            class="pokemon-card-outer text-center d-none "
+            class="pokemon-card-outer text-center"
             id="generate-pokemon-card"
           >
             <!-- *ngFor="let pokemon of pokemonArr" -->
-            <h4 class="pokemon-card-name">{{ this.name }}</h4>
+            <h4 class="pokemon-card-name">{{ allPoke[selectedPoke-1].name }}</h4>
   
-            <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
+            <img src="{{ allPoke[selectedPoke-1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
                 <!-- <p>Stats:</p>
                 <p>Attack: {{ pokemon.stats.attack }}</p>
@@ -175,6 +175,10 @@
                 <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
                 <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
                 <p>Speed: {{ pokemon.stats.speed }}</p> -->
+                <p *ngIf= "pokemon.type[1] == null">Type: {{ allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
+                <p *ngIf= "pokemon.type[1] != null"> Type: {{ (allPoke[selectedPoke-1].type[1].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[1].substring(1)) + " / " +
+                allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1)}}</p>  
+                <p>Cost: {{ pokemon.cost }}</p>
                 <p>Type: {{this.type}}</p>
             </div>
           </div>
@@ -234,6 +238,8 @@
                 data-target="#newpokemonConfirm"
                 class="shop-buy-btn"
                 type="submit"
+                data-dismiss="modal"
+                (click)="onBuySubmit()"
               >
                 I Choose You!
               </button>
