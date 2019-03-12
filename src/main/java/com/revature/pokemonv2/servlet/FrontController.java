@@ -35,7 +35,7 @@ public class FrontController extends DefaultServlet {
 			"shop",
 			"redeem"
 	};
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
