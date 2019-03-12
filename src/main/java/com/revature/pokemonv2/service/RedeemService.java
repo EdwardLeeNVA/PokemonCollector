@@ -79,11 +79,7 @@ public class RedeemService {
 		//This method gets the value of the parameter POKEID
 		int pokeID = node.get("POKEID").asInt();
 
-<<<<<<< HEAD
-		int[] res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID, false); // Execute redeem, returns new credits and
-=======
-		int res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID, username); // Execute redeem, returns new credits and
->>>>>>> af67f8249fc0f381797409d5df4cd4d3be083fb8
+		int res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID, username, false); // Execute redeem, returns new credits and
 			System.out.println(res);	                   										// total credits
 
 		response.setContentType("application/json");
@@ -108,11 +104,7 @@ public class RedeemService {
 		String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); // get username from
 																									// token
 
-<<<<<<< HEAD
-		int[] creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID, false); // Execute redeem, returns new credits and total
-=======
-		int creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID, username); // Execute redeem, returns new credits and total
->>>>>>> af67f8249fc0f381797409d5df4cd4d3be083fb8
+		int creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID, username, false); // Execute redeem, returns new credits and total
 		System.out.println(creditArr);
 
 		resp.setContentType("application/json");
