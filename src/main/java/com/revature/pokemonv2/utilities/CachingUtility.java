@@ -138,7 +138,7 @@ public class CachingUtility {
 			}
 		}
 		if(temp == null){
-			temp = this.getPokemon(pokeId);
+			temp = this.getPokemonCache(pokeId);
 			temp.setCount(0);
 		}
 	 	return temp;
