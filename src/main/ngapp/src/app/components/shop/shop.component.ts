@@ -44,13 +44,7 @@ export class ShopComponent implements OnInit {
     this.populatePokeArray();
     // this.populatePokePages();
   }
-  // onBallClick() {
-  //   //Hide pokeball img and show card div
-  //   $("#generate-pokemon-pokeball").addClass("d-none");
-  //   $("#generate-pokemon-card").removeClass("d-none");
-  //   $("#generate-pokemon-draw-btn").removeClass("d-none");
-  //   this.cardShow = true;
-  
+
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
