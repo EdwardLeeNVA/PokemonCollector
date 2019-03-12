@@ -70,9 +70,6 @@
 							<arguments>
 								<argument>build</argument>
 								<argument>--baseHref=/PokemonCollector/ng/</argument>
-								<argument>--aot=true</argument>
-								<argument>--buildOptimizer=true</argument>
-								<argument>--optimization=true</argument>
 							</arguments>
 						</configuration>
 						<goals>
