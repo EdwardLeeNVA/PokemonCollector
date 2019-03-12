@@ -66,6 +66,8 @@ export class ShopComponent implements OnInit {
     this.cardShow = true;
   }
 
+
+
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
