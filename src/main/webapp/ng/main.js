@@ -270,7 +270,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0] }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{pokemon.type[1] + \" / \" + pokemon.type[0]}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col\" id=\"collection-section-header\">\r\n        <img\r\n          class=\"animated jello\"\r\n          id=\"pokedex-heading\"\r\n          src=\"https://fontmeme.com/permalink/190224/f87c04db0b54e3b89caa3d1d3ee405fb.png\"\r\n          alt=\"pokemon-font\"\r\n        />\r\n        <div id=\"card-gallery-grid\">\r\n          <div\r\n            class=\"pokemon-card-outer text-center\"\r\n            *ngFor=\"let pokemon of trainersPokemon\"\r\n          >\r\n            <h4 class=\"pokemon-card-name\">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1) }}</h4>\r\n            <img [src]=\"pokemon.imageUrl\" class=\"pokemon-card-img\" />\r\n            <div class=\"pokemon-card-info-cont\">\r\n              <p *ngIf= \"pokemon.type[1] == null\">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>\r\n              <p *ngIf= \"pokemon.type[1] != null\"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + \" / \" + \r\n                  pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>\r\n              <p>HP: {{ pokemon.stats.hp }}</p>\r\n  \r\n              <p>Attack: {{ pokemon.stats.attack }}</p>\r\n              <p>Defense: {{ pokemon.stats.defense }}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -749,8 +749,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
-/* harmony import */ var src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/redeem-ticket */ "./src/app/models/redeem-ticket.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
+/* harmony import */ var src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/models/redeem-ticket */ "./src/app/models/redeem-ticket.ts");
+
 
 
 
@@ -762,18 +764,10 @@ var RedeemComponent = /** @class */ (function () {
         this.trainerService = trainerService;
         this.router = router;
         this.pokedexService = pokedexService;
-        this.pokemon = {
-            id: 0,
-            name: "",
-            imageUrl: "",
-            type: null,
-            stats: null,
-            count: 0,
-            cost: 0
-        };
+        this.pokemon = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_4__["Pokemon"]();
         //stores an array of Pokemon objects to display to DOM
         this.duplicatePokemon = new Array();
-        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_5__["RedeemTicket"](0);
+        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_6__["RedeemTicket"](0);
     }
     RedeemComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -839,7 +833,7 @@ var RedeemComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__["TrainerService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            _services_pokedex_service__WEBPACK_IMPORTED_MODULE_4__["PokedexService"]])
+            _services_pokedex_service__WEBPACK_IMPORTED_MODULE_5__["PokedexService"]])
     ], RedeemComponent);
     return RedeemComponent;
 }());
@@ -964,10 +958,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopComponent", function() { return ShopComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/pokedex.service */ "./src/app/services/pokedex.service.ts");
+/* harmony import */ var src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/Pokemon */ "./src/app/models/Pokemon.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/trainer.service */ "./src/app/services/trainer.service.ts");
+
 
 
 
@@ -975,15 +971,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShopComponent = /** @class */ (function () {
-    function ShopComponent(http, trainerService, router) {
+    function ShopComponent(http, trainerService, router, pokedexService) {
         this.http = http;
         this.trainerService = trainerService;
         this.router = router;
+        this.pokedexService = pokedexService;
         this.TOTALPOKEMON = 151;
         this.currentPage = 0;
         this.cardShow = false;
         this.httpJSON = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
                 'Content-Type': 'application/json'
             })
         };
@@ -1021,21 +1018,15 @@ var ShopComponent = /** @class */ (function () {
         $("#generate-pokemon-draw-btn").removeClass("d-none");
         this.cardShow = true;
     };
-    //gets all pokeinfo from the cache
-    ShopComponent.prototype.getAllPokemon = function () {
-        return this.http.get("/PokemonCollector/servlet/allpokemon");
-    };
     //method that calls above observable
     //iscalled onInit
     ShopComponent.prototype.populatePokeArray = function () {
         var _this = this;
-        this.getAllPokemon().subscribe(function (data) {
+        this.pokedexService.getAllPokemon().subscribe(function (data) {
             //put all pokemon into pokemon array
-            console.log(data);
             _this.allPoke = [];
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i]);
-                var newPoke = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_2__["Pokemon"]();
+                var newPoke = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__["Pokemon"]();
                 newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
                 newPoke.imageUrl = data[i].imageUrl;
                 newPoke.id = data[i].id;
@@ -1045,7 +1036,6 @@ var ShopComponent = /** @class */ (function () {
                 newPoke.cost = data[i].cost;
                 _this.allPoke[i] = newPoke;
             }
-            console.log(_this.allPoke);
         });
     };
     ShopComponent.prototype.populatePokePages = function () {
@@ -1083,7 +1073,7 @@ var ShopComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./shop.component.html */ "./src/app/components/shop/shop.component.html"),
             styles: [__webpack_require__(/*! ./shop.component.css */ "./src/app/components/shop/shop.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_5__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _services_trainer_service__WEBPACK_IMPORTED_MODULE_6__["TrainerService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_pokedex_service__WEBPACK_IMPORTED_MODULE_2__["PokedexService"]])
     ], ShopComponent);
     return ShopComponent;
 }());
@@ -1474,6 +1464,10 @@ var PokedexService = /** @class */ (function () {
         //make POST request to get array of 'int's which will resemble credits earned and credits after redeem
         return this._http.post("/PokemonCollector/servlet/redeem", redeemTicket);
     };
+    //gets all pokeinfo from the cache
+    PokedexService.prototype.getAllPokemon = function () {
+        return this._http.get("/PokemonCollector/servlet/allpokemon");
+    };
     PokedexService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
@@ -1502,15 +1496,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _trainer_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./trainer.service */ "./src/app/services/trainer.service.ts");
+/* harmony import */ var _pokedex_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pokedex.service */ "./src/app/services/pokedex.service.ts");
+
 
 
 
 
 
 var TokenService = /** @class */ (function () {
-    function TokenService(router, trainerService) {
+    function TokenService(router, trainerService, pokedexService) {
         this.router = router;
         this.trainerService = trainerService;
+        this.pokedexService = pokedexService;
     }
     /*
     Sets a user token to session storage when the
@@ -1533,6 +1530,7 @@ var TokenService = /** @class */ (function () {
             console.log(t);
             sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
             this.trainerService.updateValidLogin(t);
+            this.pokedexService.getTrainersPokemon(t.username).subscribe(function (val) { return val; }, function (err) { return err; });
             this.router.navigateByUrl("/generate");
         }
         else {
@@ -1565,7 +1563,7 @@ var TokenService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: "root"
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _trainer_service__WEBPACK_IMPORTED_MODULE_4__["TrainerService"], _pokedex_service__WEBPACK_IMPORTED_MODULE_5__["PokedexService"]])
     ], TokenService);
     return TokenService;
 }());
