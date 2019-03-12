@@ -34,14 +34,10 @@ export class TokenService {
       console.log(t);
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
       this.trainerService.updateValidLogin(t);
-      this.pokedexService.getAllPokemon().subscribe(
-        val => val,
-        err => err
-      );
       this.pokedexService.getTrainersPokemon(t.username).subscribe(
         val => val,
         err => err
-      );;
+      );
       this.router.navigateByUrl("/generate");
     } else {
       throw new Error();

@@ -30,6 +30,7 @@ public class CachingUtility {
 	 private CachingUtility(){
 		 pokedexCache = getCacheManager().getCache("pokedexCache", String.class, ArrayList.class);
 		 allPokemonCache = getCacheManager().getCache("allPokemonCache", Integer.class, Pokemon.class);
+		 getAllPokemon();
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
@@ -70,7 +71,7 @@ public class CachingUtility {
 	public ArrayList<Pokemon> redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
-		for(int i = 0; i < newPokeList.size(); i++){
+		for(int i = 0; i < origPokeList.size(); i++){
 			Pokemon temp = origPokeList.get(i);
 			temp.setCount(1);
 			newPokeList.add(temp);
