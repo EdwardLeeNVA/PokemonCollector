@@ -35,8 +35,7 @@ public class FrontController extends DefaultServlet {
 			"shop",
 			"redeem"
 	};
-	private static CachingUtility cachingUtility = CachingUtility.getCachingUtility();
-
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
