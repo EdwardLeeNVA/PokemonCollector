@@ -86,21 +86,12 @@
   padding: 20px;
   color: white;
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+  margin-bottom: 30px;
 }
 
-#rules_container_header {
-  display: flex !important;
-  flex-direction: row !important;
+#rule_list {
+  list-style-image: url("http://i68.tinypic.com/wtwz2v.png");
 }
-
-#rules_container_bottom {
-  display: flex !important;
-  flex-direction: row !important;
-}
-.rules_container_img_box {
-  display: flex !important;
-}
-
-.rules_container_text_box {
-  display: flex !important;
+#rule_list li {
+  padding-bottom: 5px;
 }

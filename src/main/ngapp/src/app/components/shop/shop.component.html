@@ -1,93 +1,118 @@
-
-  
-  <!-- <div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col"> -->
-  <div class="container " id="shop-form-container">
-    <div class="row justify-content-center">
-      <div class="col justify-content-center" id="shop-form-col">
-        <div class="shop-form-scroll">
-          <form name="buyForm" #buyForm="ngForm" (ngSubmit)="onBuySubmit()" novalidate>
-            <div id="shop-form-header">
-              <img
-                class="animated shake"
-                id="poke-shop-header"
-                src="https://fontmeme.com/permalink/190223/7f951f27330efe3f5e717c68950edf06.png"
-                alt=""
-              />
-              <button
-                data-toggle="modal"
-                data-target="#newpokemonModal"
-                class="shop-buy-btn"
-                id="shop-buy-btn"
-                type="submit"
-              >
-                Buy
-              </button>
-           
-            </div>
-            <form>
-              <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0>Number of Pokemon per page</option>
-                <option value=20>20</option>
-                <option value=50>50</option>
-                <option value=100>100</option>
-              </select>
-            </form>
-            <div *ngIf="showPagination">
-              <button type="button" value="previous page" (click)="prevPage()"><</button>
-              <!--
+<div class="container " id="shop-form-container">
+  <div class="row justify-content-center">
+    <div class="col justify-content-center" id="shop-form-col">
+      <div class="shop-form-scroll">
+        <form
+          name="buyForm"
+          #buyForm="ngForm"
+          (ngSubmit)="onBuySubmit()"
+          novalidate
+        >
+          <div id="shop-form-header justify-content-center">
+            <img
+              class="animated shake img-responsive"
+              id="poke-shop-header"
+              src="https://fontmeme.com/permalink/190223/7f951f27330efe3f5e717c68950edf06.png"
+              alt=""
+            />
+            <button
+              data-toggle="modal"
+              data-target="#newpokemonModal"
+              class="shop-buy-btn"
+              id="shop-buy-btn"
+              type="submit"
+            >
+              Buy
+            </button>
+          </div>
+          <form>
+            <select
+              name="setNumPoke"
+              class="form-control"
+              [(ngModel)]="numPoke"
+              (change)="populatePokePages()"
+            >
+              <option value="0">Number of Pokemon per page</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </form>
+          <div *ngIf="showPagination">
+            <button type="button" value="previous page" (click)="prevPage()">
+              <
+            </button>
+            <!--
                 put numbers for new pages here 
                 <div *ngFor="let number of numPages">>
               </div>
              -->
-             <button type="button" value="next page" (click)="nextPage()">></button>
-            </div>            
-            <div class="radio-card-grid">
-              <div
-                class="form-check radio-form-item"
-                *ngFor="let pokemon of pokePages"
+            <button type="button" value="next page" (click)="nextPage()">
               >
-                <input
-                  class="form-check-input customRadioBtn"
-                  type="radio"
-                  #pokemonCard="ngModel"
-                  name="gridRadios"
-                  value="{{ pokemon.id }}"
-                  checked
-                  [(ngModel)]="selectedPoke"
-                />
-                <div class="pokemon-card-outer">
-                  <label
-                    class="form-check-label shop-poke-name"
-                    for="gridRadios1"
-                  >
-                    {{ pokemon.name }}
-                  </label>
-                  <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
-                  <div class="pokemon-card-info-cont">
-                      <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
-                      <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
-                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
-                    <!-- <p>HP: {{ pokemon.hp }}</p>
+            </button>
+          </div>
+          <div class="radio-card-grid justify-content-center">
+            <div
+              class="form-check radio-form-item justify-content-center"
+              *ngFor="let pokemon of pokePages"
+            >
+              <input
+                class="form-check-input customRadioBtn"
+                type="radio"
+                #pokemonCard="ngModel"
+                name="gridRadios"
+                value="{{ pokemon.id }}"
+                checked
+                [(ngModel)]="selectedPoke"
+              />
+              <div class="pokemon-card-outer">
+                <label
+                  class="form-check-label shop-poke-name"
+                  for="gridRadios1"
+                >
+                  {{ pokemon.name }}
+                </label>
+                <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
+                <div class="pokemon-card-info-cont">
+                  <p *ngIf="pokemon.type[1] == null">
+                    Type:
+                    {{
+                      pokemon.type[0].charAt(0).toUpperCase() +
+                        pokemon.type[0].substring(1)
+                    }}
+                  </p>
+                  <p *ngIf="pokemon.type[1] != null">
+                    Type:
+                    {{
+                      pokemon.type[1].charAt(0).toUpperCase() +
+                        pokemon.type[1].substring(1) +
+                        " / " +
+                        pokemon.type[0].charAt(0).toUpperCase() +
+                        pokemon.type[0].substring(1)
+                    }}
+                  </p>
+                  <!-- <p>HP: {{ pokemon.hp }}</p>
                     <p>Attack: {{ pokemon.attack }}</p>
                     <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>HP: {{ pokemon.stats.hp }}</p>
-                    <p>Attack: {{ pokemon.stats.attack }}</p>
-                    <p>Defense: {{ pokemon.stats.defense }} </p>
-                    <!-- <p>Stats:</p>
+                  <p>HP: {{ pokemon.stats.hp }}</p>
+                  <p>Attack: {{ pokemon.stats.attack }}</p>
+                  <p>Defense: {{ pokemon.stats.defense }}</p>
+                  <!-- <p>Stats:</p>
                       <p>Attack: {{ pokemon.stats.attack }}</p>
                       <p>Defense: {{ pokemon.stats.defense }} </p>
                       <p>HP: {{ pokemon.stats.hp }}</p>
                       <p>Special attack: {{ pokemon.stats.special-attack }}</p>
                       <p>Special defense: {{ pokemon.stats.special-defense }}</p>
                       <p>Speed: {{ pokemon.stats.speed }}</p> -->
-                    <p>Cost: {{ pokemon.cost }}</p>
-                  </div>
+                  <p>Cost: {{ pokemon.cost }}</p>
                 </div>
               </div>
             </div>
-            <!-- <p>--trying pagination below here</p>
+          </div>
+          <!-- <p>--trying pagination below here</p>
             <div class="radio-card-grid" *ngIf = "numPoke != 0">
                 <div
                   class="form-check radio-form-item"
@@ -132,54 +157,53 @@
                   </div>
                 </div>
               </div> -->
-  
-          </form>
-        </div>
+        </form>
       </div>
     </div>
+  </div>
 </div>
-  <!-- Modal for chosen pokemon-->
-  <div
-    class="modal fade"
-    id="newpokemonModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="newpokemonModel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div
-        class="modal-content justify-content-center"
-        id="newPokemon-Modal-Content"
-      >
-        <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-          <img
-            src="http://i66.tinypic.com/2rrwdck.png"
-            id="generate-pokemon-pokeball"
-            class="mb-3 animated shake"
-            (click)="onBallClick()"
-          />
-          <div
-            class="pokemon-card-outer text-center d-none "
-            id="generate-pokemon-card"
-          >
-            <!-- *ngFor="let pokemon of pokemonArr" -->
-            <h4 class="pokemon-card-name">{{ this.name }}</h4>
-  
-            <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
-            <div class="pokemon-card-info-cont">
-                <!-- <p>Stats:</p>
+<!-- Modal for chosen pokemon-->
+<div
+  class="modal fade"
+  id="newpokemonModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="newpokemonModel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div
+      class="modal-content justify-content-center"
+      id="newPokemon-Modal-Content"
+    >
+      <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
+        <img
+          src="http://i66.tinypic.com/2rrwdck.png"
+          id="generate-pokemon-pokeball"
+          class="mb-3 animated shake"
+          (click)="onBallClick()"
+        />
+        <div
+          class="pokemon-card-outer text-center d-none "
+          id="generate-pokemon-card"
+        >
+          <!-- *ngFor="let pokemon of pokemonArr" -->
+          <h4 class="pokemon-card-name">{{ this.name }}</h4>
+
+          <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
+          <div class="pokemon-card-info-cont">
+            <!-- <p>Stats:</p>
                 <p>Attack: {{ pokemon.stats.attack }}</p>
                 <p>Defense: {{ pokemon.stats.defense }} </p>
                 <p>HP: {{ pokemon.stats.hp }}</p>
                 <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
                 <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
                 <p>Speed: {{ pokemon.stats.speed }}</p> -->
-                <p>Type: {{this.type}}</p>
-            </div>
+            <p>Type: {{ this.type }}</p>
           </div>
-          <!-- start no credits alert -->
-          <div
+        </div>
+        <!-- start no credits alert -->
+        <div
           class="alert alert-danger alert-dismissible fade show d-none"
           id="no-credit-alert"
           role="alert"
@@ -205,60 +229,60 @@
         <!-- end no credit alert -->
         <!-- start I choose you alert -->
         <div
-        class="alert alert-danger alert-dismissible fade show d-none"
-        id="add-pokemon-alert"
-        role="alert"
-      >
-        <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
-
-        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.
-
-        <img
-          src="http://i65.tinypic.com/27zauqe.png"
-          alt="Image and video hosting by TinyPic"
-        />
-        <button
-          id="login-alert"
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="onAlertClose()"
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="add-pokemon-alert"
+          role="alert"
         >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+          <strong>I Choose You!!</strong> This Pokemon has been added to your
+          collection.
+
+          <img
+            src="http://i65.tinypic.com/27zauqe.png"
+            alt="Image and video hosting by TinyPic"
+          />
+          <button
+            id="login-alert"
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <!-- end I choose you alert -->
         <!-- start confirmation button -->
-          <button
-                data-toggle="modal"
-                data-target="#newpokemonConfirm"
-                class="shop-buy-btn"
-                type="submit"
-              >
-                I Choose You!
-              </button>
+        <button
+          data-toggle="modal"
+          data-target="#newpokemonConfirm"
+          class="shop-buy-btn"
+          type="submit"
+        >
+          I Choose You!
+        </button>
         <!--end confirmation button  -->
         <!-- start close button -->
-          <button
-            type="button"
-            class="shop-buy-btn"
-            data-dismiss="modal"
-          >
-            Close
-          </button>
+        <button type="button" class="shop-buy-btn" data-dismiss="modal">
+          Close
+        </button>
         <!-- end close button  -->
-        </div>
       </div>
     </div>
   </div>
+</div>
 <!-- end modal -->
 <form>
-  <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-    <option value=0>Number of Pokemon per page</option>
-    <option value=20>20</option>
-    <option value=50>50</option>
-    <option value=100>100</option>
+  <select
+    name="setNumPoke"
+    class="form-control"
+    [(ngModel)]="numPoke"
+    (change)="populatePokePages()"
+  >
+    <option value="0">Number of Pokemon per page</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
   </select>
-</form>    
-   
-  
+</form>
