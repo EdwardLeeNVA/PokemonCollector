@@ -10,12 +10,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./generate-pokemon.component.css']
 })
 export class GeneratePokemonComponent implements OnInit {
-  private pokemonName: string;
-  private pokemonType: string;
-  private pokemonSprite: string;
-  private hp: number;
-  private attack: number;
-  private defense: number;
+  public pokemonName: string;
+  public pokemonType: string[];
+  public pokemonSprite: string;
+  public hp: number;
+  public attack: number;
+  public defense: number;
   private cardShow: boolean = false;
   public trainer: Trainer;
   public login_status: boolean;
@@ -27,7 +27,7 @@ export class GeneratePokemonComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.trainerService.checkSessionStorage();
+    //Subscribe to behavior subjects within this component
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
     if(this.trainer == null){
@@ -36,24 +36,12 @@ export class GeneratePokemonComponent implements OnInit {
     }
   }
 
-  // generatePokemon() {
-  //   this.pokedexService.generatePokemon().subscribe(
-  //     data => {
-  //       this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-  //       this.pokemonType = data.types[0].type.name;
-  //       this.pokemonSprite = data.sprites.front_default;
-  //       this.hp = data.stats[5].base_stat;
-  //       this.attack = data.stats[4].base_stat;
-  //       this.defense = data.stats[3].base_stat;
-  //     }
-  //   );
-  // }
-
+  //Subscribe to generatePokemon observable in PokedexService. Set variables based on response and update score in the behavior subject.
   onClick() {
     this.pokedexService.generatePokemon().subscribe(
       data => {
         this.pokemonName = data.name.charAt(0).toUpperCase() + data.name.substring(1);
-        this.pokemonType = data.type[0];
+        this.pokemonType = data.type;
         this.pokemonSprite = data.imageUrl;
         this.hp = data.stats.hp;
         this.attack = data.stats.attack;
@@ -63,6 +51,7 @@ export class GeneratePokemonComponent implements OnInit {
       }
     );
 
+    //Display pokemon card
     if (this.cardShow) {
       $("#generate-pokemon-pokeball").removeClass("d-none");
       $("#generate-pokemon-card").addClass("d-none");
@@ -70,6 +59,7 @@ export class GeneratePokemonComponent implements OnInit {
     }
   }
 
+  //Display pokeball modal
   onBallClick() {
     $("#generate-pokemon-pokeball").addClass("d-none");
     $("#generate-pokemon-card").removeClass("d-none");

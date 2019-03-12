@@ -1,13 +1,8 @@
-
-  
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col"> -->
   <div class="container " id="shop-form-container">
     <div class="row justify-content-center">
       <div class="col justify-content-center" id="shop-form-col">
         <div class="shop-form-scroll">
-          <form name="buyForm" #buyForm="ngForm" (ngSubmit)="onBuySubmit()" novalidate>
+          <form name="buyForm" #buyForm="ngForm" novalidate>
             <div id="shop-form-header">
               <img
                 class="animated shake"
@@ -21,16 +16,28 @@
                 class="shop-buy-btn"
                 id="shop-buy-btn"
                 type="submit"
+                (click)="showBoughtMessage()"
               >
                 Buy
               </button>
            
             </div>
-  
+            <form>
+              <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
+                <option value=0 selected>Number of Pokemon per page</option>
+                <option value=20>20</option>
+                <option value=50>50</option>
+                <option value=100>100</option>
+              </select>
+            </form>
+            <div *ngIf="showPagination">
+              <button type="button" value="previous page" (click)="prevPage()"><</button>
+              <button type="button" value="next page" (click)="nextPage()">></button>
+            </div>            
             <div class="radio-card-grid">
               <div
                 class="form-check radio-form-item"
-                *ngFor="let pokemon of allPoke"
+                *ngFor="let pokemon of pokePages"
               >
                 <input
                   class="form-check-input customRadioBtn"
@@ -50,18 +57,10 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
+                    <p>HP: {{ pokemon.stats.hp }}</p>
+                    <p>Attack: {{ pokemon.stats.attack }}</p>
+                    <p>Defense: {{ pokemon.stats.defense }} </p>
                     <p>Type: {{ pokemon.type }}</p>
-  
-                    <!-- <p>HP: {{ pokemon.hp }}</p>
-                    <p>Attack: {{ pokemon.attack }}</p>
-                    <p>Defense: {{ pokemon.defense }}</p> -->
-                    <p>Stats:</p>
-                      <p>Attack: {{ pokemon.stats.attack }}</p>
-                      <p>Defense: {{ pokemon.stats.defense }} </p>
-                      <p>HP: {{ pokemon.stats.hp }}</p>
-                      <p>Special attack: {{ pokemon.stats.special-attack }}</p>
-                      <p>Special defense: {{ pokemon.stats.special-defense }}</p>
-                      <p>Speed: {{ pokemon.stats.speed }}</p>
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
@@ -72,13 +71,6 @@
       </div>
     </div>
 </div>
-<div class="radio-card-grid" *ngIf="pokePages">
-    <div class="form-check radio-form-item" *ngFor="let pokemon of pokePages">
-      <input class="form-check-input customRadioBtn" type="radio" name="gridRadios"
-        value="{{allPoke.pokemon.id}}" checked/>
-    </div>
-  </div>
-  
   <!-- Modal for chosen pokemon-->
   <div
     class="modal fade"
@@ -94,29 +86,16 @@
         id="newPokemon-Modal-Content"
       >
         <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-          <img
-            src="http://i66.tinypic.com/2rrwdck.png"
-            id="generate-pokemon-pokeball"
-            class="mb-3 animated shake"
-            (click)="onBallClick()"
-          />
           <div
-            class="pokemon-card-outer text-center d-none "
+            class="pokemon-card-outer text-center"
             id="generate-pokemon-card"
           >
-            <!-- *ngFor="let pokemon of pokemonArr" -->
-            <h4 class="pokemon-card-name">{{ this.name }}</h4>
+            <h4 class="pokemon-card-name">{{ allPoke[selectedPoke-1].name }}</h4>
   
-            <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
+            <img src="{{ allPoke[selectedPoke - 1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                <!-- <p>Stats:</p>
-                <p>Attack: {{ pokemon.stats.attack }}</p>
-                <p>Defense: {{ pokemon.stats.defense }} </p>
-                <p>HP: {{ pokemon.stats.hp }}</p>
-                <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
-                <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
-                <p>Speed: {{ pokemon.stats.speed }}</p> -->
-                <p>Type: {{this.type}}</p>
+                  <p>Type: {{ allPoke[selectedPoke-1].type }}</p>
+                <p>Cost: {{ allPoke[selectedPoke-1].cost }}</p>
             </div>
           </div>
           <!-- start no credits alert -->
@@ -173,8 +152,10 @@
           <button
                 data-toggle="modal"
                 data-target="#newpokemonConfirm"
+                data-dismiss="modal"
                 class="shop-buy-btn"
                 type="submit"
+                (click)="onBuySubmit()"
               >
                 I Choose You!
               </button>
@@ -184,6 +165,7 @@
             type="button"
             class="shop-buy-btn"
             data-dismiss="modal"
+            (click)="showBoughtMessage()"
           >
             Close
           </button>
@@ -193,26 +175,4 @@
     </div>
   </div>
 <!-- end modal -->
-<!-- stuff thats on standby
-     pagination form on standby 
-    <form>
-        <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-          <option value=0>Number of Pokemon per page</option>
-          <option value=20>20</option>
-          <option value=50>50</option>
-          <option value=100>100</option>
-        </select>
-      </form>
-    </div>
-      put number of pages in here
-      <div class="row justify-content-md-center">
-        <nav aria-label="Page navigation example">
-          <ul>
-            <li><a class="page-link" (click)="prevPage()" aria-label="Previous"></a></li>
-            <li><a class="page-link" (click)="nextPage()" aria-label="Next"></a></li>
-          </ul>
-        </nav>
-      </div>
-    --> 
-   
   

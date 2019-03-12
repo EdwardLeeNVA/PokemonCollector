@@ -7,12 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.pokemonv2.dao.TrainerDAOImp;
 import com.revature.pokemonv2.model.Pokemon;
-import com.revature.pokemonv2.model.Trainer;
 import com.revature.pokemonv2.utilities.CachingUtility;
 
 /**
@@ -81,10 +79,9 @@ public class RedeemService {
 		//This method gets the value of the parameter POKEID
 		int pokeID = node.get("POKEID").asInt();
 
-		int[] res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID); // Execute redeem, returns new credits and
+		int res = TrainerDAOImp.getTrainerDAO().redeemSpecific(ID, pokeID, username, false); // Execute redeem, returns new credits and
 			System.out.println(res);	                   										// total credits
 
-		CachingUtility.getCachingUtility().redeemSinglePokemon(username, pokeID);
 		response.setContentType("application/json");
 		response.getWriter().append(mapper.writeValueAsString(res));
 
@@ -107,10 +104,9 @@ public class RedeemService {
 		String username = TokenService.getInstance().getUserDetailsFromToken(token).getUsername(); // get username from
 																									// token
 
-		int[] creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID); // Execute redeem, returns new credits and total
+		int creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID, username, false); // Execute redeem, returns new credits and total
 		System.out.println(creditArr);
 
-		CachingUtility.getCachingUtility().redeemAllPokemon(username);
 		resp.setContentType("application/json");
 		resp.getWriter().append(mapper.writeValueAsString(creditArr));
 

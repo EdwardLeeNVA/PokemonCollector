@@ -19,7 +19,7 @@ export class RedeemComponent implements OnInit {
   //stores an array of Pokemon objects to display to DOM
   public duplicatePokemon: any[] = new Array();
   //stores credit amounts change and new credit amount
-  public credits: number[];
+  public credits: number;
   redeemTicketModel = new RedeemTicket(0);
   constructor(
     private trainerService: TrainerService,
@@ -55,7 +55,7 @@ export class RedeemComponent implements OnInit {
     this.pokedexService.redeemAll().subscribe(Response => {
       this.credits = Response;
       //Update Behavior Subject
-      this.trainer.credits = Response[1];
+      this.trainer.credits = this.trainer.credits + this.credits;
       this.trainerService.updateValidLogin(this.trainer);
     });
 
@@ -75,7 +75,7 @@ export class RedeemComponent implements OnInit {
         //Sets the this.credits to response.
 
         this.credits = Response;
-        this.trainer.credits = Response[1];
+        this.trainer.credits = this.trainer.credits + this.credits;
         this.trainerService.updateValidLogin(this.trainer);
       });
 

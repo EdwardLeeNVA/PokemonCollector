@@ -34,6 +34,7 @@ body {
 
 /*
 
+ISAIAH STYLING START
 STYLING ADDITIONS
 
 */
@@ -48,10 +49,8 @@ STYLING ADDITIONS
 }
 
 #leaderHeading{
-
   color:white;
   text-align: center;
-
 }
 
 #leaderLeftSection{
@@ -76,4 +75,13 @@ STYLING ADDITIONS
   color: #FFCD00;
   font-weight: bold;
   letter-spacing: 5px;
+}
+/* ISAIAH STYLING END */
+h1 {
+  color: white;
+  text-align: center;
+}
+
+#outer-most {
+  text-align: center;
 }

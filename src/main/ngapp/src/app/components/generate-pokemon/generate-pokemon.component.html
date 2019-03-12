@@ -19,11 +19,11 @@
             >
               Get a pokemon
             </button>
-            <div class="row" id="rulesContainerRow mt-5">
+            <div class="row mt-5" id="rulesContainerRow">
               <div class="col-md-2">
                 <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
               </div>
-              <div class="col-md-10">
+              <div class="col-md-10" id="rules-text-box">
                 Hello there! Welcome to the world of pokémon!<br />
                 My name is Oak! People call me the pokémon Prof!<br />
                 This application is inhabited by creatures called pokémon! For
@@ -94,18 +94,12 @@
                 <h4 class="pokemon-card-name">{{ pokemonName }}</h4>
                 <img src="{{ pokemonSprite }}" class="pokemon-card-img" />
                 <div class="pokemon-card-info-cont">
-                  <p>
-                    <b>Type: {{ pokemonType }}</b>
-                  </p>
-                  <p>
-                    <b>HP: {{ hp }}</b>
-                  </p>
-                  <p>
-                    <b>Attack: {{ attack }}</b>
-                  </p>
-                  <p>
-                    <b>Defense: {{ defense }}</b>
-                  </p>
+                  <p *ngIf= "pokemonType?.length == 1">Type: {{ pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>
+                  <p *ngIf= "pokemonType?.length == 2"> Type: {{ pokemonType[1].charAt(0).toUpperCase() + pokemonType[1].substring(1) + " / "
+                     + pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>
+                  <p>HP: {{hp}}</p>
+                  <p>Attack: {{attack}}</p>
+                  <p>Defense: {{defense}}</p>
                 </div>
               </div>
 

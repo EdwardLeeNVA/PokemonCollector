@@ -32,13 +32,16 @@
               />
               <div class="pokemon-card-outer">
                 <label class="form-check-label text-light" for="gridRadios1">
-                  {{ pokemonX.name }}
+                  {{ pokemonX.name.charAt(0).toUpperCase() + pokemonX.name.substring(1) }}
                 </label>
                 <img class="pokemon-card-img" src="{{ pokemonX.imageUrl }}" />
                 <div class="pokemon-card-info-cont">
                   <p>Cost: {{ pokemonX.cost }}</p>
                   <br />
-                  <p>Type: {{ pokemonX.type[0] }}</p>
+                  <p *ngIf= "pokemonX.type[1] == null">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>
+                  <p *ngIf= "pokemonX.type[1] != null"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + " / " + 
+                  pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>
+                  <p>Count: {{ pokemonCount }}</p>
 
                   <p>Count: {{ pokemonX.count }}</p>
                 </div>
@@ -51,41 +54,3 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="newpokemonModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="newpokemonModel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div
-      class="modal-content justify-content-center"
-      id="newPokemon-Modal-Content"
-    >
-      <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-        <div class="pokemon-card-outer text-center " id="generate-pokemon-card">
-          <h4 class="pokemon-card-name">{{ this.pokemonName }}</h4>
-
-          <img src="{{ this.pokemonURL }}" class="pokemon-card-img" />
-          <div class="pokemon-card-info-cont">
-            <p>Type: {{ this.pokemonType }}</p>
-            <p>HP: {{ this.hp }}</p>
-            <p>Attack: {{ this.attack }}</p>
-            <p>Defense: {{ this.defense }}</p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          class="newPokemon-Modal-Buttons "
-          data-dismiss="modal"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

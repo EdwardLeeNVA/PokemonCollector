@@ -12,26 +12,25 @@
         class=" login-form"
         #registerForm="ngForm"
         (ngSubmit)="registerTrainer()"
-        method="POST"
       >
         <div class="form-group">
           <label for="username">Username </label>
           <input
+            type="text"
             name="username"
             class="form-control"
             required
-            placeholder="Username"
-            #username
+            #username="ngModel"
+            [class.is-valid]="username.valid"
+            [class.is-invalid]="username.invalid && username.touched"
+            [(ngModel)]="registerModel.username"
           />
 
-          <div
-            *ngIf="username.invalid && (username.dirty || username.touched)"
-            class="alert alert-danger"
+          <small
+            class="text-danger"
+            [class.d-none]="username.valid || username.untouched"
+            >Username is required.</small
           >
-            <div *ngIf="username.errors.required">
-              Username is required.
-            </div>
-          </div>
         </div>
 
         <div class="form-group">
@@ -41,58 +40,58 @@
             class="form-control"
             required
             type="password"
-            placeholder="Password"
-            #password
+            #password="ngModel"
+            [class.is-valid]="password.valid"
+            [class.is-invalid]="password.invalid && password.touched"
+            [(ngModel)]="registerModel.password"
           />
 
-          <div
-            *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="alert alert-danger"
+          <small
+            class="text-danger"
+            [class.d-none]="password.valid || password.untouched"
+            >Password is requried.</small
           >
-            <div *ngIf="password.errors.required">
-              Password is required.
-            </div>
-          </div>
         </div>
 
         <div class="form-group">
           <label for="fname">First Name </label>
           <input
+            type="text"
             name="fname"
             class="form-control"
             required
-            placeholder="First Name"
-            #fname
+            #fname="ngModel"
+            [class.is-valid]="fname.valid"
+            [class.is-invalid]="fname.invalid && fname.touched"
+            [(ngModel)]="registerModel.fname"
           />
-
-          <div
-            *ngIf="fname.invalid && (fname.dirty || fname.touched)"
-            class="alert alert-danger"
+          <small
+            class="text-danger"
+            [class.d-none]="fname.valid || fname.untouched"
           >
-            <div *ngIf="fname.errors.required">
-              First name is required.
-            </div>
-          </div>
+            Firstname is required
+          </small>
         </div>
 
         <div class="form-group">
           <label for="lname">Last Name </label>
           <input
+            type="text"
             name="lname"
             class="form-control"
             required
-            placeholder="Last Name"
-            #lname
+            #lname="ngModel"
+            [class.is-valid]="lname.valid"
+            [class.is-invalid]="lname.invalid && lname.touched"
+            [(ngModel)]="registerModel.lname"
           />
 
-          <div
-            *ngIf="lname.invalid && (lname.dirty || lname.touched)"
-            class="alert alert-danger"
+          <small
+            class="text-danger"
+            [class.d-none]="lname.valid || lname.untouched"
           >
-            <div *ngIf="lname.errors.required">
-              Last name is required.
-            </div>
-          </div>
+            Lastname is required
+          </small>
         </div>
 
         <div class="form-group">
@@ -102,26 +101,41 @@
             class="form-control"
             required
             type="email"
-            placeholder="Email"
-            #email
+            #email="ngModel"
+            [class.is-valid]="email.valid"
+            [class.is-invalid]="email.invalid && email.touched"
+            [(ngModel)]="registerModel.email"
           />
-
-          <div
-            *ngIf="email.invalid && (email.dirty || email.touched)"
-            class="alert alert-danger"
+          <small
+            class="text-danger"
+            [class.d-none]="email.valid || email.untouched"
+            >Email is requried.</small
           >
-            <div *ngIf="email.errors.required">
-              Email is required.
-            </div>
-          </div>
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="login-alert"
+          role="alert"
+        >
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+          <strong>Erm...</strong> What was your name again...?
+          <button
+            id="login-alert"
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
 
         <input
           name="submit"
           type="submit"
           class="btn btn-block login-form-btn"
-          [disabled]="!registerForm.form.valid"
         />
+        <!-- [disabled]="!registerForm.form.valid" -->
       </form>
     </div>
   </div>
