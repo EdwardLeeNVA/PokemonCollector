@@ -1,13 +1,8 @@
-
-  
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col"> -->
   <div class="container " id="shop-form-container">
     <div class="row justify-content-center">
       <div class="col justify-content-center" id="shop-form-col">
         <div class="shop-form-scroll">
-          <form name="buyForm" #buyForm="ngForm" (ngSubmit)="onBuySubmit()" novalidate>
+          <form name="buyForm" #buyForm="ngForm" novalidate>
             <div id="shop-form-header">
               <img
                 class="animated shake"
@@ -21,6 +16,7 @@
                 class="shop-buy-btn"
                 id="shop-buy-btn"
                 type="submit"
+                (click)="showBoughtMessage()"
               >
                 Buy
               </button>
@@ -28,7 +24,7 @@
             </div>
             <form>
               <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0>Number of Pokemon per page</option>
+                <option value=0 selected>Number of Pokemon per page</option>
                 <option value=20>20</option>
                 <option value=50>50</option>
                 <option value=100>100</option>
@@ -36,12 +32,7 @@
             </form>
             <div *ngIf="showPagination">
               <button type="button" value="previous page" (click)="prevPage()"><</button>
-              <!--
-                put numbers for new pages here 
-                <div *ngFor="let number of numPages">>
-              </div>
-             -->
-             <button type="button" value="next page" (click)="nextPage()">></button>
+              <button type="button" value="next page" (click)="nextPage()">></button>
             </div>            
             <div class="radio-card-grid">
               <div
@@ -66,73 +57,15 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                      <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
-                      <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
-                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
-                    <!-- <p>HP: {{ pokemon.hp }}</p>
-                    <p>Attack: {{ pokemon.attack }}</p>
-                    <p>Defense: {{ pokemon.defense }}</p> -->
                     <p>HP: {{ pokemon.stats.hp }}</p>
                     <p>Attack: {{ pokemon.stats.attack }}</p>
                     <p>Defense: {{ pokemon.stats.defense }} </p>
-                    <!-- <p>Stats:</p>
-                      <p>Attack: {{ pokemon.stats.attack }}</p>
-                      <p>Defense: {{ pokemon.stats.defense }} </p>
-                      <p>HP: {{ pokemon.stats.hp }}</p>
-                      <p>Special attack: {{ pokemon.stats.special-attack }}</p>
-                      <p>Special defense: {{ pokemon.stats.special-defense }}</p>
-                      <p>Speed: {{ pokemon.stats.speed }}</p> -->
+                    <p>Type: {{ pokemon.type }}</p>
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <p>--trying pagination below here</p>
-            <div class="radio-card-grid" *ngIf = "numPoke != 0">
-                <div
-                  class="form-check radio-form-item"
-                  *ngFor="let pokemon of pokePages"
-                >
-                  <input
-                    class="form-check-input customRadioBtn"
-                    type="radio"
-                    #pokemonCard="ngModel"
-                    name="gridRadios"
-                    value="{{ pokemon.id }}"
-                    checked
-                    [(ngModel)]="selectedPoke"
-                  />
-                  <div class="pokemon-card-outer">
-                    <label
-                      class="form-check-label shop-poke-name"
-                      for="gridRadios1"
-                    >
-                      {{ pokemon.name }}
-                    </label>
-                    <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
-                    <div class="pokemon-card-info-cont">
-                        <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
-                        <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
-                            pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
-                        <p>HP: {{ pokemon.hp }}</p>
-                      <p>Attack: {{ pokemon.attack }}</p>
-                      <p>Defense: {{ pokemon.defense }}</p>
-                      <p>HP: {{ pokemon.stats.hp }}</p>
-                      <p>Attack: {{ pokemon.stats.attack }}</p>
-                      <p>Defense: {{ pokemon.stats.defense }} </p>
-                       <p>Stats:</p>
-                        <p>Attack: {{ pokemon.stats.attack }}</p>
-                        <p>Defense: {{ pokemon.stats.defense }} </p>
-                        <p>HP: {{ pokemon.stats.hp }}</p>
-                        <p>Special attack: {{ pokemon.stats.special-attack }}</p>
-                        <p>Special defense: {{ pokemon.stats.special-defense }}</p>
-                        <p>Speed: {{ pokemon.stats.speed }}</p>
-                      <p>Cost: {{ pokemon.cost }}</p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-  
           </form>
         </div>
       </div>
@@ -153,29 +86,16 @@
         id="newPokemon-Modal-Content"
       >
         <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-          <img
-            src="http://i66.tinypic.com/2rrwdck.png"
-            id="generate-pokemon-pokeball"
-            class="mb-3 animated shake"
-            (click)="onBallClick()"
-          />
           <div
-            class="pokemon-card-outer text-center d-none "
+            class="pokemon-card-outer text-center"
             id="generate-pokemon-card"
           >
-            <!-- *ngFor="let pokemon of pokemonArr" -->
-            <h4 class="pokemon-card-name">{{ this.name }}</h4>
+            <h4 class="pokemon-card-name">{{ allPoke[selectedPoke-1].name }}</h4>
   
-            <img src="{{ this.imageUrl }}" class="pokemon-card-img" />
+            <img src="{{ allPoke[selectedPoke - 1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                <!-- <p>Stats:</p>
-                <p>Attack: {{ pokemon.stats.attack }}</p>
-                <p>Defense: {{ pokemon.stats.defense }} </p>
-                <p>HP: {{ pokemon.stats.hp }}</p>
-                <p>Special-attack: {{ pokemon.stats.special-attack }}</p>
-                <p>Special-defense: {{ pokemon.stats.special-defense }}</p>
-                <p>Speed: {{ pokemon.stats.speed }}</p> -->
-                <p>Type: {{this.type}}</p>
+                  <p>Type: {{ allPoke[selectedPoke-1].type }}</p>
+                <p>Cost: {{ allPoke[selectedPoke-1].cost }}</p>
             </div>
           </div>
           <!-- start no credits alert -->
@@ -232,8 +152,10 @@
           <button
                 data-toggle="modal"
                 data-target="#newpokemonConfirm"
+                data-dismiss="modal"
                 class="shop-buy-btn"
                 type="submit"
+                (click)="onBuySubmit()"
               >
                 I Choose You!
               </button>
@@ -243,6 +165,7 @@
             type="button"
             class="shop-buy-btn"
             data-dismiss="modal"
+            (click)="showBoughtMessage()"
           >
             Close
           </button>
@@ -252,13 +175,4 @@
     </div>
   </div>
 <!-- end modal -->
-<form>
-  <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-    <option value=0>Number of Pokemon per page</option>
-    <option value=20>20</option>
-    <option value=50>50</option>
-    <option value=100>100</option>
-  </select>
-</form>    
-   
   

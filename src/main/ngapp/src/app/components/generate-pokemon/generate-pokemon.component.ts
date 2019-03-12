@@ -10,12 +10,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./generate-pokemon.component.css']
 })
 export class GeneratePokemonComponent implements OnInit {
-  private pokemonName: string;
-  private pokemonType: string[];
-  private pokemonSprite: string;
-  private hp: number;
-  private attack: number;
-  private defense: number;
+  public pokemonName: string;
+  public pokemonType: string[];
+  public pokemonSprite: string;
+  public hp: number;
+  public attack: number;
+  public defense: number;
   private cardShow: boolean = false;
   public trainer: Trainer;
   public login_status: boolean;
