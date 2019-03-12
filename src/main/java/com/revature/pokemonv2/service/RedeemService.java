@@ -109,7 +109,6 @@ public class RedeemService {
 		int creditArr = TrainerDAOImp.getTrainerDAO().redeemAll(ID, username); // Execute redeem, returns new credits and total
 		System.out.println(creditArr);
 
-		CachingUtility.getCachingUtility().redeemAllPokemon(username);
 		resp.setContentType("application/json");
 		resp.getWriter().append(mapper.writeValueAsString(creditArr));
 
