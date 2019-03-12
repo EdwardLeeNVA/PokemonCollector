@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Trainer } from "../models/Trainer";
-
-// import { POKEMON } from "../temp/tempPoke";
 import { Pokemon } from "../models/Pokemon";
 import { RedeemTicket } from "../models/redeem-ticket";
 import {Observable} from "rxjs";

@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpHeaders } from "@angular/common/http";
-
-import { GeneratePokemonComponent } from "../components/generate-pokemon/generate-pokemon.component";
 import { TrainerService } from "./trainer.service";
 import { Trainer } from "../models/Trainer";
 import {PokedexService} from "./pokedex.service";
@@ -20,7 +18,7 @@ export class TokenService {
   setCurrentUserToken(token: string, resp: any) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
-      //console.log(resp);
+
       let t: Trainer = {
         userID: resp.body.userID,
         username: resp.body.username,
@@ -31,7 +29,7 @@ export class TokenService {
         credits: resp.body.credits,
         score: resp.body.score
       }
-      //console.log(t);
+
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
       this.trainerService.updateValidLogin(t);
       this.pokedexService.getTrainersPokemon(t.username).subscribe(

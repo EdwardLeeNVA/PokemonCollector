@@ -16,31 +16,31 @@
 </nav>
 
   <!-- Signed-In Navbar -->
-  <nav class="navbar navbar-expand-lg " id="logged-nav-bar" *ngIf="login_status">
-    <img src="http://i65.tinypic.com/25iyve1.png" alt="Image and video hosting by TinyPic"/>
-    <p class="player-info">Welcome, {{this.trainer.username}}!</p>
-    <p class="player-info">Credits: {{this.trainer.credits}}</p>
-    <p class="player-info">Score: {{this.trainer.score}}</p>
+<nav class="navbar navbar-expand-lg " id="logged-nav-bar" *ngIf="login_status">
+  <img src="http://i65.tinypic.com/25iyve1.png" alt="Image and video hosting by TinyPic"/>
+  <p class="player-info">Welcome, {{this.trainer.username}}!</p>
+  <p class="player-info">Credits: {{this.trainer.credits}}</p>
+  <p class="player-info">Score: {{this.trainer.score}}</p>
 
+  <div class="collapse navbar-collapse" id="navbarNav2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link customLink" href="/PokemonCollector/ng/generate" routerLink="generate">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link customLink" href="/PokemonCollector/ng/shop" routerLink="shop">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link customLink" href="/PokemonCollector/ng/redeem" routerLink="redeem">Redeem</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link customLink" href="/PokemonCollector/ng/collection" routerLink="collection">View Collection</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link customLink" href="/PokemonCollector/ng/landing" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-    <div class="collapse navbar-collapse" id="navbarNav2">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link customLink" href="/PokemonCollector/ng/generate" routerLink="generate">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="/PokemonCollector/ng/shop" routerLink="shop">Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="/PokemonCollector/ng/redeem" routerLink="redeem">Redeem</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="/PokemonCollector/ng/collection" routerLink="collection">View Collection</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link customLink" href="/PokemonCollector/ng/landing" (click)="onLogout()">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>

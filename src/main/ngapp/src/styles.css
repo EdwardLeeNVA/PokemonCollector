@@ -125,6 +125,7 @@ body {
   padding: 10px;
   border: 1px solid yellow;
 }
+
 .shop-buy-btn {
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
   border: 2px solid yellow !important;
