@@ -98,7 +98,11 @@ public class PlayerService {
 	 * Takes in parameters and registers a new Trainer.
 	 */
 	public void registerPlayer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
-				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0, false);
+//		trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
+//				request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0, false);
+		
+		if (!trainer.createTrainer(request.getParameter("username"), request.getParameter("password"),
+                request.getParameter("email"), request.getParameter("fname"), request.getParameter("lname"), 0, 0, false))
+            response.getWriter().write("Failed");
 	}
 }

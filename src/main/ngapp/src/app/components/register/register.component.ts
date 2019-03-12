@@ -12,6 +12,7 @@ import { RegisterModel } from "src/app/models/register-model";
 export class RegisterComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
+  alertShowing = false;
   public registerModel = new RegisterModel("", "", "", "", "");
 
   constructor(private trainerService: TrainerService, private router: Router) {}
@@ -32,13 +33,24 @@ export class RegisterComponent implements OnInit {
 
   registerTrainer() {
     let credentials: FormData = new FormData(document.querySelector("form"));
-    this.trainerService.createTrainer(credentials).subscribe(data => {
-      console.log(data.status);
-      if (data.status === 200) {
+    this.trainerService.createTrainer(credentials).subscribe(
+      data => {
+        console.log("data ", data.body);
         this.router.navigateByUrl("/landing");
-      } else {
-        console.log("Bad Request");
+      },
+      error => {
+        if (this.alertShowing == false) {
+          $("#login-alert").removeClass("d-none");
+          this.alertShowing = true;
+        }
       }
-    });
+    );
+  }
+
+  onAlertClose() {
+    if (this.alertShowing) {
+      $("#login-alert").addClass("d-none");
+      this.alertShowing = false;
+    }
   }
 }
