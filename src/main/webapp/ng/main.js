@@ -449,7 +449,7 @@ var GeneratePokemonComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICB3aWR0aCA6IDk1JTtcclxufVxyXG5cclxudGFibGUsIHRoLCB0ZCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuI2J1dHRvbiB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmh0bWwsXHJcbmJvZHkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtZ2FwOiA1MHB4IDEwMHB4O1xyXG59XHJcblxyXG4jdGFibGV1c2VybmFtZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jdGFibGVzY29yZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcbiJdfQ== */"
+module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}\r\n\r\ntable, th, td {\r\n  border: 1px solid yellow;\r\n}\r\n\r\n#leaderboardTable {\r\n  border: 3px solid yellow;\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n}\r\n\r\n#button {\r\n  background: linear-gradient(to top, #990033 0%, #cc0000 65%);\r\n  border: 2px solid yellow;\r\n  color: white;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  background: linear-gradient(to bottom left, #000066 0%, #666699 100%);\r\n}\r\n\r\n.grid-container {\r\n  display: grid;\r\n  grid-gap: 50px 100px;\r\n}\r\n\r\n#tableusername {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n#tablescore {\r\n  border: 3px solid yellow;\r\n}\r\n\r\n.tabletext{\r\n  color : white;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sYW5kaW5nL2xhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSx3QkFBd0I7QUFDMUI7O0FBRUE7RUFDRSx3QkFBd0I7RUFDeEIsNERBQTREO0FBQzlEOztBQUVBO0VBQ0UsNERBQTREO0VBQzVELHdCQUF3QjtFQUN4QixZQUFZO0FBQ2Q7O0FBRUE7O0VBRUUscUVBQXFFO0FBQ3ZFOztBQUVBO0VBQ0UsYUFBYTtFQUNiLG9CQUFvQjtBQUN0Qjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLHdCQUF3QjtBQUMxQjs7QUFFQTtFQUNFLGFBQWE7QUFDZiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGFuZGluZy9sYW5kaW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICB3aWR0aCA6IDk1JTtcclxufVxyXG5cclxudGFibGUsIHRoLCB0ZCB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jbGVhZGVyYm9hcmRUYWJsZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICM5OTAwMzMgMCUsICNjYzAwMDAgNjUlKTtcclxufVxyXG5cclxuI2J1dHRvbiB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzk5MDAzMyAwJSwgI2NjMDAwMCA2NSUpO1xyXG4gIGJvcmRlcjogMnB4IHNvbGlkIHllbGxvdztcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmh0bWwsXHJcbmJvZHkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20gbGVmdCwgIzAwMDA2NiAwJSwgIzY2NjY5OSAxMDAlKTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtZ2FwOiA1MHB4IDEwMHB4O1xyXG59XHJcblxyXG4jdGFibGV1c2VybmFtZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4jdGFibGVzY29yZSB7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgeWVsbG93O1xyXG59XHJcblxyXG4udGFibGV0ZXh0e1xyXG4gIGNvbG9yIDogd2hpdGU7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -460,7 +460,7 @@ module.exports = "table {\r\n  border-collapse: collapse;\r\n  width : 95%;\r\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 style=\"color:white;\" align=\"center\">Top 10 Scores</h1>\r\n<div align=\"center\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\">Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\">Score</th>\r\n      </tr>\r\n\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
+module.exports = "<h1 style=\"color:white;\" align=\"center\">Top 10 Scores</h1>\r\n<div align=\"center\">\r\n  <div>\r\n    <table id=\"leaderboardTable\">\r\n      <thead>\r\n      </thead>\r\n      <tr>\r\n        <th class=\"tabletext\" id=\"tableusername\" scope=\"col\" width=\"50%\" >Username</th>\r\n        <th class=\"tabletext\" id=\"tablescore\" scope=\"col\" width=\"50%\" >Score</th>\r\n      </tr>\r\n      <tbody id=\"leaderboardBody\"></tbody>\r\n    </table>\r\n  </div>\r\n  <br>\r\n  <div>\r\n    <button class=\"button\" routerLink=\"/stats\">Stats</button>\r\n  </div>\r\n  <br>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1037,7 +1037,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCountTotal\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
+module.exports = "<div align=\"center\">\r\n  <br>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCountTotal\" style=\"width: 90%; height: 700px; display: block;  margin : 10px;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1060,57 +1060,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsComponent = /** @class */ (function () {
     function StatsComponent() {
-        this.data1 = [
-            {
-                name: 'Normal',
-                y: 65,
-            }, {
-                name: 'Water',
-                y: 62,
-            }, {
-                name: 'Grass',
-                y: 38,
-            }, {
-                name: 'Psychic',
-                y: 35,
-            }, {
-                name: 'Fire',
-                y: 31,
-            }, {
-                name: 'Electric',
-                y: 28,
-            }, {
-                name: 'Fighting',
-                y: 22,
-            }, {
-                name: 'Bug',
-                y: 18,
-            }, {
-                name: 'Poison',
-                y: 16,
-            }, {
-                name: 'Ground',
-                y: 15,
-            }, {
-                name: 'Ice',
-                y: 14,
-            }, {
-                name: 'Dragon',
-                y: 12,
-            }, {
-                name: 'Rock',
-                y: 11,
-            }, {
-                name: 'Ghost',
-                y: 9,
-            }, {
-                name: 'Flying',
-                y: 7,
-            }
-        ];
         this.total = this.data1;
         this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
-        this.configUrl = "/PokemonCollector/ng/stats";
+        this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats";
     }
     StatsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1119,22 +1071,29 @@ var StatsComponent = /** @class */ (function () {
             .then(function (res) {
             console.log(res);
             _this.data1 = res;
-        });
-        fetch(this.configUrl)
-            .then(function (res) { return res.json(); })
-            .then(function (res) {
-            console.log(res);
-            _this.total = res;
-            _this.load();
+            //this.configUrl = "/PokemonCollector/ng/stats2";
+            _this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
+            fetch(_this.configUrl)
+                .then(function (res) { return res.json(); })
+                .then(function (res) {
+                console.log(res);
+                _this.total = res;
+                _this.load();
+            });
         });
     };
     StatsComponent.prototype.load = function () {
         this.pokeCountTotal = {
             chart: {
-                type: 'column'
+                type: 'column',
+                marginBottom: "150",
+                spacingTop: "1",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150"
             },
             title: {
-                text: 'Pokemons per trainer'
+                text: 'Pokemons Per Trainer'
             },
             subtitle: {
                 text: 'Top 10'
@@ -1166,11 +1125,12 @@ var StatsComponent = /** @class */ (function () {
                     data: this.total,
                     dataLabels: {
                         enabled: true,
-                        rotation: -90,
-                        color: '#FFFFFF',
+                        rotation: 0,
+                        color: 'black',
                         align: 'right',
                         format: '{point.y:.0f}',
-                        y: -50,
+                        y: -25,
+                        x: -10,
                         style: {
                             fontSize: '13px',
                             fontFamily: 'Verdana, sans-serif'
@@ -1180,10 +1140,15 @@ var StatsComponent = /** @class */ (function () {
         };
         this.pokeCount = {
             chart: {
-                type: 'column'
+                type: 'column',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
             },
             title: {
-                text: 'Unique Pokemons per trainer'
+                text: 'Unique Pokemons Per Trainer'
             },
             subtitle: {
                 text: 'Top 10'
@@ -1215,11 +1180,12 @@ var StatsComponent = /** @class */ (function () {
                     data: this.data1,
                     dataLabels: {
                         enabled: true,
-                        rotation: -90,
-                        color: '#FFFFFF',
+                        rotation: 0,
+                        color: '#black',
                         align: 'right',
                         format: '{point.y:.0f}',
-                        y: -50,
+                        y: -25,
+                        x: -10,
                         style: {
                             fontSize: '13px',
                             fontFamily: 'Verdana, sans-serif'
@@ -1232,10 +1198,18 @@ var StatsComponent = /** @class */ (function () {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
             },
             title: {
-                text: 'Pokemon Types'
+                text: 'Distribution Of Pokemon Per Players'
+            },
+            subtitle: {
+                text: 'Top 10'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -1246,7 +1220,7 @@ var StatsComponent = /** @class */ (function () {
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        format: '<b>{point.name}</b>',
                         style: {
                         // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                         }
@@ -1254,9 +1228,9 @@ var StatsComponent = /** @class */ (function () {
                 }
             },
             series: [{
-                    name: 'Pokemon Type',
+                    name: 'Pokemon',
                     colorByPoint: true,
-                    data: this.data1
+                    data: this.total
                 }]
         };
     };
