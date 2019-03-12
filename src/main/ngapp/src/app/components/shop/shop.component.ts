@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PokedexService } from '../../services/pokedex.service';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
@@ -25,12 +24,12 @@ export class ShopComponent implements OnInit {
   public login_status: boolean;
   public cardShow: boolean = false;
   private alertShowing: boolean = false;
+  private boughtPoke: boolean = false;
   public selectedPoke: number;
 
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
   ngOnInit() {
-    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
     if(this.trainer == null){
@@ -39,8 +38,9 @@ export class ShopComponent implements OnInit {
     }
     this.populatePokeArray();
   }
+
   onBuySubmit() {
-    if (this.trainer.credits > this.allPoke[this.selectedPoke-1].cost){
+    if (this.trainer.credits < this.allPoke[this.selectedPoke-1].cost){
       if (this.alertShowing == false){
         $("#no-credit-alert").removeClass("d-none");
         this.alertShowing = true;  
@@ -48,19 +48,21 @@ export class ShopComponent implements OnInit {
     }
     else{
       let cost: number = this.allPoke[this.selectedPoke-1].cost;
-        console.log("In purchase True")
         this.trainer.credits = this.trainer.credits-cost;
         this.trainerService.updateValidLogin(this.trainer);
         this.http.post(
            "/PokemonCollector/servlet/purchase",
            this.allPoke[this.selectedPoke-1]
-         ).subscribe();      
+         ).subscribe();
+         $("#add-pokemon-alert").removeClass("d-none");
+         this.boughtPoke = true;      
       }
       if (this.alertShowing){
         $("#no-credit-alert").removeClass("d-none");
         this.alertShowing = false;  
       }
   }  
+
   //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
@@ -86,21 +88,17 @@ export class ShopComponent implements OnInit {
       }
       ,err => console.log(`Error: ${err}`)
     )
-    console.log(this.allPoke);
   }
 
-  // populatePokePages(): void{
-  //   let count = 0;
-  //   this.currentPage = 0;
-  //   //display number of pokemon on page from radio button
-  //   for (let i = (this.currentPage * this.numPoke + 1); i < (this.currentPage * this.numPoke + this.numPoke); i++){
-  //     this.pokePages[count] = this.allPoke[i];
-  //     count++;
-  //   }
-  //   this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
-  // }
+  showBoughtMessage(): void{
+    if (this.boughtPoke){
+      $("#add-pokemon-alert").addClass("d-none");
+      this.boughtPoke = false;      
+    }
+  }
   
   populatePokePages(): void{
+    this.pokePages = [];
     this.currentPage = 1;
     this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke));
     this.showPagination = true;
@@ -108,7 +106,7 @@ export class ShopComponent implements OnInit {
   }
 
   changePokePages(): void{
-    if (((this.currentPage*this.numPoke)) > this.allPoke.length){
+    if (((this.currentPage*this.numPoke)+1) > this.allPoke.length){
       this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke);
     }
     else{
@@ -116,16 +114,17 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  //jump to specific page
+  //not implemented
   showPaginationNavbar(): void{
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
     for (let i = 0; i < this.numPages; i++){
       this.paginationArray[i] = i+1;
     }
-    console.log(this.numPages);
-    console.log(this.paginationArray);
   }
 
   //jump to specific page
+  //not implemented
   specificPage(pageNumber: number): void{
     this.currentPage = pageNumber;
     this.changePokePages();

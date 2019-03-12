@@ -1,13 +1,8 @@
-
-  
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col"> -->
   <div class="container " id="shop-form-container">
     <div class="row justify-content-center">
       <div class="col justify-content-center" id="shop-form-col">
         <div class="shop-form-scroll">
-          <form name="buyForm" #buyForm="ngForm"  novalidate>
+          <form name="buyForm" #buyForm="ngForm" novalidate>
             <div id="shop-form-header">
               <img
                 class="animated shake"
@@ -21,6 +16,7 @@
                 class="shop-buy-btn"
                 id="shop-buy-btn"
                 type="submit"
+                (click)="showBoughtMessage()"
               >
                 Buy
               </button>
@@ -28,7 +24,7 @@
             </div>
             <form>
               <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0 selected>Number of Pokemon per page</option>
+                <option value=0>Number of Pokemon per page</option>
                 <option value=20>20</option>
                 <option value=50>50</option>
                 <option value=100>100</option>
@@ -36,12 +32,7 @@
             </form>
             <div *ngIf="showPagination">
               <button type="button" value="previous page" (click)="prevPage()"><</button>
-              <!--
-                put numbers for new pages here 
-                <div *ngFor="let number of numPages">>
-              </div>
-             -->
-             <button type="button" value="next page" (click)="nextPage()">></button>
+              <button type="button" value="next page" (click)="nextPage()">></button>
             </div>            
             <div class="radio-card-grid">
               <div
@@ -66,12 +57,10 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
-                      <p *ngIf= "pokemon.type[1] == null">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
-                      <p *ngIf= "pokemon.type[1] != null"> Type: {{ (pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1)) + " / " +
-                          pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1)}}</p>  
                     <p>HP: {{ pokemon.stats.hp }}</p>
                     <p>Attack: {{ pokemon.stats.attack }}</p>
                     <p>Defense: {{ pokemon.stats.defense }} </p>
+                    <p>Type: {{ pokemon.type }}</p>
                     <p>Cost: {{ pokemon.cost }}</p>
                   </div>
                 </div>
@@ -97,26 +86,16 @@
         id="newPokemon-Modal-Content"
       >
         <div class="modal-body justify-content-center" id="newPokemon-Modal-Body">
-        <!--  <img
-            src="http://i66.tinypic.com/2rrwdck.png"
-            id="generate-pokemon-pokeball"
-            class="mb-3 animated shake"
-            (click)="onBallClick()"
-          /> -->
           <div
             class="pokemon-card-outer text-center"
             id="generate-pokemon-card"
           >
-            <!-- *ngFor="let pokemon of pokemonArr" -->
             <h4 class="pokemon-card-name">{{ allPoke[selectedPoke-1].name }}</h4>
   
             <img src="{{ allPoke[selectedPoke-1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                <p *ngIf= "pokemon.type[1] == null">Type: {{ allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
-                <p *ngIf= "pokemon.type[1] != null"> Type: {{ (allPoke[selectedPoke-1].type[1].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[1].substring(1)) + " / " +
-                allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1)}}</p>  
-                <p>Cost: {{ pokemon.cost }}</p>
-                <p>Type: {{this.type}}</p>
+                  <p>Type: {{ allPoke[selectedPoke-1].type }}</p>
+                <p>Cost: {{ allPoke[selectedPoke-1].cost }}</p>
             </div>
           </div>
           <!-- start no credits alert -->
@@ -175,7 +154,6 @@
                 data-target="#newpokemonConfirm"
                 class="shop-buy-btn"
                 type="submit"
-                data-dismiss="modal"
                 (click)="onBuySubmit()"
               >
                 I Choose You!
@@ -186,6 +164,7 @@
             type="button"
             class="shop-buy-btn"
             data-dismiss="modal"
+            (click)="showBoughtMessage()"
           >
             Close
           </button>
@@ -195,13 +174,4 @@
     </div>
   </div>
 <!-- end modal -->
-<form>
-  <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-    <option value=0>Number of Pokemon per page</option>
-    <option value=20>20</option>
-    <option value=50>50</option>
-    <option value=100>100</option>
-  </select>
-</form>    
-   
   
