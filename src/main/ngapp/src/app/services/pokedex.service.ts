@@ -41,7 +41,7 @@ export class PokedexService {
   //returns updated credits and increased credit amount when redeeming a specific pokemon
   redeemSpecific(redeemTicket: RedeemTicket) {
     //make POST request to get array of 'int's which will resemble credits earned and credits after redeem
-    console.log("redeemTicket ", redeemTicket);
+
     return this._http.post<any>(
       "/PokemonCollector/servlet/redeem",
       redeemTicket
