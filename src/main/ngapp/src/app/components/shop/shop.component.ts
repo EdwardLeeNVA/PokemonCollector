@@ -94,7 +94,7 @@ export class ShopComponent implements OnInit {
       this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke);
     }
     else{
-      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke)+1);
+      this.pokePages = this.allPoke.slice((this.currentPage-1)*this.numPoke,(this.currentPage*this.numPoke));
     }
   }
 
