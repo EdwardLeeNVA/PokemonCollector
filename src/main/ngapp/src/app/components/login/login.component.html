@@ -1,4 +1,4 @@
-<div class="container" id="login-form-cont">
+<div class="container login-form-cont">
   <div class="row justify-content-center">
     <img
       class="animated wobble"
@@ -11,7 +11,7 @@
         #loginForm="ngForm"
         (ngSubmit)="loginTrainer()"
         novalidate
-        id="login-form"
+        class="login-form"
       >
         <div class="form-group">
           <label for="USERNAME">Username</label>
@@ -58,7 +58,7 @@
         >
           <strong>User used login...</strong> It was not very effective.
           <button
-            id="login-alert"
+            id="login-alert-close-btn"
             type="button"
             class="close"
             aria-label="Close"
@@ -67,7 +67,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <button class="btn  btn-block " id="login-form-btn" type="submit">
+        <button class="btn  btn-block login-form-btn" type="submit">
           Login
         </button>
       </form>
