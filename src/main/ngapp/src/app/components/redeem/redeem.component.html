@@ -37,13 +37,13 @@
                 <img class="pokemon-card-img" src="{{ pokemonX.imageUrl }}" />
                 <div class="pokemon-card-info-cont">
                   <p>Cost: {{ pokemonX.cost }}</p>
-                  <br />
+                  <p>Count: {{ pokemonX.count }}</p>
                   <p *ngIf= "pokemonX.type[1] == null">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>
                   <p *ngIf= "pokemonX.type[1] != null"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + " / " + 
                   pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>
-                  <p>Count: {{ pokemonCount }}</p>
-
-                  <p>Count: {{ pokemonX.count }}</p>
+                  <p>HP: {{ pokemonX.stats.hp }}</p>
+                  <p>Attack: {{ pokemonX.stats.attack }}</p>
+                  <p>Defense: {{ pokemonX.stats.defense }} </p>
                 </div>
               </div>
             </div>

@@ -24,7 +24,7 @@
             id="USERNAME"
             [class.is-valid]="name.valid"
             [class.is-invalid]="name.invalid && name.touched"
-            [(ngModel)]="trainerInput.username"
+            [(ngModel)]="this.trainer.username"
           />
           <small
             class="text-danger"
@@ -43,7 +43,7 @@
             id="PASSWORD"
             [class.is-valid]="password.valid"
             [class.is-invalid]="password.invalid && password.touched"
-            [(ngModel)]="trainerInput.password"
+            [(ngModel)]="this.trainer.password"
           />
           <small
             class="text-danger"
