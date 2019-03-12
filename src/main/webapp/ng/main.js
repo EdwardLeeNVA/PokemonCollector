@@ -1120,7 +1120,7 @@ var RedeemComponent = /** @class */ (function () {
         this.pokemon = new src_app_models_Pokemon__WEBPACK_IMPORTED_MODULE_3__["Pokemon"]();
         //stores an array of Pokemon objects to display to DOM
         this.duplicatePokemon = new Array();
-        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_5__["RedeemTicket"](0);
+        this.redeemTicketModel = new src_app_models_redeem_ticket__WEBPACK_IMPORTED_MODULE_6__["RedeemTicket"](0);
     }
     RedeemComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1165,7 +1165,7 @@ var RedeemComponent = /** @class */ (function () {
             .subscribe(function (Response) {
             //Sets the this.credits to response.
             _this.credits = Response;
-            _this.trainer.credits += Response;
+            _this.trainer.credits = _this.trainer.credits + _this.credits;
             _this.trainerService.updateValidLogin(_this.trainer);
         });
         var tempArr = new Array();
@@ -1505,7 +1505,7 @@ var ShopComponent = /** @class */ (function () {
         this.cardShow = false;
         this.alertShowing = false;
         this.httpJSON = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
                 'Content-Type': 'application/json'
             })
         };

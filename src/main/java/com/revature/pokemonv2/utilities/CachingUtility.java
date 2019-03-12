@@ -6,8 +6,6 @@ import java.util.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.sargunvohra.lib.pokekotlin.client.PokeApi;
-import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import org.apache.log4j.Logger;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
@@ -21,6 +19,7 @@ public class CachingUtility {
  	
 	 private final Cache<String, ArrayList> pokedexCache;
 	 private final Cache<Integer, Pokemon> allPokemonCache;
+	 private ArrayList<Pokemon> pokeList;
 	 private static CachingUtility cachingUtility;
 	 final static Logger logger = Logger.getLogger(CachingUtility.class);
 	 private final String ALL_POKEMON = "red";
@@ -44,52 +43,52 @@ public class CachingUtility {
 	 }
 
 	public Pokemon addToCache(String username, int pokeId) {
-		ArrayList<Pokemon> pokeList = this.pokedexCache.get(username);
-		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
-		temp.setCount(pokeList.size());
+		pokeList = this.pokedexCache.get(username);
+		Pokemon temp = findPokemon(pokeId);
+		temp.setCount(temp.getCount()+1);
 		pokeList.add(temp);
 		Collections.sort(pokeList, PokedexSorter.getInstance());
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
 		this.pokedexCache.put(username, pokeList);
-		return temp;
+		return new Pokemon(temp.getId(), temp.getName(),temp.getImageUrl(), temp.getType(), temp.getStats(), pokeList.size(), temp.getCost());
 	}
 
 	public int redeemSinglePokemon(String username, int pokeId){
 
-		ArrayList<Pokemon> newPokeList = this.pokedexCache.get(username);
-		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
+		pokeList = this.pokedexCache.get(username);
+		Pokemon temp = findPokemon(pokeId);
 		
 		int count = temp.getCount();
 		int cost = temp.getCost();
 		int value = (int) (0.1*(count-1)*cost);
 		
 		temp.setCount(1);
-		newPokeList.add(temp);
-		Collections.sort(newPokeList, PokedexSorter.getInstance());
-		this.pokedexCache.put(username, newPokeList);
+		pokeList.add(temp);
+		Collections.sort(pokeList, PokedexSorter.getInstance());
+		this.pokedexCache.put(username, pokeList);
 	 	return value;
 	 }
 
 	
 
 	public int redeemAllPokemon(String username){
-		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
+		pokeList = this.pokedexCache.get(username);
 		int totalValue = 0;
-		for(int i = 0; i < origPokeList.size(); i++){
-			int count = origPokeList.get(i).getCount();
-			int cost = origPokeList.get(i).getCost();
-			if(origPokeList.get(i).getCount()>1) {
-			origPokeList.get(i);
+		for(int i = 0; i < pokeList.size(); i++){
+			int count = pokeList.get(i).getCount();
+			int cost = pokeList.get(i).getCost();
+			if(count>1) {
 			totalValue += 0.1*(count-1)*cost;
-			origPokeList.get(i).setCount(1);
+			System.out.println(totalValue);
+			pokeList.get(i).setCount(1);
 			}
 			
 		}
-		Collections.sort(origPokeList, PokedexSorter.getInstance());
+		Collections.sort(pokeList, PokedexSorter.getInstance());
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
-		this.pokedexCache.put(username, origPokeList);
+		this.pokedexCache.put(username, pokeList);
 		return totalValue;
 	}
 	
@@ -130,7 +129,7 @@ public class CachingUtility {
 		return list;
 	}
 
-	public Pokemon findPokemon(ArrayList<Pokemon> pokeList, Integer pokeId){
+	public Pokemon findPokemon(Integer pokeId){
 		Pokemon temp = null;
 		for(int x = 0; x < pokeList.size(); x++){
 			if(pokeList.get(x).getId() == pokeId){
