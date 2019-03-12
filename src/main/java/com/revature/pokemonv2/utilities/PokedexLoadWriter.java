@@ -14,13 +14,13 @@ public class PokedexLoadWriter implements CacheLoaderWriter {
 	
 	private static PokemonDAO dao = new PokemonDAO();
 	final static Logger logger = Logger.getLogger(PokedexLoadWriter.class);
-	
+	public static boolean isTesting;
 
 	@Override
 	public ArrayList<Pokemon> load(Object key) throws Exception {
 		logger.trace("Entered load writer load method with key: " + key);
 		ArrayList<Pokemon> returnPokeDex = new ArrayList<>();
-		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key);
+		List<Pokemon> pokeDex = dao.getTrainerPokedex((String)key, isTesting);
 		logger.trace("Pokedex received from DAO: " + pokeDex);
 		for (Pokemon p : pokeDex) {
 			logger.trace("Addeding current pokemon: " + p.getId());

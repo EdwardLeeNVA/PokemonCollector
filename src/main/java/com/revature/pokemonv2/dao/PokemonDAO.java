@@ -14,6 +14,7 @@ import com.revature.pokemonv2.model.Pokemon;
 import com.revature.pokemonv2.model.PokemonFactory;
 import com.revature.pokemonv2.utilities.CachingUtility;
 import com.revature.pokemonv2.utilities.ConnectionUtility;
+import com.revature.pokemonv2.utilities.TestConnectionPool;
 
 public class PokemonDAO {
 
@@ -23,20 +24,26 @@ public class PokemonDAO {
 
 	final static Logger logger = Logger.getLogger(PokemonDAO.class);
 
-	public List<Pokemon> getTrainerPokedex(String username) {
+	public List<Pokemon> getTrainerPokedex(String username, boolean isTesting) {
+		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
+				: ConnectionUtility.getInstance().getConnection();
+		
 		logger.trace("Database called for pokedex");
-		try (Connection conn = ConnectionUtility.getInstance().getConnection()) {
-			try (CallableStatement cs = PokemonDAOStatements.getTrainerPokedexStatement(conn, username)) {
-				cs.execute();
-				ResultSet rs = (ResultSet) cs.getObject(2);
-				logger.trace("Query executed and iterating through cursor.");
-				List<Pokemon> pokedex = PokemonFactory.createListFromResultSet(rs);
-				logger.trace("Pokedex returned by DB: " + pokedex);
-				return pokedex;
-			}
+		try (CallableStatement cs = PokemonDAOStatements.getTrainerPokedexStatement(conn, username)) {
+			cs.execute();
+			ResultSet rs = (ResultSet) cs.getObject(2);
+			logger.trace("Query executed and iterating through cursor.");
+			List<Pokemon> pokedex = PokemonFactory.createListFromResultSet(rs);
+			logger.trace("Pokedex returned by DB: " + pokedex);
+			return pokedex;
 		} catch (SQLException e) {
 			logger.error("getTrainerPokedex didn't work", e);
 			return new ArrayList<Pokemon>();
+		} finally {
+			if (isTesting)
+				TestConnectionPool.getInstance().releaseConnection(conn);
+			else
+				ConnectionUtility.freeConnection(conn);
 		}
 	}
 
@@ -46,8 +53,9 @@ public class PokemonDAO {
 	 * @param pokemonId the pokemon's id
 	 * @return score the player's score after generating the pokemon
 	 */
-	public static Pokemon generatePokemon(int trainerId, int pokemonId, String username) {
-		Connection conn = ConnectionUtility.getInstance().getConnection();
+	public static Pokemon generatePokemon(int trainerId, int pokemonId, String username, boolean isTesting) {
+		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
+				: ConnectionUtility.getInstance().getConnection();
 
 		// until we merge with the connection pool
 		// conn = pool.getConnection();
@@ -75,10 +83,10 @@ public class PokemonDAO {
 			// TODO Auto-generated catch block
 			// log.error(e.getMessage());
 		} finally {
-
-			// until we merge with connection pool
-			ConnectionUtility.freeConnection(conn);
-
+			if (isTesting)
+				TestConnectionPool.getInstance().releaseConnection(conn);
+			else
+				ConnectionUtility.freeConnection(conn);
 		}
 		return null;
 	}
