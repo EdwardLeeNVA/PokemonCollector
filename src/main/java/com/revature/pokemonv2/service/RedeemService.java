@@ -34,34 +34,29 @@ public class RedeemService {
 	 */
 	public static void getDuplicates(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		ArrayList<Pokemon> duplicateJSONList =  new ArrayList();
-		// Retrieve the JWT token
-		final String token = request.getHeader("Authorization"); // get JWT token
-		// Retrieve userID from the token
-		int ID = (int) TokenService.getInstance().getUserDetailsFromToken(token).getUserID(); // Get trainer id from
-																								// token
-
-		// Call get duplicates with the trainer ID. Returns a list of Pokemon Objects
-		ArrayList<Pokemon> duplicatesArray = (ArrayList<Pokemon>) TrainerDAOImp.getTrainerDAO().getDuplicates(ID);
 		
-		// Use duplicatesArray to retrieve each pokemons information from the cache.
-		// Loop through the duplicatesArray
-		for (Pokemon x : duplicatesArray) {
-			// Create a pokemon object from the cached value base on the duplicate pokemon
-			// id.
-
-			Pokemon temp = CachingUtility.getCachingUtility().getPokemon(x.getId());
-			
-			temp.setCount(x.getCount());
-
-			// Add a pokemon to the final pokemon list
-			duplicateJSONList.add(temp);
+		
+		//Retrieve the JWTToken
+		final String JWTToken = request.getHeader("Authorization");
+		//Obtain the username from the JWTToken
+		String userName = TokenService.getInstance().getUserDetailsFromToken(JWTToken).getUsername();
+		//Using the username obtain the users entire collection.
+		ArrayList<Pokemon> fullCollection = CachingUtility.getCachingUtility().checkCache(userName);
+		//Iterate through the fullCollection
+		//Each Pokemon with a count > 1 add to the duplicates list.
+		ArrayList<Pokemon> duplicateCollection = new ArrayList();
+		for(Pokemon x : fullCollection) {
+			if(x.getCount() > 1) {
+				duplicateCollection.add(x);
+			}
 		}
-		
 		// Use object mapper to map the JSON to the response.
-		response.setContentType("application/json");
-		response.getWriter().append(mapper.writeValueAsString(duplicateJSONList));
+				response.setContentType("application/json");
+				response.getWriter().append(mapper.writeValueAsString(duplicateCollection));
+		
+		//Old way
+
+
 
 	}
 

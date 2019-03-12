@@ -20,7 +20,7 @@ export class TokenService {
   setCurrentUserToken(token: string, resp: any) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
-      console.log(resp);
+      //console.log(resp);
       let t: Trainer = {
         userID: resp.body.userID,
         username: resp.body.username,
@@ -31,14 +31,10 @@ export class TokenService {
         credits: resp.body.credits,
         score: resp.body.score
       }
-      console.log(t);
+      //console.log(t);
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
       this.trainerService.updateValidLogin(t);
       this.pokedexService.getTrainersPokemon(t.username).subscribe(
-        val => val,
-        err => err
-      );
-      this.pokedexService.getAllPokemon().subscribe(
         val => val,
         err => err
       );

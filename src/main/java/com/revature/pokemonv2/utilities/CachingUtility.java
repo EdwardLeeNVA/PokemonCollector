@@ -31,12 +31,13 @@ public class CachingUtility {
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
-		 if (cachingUtility == null)
-			 cachingUtility = new CachingUtility();
+		 if (cachingUtility == null) {
+		 	cachingUtility = new CachingUtility();
+		 }
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
+	 public ArrayList<Pokemon> checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
 
@@ -85,12 +86,10 @@ public class CachingUtility {
 			 pokedexCache.remove(username);
 			 return true;
 		 }catch(NullPointerException e) {
-			 logger.error("NullPointerException for removeCollection");
-			 e.printStackTrace();
+			 logger.error("NullPointerException for removeCollection", e);
 			 return false;
-		 }catch(CacheWritingException c) {
-			 logger.error("cache writing exception for removeCollection");
-			 c.printStackTrace();
+		 }catch(CacheWritingException e) {
+			 logger.error("cache writing exception for removeCollection", e);
 			 return false;
 		 }
 	 }
