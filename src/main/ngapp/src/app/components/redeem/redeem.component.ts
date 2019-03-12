@@ -14,15 +14,7 @@ import { RedeemTicket } from "src/app/models/redeem-ticket";
 export class RedeemComponent implements OnInit {
   public trainer: Trainer;
   public login_status: boolean;
-  public pokemon: Pokemon = {
-    id: 0,
-    name: "",
-    imageUrl: "",
-    type: null,
-    stats: null,
-    count: 0,
-    cost: 0
-  };
+  public pokemon: Pokemon = new Pokemon();
 
   //stores an array of Pokemon objects to display to DOM
   public duplicatePokemon: any[] = new Array();

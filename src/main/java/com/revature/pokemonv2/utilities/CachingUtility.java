@@ -33,12 +33,13 @@ public class CachingUtility {
 	 }
 	 
 	 public static CachingUtility getCachingUtility() {
-		 if (cachingUtility == null)
-			 cachingUtility = new CachingUtility();
+		 if (cachingUtility == null) {
+		 	cachingUtility = new CachingUtility();
+		 }
 		 return cachingUtility;
 	 }
 	 
-	 public ArrayList<com.revature.pokemonv2.model.Pokemon> checkCache(String username) {
+	 public ArrayList<Pokemon> checkCache(String username) {
 		 return this.pokedexCache.get(username);
 	 }
 
@@ -47,9 +48,7 @@ public class CachingUtility {
 		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(temp.getCount() + 1);
 		pokeList.add(temp);
-
 		Collections.sort(pokeList, PokedexSorter.getInstance());
-
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(pokeList));*/
 		this.pokedexCache.put(username, pokeList);
@@ -62,9 +61,7 @@ public class CachingUtility {
 		Pokemon temp = findPokemon(this.pokedexCache.get(username), pokeId);
 		temp.setCount(1);
 		newPokeList.add(temp);
-
 		Collections.sort(newPokeList, PokedexSorter.getInstance());
-
 		this.pokedexCache.put(username, newPokeList);
 	 	return newPokeList;
 	 }
@@ -74,14 +71,12 @@ public class CachingUtility {
 	public ArrayList<Pokemon> redeemAllPokemon(String username){
 		ArrayList<Pokemon> origPokeList = this.pokedexCache.get(username);
 		ArrayList<Pokemon> newPokeList = new ArrayList<>();
-		for(int i = 0; i < newPokeList.size(); i++){
+		for(int i = 0; i < origPokeList.size(); i++){
 			Pokemon temp = origPokeList.get(i);
 			temp.setCount(1);
 			newPokeList.add(temp);
 		}
-
 		Collections.sort(newPokeList, PokedexSorter.getInstance());
-
 		// Logic for counting cache hits
 		/*this.pokedexCache.put(username, incrementCacheHit(newPokeList));*/
 		this.pokedexCache.put(username, newPokeList);

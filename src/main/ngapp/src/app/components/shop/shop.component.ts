@@ -29,7 +29,7 @@ export class ShopComponent implements OnInit {
       'Content-Type':  'application/json'
     })};
 
-  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
+  constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router, private pokedexService: PokedexService) { }
 
   ngOnInit() {
     //this.trainerService.checkSessionStorage();
@@ -68,20 +68,15 @@ export class ShopComponent implements OnInit {
   }
 
 
-  //gets all pokeinfo from the cache
-  getAllPokemon(): Observable<any[]>{
-    return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
-  }
+
   //method that calls above observable
   //iscalled onInit
   populatePokeArray(): void{
-    this.getAllPokemon().subscribe(
+    this.pokedexService.getAllPokemon().subscribe(
       data => {
         //put all pokemon into pokemon array
-        console.log(data);
         this.allPoke = [];
         for (let i = 0; i < data.length; i++){
-          console.log(data[i]);
           let newPoke = new Pokemon();
           newPoke.name = data[i].name.toUpperCase() + data[i].name.slice(1);
           newPoke.imageUrl = data[i].imageUrl;
@@ -92,7 +87,6 @@ export class ShopComponent implements OnInit {
           newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
-        console.log(this.allPoke);
       }
     )
   }

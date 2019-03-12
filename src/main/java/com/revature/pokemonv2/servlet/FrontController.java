@@ -11,6 +11,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.pokemonv2.utilities.CachingUtility;
 import org.apache.catalina.servlets.DefaultServlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,10 +35,11 @@ public class FrontController extends DefaultServlet {
 			"shop",
 			"redeem"
 	};
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		CachingUtility.getCachingUtility().getAllPokemon();
 	}
 
 	@Override
