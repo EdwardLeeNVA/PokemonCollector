@@ -348,7 +348,7 @@ module.exports = ".pokemon-card-outer {\r\n  margin: 15px;\r\n  height: 320px;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-12\">\r\n          <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n            <img\r\n              class=\"animated lightSpeedIn img-responsive\"\r\n              id=\"catch-em-all-header\"\r\n              src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n            />\r\n\r\n            <!--(click)=\"onClickMe()\"-->\r\n            <button\r\n              class=\"newPokemon-Generate-Button\"\r\n              data-toggle=\"modal\"\r\n              data-target=\"#newpokemonModal\"\r\n              (click)=\"onClick()\"\r\n            >\r\n              Get a pokemon\r\n            </button>\r\n            <div class=\"row\" id=\"rulesContainerRow mt-5\">\r\n              <div class=\"col-md-2\">\r\n                <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n              </div>\r\n              <div class=\"col-md-10\">\r\n                Hello there! Welcome to the world of pokémon!<br />\r\n                My name is Oak! People call me the pokémon Prof!<br />\r\n                This application is inhabited by creatures called pokémon! For\r\n                some people, pokémon are pets. Others use them to build a\r\n                collection and become a pokémon master.<br />\r\n                Click this button to generate a random pokémon to add to your\r\n                collection and increase your score.<br />\r\n                In the shop you can buy pokémon with credits and build your\r\n                collection. <br />When you have duplicate pokémon in your\r\n                collection you can redeem them for more credits to use in the\r\n                shop.<br />\r\n                Your goal is to collect them all.<br />\r\n                Good luck!\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <div class=\"container mb-3 mt-3\">\r\n        <div class=\"row\" id=\"rulesContainerRow\">\r\n          <div class=\"col-md-2\">\r\n            <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n          </div>\r\n          <div class=\"col-md-10\">\r\n            Hello there! Welcome to the world of pokémon!<br> My name is Oak! People\r\n            call me the pokémon Prof!<br> This application is inhabited by creatures\r\n            called pokémon! For some people, pokémon are pets. Others use them\r\n            to build a collection and become a pokémon master.<br> Click this button\r\n            to generate a random pokémon to add to your collection and increase\r\n            your score.<br> In the shop you can buy pokémon with credits and build\r\n            your collection. <br>When you have duplicate pokémon in your collection\r\n            you can redeem them for more credits to use in the shop.<br> Your goal\r\n            is to collect them all.<br> Good luck!\r\n          </div>\r\n        </div>\r\n      </div> -->\r\n\r\n      <!-- Modal -->\r\n      <div\r\n        class=\"modal fade\"\r\n        id=\"newpokemonModal\"\r\n        tabindex=\"-1\"\r\n        role=\"dialog\"\r\n        aria-labelledby=\"newpokemonModel\"\r\n        aria-hidden=\"true\"\r\n      >\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div\r\n            class=\"modal-content justify-content-center\"\r\n            id=\"newPokemon-Modal-Content\"\r\n          >\r\n            <div\r\n              class=\"modal-body justify-content-center\"\r\n              id=\"newPokemon-Modal-Body\"\r\n            >\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div\r\n                class=\"pokemon-card-outer text-center d-none\"\r\n                id=\"generate-pokemon-card\"\r\n              >\r\n                <h4 class=\"pokemon-card-name\">{{ pokemonName }}</h4>\r\n                <img src=\"{{ pokemonSprite }}\" class=\"pokemon-card-img\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p>\r\n                    <b>Type: {{ pokemonType }}</b>\r\n                  </p>\r\n                  <p>\r\n                    <b>HP: {{ hp }}</b>\r\n                  </p>\r\n                  <p>\r\n                    <b>Attack: {{ attack }}</b>\r\n                  </p>\r\n                  <p>\r\n                    <b>Defense: {{ defense }}</b>\r\n                  </p>\r\n                </div>\r\n              </div>\r\n\r\n              <button\r\n                id=\"generate-pokemon-draw-btn\"\r\n                type=\"button\"\r\n                class=\"newPokemon-Modal-Buttons d-none\"\r\n                (click)=\"onClick()\"\r\n              >\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button\r\n                type=\"button\"\r\n                class=\"newPokemon-Modal-Buttons\"\r\n                data-dismiss=\"modal\"\r\n              >\r\n                Close\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-md-12\">\r\n          <div id=\"drawButton\" class=\"draw-pokemon-cont text-center\">\r\n            <img\r\n              class=\"animated lightSpeedIn img-responsive\"\r\n              id=\"catch-em-all-header\"\r\n              src=\"https://fontmeme.com/permalink/190223/5cfbd92adaffbae8d5b421856e6543f5.png\"\r\n            />\r\n\r\n            <!--(click)=\"onClickMe()\"-->\r\n            <button\r\n              class=\"newPokemon-Generate-Button\"\r\n              data-toggle=\"modal\"\r\n              data-target=\"#newpokemonModal\"\r\n              (click)=\"onClick()\"\r\n            >\r\n              Get a pokemon\r\n            </button>\r\n            <div class=\"row mt-5\" id=\"rulesContainerRow\">\r\n              <div class=\"col-md-2\">\r\n                <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n              </div>\r\n              <div class=\"col-md-10\" id=\"rules-text-box\">\r\n                Hello there! Welcome to the world of pokémon!<br />\r\n                My name is Oak! People call me the pokémon Prof!<br />\r\n                This application is inhabited by creatures called pokémon! For\r\n                some people, pokémon are pets. Others use them to build a\r\n                collection and become a pokémon master.<br />\r\n                Click this button to generate a random pokémon to add to your\r\n                collection and increase your score.<br />\r\n                In the shop you can buy pokémon with credits and build your\r\n                collection. <br />When you have duplicate pokémon in your\r\n                collection you can redeem them for more credits to use in the\r\n                shop.<br />\r\n                Your goal is to collect them all.<br />\r\n                Good luck!\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <div class=\"container mb-3 mt-3\">\r\n        <div class=\"row\" id=\"rulesContainerRow\">\r\n          <div class=\"col-md-2\">\r\n            <img src=\"http://i64.tinypic.com/2nhqjbp.png\" alt=\"\" />\r\n          </div>\r\n          <div class=\"col-md-10\">\r\n            Hello there! Welcome to the world of pokémon!<br> My name is Oak! People\r\n            call me the pokémon Prof!<br> This application is inhabited by creatures\r\n            called pokémon! For some people, pokémon are pets. Others use them\r\n            to build a collection and become a pokémon master.<br> Click this button\r\n            to generate a random pokémon to add to your collection and increase\r\n            your score.<br> In the shop you can buy pokémon with credits and build\r\n            your collection. <br>When you have duplicate pokémon in your collection\r\n            you can redeem them for more credits to use in the shop.<br> Your goal\r\n            is to collect them all.<br> Good luck!\r\n          </div>\r\n        </div>\r\n      </div> -->\r\n\r\n      <!-- Modal -->\r\n      <div\r\n        class=\"modal fade\"\r\n        id=\"newpokemonModal\"\r\n        tabindex=\"-1\"\r\n        role=\"dialog\"\r\n        aria-labelledby=\"newpokemonModel\"\r\n        aria-hidden=\"true\"\r\n      >\r\n        <div class=\"modal-dialog\" role=\"document\">\r\n          <div\r\n            class=\"modal-content justify-content-center\"\r\n            id=\"newPokemon-Modal-Content\"\r\n          >\r\n            <div\r\n              class=\"modal-body justify-content-center\"\r\n              id=\"newPokemon-Modal-Body\"\r\n            >\r\n              <img\r\n                src=\"http://i66.tinypic.com/2rrwdck.png\"\r\n                id=\"generate-pokemon-pokeball\"\r\n                class=\"mb-3 animated shake\"\r\n                (click)=\"onBallClick()\"\r\n              />\r\n\r\n              <div\r\n                class=\"pokemon-card-outer text-center d-none\"\r\n                id=\"generate-pokemon-card\"\r\n              >\r\n                <h4 class=\"pokemon-card-name\">{{ pokemonName }}</h4>\r\n                <img src=\"{{ pokemonSprite }}\" class=\"pokemon-card-img\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p *ngIf=\"pokemon.type[1] == null\">\r\n                    <b\r\n                      >Type:\r\n                      {{\r\n                        pokemonType[0].charAt(0).toUpperCase() +\r\n                          pokemonType[0].substring(1)\r\n                      }}</b\r\n                    >\r\n                  </p>\r\n                  <p *ngIf=\"pokemon.type[1] != null\">\r\n                    <b\r\n                      >Type:\r\n                      {{\r\n                        pokemonType[1].charAt(0).toUpperCase() +\r\n                          pokemonType[1].substring(1) +\r\n                          \" / \" +\r\n                          pokemonType[0].charAt(0).toUpperCase() +\r\n                          pokemonType[0].substring(1)\r\n                      }}</b\r\n                    >\r\n                  </p>\r\n                  <p>Count: {{ pokemonCount }}</p>\r\n                  <p>\r\n                    <b>HP: {{ hp }}</b>\r\n                  </p>\r\n                  <p>\r\n                    <b>Attack: {{ attack }}</b>\r\n                  </p>\r\n                  <p>\r\n                    <b>Defense: {{ defense }}</b>\r\n                  </p>\r\n                </div>\r\n              </div>\r\n\r\n              <button\r\n                id=\"generate-pokemon-draw-btn\"\r\n                type=\"button\"\r\n                class=\"newPokemon-Modal-Buttons d-none\"\r\n                (click)=\"onClick()\"\r\n              >\r\n                Draw Another!\r\n              </button>\r\n\r\n              <button\r\n                type=\"button\"\r\n                class=\"newPokemon-Modal-Buttons\"\r\n                data-dismiss=\"modal\"\r\n              >\r\n                Close\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -731,7 +731,7 @@ module.exports = ".shop-form-scroll {\r\n}\r\n\r\n#shop-form {\r\n  height: 60%;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col justify-content-center\" id=\"redeem-form-col\">\r\n      <div class=\"shop-form-scroll\">\r\n        <img\r\n          class=\"animated bounce\"\r\n          id=\"redeem-header-image\"\r\n          src=\"https://fontmeme.com/permalink/190224/e057290604f69fe455bee18756e64510.png\"\r\n          alt=\"pokemon-font\"\r\n        /><br />\r\n        <button class=\"shop-buy-btn\" (click)=\"redeemAll()\">Redeem All</button>\r\n        <form #redeemForm=\"ngForm\" (ngSubmit)=\"redeemSpecific()\" novalidate>\r\n          <!-- data-toggle=\"modal\"\r\n            data-target=\"#newpokemonModal\" -->\r\n          <button class=\"shop-buy-btn\" type=\"submit\">\r\n            Sell\r\n          </button>\r\n\r\n          <div class=\"radio-card-grid\">\r\n            <div\r\n              class=\"form-check radio-form-item\"\r\n              *ngFor=\"let pokemonX of duplicatePokemon\"\r\n            >\r\n              <input\r\n                class=\"form-check-input\"\r\n                type=\"radio\"\r\n                #pokemonCard=\"ngModel\"\r\n                name=\"gridRadios\"\r\n                value=\"{{ pokemonX.id }}\"\r\n                checked\r\n                [(ngModel)]=\"pokemon.id\"\r\n              />\r\n              <div class=\"pokemon-card-outer\">\r\n                <label class=\"form-check-label text-light\" for=\"gridRadios1\">\r\n                  {{ pokemonX.name }}\r\n                </label>\r\n                <img class=\"pokemon-card-img\" src=\"{{ pokemonX.imageUrl }}\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p>Cost: {{ pokemonX.cost }}</p>\r\n                  <br />\r\n                  <p>Type: {{ pokemonX.type[0] }}</p>\r\n\r\n                  <p>Count: {{ pokemonX.count }}</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Modal -->\r\n<div\r\n  class=\"modal fade\"\r\n  id=\"newpokemonModal\"\r\n  tabindex=\"-1\"\r\n  role=\"dialog\"\r\n  aria-labelledby=\"newpokemonModel\"\r\n  aria-hidden=\"true\"\r\n>\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div\r\n      class=\"modal-content justify-content-center\"\r\n      id=\"newPokemon-Modal-Content\"\r\n    >\r\n      <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n        <div class=\"pokemon-card-outer text-center \" id=\"generate-pokemon-card\">\r\n          <h4 class=\"pokemon-card-name\">{{ this.pokemonName }}</h4>\r\n\r\n          <img src=\"{{ this.pokemonURL }}\" class=\"pokemon-card-img\" />\r\n          <div class=\"pokemon-card-info-cont\">\r\n            <p>Type: {{ this.pokemonType }}</p>\r\n            <p>HP: {{ this.hp }}</p>\r\n            <p>Attack: {{ this.attack }}</p>\r\n            <p>Defense: {{ this.defense }}</p>\r\n          </div>\r\n        </div>\r\n\r\n        <button\r\n          type=\"button\"\r\n          class=\"newPokemon-Modal-Buttons \"\r\n          data-dismiss=\"modal\"\r\n        >\r\n          Close\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col justify-content-center\" id=\"redeem-form-col\">\r\n      <div class=\"shop-form-scroll\">\r\n        <img\r\n          class=\"animated bounce\"\r\n          id=\"redeem-header-image\"\r\n          src=\"https://fontmeme.com/permalink/190224/e057290604f69fe455bee18756e64510.png\"\r\n          alt=\"pokemon-font\"\r\n        /><br />\r\n        <button class=\"shop-buy-btn\" (click)=\"redeemAll()\">Redeem All</button>\r\n        <form #redeemForm=\"ngForm\" (ngSubmit)=\"redeemSpecific()\" novalidate>\r\n          <!-- data-toggle=\"modal\"\r\n            data-target=\"#newpokemonModal\" -->\r\n          <button class=\"shop-buy-btn\" type=\"submit\">\r\n            Sell\r\n          </button>\r\n\r\n          <div class=\"radio-card-grid\">\r\n            <div\r\n              class=\"form-check radio-form-item\"\r\n              *ngFor=\"let pokemonX of duplicatePokemon\"\r\n            >\r\n              <input\r\n                class=\"form-check-input\"\r\n                type=\"radio\"\r\n                #pokemonCard=\"ngModel\"\r\n                name=\"gridRadios\"\r\n                value=\"{{ pokemonX.id }}\"\r\n                checked\r\n                [(ngModel)]=\"pokemon.id\"\r\n              />\r\n              <div class=\"pokemon-card-outer\">\r\n                <label class=\"form-check-label text-light\" for=\"gridRadios1\">\r\n                  {{ pokemonX.name.charAt(0).toUpperCase() + pokemonX.name.substring(1) }}\r\n                </label>\r\n                <img class=\"pokemon-card-img\" src=\"{{ pokemonX.imageUrl }}\" />\r\n                <div class=\"pokemon-card-info-cont\">\r\n                  <p>Cost: {{ pokemonX.cost }}</p>\r\n                  <br />\r\n                  <p *ngIf= \"pokemonX.type[1] == null\">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>\r\n                  <p *ngIf= \"pokemonX.type[1] != null\"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + \" / \" + \r\n                  pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>\r\n                  <p>Count: {{ pokemonCount }}</p>\r\n\r\n                  <p>Count: {{ pokemonX.count }}</p>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Modal -->\r\n<div\r\n  class=\"modal fade\"\r\n  id=\"newpokemonModal\"\r\n  tabindex=\"-1\"\r\n  role=\"dialog\"\r\n  aria-labelledby=\"newpokemonModel\"\r\n  aria-hidden=\"true\"\r\n>\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div\r\n      class=\"modal-content justify-content-center\"\r\n      id=\"newPokemon-Modal-Content\"\r\n    >\r\n      <div class=\"modal-body justify-content-center\" id=\"newPokemon-Modal-Body\">\r\n        <div class=\"pokemon-card-outer text-center \" id=\"generate-pokemon-card\">\r\n          <h4 class=\"pokemon-card-name\">{{ this.pokemonName }}</h4>\r\n\r\n          <img src=\"{{ this.pokemonURL }}\" class=\"pokemon-card-img\" />\r\n          <div class=\"pokemon-card-info-cont\">\r\n            <p>Type: {{ this.pokemonType }}</p>\r\n            <p>HP: {{ this.hp }}</p>\r\n            <p>Attack: {{ this.attack }}</p>\r\n            <p>Defense: {{ this.defense }}</p>\r\n          </div>\r\n        </div>\r\n\r\n        <button\r\n          type=\"button\"\r\n          class=\"newPokemon-Modal-Buttons \"\r\n          data-dismiss=\"modal\"\r\n        >\r\n          Close\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -860,7 +860,7 @@ module.exports = "#pokeFONT {\r\n}\r\n\r\n#register_outer_cont {\r\n  text-align
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container login-form-cont\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-6 justify-content-center\" id=\"register_outer_cont\">\r\n      <img\r\n        class=\"animated wobble mt-3\"\r\n        src=\"https://fontmeme.com/permalink/190312/16a6fa3029a30455d5905b3f520897c9.png\"\r\n        id=\"pokeFONT\"\r\n      />\r\n\r\n      <form\r\n        id=\"registerForm\"\r\n        class=\" login-form\"\r\n        #registerForm=\"ngForm\"\r\n        (ngSubmit)=\"registerTrainer()\"\r\n        method=\"POST\"\r\n      >\r\n        <div class=\"form-group\">\r\n          <label for=\"username\">Username </label>\r\n          <input\r\n            name=\"username\"\r\n            class=\"form-control\"\r\n            required\r\n            placeholder=\"Username\"\r\n            #username\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"username.invalid && (username.dirty || username.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"username.errors.required\">\r\n              Username is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"password\">Password </label>\r\n          <input\r\n            name=\"password\"\r\n            class=\"form-control\"\r\n            required\r\n            type=\"password\"\r\n            placeholder=\"Password\"\r\n            #password\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"password.invalid && (password.dirty || password.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"password.errors.required\">\r\n              Password is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"fname\">First Name </label>\r\n          <input\r\n            name=\"fname\"\r\n            class=\"form-control\"\r\n            required\r\n            placeholder=\"First Name\"\r\n            #fname\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"fname.invalid && (fname.dirty || fname.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"fname.errors.required\">\r\n              First name is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"lname\">Last Name </label>\r\n          <input\r\n            name=\"lname\"\r\n            class=\"form-control\"\r\n            required\r\n            placeholder=\"Last Name\"\r\n            #lname\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"lname.invalid && (lname.dirty || lname.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"lname.errors.required\">\r\n              Last name is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"email\">Email </label>\r\n          <input\r\n            name=\"email\"\r\n            class=\"form-control\"\r\n            required\r\n            type=\"email\"\r\n            placeholder=\"Email\"\r\n            #email\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"email.invalid && (email.dirty || email.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"email.errors.required\">\r\n              Email is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <input\r\n          name=\"submit\"\r\n          type=\"submit\"\r\n          class=\"btn btn-block login-form-btn\"\r\n          [disabled]=\"!registerForm.form.valid\"\r\n        />\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container login-form-cont\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-md-6 justify-content-center\" id=\"register_outer_cont\">\r\n      <img\r\n        class=\"animated wobble mt-3\"\r\n        src=\"https://fontmeme.com/permalink/190312/16a6fa3029a30455d5905b3f520897c9.png\"\r\n        id=\"pokeFONT\"\r\n      />\r\n\r\n      <form\r\n        id=\"registerForm\"\r\n        class=\" login-form\"\r\n        #registerForm=\"ngForm\"\r\n        (ngSubmit)=\"registerTrainer()\"\r\n      >\r\n        <div class=\"form-group\">\r\n          <label for=\"username\">Username </label>\r\n          <input\r\n            type=\"text\"\r\n            name=\"username\"\r\n            class=\"form-control\"\r\n            required\r\n            #username=\"ngModel\"\r\n            [class.is-valid]=\"username.valid\"\r\n            [class.is-invalid]=\"username.invalid && username.touched\"\r\n            [(ngModel)]=\"registerModel.username\"\r\n          />\r\n\r\n          <!-- <div\r\n            *ngIf=\"username.invalid && (username.dirty || username.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"username.errors.required\">\r\n              Username is required.\r\n            </div>\r\n          </div> -->\r\n          <small\r\n            class=\"text-danger\"\r\n            [class.d-none]=\"username.valid || username.untouched\"\r\n            >Username is required.</small\r\n          >\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"password\">Password </label>\r\n          <input\r\n            name=\"password\"\r\n            class=\"form-control\"\r\n            required\r\n            type=\"password\"\r\n            #password\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"password.invalid && (password.dirty || password.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"password.errors.required\">\r\n              Password is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"fname\">First Name </label>\r\n          <input name=\"fname\" class=\"form-control\" required #fname />\r\n\r\n          <div\r\n            *ngIf=\"fname.invalid && (fname.dirty || fname.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"fname.errors.required\">\r\n              First name is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"lname\">Last Name </label>\r\n          <input name=\"lname\" class=\"form-control\" required #lname />\r\n\r\n          <div\r\n            *ngIf=\"lname.invalid && (lname.dirty || lname.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"lname.errors.required\">\r\n              Last name is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n          <label for=\"email\">Email </label>\r\n          <input\r\n            name=\"email\"\r\n            class=\"form-control\"\r\n            required\r\n            type=\"email\"\r\n            #email\r\n          />\r\n\r\n          <div\r\n            *ngIf=\"email.invalid && (email.dirty || email.touched)\"\r\n            class=\"alert alert-danger\"\r\n          >\r\n            <div *ngIf=\"email.errors.required\">\r\n              Email is required.\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <input\r\n          name=\"submit\"\r\n          type=\"submit\"\r\n          class=\"btn btn-block login-form-btn\"\r\n          [disabled]=\"!registerForm.form.valid\"\r\n        />\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -878,6 +878,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_services_trainer_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/trainer.service */ "./src/app/services/trainer.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_models_register_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/models/register-model */ "./src/app/models/register-model.ts");
+
 
 
 
@@ -886,12 +888,13 @@ var RegisterComponent = /** @class */ (function () {
     function RegisterComponent(trainerService, router) {
         this.trainerService = trainerService;
         this.router = router;
+        this.registerModel = new src_app_models_register_model__WEBPACK_IMPORTED_MODULE_4__["RegisterModel"]("", "", "", "", "");
     }
     RegisterComponent.prototype.ngOnInit = function () {
         var _this = this;
         //this.trainerService.checkSessionStorage();
-        this.trainerService.login_status_bs.subscribe(function (status) { return _this.login_status = status; });
-        this.trainerService.current_trainer_bs.subscribe(function (trainer) { return _this.trainer = trainer; });
+        this.trainerService.login_status_bs.subscribe(function (status) { return (_this.login_status = status); });
+        this.trainerService.current_trainer_bs.subscribe(function (trainer) { return (_this.trainer = trainer); });
         if (this.trainer != null) {
             this.trainerService.checkSessionStorage();
             this.router.navigateByUrl("/PokemonCollector/ng/generate");
@@ -901,6 +904,7 @@ var RegisterComponent = /** @class */ (function () {
         var _this = this;
         var credentials = new FormData(document.querySelector("form"));
         this.trainerService.createTrainer(credentials).subscribe(function (data) {
+            console.log(data.status);
             if (data.status === 200) {
                 _this.router.navigateByUrl("/landing");
             }
@@ -911,7 +915,7 @@ var RegisterComponent = /** @class */ (function () {
     };
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-register',
+            selector: "app-register",
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/components/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/components/register/register.component.css")]
         }),
@@ -1100,7 +1104,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n<div>\r\n  <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 100%; height: 400px; display: block;\"></highcharts-chart>\r\n</div>\r\n"
+module.exports = "<div align=\"center\">\r\n  <br>\r\n <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"PokemonOption\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCountTotal\" style=\"width: 90%; height: 700px; display: block;  margin : 10px;\"></highcharts-chart>\r\n  </div>\r\n  <div>\r\n    <highcharts-chart [Highcharts]=\"Highcharts\" [options]=\"pokeCount\" style=\"width: 90%; height: 700px; display: block;\"></highcharts-chart>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1123,77 +1127,42 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsComponent = /** @class */ (function () {
     function StatsComponent() {
-        this.data1 = [
-            {
-                name: 'Normal',
-                y: 65,
-            }, {
-                name: 'Water',
-                y: 62,
-            }, {
-                name: 'Grass',
-                y: 38,
-            }, {
-                name: 'Psychic',
-                y: 35,
-            }, {
-                name: 'Fire',
-                y: 31,
-            }, {
-                name: 'Electric',
-                y: 28,
-            }, {
-                name: 'Fighting',
-                y: 22,
-            }, {
-                name: 'Bug',
-                y: 18,
-            }, {
-                name: 'Poison',
-                y: 16,
-            }, {
-                name: 'Ground',
-                y: 15,
-            }, {
-                name: 'Ice',
-                y: 14,
-            }, {
-                name: 'Dragon',
-                y: 12,
-            }, {
-                name: 'Rock',
-                y: 11,
-            }, {
-                name: 'Ghost',
-                y: 9,
-            }, {
-                name: 'Flying',
-                y: 7,
-            }
-        ];
+        this.total = this.data1;
         this.Highcharts = highcharts__WEBPACK_IMPORTED_MODULE_2__;
-        this.configUrl = "/PokemonCollector/ng/stats";
+        //configUrl = "http://localhost:8080/PokemonCollector/ng/stats1";
+        this.configUrl = "/PokemonCollector/ng/stats1";
     }
     StatsComponent.prototype.ngOnInit = function () {
         var _this = this;
         fetch(this.configUrl)
             .then(function (res) { return res.json(); })
             .then(function (res) {
-            console.log(res);
             _this.data1 = res;
-            _this.load();
+            _this.configUrl = "/PokemonCollector/ng/stats2";
+            //this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
+            fetch(_this.configUrl)
+                .then(function (res) { return res.json(); })
+                .then(function (res) {
+                _this.total = res;
+                _this.load();
+            });
         });
     };
     StatsComponent.prototype.load = function () {
-        this.pokeCount = {
+        this.pokeCountTotal = {
             chart: {
-                type: 'column'
+                type: 'column',
+                marginBottom: "150",
+                spacingTop: "1",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150"
             },
             title: {
-                text: 'Pokemons per trainer'
+                text: 'Pokemons Per Trainer'
             },
             subtitle: {
-                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+                text: 'Top 10'
             },
             xAxis: {
                 type: 'category',
@@ -1208,25 +1177,81 @@ var StatsComponent = /** @class */ (function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Population (millions)'
+                    text: 'Pokemon'
                 }
             },
             legend: {
                 enabled: false
             },
             tooltip: {
-                pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+            },
+            series: [{
+                    name: 'Population',
+                    data: this.total,
+                    dataLabels: {
+                        enabled: true,
+                        rotation: 0,
+                        color: 'black',
+                        align: 'right',
+                        format: '{point.y:.0f}',
+                        y: -25,
+                        x: -10,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        };
+        this.pokeCount = {
+            chart: {
+                type: 'column',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
+            },
+            title: {
+                text: 'Unique Pokemons Per Trainer'
+            },
+            subtitle: {
+                text: 'Top 10'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Pokemon'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
             },
             series: [{
                     name: 'Population',
                     data: this.data1,
                     dataLabels: {
                         enabled: true,
-                        rotation: -90,
-                        color: '#FFFFFF',
+                        rotation: 0,
+                        color: '#black',
                         align: 'right',
                         format: '{point.y:.0f}',
-                        y: -50,
+                        y: -25,
+                        x: -10,
                         style: {
                             fontSize: '13px',
                             fontFamily: 'Verdana, sans-serif'
@@ -1239,10 +1264,18 @@ var StatsComponent = /** @class */ (function () {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                marginBottom: "150",
+                marginTop: "150",
+                marginLeft: "150",
+                marginRight: "150",
+                spacingTop: "1",
             },
             title: {
-                text: 'Pokemon Types'
+                text: 'Distribution Of Pokemon Per Players'
+            },
+            subtitle: {
+                text: 'Top 10'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -1253,7 +1286,7 @@ var StatsComponent = /** @class */ (function () {
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        format: '<b>{point.name}</b>',
                         style: {
                         // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                         }
@@ -1261,9 +1294,9 @@ var StatsComponent = /** @class */ (function () {
                 }
             },
             series: [{
-                    name: 'Pokemon Type',
+                    name: 'Pokemon',
                     colorByPoint: true,
-                    data: this.data1
+                    data: this.total
                 }]
         };
     };
@@ -1317,6 +1350,31 @@ var RedeemTicket = /** @class */ (function () {
         this.POKEID = POKEID;
     }
     return RedeemTicket;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/register-model.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/register-model.ts ***!
+  \******************************************/
+/*! exports provided: RegisterModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterModel", function() { return RegisterModel; });
+var RegisterModel = /** @class */ (function () {
+    function RegisterModel(username, password, fname, lname, email) {
+        this.username = username;
+        this.password = password;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+    }
+    return RegisterModel;
 }());
 
 

@@ -12,26 +12,33 @@
         class=" login-form"
         #registerForm="ngForm"
         (ngSubmit)="registerTrainer()"
-        method="POST"
       >
         <div class="form-group">
           <label for="username">Username </label>
           <input
+            type="text"
             name="username"
             class="form-control"
             required
-            placeholder="Username"
-            #username
+            #username="ngModel"
+            [class.is-valid]="username.valid"
+            [class.is-invalid]="username.invalid && username.touched"
+            [(ngModel)]="registerModel.username"
           />
 
-          <div
+          <!-- <div
             *ngIf="username.invalid && (username.dirty || username.touched)"
             class="alert alert-danger"
           >
             <div *ngIf="username.errors.required">
               Username is required.
             </div>
-          </div>
+          </div> -->
+          <small
+            class="text-danger"
+            [class.d-none]="username.valid || username.untouched"
+            >Username is required.</small
+          >
         </div>
 
         <div class="form-group">
@@ -41,7 +48,6 @@
             class="form-control"
             required
             type="password"
-            placeholder="Password"
             #password
           />
 
@@ -57,13 +63,7 @@
 
         <div class="form-group">
           <label for="fname">First Name </label>
-          <input
-            name="fname"
-            class="form-control"
-            required
-            placeholder="First Name"
-            #fname
-          />
+          <input name="fname" class="form-control" required #fname />
 
           <div
             *ngIf="fname.invalid && (fname.dirty || fname.touched)"
@@ -77,13 +77,7 @@
 
         <div class="form-group">
           <label for="lname">Last Name </label>
-          <input
-            name="lname"
-            class="form-control"
-            required
-            placeholder="Last Name"
-            #lname
-          />
+          <input name="lname" class="form-control" required #lname />
 
           <div
             *ngIf="lname.invalid && (lname.dirty || lname.touched)"
@@ -102,7 +96,6 @@
             class="form-control"
             required
             type="email"
-            placeholder="Email"
             #email
           />
 
