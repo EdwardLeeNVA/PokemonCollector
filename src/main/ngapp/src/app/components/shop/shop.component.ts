@@ -39,7 +39,6 @@ export class ShopComponent implements OnInit {
     }
     this.populatePokeArray();
   }
-<<<<<<< HEAD
 
   onBuySubmit() {
     if (this.trainer.credits > this.allPoke[this.selectedPoke-1].cost){
@@ -47,25 +46,6 @@ export class ShopComponent implements OnInit {
         $("#no-credit-alert").removeClass("d-none");
         this.alertShowing = true;  
       }
-=======
-  onBuySubmit() {
-    console.log("In the purchase method");
-    // Check if the trainer has enough credits:
-
-    let cost: number = this.allPoke[this.selectedPoke-1].cost;
-    console.log(this.allPoke[this.selectedPoke-1]);
-    console.log("credits" +this.trainer.credits + ", Credits:" + cost);
-    let hasCredits: boolean = this.trainer.credits >= cost;
-
-    // If the trainer has enough credits, add the Pokemon to their collecion:
-    console.log(hasCredits);
-    if (hasCredits) {
-      this.trainer.credits = this.trainer.credits-cost;
-      this.trainerService.updateValidLogin(this.trainer);
-      return this.http.post<any>("/PokemonCollector/servlet/purchase", this.allPoke[this.selectedPoke-1], this.httpJSON);
-    }else{
-      alert("You can't afford this Pokemon")
->>>>>>> 882249658b7031a5e6e3bd4224d4a74bb41fb244
     }
     else{
       let cost: number = this.allPoke[this.selectedPoke-1].cost;
