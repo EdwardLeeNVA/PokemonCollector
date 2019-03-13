@@ -72,6 +72,7 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
   <!-- Modal for chosen pokemon-->
   <div
@@ -105,8 +106,9 @@
                 <p>Defense: {{ allPoke[selectedPoke-1].stats.defense }} </p> 
             </div>
           </div>
-          <!-- start no credits alert -->
-          <div
+        </div>
+        <!-- start no credits alert -->
+        <div
           class="alert alert-danger alert-dismissible fade show d-none"
           id="no-credit-alert"
           role="alert"
@@ -133,54 +135,48 @@
 
         <!-- start I choose you alert -->
         <div
-        class="alert alert-danger alert-dismissible fade show d-none"
-        id="add-pokemon-alert"
-        role="alert"
-      >
-        <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
-
-        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.
-
-        <img
-          src="http://i65.tinypic.com/27zauqe.png"
-          alt="Image and video hosting by TinyPic"
-        />
-        <button
-          id="login-alert"
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="onAlertClose()"
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="add-pokemon-alert"
+          role="alert"
         >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <!-- end I choose you alert -->
-        
-        <!-- start confirmation button -->
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+          <strong>I Choose You!!</strong> This Pokemon has been added to your
+          collection.
+
+          <img
+            src="http://i65.tinypic.com/27zauqe.png"
+            alt="Image and video hosting by TinyPic"
+          />
           <button
-                data-toggle="modal"
-                data-target="#newpokemonConfirm"
-                class="shop-buy-btn"
-                type="submit"
-                (click)="onBuySubmit()"
-              >
-                I Choose You!
-              </button>
+            id="login-alert"
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- end I choose you alert -->
+        <!-- start confirmation button -->
+        <button
+          data-toggle="modal"
+          data-target="#newpokemonConfirm"
+          class="shop-buy-btn"
+          type="submit"
+        >
+          I Choose You!
+        </button>
         <!--end confirmation button  -->
         <!-- start close button -->
-          <button
-            type="button"
-            class="shop-buy-btn"
-            data-dismiss="modal"
-            (click)="showBoughtMessage()"
-          >
-            Close
-          </button>
+        <button type="button" class="shop-buy-btn" data-dismiss="modal"  (click)="showBoughtMessage()">
+          Close
+        </button>
         <!-- end close button  -->
-        </div>
       </div>
     </div>
   </div>
+</div>
 <!-- end modal -->
   
