@@ -133,7 +133,16 @@ public class Pokemon {
 		return "Pokemon [id=" + id + ", name=" + name + ", imageUrl=" + imageUrl + ", type=" + Arrays.toString(type)
 				+ ", stats=" + stats + ", count=" + count + ", cost=" + cost + "]";
 	}
-
-
-
+	
+	@Override
+	public boolean equals(Object obj) {
+		if ((obj != null) && (obj instanceof Pokemon)) {
+			int thisId = getId();
+			Pokemon otherPokemon = (Pokemon) obj;
+			int thatId = otherPokemon.getId();
+			return (thisId == thatId);
+		} else {
+			return false;
+		}
+	}
 }
