@@ -72,6 +72,7 @@ public class PlayerService {
 	}
 	public Pokemon purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
+		int trainerId = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUserID();
 		Pokemon p = null;
 		try {
 			p = mapper.readValue(request.getReader(), Pokemon.class);
@@ -88,7 +89,7 @@ public class PlayerService {
 		}
 		int cost = p.getCost();
 		// dao command to remove the money
-		if (trainer.purchasePokemon(username, cost, false)) {
+		if (trainer.purchasePokemon(username, cost, false, trainerId, p.getId())) {
 			return CachingUtility.getCachingUtility().addToCache(username, p.getId());
 			// return true;
 		} else {
