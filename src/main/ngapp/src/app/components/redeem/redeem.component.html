@@ -44,9 +44,6 @@
                   <p *ngIf= "pokemonX.type[1] == null">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>
                   <p *ngIf= "pokemonX.type[1] != null"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + " / " + 
                   pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>
-                  <p>HP: {{ pokemonX.stats.hp }}</p>
-                  <p>Attack: {{ pokemonX.stats.attack }}</p>
-                  <p>Defense: {{ pokemonX.stats.defense }} </p>
                 </div>
               </div>
             </div>
