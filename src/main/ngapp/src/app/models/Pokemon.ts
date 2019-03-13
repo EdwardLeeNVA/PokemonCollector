@@ -3,7 +3,7 @@ export class Pokemon {
   name: string;
   imageUrl: string;
   type: string[];
-  stats: any[];
+  stats: any;
   count: number;
   cost: number;
 }

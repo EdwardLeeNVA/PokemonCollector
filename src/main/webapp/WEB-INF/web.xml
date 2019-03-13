@@ -26,7 +26,7 @@
 	<servlet>
 		<servlet-name>FrontController</servlet-name>
 		<servlet-class>com.revature.pokemonv2.servlet.FrontController</servlet-class>
-		<load-on-startup>0</load-on-startup>
+		<!--<load-on-startup>0</load-on-startup>-->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
