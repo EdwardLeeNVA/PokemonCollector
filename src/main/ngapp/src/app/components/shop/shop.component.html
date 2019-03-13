@@ -5,7 +5,7 @@
           <form name="buyForm" #buyForm="ngForm" novalidate>
             <div id="shop-form-header">
               <img
-                class="animated shake"
+                class="animated shake img-responsive"
                 id="poke-shop-header"
                 src="https://fontmeme.com/permalink/190223/7f951f27330efe3f5e717c68950edf06.png"
                 alt=""
@@ -104,6 +104,47 @@
                 <p>Defense: {{ allPoke[selectedPoke-1].stats.defense }} </p> 
             </div>
           </div>
+        </div>
+        <div
+
+          class="alert alert-danger alert-dismissible fade show d-none"
+
+          id="failed-transaction-alert"
+
+          role="alert"
+
+        >
+
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+          <strong>Oops!!</strong> Transaction Failed to Process.Please Try again.
+
+          <img
+
+            src="http://i65.tinypic.com/27zauqe.png"
+
+            alt="Image and video hosting by TinyPic"
+
+          />
+
+          <button
+
+            id="login-alert"
+
+            type="button"
+
+            class="close"
+
+            aria-label="Close"
+
+            (click)="showTransactionFailed()"
+
+          >
+
+            <span aria-hidden="true">&times;</span>
+
+          </button>
+
         </div>
         <div
           class="alert alert-danger alert-dismissible fade show d-none"

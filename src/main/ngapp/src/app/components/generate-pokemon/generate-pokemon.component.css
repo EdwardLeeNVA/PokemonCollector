@@ -69,6 +69,8 @@
 #catch-em-all-header {
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 75%;
+  max-height: 300px;
 }
 
 .pokemon-card-name {

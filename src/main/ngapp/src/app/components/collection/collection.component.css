@@ -3,4 +3,6 @@
 }
 #collection-section-header {
   text-align: center;
+  width: 75%;
+  max-height: 300px;
 }

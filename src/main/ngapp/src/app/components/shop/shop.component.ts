@@ -26,6 +26,7 @@ export class ShopComponent implements OnInit {
   private alertShowing: boolean = false;
   private boughtPoke: boolean = false;
   public selectedPoke: number;
+  public transactionAlert: boolean = false;
 
   constructor(private http: HttpClient, private trainerService: TrainerService, private router: Router) { }
 
@@ -64,7 +65,9 @@ export class ShopComponent implements OnInit {
              }
            },
           err => {
-             console.log(err);
+            $("#failed-transaction-alert").removeClass("d-none");
+            this.transactionAlert = true;
+            console.log(err);
           }
 
         );
@@ -106,7 +109,14 @@ export class ShopComponent implements OnInit {
   showBoughtMessage(): void{
     if (this.boughtPoke){
       $("#add-pokemon-alert").addClass("d-none");
-      this.boughtPoke = false;      
+      this.boughtPoke = false;
+    }
+  }
+
+  showTransactionFailed(): void{
+    if (this.transactionAlert){
+      $("#failed-transaction-alert").addClass("d-none");
+      this.transactionAlert = false;
     }
   }
   

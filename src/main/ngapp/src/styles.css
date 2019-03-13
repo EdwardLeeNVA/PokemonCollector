@@ -9,8 +9,9 @@
 }
 
 .active-link{
-  background: linear-gradient(to top, darkblue 0%, blue 65%);
+  background: linear-gradient(to top, #ba0000 0%, #ff0000 65%);
   color: white;
+  border: 1px solid white;
 }
 
 #logged-nav-bar {
