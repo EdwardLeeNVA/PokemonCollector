@@ -53,7 +53,16 @@
   id="logged-nav-bar"
   *ngIf="login_status"
 >
-  <a href="" class="navbar-brand nav-link disabled">Pokemon Collector</a>
+  <a href="" class="navbar-brand nav-link disabled float-left" id="noPadding">
+    <img
+      class="nav-link disabled"
+      src="http://i65.tinypic.com/25iyve1.png"
+      alt="Image and video hosting by TinyPic"
+    />
+  </a>
+  <a href="" class="nav-link disabled float-left">Welcome, {{ this.trainer.username }}!</a>
+  <a href="" class="nav-link disabled float-left">Credits: {{ this.trainer.credits }}</a>
+  <a href="" class="nav-link disabled float-left">Score: {{ this.trainer.score }}</a>
   <button
     class="navbar-toggler navbar-toggler-right navbar-dark"
     type="button"
@@ -65,17 +74,10 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <img
-    class="nav-link disabled"
-    src="http://i65.tinypic.com/25iyve1.png"
-    alt="Image and video hosting by TinyPic"
-  />
-  <p class="player-info nav-link disabled">Welcome, {{ this.trainer.username }}!</p>
-  <p class="player-info nav-link disabled">Credits: {{ this.trainer.credits }}</p>
-  <p class="player-info nav-link disabled">Score: {{ this.trainer.score }}</p>
+
 
   <div class="collapse navbar-collapse float-right" id="navbarNav2">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto text-right">
       <li class="nav-item active">
         <a
           class="nav-link customLink"
