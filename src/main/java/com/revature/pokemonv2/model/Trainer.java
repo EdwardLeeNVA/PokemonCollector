@@ -146,4 +146,16 @@ public class Trainer implements Comparable<Trainer>{
 	public int compareTo(Trainer o) {
 		return o.score - this.score;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if ((obj != null) && (obj instanceof Trainer)) {
+			int thisId = getUserID();
+			Trainer otherTrainer = (Trainer) obj;
+			int thatId = otherTrainer.getUserID();
+			return (thisId == thatId);
+		} else {
+			return false;
+		}
+	}
 }
