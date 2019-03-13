@@ -10,15 +10,13 @@
         /><br />
         <button class="shop-buy-btn" (click)="redeemAll()">Redeem All</button>
         <form #redeemForm="ngForm" (ngSubmit)="redeemSpecific()" novalidate>
-          <!-- data-toggle="modal"
-            data-target="#newpokemonModal" -->
           <button class="shop-buy-btn" type="submit">
             Sell
           </button>
 
-          <div class="radio-card-grid">
+          <div class="radio-card-grid justify-content-center">
             <div
-              class="form-check radio-form-item"
+              class="form-check radio-form-item justify-content-center"
               *ngFor="let pokemonX of duplicatePokemon"
             >
               <input
@@ -32,18 +30,18 @@
               />
               <div class="pokemon-card-outer">
                 <label class="form-check-label text-light" for="gridRadios1">
-                  {{ pokemonX.name.charAt(0).toUpperCase() + pokemonX.name.substring(1) }}
+                  {{
+                    pokemonX.name.charAt(0).toUpperCase() +
+                      pokemonX.name.substring(1)
+                  }}
                 </label>
                 <img class="pokemon-card-img" src="{{ pokemonX.imageUrl }}" />
                 <div class="pokemon-card-info-cont">
                   <p>Cost: {{ pokemonX.cost }}</p>
-                  <br />
+                  <p>Count: {{ pokemonX.count }}</p>
                   <p *ngIf= "pokemonX.type[1] == null">Type: {{ pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1) }}</p>
                   <p *ngIf= "pokemonX.type[1] != null"> Type: {{ (pokemonX.type[1].charAt(0).toUpperCase() + pokemonX.type[1].substring(1)) + " / " + 
                   pokemonX.type[0].charAt(0).toUpperCase() + pokemonX.type[0].substring(1)}}</p>
-                  <p>Count: {{ pokemonCount }}</p>
-
-                  <p>Count: {{ pokemonX.count }}</p>
                 </div>
               </div>
             </div>

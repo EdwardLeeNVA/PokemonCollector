@@ -23,16 +23,16 @@
            
             </div>
             <form>
+              <h4 id="dropdown-label">Number of Pokemon per page</h4>
               <select name="setNumPoke" class="form-control" [(ngModel)]="numPoke" (change)="populatePokePages()">
-                <option value=0 selected>Number of Pokemon per page</option>
                 <option value=20>20</option>
                 <option value=50>50</option>
                 <option value=100>100</option>
               </select>
             </form>
             <div *ngIf="showPagination">
-              <button type="button" value="previous page" (click)="prevPage()"><</button>
-              <button type="button" value="next page" (click)="nextPage()">></button>
+              <button class="shop-page-btn" type="button" value="previous page" (click)="prevPage()">Prev</button>
+              <button class="shop-page-btn" type="button" value="next page" (click)="nextPage()">Next</button>
             </div>            
             <div class="radio-card-grid">
               <div
@@ -57,11 +57,13 @@
                   </label>
                   <img class="pokemon-card-img" src="{{ pokemon.imageUrl }}" />
                   <div class="pokemon-card-info-cont">
+                    <p>Cost: {{ pokemon.cost }}</p>
+                    <p *ngIf= "pokemon?.type.length == 1">Type: {{ pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
+                    <p *ngIf= "pokemon?.type.length == 2"> Type: {{ pokemon.type[1].charAt(0).toUpperCase() + pokemon.type[1].substring(1) + " / "
+                     + pokemon.type[0].charAt(0).toUpperCase() + pokemon.type[0].substring(1) }}</p>
                     <p>HP: {{ pokemon.stats.hp }}</p>
                     <p>Attack: {{ pokemon.stats.attack }}</p>
-                    <p>Defense: {{ pokemon.stats.defense }} </p>
-                    <p>Type: {{ pokemon.type }}</p>
-                    <p>Cost: {{ pokemon.cost }}</p>
+                    <p>Defense: {{ pokemon.stats.defense }} </p> 
                   </div>
                 </div>
               </div>
@@ -70,8 +72,7 @@
         </div>
       </div>
     </div>
-</div>
-  <!-- Modal for chosen pokemon-->
+  </div>
   <div
     class="modal fade"
     id="newpokemonModal"
@@ -94,12 +95,17 @@
   
             <img src="{{ allPoke[selectedPoke - 1].imageUrl }}" class="pokemon-card-img" />
             <div class="pokemon-card-info-cont">
-                  <p>Type: {{ allPoke[selectedPoke-1].type }}</p>
                 <p>Cost: {{ allPoke[selectedPoke-1].cost }}</p>
+                <p *ngIf= "allPoke[selectedPoke-1]?.type.length == 1">Type: {{ allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
+                <p *ngIf= "allPoke[selectedPoke-1]?.type.length == 2"> Type: {{ allPoke[selectedPoke-1].type[1].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[1].substring(1) + " / "
+                 + allPoke[selectedPoke-1].type[0].charAt(0).toUpperCase() + allPoke[selectedPoke-1].type[0].substring(1) }}</p>
+                <p>HP: {{ allPoke[selectedPoke-1].stats.hp }}</p>
+                <p>Attack: {{ allPoke[selectedPoke-1].stats.attack }}</p>
+                <p>Defense: {{ allPoke[selectedPoke-1].stats.defense }} </p> 
             </div>
           </div>
-          <!-- start no credits alert -->
-          <div
+        </div>
+        <div
           class="alert alert-danger alert-dismissible fade show d-none"
           id="no-credit-alert"
           role="alert"
@@ -122,56 +128,44 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!-- end no credit alert -->
-        <!-- start I choose you alert -->
+
         <div
-        class="alert alert-danger alert-dismissible fade show d-none"
-        id="add-pokemon-alert"
-        role="alert"
-      >
-        <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
-
-        <strong>I Choose You!!</strong> This Pokemon has been added to your collection.
-
-        <img
-          src="http://i65.tinypic.com/27zauqe.png"
-          alt="Image and video hosting by TinyPic"
-        />
-        <button
-          id="login-alert"
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="onAlertClose()"
+          class="alert alert-danger alert-dismissible fade show d-none"
+          id="add-pokemon-alert"
+          role="alert"
         >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <!-- end I choose you alert -->
-        <!-- start confirmation button -->
+          <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
+
+          <strong>I Choose You!!</strong> This Pokemon has been added to your
+          collection.
+
+          <img
+            src="http://i65.tinypic.com/27zauqe.png"
+            alt="Image and video hosting by TinyPic"
+          />
           <button
-                data-toggle="modal"
-                data-target="#newpokemonConfirm"
-                class="shop-buy-btn"
-                type="submit"
-                (click)="onBuySubmit()"
-              >
-                I Choose You!
-              </button>
-        <!--end confirmation button  -->
-        <!-- start close button -->
-          <button
+            id="login-alert"
             type="button"
-            class="shop-buy-btn"
-            data-dismiss="modal"
-            (click)="showBoughtMessage()"
+            class="close"
+            aria-label="Close"
+            (click)="onAlertClose()"
           >
-            Close
+            <span aria-hidden="true">&times;</span>
           </button>
-        <!-- end close button  -->
         </div>
+        <button
+          data-toggle="modal"
+          data-target="#newpokemonConfirm"
+          class="shop-buy-btn"
+          type="submit"
+          (click)="onBuySubmit()"
+        >
+          I Choose You!
+        </button>
+        <button type="button" class="shop-buy-btn" data-dismiss="modal"  (click)="showBoughtMessage()">
+          Close
+        </button>
       </div>
     </div>
   </div>
-<!-- end modal -->
   

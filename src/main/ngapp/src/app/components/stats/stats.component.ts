@@ -16,7 +16,6 @@ export class StatsComponent implements OnInit {
 
   constructor() { }
 
-  //configUrl = "http://localhost:8080/PokemonCollector/ng/stats1";
      configUrl = "/PokemonCollector/ng/stats1";
 
   pokeCount;
@@ -31,7 +30,6 @@ export class StatsComponent implements OnInit {
 
 
         this.configUrl = "/PokemonCollector/ng/stats2";
-        //this.configUrl = "http://localhost:8080/PokemonCollector/ng/stats2";
       fetch(this.configUrl)
       .then(res => res.json())
       .then(res => {
@@ -87,8 +85,8 @@ export class StatsComponent implements OnInit {
           rotation: 0,
           color: 'black',
           align: 'right',
-          format: '{point.y:.0f}', // one decimal
-          y: -25, // 10 pixels down from the top
+          format: '{point.y:.0f}',
+          y: -25,
           x: -10,
           style: {
             fontSize: '13px',
@@ -186,7 +184,6 @@ export class StatsComponent implements OnInit {
             enabled: true,
             format: '<b>{point.name}</b>',
             style: {
-              // color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
             }
           }
         }

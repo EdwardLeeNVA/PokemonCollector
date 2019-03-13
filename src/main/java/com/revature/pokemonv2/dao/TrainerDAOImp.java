@@ -106,11 +106,11 @@ public class TrainerDAOImp implements TrainerDAO {
 	}
 
 	@Override
-	public boolean purchasePokemon(String username, int cost, boolean isTesting) {
+	public boolean purchasePokemon(String username, int cost, boolean isTesting, int trainerId, int pokeId) {
 		Connection conn = isTesting ? TestConnectionPool.getInstance().getConnection()
 				: ConnectionUtility.getInstance().getConnection();
 		
-		try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost)) {
+		try (CallableStatement cs = TrainerDAOStatements.purchasePokemonStatement(conn, username, cost, trainerId, pokeId)) {
 			cs.execute();
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage(), e);

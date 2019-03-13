@@ -32,11 +32,13 @@ class TrainerDAOStatements {
 		return statement;
 	}
 
-	static CallableStatement purchasePokemonStatement(Connection connection, String username, int cost)
+	static CallableStatement purchasePokemonStatement(Connection connection, String username, int cost, int trainerId, int pokeId)
 			throws SQLException {
-		CallableStatement statement = connection.prepareCall("CALL update_credits(?,?)");
+		CallableStatement statement = connection.prepareCall("CALL update_credits(?,?,?,?)");
 		statement.setString(1, username);
 		statement.setInt(2, (cost * -1));
+		statement.setInt(3, trainerId);
+		statement.setInt(4, pokeId);
 		return statement;
 	}
 

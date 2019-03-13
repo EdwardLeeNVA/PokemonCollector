@@ -30,7 +30,7 @@ public interface TrainerDAO {
 	 * Because of the cache, this will just try to remove the credits from the
 	 * account, and not remove the Pokemon.
 	 */
-	public boolean purchasePokemon(String username, int cost, boolean isTesting);
+	public boolean purchasePokemon(String username, int cost, boolean isTesting, int trainerId, int pokeId);
 	
 	/**
 	 * Redeem all Pokemon for a specific trainer.

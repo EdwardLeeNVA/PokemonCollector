@@ -53,8 +53,8 @@ export class RedeemComponent implements OnInit {
   //method that gets redeemed credits returned from service method and assigns it to variable
   redeemAll() {
     this.pokedexService.redeemAll().subscribe(Response => {
-      this.credits = Response;
       //Update Behavior Subject
+      this.credits = Response;
       this.trainer.credits = this.trainer.credits + this.credits;
       this.trainerService.updateValidLogin(this.trainer);
     });
@@ -73,7 +73,6 @@ export class RedeemComponent implements OnInit {
       .redeemSpecific(this.redeemTicketModel)
       .subscribe(Response => {
         //Sets the this.credits to response.
-
         this.credits = Response;
         this.trainer.credits = this.trainer.credits + this.credits;
         this.trainerService.updateValidLogin(this.trainer);

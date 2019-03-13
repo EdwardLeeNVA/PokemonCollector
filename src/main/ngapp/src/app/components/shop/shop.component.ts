@@ -15,7 +15,7 @@ export class ShopComponent implements OnInit {
   private TOTALPOKEMON: number = 151;
   public showPagination: boolean = false;
   private paginationArray: number[];
-  public numPoke: number;
+  public numPoke: number = 20;
   private currentPage: number;
   public numPages: number;
   public allPoke: Pokemon[];
@@ -37,6 +37,7 @@ export class ShopComponent implements OnInit {
       this.router.navigateByUrl("/PokemonCollector/ng/landing");
     }
     this.populatePokeArray();
+    this.populatePokePages();
   }
 
   onBuySubmit() {
@@ -48,12 +49,25 @@ export class ShopComponent implements OnInit {
     }
     else{
       let cost: number = this.allPoke[this.selectedPoke-1].cost;
-        this.trainer.credits = this.trainer.credits-cost;
-        this.trainerService.updateValidLogin(this.trainer);
-        this.http.post(
+
+        this.http.post<Pokemon>(
            "/PokemonCollector/servlet/purchase",
            this.allPoke[this.selectedPoke-1]
-         ).subscribe();
+         ).subscribe(
+           resp => {
+             if(resp.id != 0){
+               this.trainer.score = resp.count;
+               this.trainer.credits = this.trainer.credits-cost;
+               this.trainerService.updateValidLogin(this.trainer);
+             } else {
+               //Put new alert for failed db call.
+             }
+           },
+          err => {
+             console.log(err);
+          }
+
+        );
          $("#add-pokemon-alert").removeClass("d-none");
          this.boughtPoke = true;      
       }
@@ -63,13 +77,10 @@ export class ShopComponent implements OnInit {
       }
   }  
 
-  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
 
-  //method that calls above observable
-  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
@@ -86,6 +97,7 @@ export class ShopComponent implements OnInit {
           newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
+        this.populatePokePages();
       }
       ,err => console.log(`Error: ${err}`)
     )
@@ -115,8 +127,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //jump to specific page
-  //not implemented
   showPaginationNavbar(): void{
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
     for (let i = 0; i < this.numPages; i++){
@@ -124,14 +134,11 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //jump to specific page
-  //not implemented
   specificPage(pageNumber: number): void{
     this.currentPage = pageNumber;
     this.changePokePages();
   }
 
-  //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
       this.currentPage = 1;
@@ -143,7 +150,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //wrap around to last page if on first page
   prevPage(): void{
     if (this.currentPage == 1){
       this.currentPage = this.numPages;

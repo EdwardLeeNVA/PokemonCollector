@@ -1,19 +1,33 @@
-<h1>Top 10 Scores</h1>
-<div id="outer-most">
-  <div>
-    <table id="leaderboardTable">
-      <thead></thead>
-      <tr>
-        <th class="tabletext" id="tableusername" scope="col">Username</th>
-        <th class="tabletext" id="tablescore" scope="col">Score</th>
-      </tr>
-
-      <tbody id="leaderboardBody"></tbody>
-    </table>
+<div class="container">
+  <div id="landingWrapper" class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="row">
+        <div id="leaderLeftSection" class="col-md-12 text-center">
+            <img id="landingLogo" src="http://b.webpurr.com/eDAy.webp"><br>
+            <img id="leaderLeftImg" src="http://b.webpurr.com/YLNj.webp">
+        </div>
+      </div>
+    </div>
+    <div id="leaderRightSection" class="col-md-5 text-center">
+        <h1 id="leaderHeading">Top 10 Scores</h1>
+        <table id="leaderboardTable">
+          <thead>
+            <tr>
+              <th class="tabletext" id="tableusername" scope="col">Trainer</th>
+              <th class="tabletext" id="tablescore" scope="col">Score</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <tr *ngFor="let trainer of leaderboardData">
+              <td style="color: white; border: 1px solid black;" id ="tableusername">{{trainer.username}}</td>
+              <td style="color: white; border: 1px solid black;" id ="tablescore">{{trainer.score}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button id="statsBtn" class="Button" routerLink="/stats">View Statistics</button>
+    </div>
+    <div class="col-md-1"></div>
   </div>
-  <br />
-  <div>
-    <button class="Button" routerLink="/stats">Stats</button>
-  </div>
-  <br />
 </div>
+

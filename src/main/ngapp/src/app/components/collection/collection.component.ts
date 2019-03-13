@@ -17,11 +17,9 @@ export class CollectionComponent implements OnInit {
 
   trainersPokemon: Pokemon[];
 
-  constructor(private pokedexService: PokedexService, private trainerService: TrainerService, private router: Router) {
-   }
+  constructor(private pokedexService: PokedexService, private trainerService: TrainerService, private router: Router) {}
 
   ngOnInit() {
-    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
     if(this.trainer == null){
@@ -32,9 +30,8 @@ export class CollectionComponent implements OnInit {
   }
 
   getTrainersPokemon() {       
-    this.pokedexService.getTrainersPokemon(this.trainer.username).subscribe(
+    this.pokedexService.getTrainersPokemon().subscribe(
       response => {this.trainersPokemon = response}
     ), (err: any) => console.log(`Error: $(err)`)
   }
-
 }

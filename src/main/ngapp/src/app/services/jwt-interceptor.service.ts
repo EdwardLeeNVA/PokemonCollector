@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import {
-  HttpInterceptor,
   HttpRequest,
   HttpHandler,
   HttpEvent
@@ -12,12 +11,10 @@ import { TokenService } from "./token.service";
   providedIn: "root"
 })
 export class JwtInterceptorService {
-  //Before any HTTP request is sent, it intercepts the HTTP request
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    //If you are on the login page
     if (req.url.includes("login") || req.url.includes("register") || req.url === "/") {
       return next.handle(req);
     }
@@ -27,6 +24,5 @@ export class JwtInterceptorService {
     return next.handle(req);
   }
 
-  //Injects tokenSerivce into JwtInterceptorService
   constructor(private tokenService: TokenService) {}
 }

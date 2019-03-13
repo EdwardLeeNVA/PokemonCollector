@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   constructor(private trainerService: TrainerService, private router: Router) {}
 
   ngOnInit() {
-    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(
       status => (this.login_status = status)
     );
