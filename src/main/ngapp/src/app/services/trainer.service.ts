@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject } from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import { Trainer } from "../models/Trainer";
 
 @Injectable({
@@ -40,5 +40,9 @@ export class TrainerService {
       this.current_trainer.next(JSON.parse(check));
       this.login_status.next(true);
     }
+  }
+
+  getLeaderBoard(): Observable<Trainer[]>{
+    return this._http.get<Trainer[]>("/PokemonCollector/ng/leaderboard");
   }
 }

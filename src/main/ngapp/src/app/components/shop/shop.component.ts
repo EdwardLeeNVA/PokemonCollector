@@ -100,6 +100,7 @@ export class ShopComponent implements OnInit {
           newPoke.cost = data[i].cost;
           this.allPoke[i] = newPoke;
         }
+        this.populatePokePages();
       }
       ,err => console.log(`Error: ${err}`)
     )
