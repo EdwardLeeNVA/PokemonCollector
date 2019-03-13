@@ -5,20 +5,30 @@ package com.revature.pokemonv2.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.revature.pokemonv2.model.Stats;
+import com.revature.pokemonv2.model.Trainer;
 
 /**
  * @author christopherraleigh
  *
  */
 public class StatsDAOImplTest {
+	
+	private static final int TOP_N = 10;
+	
+	private static StatsDAOImpl instance;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		instance = StatsDAOImpl.getInstance();
 	}
 
 	/**
@@ -26,7 +36,8 @@ public class StatsDAOImplTest {
 	 */
 	@Test
 	public void testGetPokemonCountByTrainer() {
-		fail("Not yet implemented"); // TODO
+		List<Stats> count = instance.getPokemonCountByTrainer(true);
+		assertNotNull(count);
 	}
 
 	/**
@@ -34,7 +45,8 @@ public class StatsDAOImplTest {
 	 */
 	@Test
 	public void testGetLeaderboard() {
-		fail("Not yet implemented"); // TODO
+		List<Trainer> board = instance.getLeaderboard(TOP_N, true);
+		assertNotNull(board);
 	}
 
 	/**
@@ -42,7 +54,8 @@ public class StatsDAOImplTest {
 	 */
 	@Test
 	public void testGetTotalPokemonCountByTrainer() {
-		fail("Not yet implemented"); // TODO
+		List<Stats> count = instance.getTotalPokemonCountByTrainer(true);
+		assertNotNull(count);
 	}
 
 }
