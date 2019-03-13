@@ -33,7 +33,8 @@ public class FrontController extends DefaultServlet {
 			"collection",
 			"landing",
 			"shop",
-			"redeem"
+			"redeem",
+			"stats"
 	};
 
 	@Override
@@ -52,14 +53,18 @@ public class FrontController extends DefaultServlet {
 			MasterDispatcher.process(request, response);
 		else if (uri.equals("/PokemonCollector") || uri.equals("/PokemonCollector/"))
 			response.sendRedirect("/PokemonCollector/ng/index.html");
-		else if ((uri.contains("/ng/") && Arrays.asList(ngRoutes).stream().anyMatch(route -> uri.contains(route))))
+		else if (uri.equals("/PokemonCollector/ng/stats1"))
+			mapper.writeValue(response.getOutputStream(),
+					LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
+		else if (uri.equals("/PokemonCollector/ng/stats2"))
+			mapper.writeValue(response.getOutputStream(),
+					LeaderBoardService.getLeaderBoardService().returngetTotalPokemonCountByTrainer(request, response));
+		else if ((uri.contains("/ng/") && Arrays.asList(ngRoutes).stream().anyMatch(route -> uri.contains(route)))
+				|| uri.equals("/PokemonCollector/ng/"))
 			request.getRequestDispatcher("/ng/index.html").forward(request, response);
 		else if (uri.equals("/PokemonCollector/ng/leaderboard"))
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
-		else if (uri.equals("/PokemonCollector/ng/stats1"))
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetPokemonCountByTrainer(request, response));
-		else if (uri.equals("/PokemonCollector/ng/stats2"))
-			mapper.writeValue(response.getOutputStream(),LeaderBoardService.getLeaderBoardService().returngetTotalPokemonCountByTrainer(request, response));
+			mapper.writeValue(response.getOutputStream(),
+					LeaderBoardService.getLeaderBoardService().returnLeaderBoard(request, response));
 		else {
 			switch (request.getMethod()) {
 			case "GET":

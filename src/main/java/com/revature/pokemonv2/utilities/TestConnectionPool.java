@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 public class TestConnectionPool {
 	private static final Logger logger = LogManager.getLogger(TestConnectionPool.class);
 	
-	private static final String url = "jdbc:oracle:thin:@tco.cyitp3sizf7l.us-east-2.rds.amazonaws.com:1521:ORCL";
+	private static final String url = "jdbc:oracle:thin:@p3test.cyitp3sizf7l.us-east-2.rds.amazonaws.com:1521:ORCL";
 	private static final String username = "tcadmin";
 	private static final String password = "s9d5j1q8";
 
