@@ -49,12 +49,25 @@ export class ShopComponent implements OnInit {
     }
     else{
       let cost: number = this.allPoke[this.selectedPoke-1].cost;
-        this.trainer.credits = this.trainer.credits-cost;
-        this.trainerService.updateValidLogin(this.trainer);
-        this.http.post(
+
+        this.http.post<Pokemon>(
            "/PokemonCollector/servlet/purchase",
            this.allPoke[this.selectedPoke-1]
-         ).subscribe();
+         ).subscribe(
+           resp => {
+             if(resp.id != 0){
+               this.trainer.score = resp.count;
+               this.trainer.credits = this.trainer.credits-cost;
+               this.trainerService.updateValidLogin(this.trainer);
+             } else {
+               //Put new alert for failed db call.
+             }
+           },
+          err => {
+             console.log(err);
+          }
+
+        );
          $("#add-pokemon-alert").removeClass("d-none");
          this.boughtPoke = true;      
       }

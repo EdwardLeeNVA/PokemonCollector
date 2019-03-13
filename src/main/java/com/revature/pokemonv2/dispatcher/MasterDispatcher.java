@@ -53,7 +53,7 @@ public class MasterDispatcher {
 			mapper.writeValue(response.getOutputStream(), collectionService.getAllPokemon(username));
 			break;
 		case "purchase":
-				PlayerService.getPlayerService().purchasePokemon(request, response);
+				mapper.writeValue(response.getOutputStream(), PlayerService.getPlayerService().purchasePokemon(request, response));
 			break;
 		case "allpokemon":
 				mapper.writeValue(response.getOutputStream(), collectionService.getCompleteSet());

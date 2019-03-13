@@ -70,7 +70,7 @@ public class PlayerService {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		return trainer.loginAuthentication(request, response);
 	}
-	public void purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
+	public Pokemon purchasePokemon(HttpServletRequest request, HttpServletResponse response) {
 		String username = TokenService.getInstance().getUserDetailsFromToken(request.getHeader(AUTH)).getUsername();
 		Pokemon p = null;
 		try {
@@ -89,8 +89,10 @@ public class PlayerService {
 		int cost = p.getCost();
 		// dao command to remove the money
 		if (trainer.purchasePokemon(username, cost, false)) {
-			CachingUtility.getCachingUtility().addToCache(username, p.getId());
+			return CachingUtility.getCachingUtility().addToCache(username, p.getId());
 			// return true;
+		} else {
+			return null;
 		}
 		// return false;
 	}
