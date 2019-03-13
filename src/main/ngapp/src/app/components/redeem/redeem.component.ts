@@ -54,6 +54,7 @@ export class RedeemComponent implements OnInit {
   redeemAll() {
     this.pokedexService.redeemAll().subscribe(Response => {
       //Update Behavior Subject
+      this.credits = Response;
       this.trainer.credits = this.trainer.credits + this.credits;
       this.trainerService.updateValidLogin(this.trainer);
     });
@@ -72,6 +73,7 @@ export class RedeemComponent implements OnInit {
       .redeemSpecific(this.redeemTicketModel)
       .subscribe(Response => {
         //Sets the this.credits to response.
+        this.credits = Response;
         this.trainer.credits = this.trainer.credits + this.credits;
         this.trainerService.updateValidLogin(this.trainer);
       });
