@@ -9,10 +9,6 @@ import { environment } from "src/environments/environment";
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  /*
-    This function takes in 2 parameters, the username and password and 
-    returns an observable. It makes a HTTP POST request to the login endpoint
-  */
   attemptLogin(username: string, password: string): Observable<any> {
     let credentials : FormData = new FormData();
     credentials.append("USERNAME", username);
@@ -28,7 +24,6 @@ export class AuthService {
   }
 
   private getHttpHeaders(): HttpHeaders {
-    //Creates headers for the HTTP post request to get around CORS filters
     const headers: HttpHeaders = new HttpHeaders();
     headers.append("Access-Control-Allow-Origin", "http://localhost:4200");
     return headers;

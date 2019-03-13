@@ -8,12 +8,9 @@ import {Observable} from "rxjs";
   providedIn: "root"
 })
 export class PokedexService {
-  //used to store ArrayList of Pokemon Objects from the Response of the GET request to get trainer's dup' pokemon
-  duplicatePokemon: any; //FOR REDEEM COMPONENT
-  //used to store Array of 'int' from the Response of the GET request to get trainer's remaining credits
-  credits: any; //FOR REDEEM COMPONENT
+  duplicatePokemon: any;
+  credits: any;
   redeemTicketModel = new RedeemTicket(0);
-  trainerPokemon: Pokemon[];
 
   constructor(private _http: HttpClient) {}
 
@@ -21,30 +18,25 @@ export class PokedexService {
     return this._http.get<any>("/PokemonCollector/servlet/generatePokemon");
   }
 
-  getTrainersPokemon(username: String) {
+  getTrainersPokemon() {
     return this._http.get<any>("/PokemonCollector/servlet/collection");
   }
 
-  //returns all duplicate pokemon of logged in user
   getDuplicates() {
     return this._http.get<any>("/PokemonCollector/servlet/duplicate");
   }
 
-  //returns updated credits and increased credit amount when redeeming all pokemon
   redeemAll() {
     return this._http.get<any>("/PokemonCollector/servlet/redeemAll");
   }
 
-  //returns updated credits and increased credit amount when redeeming a specific pokemon
   redeemSpecific(redeemTicket: RedeemTicket) {
-    //make POST request to get array of 'int's which will resemble credits earned and credits after redeem
     return this._http.post<any>(
       "/PokemonCollector/servlet/redeem",
       redeemTicket
     );
   }
 
-  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this._http.get<any>("/PokemonCollector/servlet/allpokemon")
   }

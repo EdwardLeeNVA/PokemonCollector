@@ -1,15 +1,11 @@
 <div class="container">
-
   <div id="landingWrapper" class="row">
-    <!-- //////NEW ROW ON GRID\\\\\\\ -->
     <div class="col-md-1"></div>
-    <!-- holds logo for landing page -->
     <div class="col-md-5">
-      <!-- INNDER COL START -->
       <div class="row">
         <div id="leaderLeftSection" class="col-md-12 text-center">
-            <img id="landingLogo" src="http://i64.tinypic.com/n3b6s6.png"><br>
-            <img id="leaderLeftImg" src="http://i64.tinypic.com/xf1e6b.png">
+            <img id="landingLogo" src="http://b.webpurr.com/eDAy.webp"><br>
+            <img id="leaderLeftImg" src="http://b.webpurr.com/YLNj.webp">
         </div>
       </div>
     </div>
@@ -22,14 +18,16 @@
               <th class="tabletext" id="tablescore" scope="col">Score</th>
             </tr>
           </thead>
-          <!-- populated with rows from the TS file -->
-          <tbody id="leaderboardBody"></tbody>
+          <tbody id="leaderboardBody">
+            <tr *ngFor="let trainer of leaderboardData">
+              <td style="color: white; border: 1px solid black;" id ="tableusername">{{trainer.username}}</td>
+              <td style="color: white; border: 1px solid black;" id ="tablescore">{{trainer.score}}</td>
+            </tr>
+          </tbody>
         </table>
         <button id="statsBtn" class="Button" routerLink="/stats">View Statistics</button>
     </div>
     <div class="col-md-1"></div>
-
   </div>
-  
 </div>
 

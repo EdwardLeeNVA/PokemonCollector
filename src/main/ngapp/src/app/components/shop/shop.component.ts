@@ -77,13 +77,10 @@ export class ShopComponent implements OnInit {
       }
   }  
 
-  //gets all pokeinfo from the cache
   getAllPokemon(): Observable<any[]>{
     return this.http.get<any>("/PokemonCollector/servlet/allpokemon")
   }
 
-  //method that calls above observable
-  //iscalled onInit
   populatePokeArray(): void{
     this.getAllPokemon().subscribe(
       data => {
@@ -130,8 +127,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //jump to specific page
-  //not implemented
   showPaginationNavbar(): void{
     this.numPages = Math.ceil(this.TOTALPOKEMON/this.numPoke);
     for (let i = 0; i < this.numPages; i++){
@@ -139,14 +134,11 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //jump to specific page
-  //not implemented
   specificPage(pageNumber: number): void{
     this.currentPage = pageNumber;
     this.changePokePages();
   }
 
-  //wrap around to first page if on last page
   nextPage(): void{
     if (this.currentPage == this.numPages){
       this.currentPage = 1;
@@ -158,7 +150,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  //wrap around to last page if on first page
   prevPage(): void{
     if (this.currentPage == 1){
       this.currentPage = this.numPages;

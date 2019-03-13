@@ -11,10 +11,6 @@ import {PokedexService} from "./pokedex.service";
 export class TokenService {
   constructor(private router: Router, private trainerService: TrainerService, private pokedexService: PokedexService) {}
 
-  /*
-  Sets a user token to session storage when the 
-  user logs in
-  */
   setCurrentUserToken(token: string, resp: any) {
     if (token) {
       sessionStorage.setItem("CURRENT_USER", token);
@@ -32,7 +28,7 @@ export class TokenService {
 
       sessionStorage.setItem("TRAINER_DATA", JSON.stringify(t));
       this.trainerService.updateValidLogin(t);
-      this.pokedexService.getTrainersPokemon(t.username).subscribe(
+      this.pokedexService.getTrainersPokemon().subscribe(
         val => val,
         err => err
       );
@@ -41,9 +37,6 @@ export class TokenService {
       throw new Error();
     }
   }
-  /*
-  Gets rids of CORS filter requirements, allows communication between the Angular project and the Tomcat server.
-  */
   getAuthorizedRequestHeader(): HttpHeaders {
     const headers: HttpHeaders = new HttpHeaders({
       Authorization: sessionStorage.getItem("CURRENT_USER"),
@@ -54,14 +47,11 @@ export class TokenService {
     });
     return headers;
   }
-  /*
-  Gets rid of session storage
-  */
+
   logout() {
     sessionStorage.removeItem("CURRENT_USER");
   }
 
-  //Checks to see if user is logged in
   isLoggedIn(): boolean {
     return sessionStorage.getItem("CURRENT_USER") !== null;
   }

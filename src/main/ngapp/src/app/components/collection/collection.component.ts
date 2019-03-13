@@ -30,7 +30,7 @@ export class CollectionComponent implements OnInit {
   }
 
   getTrainersPokemon() {       
-    this.pokedexService.getTrainersPokemon(this.trainer.username).subscribe(
+    this.pokedexService.getTrainersPokemon().subscribe(
       response => {this.trainersPokemon = response}
     ), (err: any) => console.log(`Error: $(err)`)
   }

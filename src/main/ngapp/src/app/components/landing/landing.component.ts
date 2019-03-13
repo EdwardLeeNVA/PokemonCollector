@@ -15,35 +15,24 @@ export class LandingComponent implements OnInit {
 
   public trainer: Trainer;
   public login_status: boolean;
+  public leaderboardData: Trainer[];
 
   constructor(private trainerService: TrainerService, private router: Router) { }
 
   configUrl = "/PokemonCollector/ng/leaderboard";
 
   ngOnInit() {
-
     fetch(this.configUrl)
       .then(res => res.json())
       .then(res => {
-        //console.log(res);
-        let table = document.getElementById('leaderboardBody');
-        for (let data of res) {
-          table.innerHTML = table.innerHTML + `
-          <tr>
-      <td style="color: white; border: 1px solid black;" id ="tableusername">${data.username}</td> 
-      <td style="color: white; border: 1px solid black;" id ="tablescore">${data.score}</td>
-      </tr>
-      `
-        }
+        this.trainerService.updateLeaderboard(res);
       });
-
-    //this.trainerService.checkSessionStorage();
     this.trainerService.login_status_bs.subscribe(status => this.login_status = status);
     this.trainerService.current_trainer_bs.subscribe(trainer => this.trainer = trainer);
+    this.trainerService.current_leaderboard_bs.subscribe(leaderboard => this.leaderboardData = leaderboard)
     if (this.trainer != null) {
       this.trainerService.checkSessionStorage();
       this.router.navigateByUrl("/PokemonCollector/ng/generate");
     }
   }
-
 }

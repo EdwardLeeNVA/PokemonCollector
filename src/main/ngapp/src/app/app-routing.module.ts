@@ -11,11 +11,11 @@ import { StatsComponent } from './components/stats/stats.component';
 
 export const appRoutes: Routes = [
   {
-    path: "",
+    path: "landing",
     component: LandingComponent
   },
   {
-    path: "landing",
+    path: "",
     component: LandingComponent
   },
   {
