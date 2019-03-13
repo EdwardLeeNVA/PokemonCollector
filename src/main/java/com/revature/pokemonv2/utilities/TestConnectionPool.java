@@ -12,12 +12,12 @@ import org.apache.log4j.Logger;
 public class TestConnectionPool {
 	private static final Logger logger = LogManager.getLogger(TestConnectionPool.class);
 	
-	private static final String url = "jdbc:oracle:thin:@tco.cyitp3sizf7l.us-east-2.rds.amazonaws.com:1521:ORCL";
+	private static final String url = "jdbc:oracle:thin:@p3test.cyitp3sizf7l.us-east-2.rds.amazonaws.com:1521:ORCL";
 	private static final String username = "tcadmin";
 	private static final String password = "s9d5j1q8";
 
 	private static final TestConnectionPool instance = new TestConnectionPool();
-	private static final int INITIAL_POOL_SIZE = 25;
+	private static final int INITIAL_POOL_SIZE = 10;
 	private final List<Connection> connections = new ArrayList<>(INITIAL_POOL_SIZE);
 	private final List<Connection> usedConnections = new ArrayList<>(INITIAL_POOL_SIZE);
 	
