@@ -3,6 +3,9 @@
 }
 #collection-section-header {
   text-align: center;
+}
+
+#pokedex-heading{
   width: 75%;
   max-height: 300px;
 }
