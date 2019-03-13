@@ -8,19 +8,19 @@ public class PokedexLoadWriterTest {
 	PokedexLoadWriter test = new PokedexLoadWriter();
 	
 	@Test
-	public void testLoadEmptyKey() throws Exception {
+	public void testLoadAllPoke() throws Exception {
 		PokedexLoadWriter.isTesting = true;
 		
-		//test.load(null)
-		System.out.println( test.load(null).size());
-		assertEquals(test.load(null).size(), 151 );
+		assertEquals(test.load("red").size(), 151 );
 	}
 	
 	@Test
-	public void testLoadValidKey() throws Exception {
+	public void testLoadNoPoke() throws Exception {
 		PokedexLoadWriter.isTesting = true;
 		
-		assertEquals(test.load("test").size(), 3);
+		assertEquals(test.load("blue").size(), 0 );
 	}
+	
+
 }
  
