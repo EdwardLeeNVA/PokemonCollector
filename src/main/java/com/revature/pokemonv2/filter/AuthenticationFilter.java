@@ -33,14 +33,14 @@ public class AuthenticationFilter implements Filter {
 			"/PokemonCollector/ng/main.js",		
 			"/PokemonCollector",
 			"/PokemonCollector/",
+			"/PokemonCollector/ng/",
 			"/PokemonCollector/ng/landing",
 			"/PokemonCollector/ng/login",
 			"/PokemonCollector/ng/register",
 			"/PokemonCollector/servlet/unfiltered/login",
 			"/PokemonCollector/servlet/unfiltered/register",
 			"/PokemonCollector/ng/leaderboard",
-			"/PokemonCollector/ng/stats1",
-			"/PokemonCollector/ng/stats2"
+			"/PokemonCollector/ng/stats"
 	};
 
 	private ObjectMapper mapper;
