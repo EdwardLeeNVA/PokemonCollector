@@ -5,20 +5,27 @@ package com.revature.pokemonv2.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.revature.pokemonv2.model.Pokemon;
 
 /**
  * @author christopherraleigh
  *
  */
 public class PokemonDAOTest {
+	
+	private static PokemonDAO instance;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		instance = new PokemonDAO();
 	}
 
 	/**
@@ -26,7 +33,8 @@ public class PokemonDAOTest {
 	 */
 	@Test
 	public void testGetTrainerPokedex() {
-		fail("Not yet implemented"); // TODO
+		List<Pokemon> pokedex = instance.getTrainerPokedex(TrainerDAOImpTest.USERNAME, true);
+		assertNotNull(pokedex);
 	}
 
 	/**
@@ -34,7 +42,8 @@ public class PokemonDAOTest {
 	 */
 	@Test
 	public void testGeneratePokemon() {
-		fail("Not yet implemented"); // TODO
+		Pokemon pokemon = PokemonDAO.generatePokemon(0, 1, TrainerDAOImpTest.USERNAME, true);
+		assertNotNull(pokemon);
 	}
 
 }

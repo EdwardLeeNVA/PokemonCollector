@@ -19,7 +19,7 @@ import com.revature.pokemonv2.model.Trainer;
 public class TrainerDAOImpTest {
 	
 	private static final Logger LOGGER = Logger.getLogger(TrainerDAOImpTest.class);
-	private static final String USERNAME = "PkmnTrnrBlue";
+	public static final String USERNAME = "PkmnTrnrBlue";
 	private static final String PASSWORD = "MyOriginalNameIsGreen";
 	private static final String EMAIL = "goak@example.com";
 	private static final String FIRST_NAME = "Gary";
