@@ -23,17 +23,28 @@
                 <img src="http://i64.tinypic.com/2nhqjbp.png" alt="" />
               </div>
               <div class="col-md-10" id="rules-text-box">
-                Hello there! Welcome to the world of pokémon!<br />
-                My name is Oak! People call me the pokémon Prof!<br />
-                This application is inhabited by creatures called pokémon! For
-                some people, pokémon are pets. Others use them to build a
-                collection and become a pokémon master.<br />
-                Click this button to generate a random pokémon to add to your
-                collection and increase your score.<br />
-                In the shop you can buy pokémon with credits and build your
-                collection. <br />When you have duplicate pokémon in your
-                collection you can redeem them for more credits to use in the
-                shop.<br />
+                <p>
+                  Hello there! Welcome to the world of pokémon!<br />
+                  My name is Oak! People call me the pokémon Prof!<br />
+                  This application is inhabited by creatures called pokémon! For
+                  some people, pokémon are pets. Others use them to build a
+                  collection and become a pokémon master.
+                </p>
+                <ul id="rule_list">
+                  <li>
+                    Click this button to generate a random pokémon to add to
+                    your collection and increase your score.
+                  </li>
+                  <li>
+                    In the shop you can buy pokémon with credits and build your
+                    collection.
+                  </li>
+                  <li>
+                    When you have duplicate pokémon in your collection you can
+                    redeem them for more credits to use in the shop.
+                  </li>
+                </ul>
+
                 Your goal is to collect them all.<br />
                 Good luck!
               </div>
@@ -74,12 +85,26 @@
                 <h4 class="pokemon-card-name">{{ pokemonName }}</h4>
                 <img src="{{ pokemonSprite }}" class="pokemon-card-img" />
                 <div class="pokemon-card-info-cont">
-                  <p *ngIf= "pokemonType?.length == 1">Type: {{ pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>
-                  <p *ngIf= "pokemonType?.length == 2"> Type: {{ pokemonType[1].charAt(0).toUpperCase() + pokemonType[1].substring(1) + " / "
-                     + pokemonType[0].charAt(0).toUpperCase() + pokemonType[0].substring(1) }}</p>
-                  <p>HP: {{hp}}</p>
-                  <p>Attack: {{attack}}</p>
-                  <p>Defense: {{defense}}</p>
+                  <p *ngIf="pokemonType?.length == 1">
+                    Type:
+                    {{
+                      pokemonType[0].charAt(0).toUpperCase() +
+                        pokemonType[0].substring(1)
+                    }}
+                  </p>
+                  <p *ngIf="pokemonType?.length == 2">
+                    Type:
+                    {{
+                      pokemonType[1].charAt(0).toUpperCase() +
+                        pokemonType[1].substring(1) +
+                        " / " +
+                        pokemonType[0].charAt(0).toUpperCase() +
+                        pokemonType[0].substring(1)
+                    }}
+                  </p>
+                  <p>HP: {{ hp }}</p>
+                  <p>Attack: {{ attack }}</p>
+                  <p>Defense: {{ defense }}</p>
                 </div>
               </div>
 

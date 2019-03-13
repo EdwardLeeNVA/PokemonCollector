@@ -18,18 +18,10 @@ body {
   border: 1px solid white;
 }
 
-#card-gallery-grid {
-  padding-top: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-  align-items: center;
-}
-
 #card-gallery-grid .pokemon-card-outer {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  max-width: 100%;
+  width: 240px;
   transition: all 0.2s;
 }
 
@@ -70,8 +62,30 @@ body {
   padding-top: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 5px;
+
   align-items: center;
+}
+.radio-form-item {
+  width: 240px;
+}
+
+@media screen and (max-width: 1200px) {
+  .radio-card-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .radio-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .radio-card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 #newPokemonModal {

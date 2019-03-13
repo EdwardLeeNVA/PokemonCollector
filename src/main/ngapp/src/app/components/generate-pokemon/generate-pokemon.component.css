@@ -82,4 +82,12 @@
   padding: 20px;
   color: white;
   background: linear-gradient(to top, #990033 0%, #cc0000 65%);
+  margin-bottom: 30px;
+}
+
+#rule_list {
+  list-style-image: url("http://i68.tinypic.com/wtwz2v.png");
+}
+#rule_list li {
+  padding-bottom: 5px;
 }
