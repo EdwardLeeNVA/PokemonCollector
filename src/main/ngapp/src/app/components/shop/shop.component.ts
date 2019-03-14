@@ -56,23 +56,21 @@ export class ShopComponent implements OnInit {
            this.allPoke[this.selectedPoke-1]
          ).subscribe(
            resp => {
-             if(resp.id != 0){
+             if(resp == null){
+               $("#failed-transaction-alert").removeClass("d-none");
+               this.transactionAlert = true;
+             } else {
                this.trainer.score = resp.count;
                this.trainer.credits = this.trainer.credits-cost;
                this.trainerService.updateValidLogin(this.trainer);
-             } else {
-               //Put new alert for failed db call.
+               $("#add-pokemon-alert").removeClass("d-none");
+               this.boughtPoke = true;
              }
            },
           err => {
-            $("#failed-transaction-alert").removeClass("d-none");
-            this.transactionAlert = true;
             console.log(err);
           }
-
         );
-         $("#add-pokemon-alert").removeClass("d-none");
-         this.boughtPoke = true;      
       }
       if (this.alertShowing){
         $("#no-credit-alert").removeClass("d-none");

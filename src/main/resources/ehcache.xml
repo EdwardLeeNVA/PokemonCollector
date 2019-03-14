@@ -33,7 +33,7 @@
 			<class>com.revature.pokemonv2.utilities.PokedexLoadWriter</class>
 		</loader-writer>
 		<resources>
-			<heap unit="entries">10</heap>
+			<heap unit="entries">101</heap>
 			<!--<offheap unit="MB">20</offheap>-->
 		</resources>
 	</cache>

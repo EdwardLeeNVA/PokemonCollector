@@ -68,6 +68,10 @@
                 </div>
               </div>
             </div>
+            <div *ngIf="showPagination">
+              <button class="shop-page-btn" type="button" value="previous page" (click)="prevPage()">Prev</button>
+              <button class="shop-page-btn" type="button" value="next page" (click)="nextPage()">Next</button>
+            </div>
           </form>
         </div>
       </div>

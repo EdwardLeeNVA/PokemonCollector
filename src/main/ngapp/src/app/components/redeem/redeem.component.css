@@ -118,7 +118,8 @@
 #redeem-header-image {
   padding: 10px;
   width: 75%;
-  max-height: 300px;
+  max-height: 120px;
+  max-width: 600px;
 }
 
 .shop-buy-btn {

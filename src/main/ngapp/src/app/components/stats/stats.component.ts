@@ -50,7 +50,7 @@ export class StatsComponent implements OnInit {
         marginRight : "150"
       },
       title: {
-        text: 'Pokemons Per Trainer'
+        text: 'Pokemon Per Trainer'
       },
       subtitle: {
         text: 'Top 10'
@@ -75,7 +75,7 @@ export class StatsComponent implements OnInit {
         enabled: false
       },
       tooltip: {
-        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+        pointFormat: 'Pokemon: <b>{point.y:.0f}</b>'
       },
       series: [{
         name: 'Population',
@@ -107,7 +107,7 @@ export class StatsComponent implements OnInit {
 
       },
       title: {
-        text: 'Unique Pokemons Per Trainer'
+        text: 'Unique Pokemon Per Trainer'
       },
       subtitle: {
         text: 'Top 10'
@@ -132,7 +132,7 @@ export class StatsComponent implements OnInit {
         enabled: false
       },
       tooltip: {
-        pointFormat: 'Pokemons: <b>{point.y:.0f}</b>'
+        pointFormat: 'Pokemon: <b>{point.y:.0f}</b>'
       },
       series: [{
         name: 'Population',

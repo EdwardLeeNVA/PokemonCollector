@@ -76,7 +76,7 @@ public class StatsDAOImpl implements StatDAO {
 				// to the leaderboard array.
 				while (rs.next()) {
 					Trainer t = new Trainer(rs.getString("username"), rs.getString("f_name"),
-							rs.getString("l_name"), rs.getInt("score"), rs.getInt("credits"), rs.getInt("ID"));
+							rs.getString("l_name"), rs.getInt("credits"), rs.getInt("score") , rs.getInt("ID"));
 					leaderboard.add(t);
 				}
 				Collections.sort(leaderboard);
